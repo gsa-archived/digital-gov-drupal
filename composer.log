@@ -1,0 +1,2 @@
+c75da15120cae983c83ea84794c6fe51|Matt Poole|develop|Mon Jun  3 16:09:07 EDT 2024|./composer.sh require drupal/scheduler:^2.0
+8001964cf3c5eaae6d009bd8ca86eed4|Matt Poole|develop|Mon Jun  3 16:10:55 EDT 2024|./composer.sh require drupal/scheduler_content_moderation_integration:^2.0@beta

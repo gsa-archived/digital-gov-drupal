@@ -22,6 +22,8 @@
         "drupal/core-project-message": "^10.2",
         "drupal/core-recommended": "^10.2",
         "drupal/memcache": "^2.5",
+        "drupal/scheduler": "^2.0",
+        "drupal/scheduler_content_moderation_integration": "^2.0@beta",
         "drush/drush": "^12.5",
         "mpbixal/drupal-env": "dev-main",
         "mpbixal/drupal-env-lando": "dev-main"
