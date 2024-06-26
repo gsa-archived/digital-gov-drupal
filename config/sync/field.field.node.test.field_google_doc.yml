@@ -1,0 +1,23 @@
+uuid: 55dc99b5-c34b-4dac-98ad-ee1e0fce04cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_google_doc
+    - node.type.test
+  module:
+    - link
+id: node.test.field_google_doc
+field_name: field_google_doc
+entity_type: node
+bundle: test
+label: 'Google Doc'
+description: 'A link to the Google Doc that will be used to provide suggestions, comments, and track changes external to the system.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

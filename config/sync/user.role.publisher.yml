@@ -1,0 +1,23 @@
+uuid: 2516e009-903e-4cbb-941c-a6f0e74dc07c
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - scheduler
+id: publisher
+label: Publisher
+weight: 2
+is_admin: null
+permissions:
+  - 'schedule publishing of nodes'
+  - 'use editorial transition archive'
+  - 'use editorial transition back_federal_review'
+  - 'use editorial transition back_from_published_draft'
+  - 'use editorial transition back_from_ready_to_publish_draft'
+  - 'use editorial transition forward_from_archived_draft'
+  - 'use editorial transition publish'
+  - 'use editorial transition stay_ready_to_publish'
+  - 'view scheduled content'

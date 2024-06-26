@@ -2,8 +2,20 @@ uuid: 30f23e5b-98ef-417d-ba36-0d4d68360df6
 langcode: en
 status: true
 dependencies:
+  config:
+    - filter.format.html
+    - node.type.article
+    - node.type.test
   module:
+    - admin_toolbar_search
+    - comment
+    - content_moderation
+    - field_permissions
+    - filter
+    - media
+    - node
     - system
+    - toolbar
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
@@ -12,3 +24,26 @@ weight: 1
 is_admin: false
 permissions:
   - 'access content'
+  - 'access content overview'
+  - 'access toolbar'
+  - 'create test content'
+  - 'delete any test content'
+  - 'delete own test content'
+  - 'delete test revisions'
+  - 'edit any article content'
+  - 'edit any test content'
+  - 'edit own comments'
+  - 'edit own test content'
+  - 'revert test revisions'
+  - 'use admin toolbar search'
+  - 'use text format html'
+  - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view article revisions'
+  - 'view body'
+  - 'view field_content_manager_approved'
+  - 'view field_sme_approved'
+  - 'view latest version'
+  - 'view media'
+  - 'view test revisions'
+  - 'view the administration theme'

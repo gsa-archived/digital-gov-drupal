@@ -1,0 +1,19 @@
+uuid: c5dc06cc-ba77-492b-83a0-ae7486ad261f
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - field_permissions
+id: subject_matter_expert
+label: 'Subject Matter Expert'
+weight: 6
+is_admin: null
+permissions:
+  - 'create field_sme_approved'
+  - 'edit field_sme_approved'
+  - 'use editorial transition stay_federal_review'
+  - 'use editorial transition stay_peer_review'
+  - 'use editorial transition stay_ready_to_publish'

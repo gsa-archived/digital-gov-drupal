@@ -1,0 +1,14 @@
+uuid: cb4b00d4-6f2c-47b6-bc8b-db32aa769a47
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.federal_reviewer
+  module:
+    - user
+id: user_add_role_action.federal_reviewer
+label: 'Add the Federal Reviewer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: federal_reviewer

@@ -1,0 +1,14 @@
+uuid: 59cbc422-ca5c-4961-b5dd-c8246906a0c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.subject_matter_expert
+  module:
+    - user
+id: user_remove_role_action.subject_matter_expert
+label: 'Remove the Subject Matter Expert role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: subject_matter_expert

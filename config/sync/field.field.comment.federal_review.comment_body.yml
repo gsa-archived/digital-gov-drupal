@@ -1,0 +1,22 @@
+uuid: c11e1f16-df34-48b9-b2b9-d62b59334187
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.federal_review
+    - field.storage.comment.comment_body
+  module:
+    - text
+id: comment.federal_review.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: federal_review
+label: Comment
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -51,55 +51,97 @@ type_settings:
         - published
         - ready_to_publish
       to: archived
-      weight: 7
+      weight: 3
     back_federal_review:
       label: 'Back: Federal Review'
       from:
         - ready_to_publish
       to: federal_review
+      weight: 2
+    back_from_federal_review_draft:
+      label: 'Back from Federal Review: Draft'
+      from:
+        - federal_review
+      to: draft
+      weight: 5
+    back_from_peer_review_draft:
+      label: 'Back from Peer Review: Draft'
+      from:
+        - peer_review
+      to: draft
+      weight: 4
+    back_from_published_draft:
+      label: 'Back from Published: Draft'
+      from:
+        - published
+      to: draft
+      weight: 7
+    back_from_ready_to_publish_draft:
+      label: 'Back from Ready to Publish: Draft'
+      from:
+        - ready_to_publish
+      to: draft
       weight: 6
     back_peer_review:
       label: 'Back: Peer Review'
       from:
         - federal_review
       to: peer_review
-      weight: 3
+      weight: -1
     create_new_draft:
-      label: 'Create New Draft'
+      label: 'Stay: Draft'
       from:
-        - archived
         - draft
-        - federal_review
-        - peer_review
-        - published
-        - ready_to_publish
       to: draft
-      weight: 0
+      weight: -5
     forward_federal_review:
       label: 'Forward: Federal Review'
       from:
         - peer_review
       to: federal_review
-      weight: 4
+      weight: 0
+    forward_from_archived_draft:
+      label: 'Forward from Archived: Draft'
+      from:
+        - archived
+      to: draft
+      weight: 8
     forward_peer_review:
       label: 'Forward: Peer Review'
       from:
         - draft
       to: peer_review
-      weight: 2
+      weight: -3
     forward_ready_to_publish:
       label: 'Forward: Ready to Publish'
       from:
         - federal_review
-        - ready_to_publish
       to: ready_to_publish
-      weight: 5
+      weight: 1
     publish:
       label: Publish
       from:
         - ready_to_publish
       to: published
-      weight: 1
+      weight: -4
+    stay_federal_review:
+      label: 'Stay: Federal Review'
+      from:
+        - federal_review
+      to: federal_review
+      weight: 9
+    stay_peer_review:
+      label: 'Stay: Peer Review'
+      from:
+        - peer_review
+      to: peer_review
+      weight: -2
+    stay_ready_to_publish:
+      label: 'Stay: Ready to Publish'
+      from:
+        - ready_to_publish
+      to: ready_to_publish
+      weight: 10
   entity_types:
     node:
       - article

@@ -1,2 +1,9 @@
 c75da15120cae983c83ea84794c6fe51|Matt Poole|develop|Mon Jun  3 16:09:07 EDT 2024|./composer.sh require drupal/scheduler:^2.0
 8001964cf3c5eaae6d009bd8ca86eed4|Matt Poole|develop|Mon Jun  3 16:10:55 EDT 2024|./composer.sh require drupal/scheduler_content_moderation_integration:^2.0@beta
+05cbda64d7e4237d4ba7155d4bc38a32|Matt Poole|develop|Fri Jun  7 12:55:03 EDT 2024|./composer.sh require drupal/embedded_content:^2.0@alpha
+f08252a824a7f38e121910998c311002|Matt Poole|develop|Tue Jun 11 11:12:11 EDT 2024|./composer.sh require drupal/require_revision_log_message:^2.0
+33f34aaece601416b746d1f013ac2ac6|Matt Poole|develop|Tue Jun 11 12:30:50 EDT 2024|./composer.sh require drupal/field_permissions:^1.3
+4fa72127ff263f4cc1f3428af1952aa1|Matt Poole|develop|Wed Jun 12 19:44:19 EDT 2024|./composer.sh require drupal/ckeditor5_embedded_content
+475bba98377d08dd27afee97ad5d2d25|Matt Poole|develop|Wed Jun 12 19:48:42 EDT 2024|./composer.sh require drupal/uswds_templates:^3.0@dev
+bd188b544a4fe1c3f347f6b125585b17|Matt Poole|develop|Wed Jun 12 19:49:23 EDT 2024|./composer.sh require drupal/twig_tweak
+0cea129a03092a1dd33ce1a3ba48b184|Matt Poole|develop|Wed Jun 12 19:51:14 EDT 2024|./composer.sh require drupal/linkit

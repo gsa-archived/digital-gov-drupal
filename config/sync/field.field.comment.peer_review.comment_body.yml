@@ -1,0 +1,22 @@
+uuid: 577ce1e3-bd4a-4008-8235-a91fd8c3fe41
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.peer_review
+    - field.storage.comment.comment_body
+  module:
+    - text
+id: comment.peer_review.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: peer_review
+label: Comment
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

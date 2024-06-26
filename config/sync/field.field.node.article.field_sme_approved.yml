@@ -1,0 +1,21 @@
+uuid: 877166d7-60d5-4293-8cff-0120e1ed50b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sme_approved
+    - node.type.article
+id: node.article.field_sme_approved
+field_name: field_sme_approved
+entity_type: node
+bundle: article
+label: 'SME Approved'
+description: 'This article is approved by a subject matter expert'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Approved
+  off_label: 'Not Approved'
+field_type: boolean

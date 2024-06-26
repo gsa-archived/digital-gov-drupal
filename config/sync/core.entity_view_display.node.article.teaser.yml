@@ -5,6 +5,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.article.body
+    - field.field.node.article.field_content_manager_approved
+    - field.field.node.article.field_federal_review_comments
+    - field.field.node.article.field_peer_review_comments
+    - field.field.node.article.field_sme_approved
     - node.type.article
   module:
     - text
@@ -32,4 +36,8 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_content_manager_approved: true
+  field_federal_review_comments: true
+  field_peer_review_comments: true
+  field_sme_approved: true

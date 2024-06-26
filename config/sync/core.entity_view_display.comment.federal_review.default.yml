@@ -1,0 +1,27 @@
+uuid: c166b79b-2dbc-4824-b399-eca6114479d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.federal_review
+    - field.field.comment.federal_review.comment_body
+  module:
+    - text
+id: comment.federal_review.default
+targetEntityType: comment
+bundle: federal_review
+mode: default
+content:
+  comment_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

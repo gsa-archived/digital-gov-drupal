@@ -1,0 +1,14 @@
+uuid: 26d0cd5c-3ffa-4ea6-a9a4-7e07f7d0b3f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.drafter
+  module:
+    - user
+id: user_remove_role_action.drafter
+label: 'Remove the Drafter role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: drafter

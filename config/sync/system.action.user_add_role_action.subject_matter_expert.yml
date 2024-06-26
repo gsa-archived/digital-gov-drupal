@@ -1,0 +1,14 @@
+uuid: fda36c40-f9bc-49cb-b1a0-83522cc89847
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.subject_matter_expert
+  module:
+    - user
+id: user_add_role_action.subject_matter_expert
+label: 'Add the Subject Matter Expert role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: subject_matter_expert

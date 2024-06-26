@@ -1,0 +1,21 @@
+uuid: 67ec01ad-80e6-4a3d-a3fb-bbb55d05dc0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflows.workflow.editorial
+  module:
+    - comment
+    - content_moderation
+id: peer_reviewer
+label: 'Peer Reviewer'
+weight: 4
+is_admin: null
+permissions:
+  - 'access comments'
+  - 'administer comments'
+  - 'post comments'
+  - 'skip comment approval'
+  - 'use editorial transition back_from_peer_review_draft'
+  - 'use editorial transition forward_federal_review'
+  - 'use editorial transition stay_peer_review'

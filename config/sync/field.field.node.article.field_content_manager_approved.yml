@@ -1,0 +1,21 @@
+uuid: 2d6ec259-e6df-459c-9df6-e262015ee5f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_manager_approved
+    - node.type.article
+id: node.article.field_content_manager_approved
+field_name: field_content_manager_approved
+entity_type: node
+bundle: article
+label: 'Content Manager Approved'
+description: 'Approved by the content manager.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Approved
+  off_label: 'Not Approved'
+field_type: boolean
