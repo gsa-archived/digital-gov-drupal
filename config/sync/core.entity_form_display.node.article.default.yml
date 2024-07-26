@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_content_manager_approved
     - field.field.node.article.field_federal_review_comments
+    - field.field.node.article.field_google_doc
     - field.field.node.article.field_peer_review_comments
     - field.field.node.article.field_sme_approved
     - node.type.article
@@ -13,6 +14,7 @@ dependencies:
   module:
     - comment
     - content_moderation
+    - link
     - scheduler
     - scheduler_content_moderation_integration
     - text
@@ -26,7 +28,7 @@ content:
     weight: 10
     region: content
     settings:
-      rows: 9
+      rows: 4
       summary_rows: 3
       placeholder: ''
       show_summary: false
@@ -49,6 +51,14 @@ content:
     weight: 12
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_google_doc:
+    type: link_default
+    weight: 122
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_peer_review_comments:
     type: comment_default

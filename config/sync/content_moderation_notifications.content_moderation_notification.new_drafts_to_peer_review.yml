@@ -1,0 +1,18 @@
+uuid: 5d5076f7-9b22-4a0f-be30-4a4274ec829b
+langcode: en
+status: true
+dependencies: {  }
+id: new_drafts_to_peer_review
+workflow: editorial
+transitions:
+  forward_peer_review: forward_peer_review
+roles:
+  peer_reviewer: peer_reviewer
+author: false
+site_mail: true
+emails: ''
+subject: 'New draft content ready for peer review'
+body:
+  value: ''
+  format: html
+label: 'New Drafts to Peer Review'

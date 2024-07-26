@@ -42,6 +42,7 @@ permissions:
   - 'view article revisions'
   - 'view body'
   - 'view field_content_manager_approved'
+  - 'view field_google_doc'
   - 'view field_sme_approved'
   - 'view latest version'
   - 'view media'

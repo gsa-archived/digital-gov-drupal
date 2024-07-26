@@ -1,0 +1,17 @@
+uuid: c1ef4755-ef48-4adf-ba9e-74505c44c3b8
+langcode: en
+status: true
+dependencies: {  }
+id: peer_review_failed
+workflow: editorial
+transitions:
+  back_from_peer_review_draft: back_from_peer_review_draft
+roles: {  }
+author: true
+site_mail: false
+emails: ''
+subject: 'Content failed peer review, content changes required'
+body:
+  value: ''
+  format: html
+label: 'Peer review failed'

@@ -7,3 +7,7 @@ f08252a824a7f38e121910998c311002|Matt Poole|develop|Tue Jun 11 11:12:11 EDT 2024
 475bba98377d08dd27afee97ad5d2d25|Matt Poole|develop|Wed Jun 12 19:48:42 EDT 2024|./composer.sh require drupal/uswds_templates:^3.0@dev
 bd188b544a4fe1c3f347f6b125585b17|Matt Poole|develop|Wed Jun 12 19:49:23 EDT 2024|./composer.sh require drupal/twig_tweak
 0cea129a03092a1dd33ce1a3ba48b184|Matt Poole|develop|Wed Jun 12 19:51:14 EDT 2024|./composer.sh require drupal/linkit
+3e8cd2f47a1a10650ee5488c88cfad9b|Matt Poole|develop|Tue Jul  2 13:27:16 EDT 2024|./composer.sh require drupal/content_moderation_notifications:^3.6
+abe3fa91a2c15b6b571ea0c019e2daf7|Matt Poole|develop|Tue Jul  2 13:35:21 EDT 2024|./composer.sh require drupal/maillog
+23ef02af0f842a216c54ec0bd469e3d1|Matt Poole|develop|Tue Jul  2 13:41:08 EDT 2024|./composer.sh require drupal/mailsystem
+ae2759e9c45acbf0d8378d04e842d0a8|Matt Poole|develop|Tue Jul  2 13:45:43 EDT 2024|./composer.sh require drupal/maillog:dev-1.x
