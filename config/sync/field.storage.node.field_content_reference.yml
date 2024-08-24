@@ -1,4 +1,4 @@
-uuid: fc5ea8ba-25a8-4db3-9ae2-9a845676e2eb
+uuid: 6c263529-abac-4a30-a81a-eb7fcf0d5a05
 langcode: en
 status: true
 dependencies:
@@ -8,8 +8,8 @@ dependencies:
 third_party_settings:
   field_permissions:
     permission_type: public
-id: node.field_reference_content
-field_name: field_reference_content
+id: node.field_content_reference
+field_name: field_content_reference
 entity_type: node
 type: entity_reference
 settings:

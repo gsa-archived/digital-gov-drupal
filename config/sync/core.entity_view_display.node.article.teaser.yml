@@ -6,11 +6,12 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.article.body
     - field.field.node.article.field_content_manager_approved
+    - field.field.node.article.field_content_reference
     - field.field.node.article.field_federal_review_comments
     - field.field.node.article.field_google_doc
     - field.field.node.article.field_peer_review_comments
-    - field.field.node.article.field_reference_content
     - field.field.node.article.field_sme_approved
+    - field.field.node.article.field_web_analytics_playbook_men
     - node.type.article
   module:
     - text
@@ -40,8 +41,9 @@ content:
     region: content
 hidden:
   field_content_manager_approved: true
+  field_content_reference: true
   field_federal_review_comments: true
   field_google_doc: true
   field_peer_review_comments: true
-  field_reference_content: true
   field_sme_approved: true
+  field_web_analytics_playbook_men: true

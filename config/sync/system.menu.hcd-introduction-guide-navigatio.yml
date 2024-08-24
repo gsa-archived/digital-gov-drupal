@@ -1,0 +1,8 @@
+uuid: 6db148d6-9946-43da-b2a4-5c8263f6ab11
+langcode: en
+status: true
+dependencies: {  }
+id: hcd-introduction-guide-navigatio
+label: 'HCD Introduction guide navigation'
+description: 'This is the menu for the HCD Intro guides'
+locked: false

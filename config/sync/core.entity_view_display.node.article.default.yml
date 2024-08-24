@@ -6,11 +6,12 @@ dependencies:
     - core.entity_view_display.comment.peer_review.default
     - field.field.node.article.body
     - field.field.node.article.field_content_manager_approved
+    - field.field.node.article.field_content_reference
     - field.field.node.article.field_federal_review_comments
     - field.field.node.article.field_google_doc
     - field.field.node.article.field_peer_review_comments
-    - field.field.node.article.field_reference_content
     - field.field.node.article.field_sme_approved
+    - field.field.node.article.field_web_analytics_playbook_men
     - node.type.article
   module:
     - comment
@@ -33,6 +34,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_content_reference:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 7
     region: content
   field_federal_review_comments:
     type: comment_default
@@ -64,14 +74,12 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
-  field_reference_content:
-    type: entity_reference_entity_view
+  field_web_analytics_playbook_men:
+    type: entity_reference_entity_id
     label: hidden
-    settings:
-      view_mode: teaser
-      link: false
+    settings: {  }
     third_party_settings: {  }
-    weight: 2
+    weight: 8
     region: content
   links:
     settings: {  }

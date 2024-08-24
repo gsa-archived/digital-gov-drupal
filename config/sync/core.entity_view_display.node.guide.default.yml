@@ -24,7 +24,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 3
+    weight: 2
     region: content
   field_guide_image:
     type: media_thumbnail
@@ -35,16 +35,9 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 4
+    weight: 3
     region: content
   field_guide_summary:
-    type: text_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 2
-    region: content
-  field_guide_title:
     type: text_default
     label: hidden
     settings: {  }
@@ -58,7 +51,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 5
+    weight: 4
     region: content
   links:
     settings: {  }
@@ -67,3 +60,4 @@ content:
     region: content
 hidden:
   field_guide_page_1: true
+  field_guide_title: true

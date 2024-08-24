@@ -5,11 +5,12 @@ dependencies:
   config:
     - field.field.node.article.body
     - field.field.node.article.field_content_manager_approved
+    - field.field.node.article.field_content_reference
     - field.field.node.article.field_federal_review_comments
     - field.field.node.article.field_google_doc
     - field.field.node.article.field_peer_review_comments
-    - field.field.node.article.field_reference_content
     - field.field.node.article.field_sme_approved
+    - field.field.node.article.field_web_analytics_playbook_men
     - node.type.article
     - workflows.workflow.editorial
   module:
@@ -48,6 +49,16 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_content_reference:
+    type: entity_reference_autocomplete
+    weight: 123
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_federal_review_comments:
     type: comment_default
     weight: 12
@@ -68,22 +79,22 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_reference_content:
-    type: entity_reference_autocomplete
-    weight: 124
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 1
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_sme_approved:
     type: boolean_checkbox
     weight: 13
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_web_analytics_playbook_men:
+    type: entity_reference_autocomplete
+    weight: 124
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default

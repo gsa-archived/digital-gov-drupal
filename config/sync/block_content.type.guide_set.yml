@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: guide_set
-label: 'Guide Set'
+label: 'Web Analytics Guide Block'
 revision: 0
 description: ''

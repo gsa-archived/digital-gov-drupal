@@ -1,0 +1,29 @@
+uuid: 148c1cae-0da1-4240-a499-74606e324394
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.hcd-introduction-guide-navigatio
+  module:
+    - system
+  theme:
+    - olivero
+id: olivero_hcdintroductionguidenavigation
+theme: olivero
+region: hero
+weight: 0
+provider: null
+plugin: 'system_menu_block:hcd-introduction-guide-navigatio'
+settings:
+  id: 'system_menu_block:hcd-introduction-guide-navigatio'
+  label: 'HCD Introduction guide navigation'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/32\r\n/node/31\r\n/node/34"

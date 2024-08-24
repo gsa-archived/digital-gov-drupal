@@ -32,3 +32,7 @@ visibility:
     bundles:
       article: article
       guide: guide
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/24\r\n/node/26\r\n/node/25"
