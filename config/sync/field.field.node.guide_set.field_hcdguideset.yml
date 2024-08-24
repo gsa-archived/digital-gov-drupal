@@ -1,0 +1,28 @@
+uuid: e2cf4abd-42bc-41a0-9ebe-2d3ad84f5691
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hcdguideset
+    - node.type.guide_set
+id: node.guide_set.field_hcdguideset
+field_name: field_hcdguideset
+entity_type: node
+bundle: guide_set
+label: hcdguideset
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      guide_set: guide_set
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

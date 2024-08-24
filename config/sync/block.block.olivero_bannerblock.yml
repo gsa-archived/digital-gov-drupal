@@ -1,0 +1,33 @@
+uuid: 5f4b92d9-d0d5-47ef-9030-2fbb5329f790
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:guide_set:f6326bce-3f99-469d-8297-7799d97ffd37'
+  module:
+    - block_content
+    - node
+  theme:
+    - olivero
+id: olivero_bannerblock
+theme: olivero
+region: footer_bottom
+weight: -6
+provider: null
+plugin: 'block_content:f6326bce-3f99-469d-8297-7799d97ffd37'
+settings:
+  id: 'block_content:f6326bce-3f99-469d-8297-7799d97ffd37'
+  label: 'Banner Block'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      guide: guide

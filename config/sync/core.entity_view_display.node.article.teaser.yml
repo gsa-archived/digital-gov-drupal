@@ -1,6 +1,6 @@
 uuid: 0ccac738-35c2-447e-b5e5-e0e1d839391b
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.article.field_federal_review_comments
     - field.field.node.article.field_google_doc
     - field.field.node.article.field_peer_review_comments
+    - field.field.node.article.field_reference_content
     - field.field.node.article.field_sme_approved
     - node.type.article
   module:
@@ -42,4 +43,5 @@ hidden:
   field_federal_review_comments: true
   field_google_doc: true
   field_peer_review_comments: true
+  field_reference_content: true
   field_sme_approved: true

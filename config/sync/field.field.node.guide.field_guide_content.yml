@@ -1,0 +1,22 @@
+uuid: d114e18f-eef9-4d7d-8f0d-b984aacf9ad3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_guide_content
+    - node.type.guide
+  module:
+    - text
+id: node.guide.field_guide_content
+field_name: field_guide_content
+entity_type: node
+bundle: guide
+label: guide_content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

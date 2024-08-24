@@ -1,4 +1,4 @@
-uuid: 76fa2ee7-162d-4da5-9bff-6f1131d25e3f
+uuid: b79b1093-ccbc-448c-ba0b-02557b999f6f
 langcode: en
 status: true
 dependencies:
@@ -9,24 +9,24 @@ third_party_settings:
   scheduler:
     expand_fieldset: when_required
     fields_display_mode: vertical_tab
-    publish_enable: true
+    publish_enable: false
     publish_past_date: error
     publish_past_date_created: false
     publish_required: false
-    publish_revision: true
+    publish_revision: false
     publish_touch: false
     show_message_after_update: true
-    unpublish_enable: true
+    unpublish_enable: false
     unpublish_required: false
-    unpublish_revision: true
+    unpublish_revision: false
   menu_ui:
     available_menus:
       - main
     parent: 'main:'
-name: 'Guide Page'
-type: article
-description: "This is a guide page. Let's see if we can add a block to the content type that just shows the header from the page."
-help: 'Here can be the submission guidelines as seen by all editors.'
+name: Guide
+type: guide
+description: 'This is a guide. A guide contains guide pages. Guides can also contain other guides that contain guide pages.'
+help: ''
 new_revision: true
-preview_mode: 0
-display_submitted: false
+preview_mode: 1
+display_submitted: true

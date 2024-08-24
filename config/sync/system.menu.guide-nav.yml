@@ -1,0 +1,8 @@
+uuid: 6b8e30fa-b0fc-45d6-90af-bcd6f73dc725
+langcode: en
+status: true
+dependencies: {  }
+id: guide-nav
+label: 'Guide Navigation'
+description: 'This is the menu for the Web Analytics guide'
+locked: false

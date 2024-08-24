@@ -1,0 +1,29 @@
+uuid: bbda8de5-3ca8-4f37-948c-64e5cd8d7c00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reference_content
+    - node.type.article
+  content:
+    - 'node:guide:a2a8e198-c43b-4d02-9844-b19a8db57a41'
+id: node.article.field_reference_content
+field_name: field_reference_content
+entity_type: node
+bundle: article
+label: 'Content Reference'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: a2a8e198-c43b-4d02-9844-b19a8db57a41
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: block_view
+      display_name: entity_reference_2
+      arguments: {  }
+field_type: entity_reference

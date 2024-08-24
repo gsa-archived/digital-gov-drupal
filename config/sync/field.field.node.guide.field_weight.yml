@@ -1,0 +1,23 @@
+uuid: bad22754-4ce9-4328-adbc-11f3965781e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weight
+    - node.type.guide
+id: node.guide.field_weight
+field_name: field_weight
+entity_type: node
+bundle: guide
+label: weight
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

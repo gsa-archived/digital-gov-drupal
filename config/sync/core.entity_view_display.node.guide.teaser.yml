@@ -1,0 +1,59 @@
+uuid: 8fb1de04-d8a6-4bbe-8b11-51595d4d4df5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.guide.field_guide_content
+    - field.field.node.guide.field_guide_image
+    - field.field.node.guide.field_guide_page_1
+    - field.field.node.guide.field_guide_summary
+    - field.field.node.guide.field_guide_title
+    - field.field.node.guide.field_weight
+    - node.type.guide
+  module:
+    - text
+    - user
+id: node.guide.teaser
+targetEntityType: node
+bundle: guide
+mode: teaser
+content:
+  field_guide_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_guide_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_guide_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_guide_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_guide_page_1: true
+  field_weight: true

@@ -1,0 +1,23 @@
+uuid: 71285a42-1a24-464e-bb96-bd13510f835a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.guide_set
+    - field.storage.block_content.field_first_menu
+id: block_content.guide_set.field_first_menu
+field_name: field_first_menu
+entity_type: block_content
+bundle: guide_set
+label: 'First Menu'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:menu'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

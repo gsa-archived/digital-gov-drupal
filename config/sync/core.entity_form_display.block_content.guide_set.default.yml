@@ -1,0 +1,31 @@
+uuid: f0e86332-9ec5-4b95-87a2-5f46c7ef0d1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.guide_set
+    - field.field.block_content.guide_set.field_first_menu
+id: block_content.guide_set.default
+targetEntityType: block_content
+bundle: guide_set
+mode: default
+content:
+  field_first_menu:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

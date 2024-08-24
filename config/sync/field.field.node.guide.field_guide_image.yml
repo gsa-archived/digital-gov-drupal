@@ -1,0 +1,29 @@
+uuid: 0bcd5bc9-0d9b-4be3-98b8-75fc4d96e684
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_guide_image
+    - media.type.image
+    - node.type.guide
+id: node.guide.field_guide_image
+field_name: field_guide_image
+entity_type: node
+bundle: guide
+label: guide_image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

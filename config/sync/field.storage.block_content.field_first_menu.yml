@@ -1,0 +1,24 @@
+uuid: 115f7308-857e-4880-aca9-e8bf4f1c239e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - field_permissions
+    - system
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: block_content.field_first_menu
+field_name: field_first_menu
+entity_type: block_content
+type: entity_reference
+settings:
+  target_type: menu
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

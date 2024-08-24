@@ -1,0 +1,39 @@
+uuid: dad88762-3a70-42d6-9bc4-f4a6de10cf7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.guide_set.field_guide1
+    - field.field.node.guide_set.field_hcdguideset
+    - field.field.node.guide_set.field_summary
+    - field.field.node.guide_set.field_title
+    - node.type.guide_set
+  module:
+    - user
+id: node.guide_set.default
+targetEntityType: node
+bundle: guide_set
+mode: default
+content:
+  field_guide1:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_hcdguideset:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_summary: true
+  field_title: true
+  links: true

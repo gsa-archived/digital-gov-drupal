@@ -1,0 +1,69 @@
+uuid: 965fd889-982d-406d-9930-7db09ab50b36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.guide.field_guide_content
+    - field.field.node.guide.field_guide_image
+    - field.field.node.guide.field_guide_page_1
+    - field.field.node.guide.field_guide_summary
+    - field.field.node.guide.field_guide_title
+    - field.field.node.guide.field_weight
+    - node.type.guide
+  module:
+    - media
+    - text
+    - user
+id: node.guide.default
+targetEntityType: node
+bundle: guide
+mode: default
+content:
+  field_guide_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_guide_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: content
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_guide_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_guide_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_weight:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_guide_page_1: true
