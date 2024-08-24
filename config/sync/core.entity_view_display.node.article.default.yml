@@ -11,7 +11,6 @@ dependencies:
     - field.field.node.article.field_google_doc
     - field.field.node.article.field_peer_review_comments
     - field.field.node.article.field_sme_approved
-    - field.field.node.article.field_web_analytics_playbook_men
     - node.type.article
   module:
     - comment
@@ -28,7 +27,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 3
+    weight: 2
     region: content
   content_moderation_control:
     settings: {  }
@@ -42,7 +41,7 @@ content:
       view_mode: teaser
       link: false
     third_party_settings: {  }
-    weight: 7
+    weight: 6
     region: content
   field_federal_review_comments:
     type: comment_default
@@ -51,7 +50,7 @@ content:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
-    weight: 5
+    weight: 4
     region: content
   field_google_doc:
     type: link
@@ -63,7 +62,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 6
+    weight: 5
     region: content
   field_peer_review_comments:
     type: comment_default
@@ -72,14 +71,7 @@ content:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
-    weight: 4
-    region: content
-  field_web_analytics_playbook_men:
-    type: entity_reference_entity_id
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 8
+    weight: 3
     region: content
   links:
     settings: {  }

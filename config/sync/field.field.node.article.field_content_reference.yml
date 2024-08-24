@@ -9,8 +9,8 @@ id: node.article.field_content_reference
 field_name: field_content_reference
 entity_type: node
 bundle: article
-label: 'Content Reference'
-description: ''
+label: 'Guide Page Banner Fields'
+description: 'This is the entity reference to the guide view. This "guide view" is used for each specific guide and displays the image and the headline on each of the guide pages.'
 required: false
 translatable: false
 default_value: {  }
@@ -19,7 +19,7 @@ settings:
   handler: views
   handler_settings:
     view:
-      view_name: block_view
-      display_name: entity_reference_2
+      view_name: hcd_introduction_guidepage_view
+      display_name: entity_reference_1
       arguments: {  }
 field_type: entity_reference

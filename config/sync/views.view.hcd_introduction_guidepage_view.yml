@@ -1,4 +1,4 @@
-uuid: a07f9186-cc85-4b4a-93da-fd23162bffa1
+uuid: e05e5f8c-4bf6-4c69-93b0-7910fc3287a1
 langcode: en
 status: true
 dependencies:
@@ -10,10 +10,10 @@ dependencies:
     - node
     - text
     - user
-id: block_view
-label: 'Web Analytics Guidepage View'
+id: hcd_introduction_guidepage_view
+label: 'HCD Introduction Guidepage View'
 module: views
-description: 'This is the content that will display on each of the web analytics guide pages.'
+description: ''
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -24,7 +24,6 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Block View'
       fields:
         title:
           id: title
@@ -37,7 +36,7 @@ display:
           entity_field: title
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -80,10 +79,9 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: false
+            link_to_entity: true
           group_column: value
-          group_columns:
-            entity_id: entity_id
+          group_columns: {  }
           group_rows: true
           delta_limit: 0
           delta_offset: 0
@@ -218,10 +216,23 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: some
+        type: mini
         options:
           offset: 0
           items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
       exposed_form:
         type: basic
         options:
@@ -258,44 +269,11 @@ display:
           id: type
           table: node_field_data
           field: type
-          relationship: none
-          group_type: group
-          admin_label: ''
           entity_type: node
           entity_field: type
           plugin_id: bundle
-          operator: in
           value:
             guide: guide
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
         title:
           id: title
           table: node_field_data
@@ -307,7 +285,7 @@ display:
           entity_field: title
           plugin_id: string
           operator: '='
-          value: 'Web Analytics Playbook Guide'
+          value: 'HCD Intro Guide'
           group: 1
           exposed: false
           expose:
@@ -338,7 +316,12 @@ display:
             default_group_multiple: {  }
             group_items: {  }
       style:
-        type: html_list
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
       row:
         type: fields
         options:
@@ -355,7 +338,6 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      group_by: false
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -364,22 +346,18 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
         - 'config:field.storage.node.field_guide_image'
         - 'config:field.storage.node.field_guide_summary'
-  entity_reference_2:
-    id: entity_reference_2
+  entity_reference_1:
+    id: entity_reference_1
     display_title: 'Entity Reference'
     display_plugin: entity_reference
     position: 1
     display_options:
-      pager:
-        type: some
-        options:
-          offset: 0
-          items_per_page: 1
       style:
         type: entity_reference
         options:
@@ -387,16 +365,6 @@ display:
             title: title
             field_guide_summary: field_guide_summary
             field_guide_image: field_guide_image
-      row:
-        type: entity_reference
-        options:
-          default_field_elements: true
-          inline:
-            title: title
-            field_guide_summary: field_guide_summary
-            field_guide_image: field_guide_image
-          separator: '-'
-          hide_empty: false
       display_extenders: {  }
     cache_metadata:
       max-age: -1
