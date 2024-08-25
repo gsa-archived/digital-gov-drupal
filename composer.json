@@ -34,6 +34,7 @@
         "drupal/scheduler_content_moderation_integration": "^2.0@beta",
         "drupal/twig_tweak": "^3.3",
         "drupal/uswds_templates": "^3.0@dev",
+        "drupal/viewsreference": "^2.0@beta",
         "drush/drush": "^12.5",
         "league/commonmark": "^1.0",
         "mpbixal/drupal-env": "dev-main",

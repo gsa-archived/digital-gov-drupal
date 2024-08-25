@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.article.field_content_reference
     - field.field.node.article.field_federal_review_comments
     - field.field.node.article.field_google_doc
+    - field.field.node.article.field_guide_view_experiment
     - field.field.node.article.field_peer_review_comments
     - field.field.node.article.field_sme_approved
     - node.type.article
@@ -17,6 +18,7 @@ dependencies:
     - link
     - text
     - user
+    - viewsreference
 id: node.article.default
 targetEntityType: node
 bundle: article
@@ -33,15 +35,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_content_reference:
-    type: entity_reference_entity_view
-    label: hidden
-    settings:
-      view_mode: teaser
-      link: false
-    third_party_settings: {  }
-    weight: 6
     region: content
   field_federal_review_comments:
     type: comment_default
@@ -64,6 +57,15 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
+  field_guide_view_experiment:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_peer_review_comments:
     type: comment_default
     label: above
@@ -80,4 +82,5 @@ content:
     region: content
 hidden:
   field_content_manager_approved: true
+  field_content_reference: true
   field_sme_approved: true

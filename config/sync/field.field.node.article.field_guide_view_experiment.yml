@@ -1,0 +1,29 @@
+uuid: 7cf9fc05-b7ac-4291-b82c-c56a5db9621b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_guide_view_experiment
+    - node.type.article
+  module:
+    - viewsreference
+id: node.article.field_guide_view_experiment
+field_name: field_guide_view_experiment
+entity_type: node
+bundle: article
+label: guide_view_experiment
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    entity_reference: entity_reference
+  preselect_views: {  }
+  enabled_settings: {  }
+field_type: viewsreference

@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_content_reference
     - field.field.node.article.field_federal_review_comments
     - field.field.node.article.field_google_doc
+    - field.field.node.article.field_guide_view_experiment
     - field.field.node.article.field_peer_review_comments
     - field.field.node.article.field_sme_approved
     - node.type.article
@@ -20,6 +21,7 @@ dependencies:
     - scheduler
     - scheduler_content_moderation_integration
     - text
+    - viewsreference
 id: node.article.default
 targetEntityType: node
 bundle: article
@@ -48,16 +50,6 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  field_content_reference:
-    type: entity_reference_autocomplete
-    weight: 17
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_federal_review_comments:
     type: comment_default
     weight: 10
@@ -71,6 +63,16 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  field_guide_view_experiment:
+    type: viewsreference_autocomplete
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_peer_review_comments:
     type: comment_default
@@ -152,5 +154,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_content_reference: true
   promote: true
   sticky: true
