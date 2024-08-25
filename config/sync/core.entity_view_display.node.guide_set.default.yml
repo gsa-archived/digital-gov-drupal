@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.guide_set.field_guide1
+    - field.field.node.guide_set.field_guide_view_experiment
     - field.field.node.guide_set.field_hcdguideset
     - field.field.node.guide_set.field_summary
     - field.field.node.guide_set.field_title
     - node.type.guide_set
   module:
     - user
+    - viewsreference
 id: node.guide_set.default
 targetEntityType: node
 bundle: guide_set
@@ -23,6 +25,15 @@ content:
       link: false
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_guide_view_experiment:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_hcdguideset:
     type: entity_reference_entity_view

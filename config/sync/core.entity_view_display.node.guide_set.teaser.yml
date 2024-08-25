@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.guide_set.field_guide1
+    - field.field.node.guide_set.field_guide_view_experiment
     - field.field.node.guide_set.field_hcdguideset
     - field.field.node.guide_set.field_summary
     - field.field.node.guide_set.field_title
@@ -23,6 +24,7 @@ content:
     region: content
 hidden:
   field_guide1: true
+  field_guide_view_experiment: true
   field_hcdguideset: true
   field_summary: true
   field_title: true

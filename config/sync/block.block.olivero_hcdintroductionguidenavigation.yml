@@ -26,4 +26,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/node/32\r\n/node/31\r\n/node/34"
+    pages: "/node/32\r\n/node/31\r\n/node/34\r\n/node/33\r\n\r\n"
