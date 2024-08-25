@@ -347,7 +347,7 @@ display:
           entity_field: title
           plugin_id: string
           operator: '='
-          value: 'Web Analytics Playbook Guide'
+          value: 'understanding the site scanning program'
           group: 1
           exposed: false
           expose:

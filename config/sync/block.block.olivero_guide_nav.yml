@@ -17,7 +17,7 @@ provider: null
 plugin: 'system_menu_block:guide-nav'
 settings:
   id: 'system_menu_block:guide-nav'
-  label: guide_nav
+  label: 'Web Analytics Guide Navigation'
   label_display: visible
   provider: system
   level: 1

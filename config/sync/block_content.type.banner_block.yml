@@ -1,8 +1,0 @@
-uuid: e16c965f-b39b-4b3d-929e-d05f61f206fa
-langcode: en
-status: true
-dependencies: {  }
-id: banner_block
-label: 'Block Banner'
-revision: 0
-description: ''
