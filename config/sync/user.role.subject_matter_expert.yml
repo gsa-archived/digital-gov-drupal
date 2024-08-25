@@ -6,6 +6,7 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
+    - exclude_node_title
     - field_permissions
 id: subject_matter_expert
 label: 'Subject Matter Expert'
@@ -17,3 +18,4 @@ permissions:
   - 'use editorial transition stay_federal_review'
   - 'use editorial transition stay_peer_review'
   - 'use editorial transition stay_ready_to_publish'
+  - 'use exclude node title'

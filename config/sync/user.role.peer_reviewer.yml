@@ -7,6 +7,7 @@ dependencies:
   module:
     - comment
     - content_moderation
+    - exclude_node_title
 id: peer_reviewer
 label: 'Peer Reviewer'
 weight: 4
@@ -19,3 +20,4 @@ permissions:
   - 'use editorial transition back_from_peer_review_draft'
   - 'use editorial transition forward_federal_review'
   - 'use editorial transition stay_peer_review'
+  - 'use exclude node title'

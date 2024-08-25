@@ -309,21 +309,28 @@ display:
           operator: '='
           value: 'Web Analytics Playbook Guide'
           group: 1
-          exposed: false
+          exposed: true
           expose:
-            operator_id: ''
-            label: ''
+            operator_id: title_op
+            label: Title
             description: ''
             use_operator: false
-            operator: ''
+            operator: title_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
+            identifier: title
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              anonymous: '0'
+              publisher: '0'
+              drafter: '0'
+              peer_reviewer: '0'
+              federal_reviewer: '0'
+              subject_matter_expert: '0'
+              content_manager: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -364,6 +371,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -403,6 +411,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:

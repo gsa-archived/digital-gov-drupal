@@ -20,6 +20,7 @@ module:
   ec_touchpoints_survey: 0
   ec_uswds: 0
   editor: 0
+  exclude_node_title: 0
   field: 0
   field_permissions: 0
   field_ui: 0

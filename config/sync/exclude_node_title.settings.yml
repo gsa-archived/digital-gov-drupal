@@ -1,0 +1,18 @@
+_core:
+  default_config_hash: 0yJNd4uWv8TzhYEPQBDiApPL2e8ar88kBmQrzDjNCqc
+nid_list: {  }
+translation_sync: true
+search: false
+type: hidden
+content_types:
+  article: none
+  guide: all
+  guide_set: none
+  test: none
+content_type_modes:
+  article: {  }
+  guide:
+    - full
+    - teaser
+  guide_set: {  }
+  test: {  }

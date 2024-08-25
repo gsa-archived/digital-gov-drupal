@@ -6,6 +6,7 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
+    - exclude_node_title
     - scheduler
 id: publisher
 label: Publisher
@@ -20,4 +21,5 @@ permissions:
   - 'use editorial transition forward_from_archived_draft'
   - 'use editorial transition publish'
   - 'use editorial transition stay_ready_to_publish'
+  - 'use exclude node title'
   - 'view scheduled content'

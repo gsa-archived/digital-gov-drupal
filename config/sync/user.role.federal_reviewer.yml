@@ -7,6 +7,7 @@ dependencies:
   module:
     - comment
     - content_moderation
+    - exclude_node_title
 id: federal_reviewer
 label: 'Federal Reviewer'
 weight: 5
@@ -20,3 +21,4 @@ permissions:
   - 'use editorial transition back_peer_review'
   - 'use editorial transition forward_ready_to_publish'
   - 'use editorial transition stay_federal_review'
+  - 'use exclude node title'

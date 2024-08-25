@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.guide_set.field_content_reference
     - field.field.node.guide_set.field_guide1
     - field.field.node.guide_set.field_hcdguideset
     - field.field.node.guide_set.field_summary
@@ -22,6 +23,7 @@ content:
     weight: 100
     region: content
 hidden:
+  field_content_reference: true
   field_guide1: true
   field_hcdguideset: true
   field_summary: true

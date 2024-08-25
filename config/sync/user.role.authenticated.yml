@@ -10,6 +10,7 @@ dependencies:
     - admin_toolbar_search
     - comment
     - content_moderation
+    - exclude_node_title
     - field_permissions
     - filter
     - media
@@ -36,6 +37,7 @@ permissions:
   - 'edit own test content'
   - 'revert test revisions'
   - 'use admin toolbar search'
+  - 'use exclude node title'
   - 'use text format html'
   - 'view all revisions'
   - 'view any unpublished content'

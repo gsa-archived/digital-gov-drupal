@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - exclude_node_title
     - field_permissions
     - media
     - system
@@ -14,5 +15,6 @@ weight: 0
 is_admin: false
 permissions:
   - 'access content'
+  - 'use exclude node title'
   - 'view body'
   - 'view media'
