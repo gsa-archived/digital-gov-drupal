@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.guide_set.field_content_reference
     - field.field.node.guide_set.field_guide1
     - field.field.node.guide_set.field_hcdguideset
     - field.field.node.guide_set.field_summary
@@ -16,15 +15,6 @@ targetEntityType: node
 bundle: guide_set
 mode: default
 content:
-  field_content_reference:
-    type: entity_reference_entity_view
-    label: hidden
-    settings:
-      view_mode: teaser
-      link: false
-    third_party_settings: {  }
-    weight: 6
-    region: content
   field_guide1:
     type: entity_reference_entity_view
     label: hidden

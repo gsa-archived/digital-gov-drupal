@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.guide_set.field_content_reference
     - field.field.node.guide_set.field_guide1
     - field.field.node.guide_set.field_hcdguideset
     - field.field.node.guide_set.field_summary
@@ -27,16 +26,6 @@ content:
   field_guide1:
     type: entity_reference_autocomplete
     weight: 10
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_hcdguideset:
-    type: entity_reference_autocomplete
-    weight: 11
     region: content
     settings:
       match_operator: CONTAINS
@@ -112,7 +101,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
-  field_content_reference: true
+  field_hcdguideset: true
   publish_on: true
   publish_state: true
   unpublish_on: true

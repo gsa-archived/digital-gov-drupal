@@ -7,12 +7,13 @@ type: hidden
 content_types:
   article: none
   guide: all
-  guide_set: none
+  guide_set: all
   test: none
 content_type_modes:
   article: {  }
   guide:
     - full
     - teaser
-  guide_set: {  }
+  guide_set:
+    - full
   test: {  }
