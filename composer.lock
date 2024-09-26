@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "382a239fd852eefad4866b40d9046f9f",
+    "content-hash": "bb2ce4b6d0815fc37546055a9eed9011",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -124,21 +124,21 @@
         },
         {
             "name": "cocur/slugify",
-            "version": "v4.5.1",
+            "version": "v4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "7c6e088228b9f082050876ae8b0cd287b117b840"
+                "reference": "1d674022e9cbefa80b4f51aa3e2375b6e3c14fdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/7c6e088228b9f082050876ae8b0cd287b117b840",
-                "reference": "7c6e088228b9f082050876ae8b0cd287b117b840",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/1d674022e9cbefa80b4f51aa3e2375b6e3c14fdb",
+                "reference": "1d674022e9cbefa80b4f51aa3e2375b6e3c14fdb",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0"
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
             },
             "conflict": {
                 "symfony/config": "<3.4 || >=4,<4.3",
@@ -192,9 +192,9 @@
             ],
             "support": {
                 "issues": "https://github.com/cocur/slugify/issues",
-                "source": "https://github.com/cocur/slugify/tree/v4.5.1"
+                "source": "https://github.com/cocur/slugify/tree/v4.6.0"
             },
-            "time": "2023-09-17T07:26:20+00:00"
+            "time": "2024-09-10T14:09:25+00:00"
         },
         {
             "name": "composer/installers",
@@ -3276,66 +3276,17 @@
             "time": "2023-05-10T11:58:31+00:00"
         },
         {
-            "name": "mck89/peast",
-            "version": "v1.15.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mck89/peast.git",
-                "reference": "1df4dc28a6b5bb7ab117ab073c1712256e954e18"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mck89/peast/zipball/1df4dc28a6b5bb7ab117ab073c1712256e954e18",
-                "reference": "1df4dc28a6b5bb7ab117ab073c1712256e954e18",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.15.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Peast\\": "lib/Peast/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Marchiò",
-                    "email": "marco.mm89@gmail.com"
-                }
-            ],
-            "description": "Peast is PHP library that generates AST for JavaScript code",
-            "support": {
-                "issues": "https://github.com/mck89/peast/issues",
-                "source": "https://github.com/mck89/peast/tree/v1.15.4"
-            },
-            "time": "2023-08-12T08:29:29+00:00"
-        },
-        {
-            "name": "mpbixal/drupal-env",
+            "name": "mattsqd/drupal-env",
             "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mpbixal/drupal-env.git",
-                "reference": "7b3a5d2b3c596a009d04e8e169142eb0f7993a0e"
+                "url": "https://github.com/mattsqd/drupal-env.git",
+                "reference": "2a177d3fb3982442bc71ab8b32af63290a71ba83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpbixal/drupal-env/zipball/7b3a5d2b3c596a009d04e8e169142eb0f7993a0e",
-                "reference": "7b3a5d2b3c596a009d04e8e169142eb0f7993a0e",
+                "url": "https://api.github.com/repos/mattsqd/drupal-env/zipball/2a177d3fb3982442bc71ab8b32af63290a71ba83",
+                "reference": "2a177d3fb3982442bc71ab8b32af63290a71ba83",
                 "shasum": ""
             },
             "require": {
@@ -3519,36 +3470,36 @@
             ],
             "authors": [
                 {
-                    "name": "mpbixal",
-                    "email": "121190622+mpbixal@users.noreply.github.com"
+                    "name": "mattsqd",
+                    "email": "mattsqd@users.noreply.github.com"
                 }
             ],
             "description": "Common functional for working with local and remote Drupal environments.",
             "support": {
-                "issues": "https://github.com/mpbixal/drupal-env/issues",
-                "source": "https://github.com/mpbixal/drupal-env/tree/main"
+                "issues": "https://github.com/mattsqd/drupal-env/issues",
+                "source": "https://github.com/mattsqd/drupal-env/tree/main"
             },
-            "time": "2024-05-16T13:36:26+00:00"
+            "time": "2024-07-10T14:18:48+00:00"
         },
         {
-            "name": "mpbixal/drupal-env-lando",
+            "name": "mattsqd/drupal-env-lando",
             "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mpbixal/drupal-env-lando.git",
-                "reference": "ff094015c5ba7f42d83827e6d9a561d74481491c"
+                "url": "https://github.com/mattsqd/drupal-env-lando.git",
+                "reference": "69ded7c2a64dfb6f76ed086daf68449b8bf574c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpbixal/drupal-env-lando/zipball/ff094015c5ba7f42d83827e6d9a561d74481491c",
-                "reference": "ff094015c5ba7f42d83827e6d9a561d74481491c",
+                "url": "https://api.github.com/repos/mattsqd/drupal-env-lando/zipball/69ded7c2a64dfb6f76ed086daf68449b8bf574c4",
+                "reference": "69ded7c2a64dfb6f76ed086daf68449b8bf574c4",
                 "shasum": ""
             },
             "require": {
                 "cocur/slugify": "^4.0.0",
                 "consolidation/robo": "^3.0.9 || ^4.0.1",
                 "drupal/core-composer-scaffold": "^10.0",
-                "mpbixal/drupal-env": "dev-main",
+                "mattsqd/drupal-env": "dev-main",
                 "php": ">=8.0.17"
             },
             "default-branch": true,
@@ -3595,16 +3546,65 @@
             ],
             "authors": [
                 {
-                    "name": "mpbixal",
-                    "email": "121190622+mpbixal@users.noreply.github.com"
+                    "name": "mattsqd",
+                    "email": "mattsqd@users.noreply.github.com"
                 }
             ],
             "description": "Use Lando with the Drupal Env project.",
             "support": {
-                "issues": "https://github.com/mpbixal/drupal-env-lando/issues",
-                "source": "https://github.com/mpbixal/drupal-env-lando/tree/main"
+                "issues": "https://github.com/mattsqd/drupal-env-lando/issues",
+                "source": "https://github.com/mattsqd/drupal-env-lando/tree/main"
             },
-            "time": "2024-05-15T21:11:41+00:00"
+            "time": "2024-07-31T19:04:40+00:00"
+        },
+        {
+            "name": "mck89/peast",
+            "version": "v1.15.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mck89/peast.git",
+                "reference": "1df4dc28a6b5bb7ab117ab073c1712256e954e18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mck89/peast/zipball/1df4dc28a6b5bb7ab117ab073c1712256e954e18",
+                "reference": "1df4dc28a6b5bb7ab117ab073c1712256e954e18",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.15.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Peast\\": "lib/Peast/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Marchiò",
+                    "email": "marco.mm89@gmail.com"
+                }
+            ],
+            "description": "Peast is PHP library that generates AST for JavaScript code",
+            "support": {
+                "issues": "https://github.com/mck89/peast/issues",
+                "source": "https://github.com/mck89/peast/tree/v1.15.4"
+            },
+            "time": "2023-08-12T08:29:29+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -12971,8 +12971,8 @@
         "drupal/maillog": 20,
         "drupal/scheduler_content_moderation_integration": 10,
         "drupal/uswds_templates": 20,
-        "mpbixal/drupal-env": 20,
-        "mpbixal/drupal-env-lando": 20
+        "mattsqd/drupal-env": 20,
+        "mattsqd/drupal-env-lando": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
