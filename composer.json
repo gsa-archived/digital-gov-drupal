@@ -35,8 +35,8 @@
         "drupal/uswds_templates": "^3.0@dev",
         "drush/drush": "^12.5",
         "league/commonmark": "^1.0",
-        "mpbixal/drupal-env": "dev-main",
-        "mpbixal/drupal-env-lando": "dev-main"
+        "mattsqd/drupal-env": "dev-main",
+        "mattsqd/drupal-env-lando": "dev-main"
     },
     "conflict": {
         "drupal/drupal": "*"
