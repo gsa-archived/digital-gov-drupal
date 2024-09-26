@@ -46,10 +46,10 @@ filters:
   filter_html:
     id: filter_html
     provider: filter
-    status: true
+    status: false
     weight: -48
     settings:
-      allowed_html: '<br> <p> <h2> <h3> <h4> <h5> <h6> <strong> <em> <code> <blockquote> <a href data-entity-type data-entity-uuid data-entity-substitution> <ul> <ol reversed start> <li> <drupal-media data-entity-type data-entity-uuid alt> <embedded-content data-plugin-config data-plugin-id>'
+      allowed_html: ''
       filter_html_help: true
       filter_html_nofollow: false
   filter_html_escape:
@@ -79,7 +79,7 @@ filters:
   filter_url:
     id: filter_url
     provider: filter
-    status: true
+    status: false
     weight: -49
     settings:
       filter_url_length: 72
