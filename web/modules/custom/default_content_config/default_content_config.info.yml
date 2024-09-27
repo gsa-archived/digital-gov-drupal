@@ -1,0 +1,7 @@
+name: 'Default Content Config'
+type: module
+description: 'Provides the configuration that creates default content entities.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - default_content:default_content
