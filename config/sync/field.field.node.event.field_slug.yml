@@ -1,0 +1,19 @@
+uuid: 8b0b6a12-49f0-4041-9cb5-2533758745f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_slug
+    - node.type.event
+id: node.event.field_slug
+field_name: field_slug
+entity_type: node
+bundle: event
+label: Slug
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

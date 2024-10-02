@@ -1,0 +1,19 @@
+uuid: 76bd1460-e2a2-4cf2-a8ed-222d879f1671
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_zoom_link
+field_name: field_zoom_link
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

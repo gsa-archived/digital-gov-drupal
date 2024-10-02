@@ -1,0 +1,21 @@
+uuid: 042123fe-95bc-4c29-901c-e56ef542954b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_draft
+    - node.type.event
+id: node.event.field_draft
+field_name: field_draft
+entity_type: node
+bundle: event
+label: Draft
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Draft
+  off_label: 'Out of Draft'
+field_type: boolean
