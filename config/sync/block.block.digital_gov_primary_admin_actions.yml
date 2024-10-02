@@ -1,0 +1,20 @@
+uuid: b5338a71-16d4-4950-9a1a-d6458e4b5d80
+langcode: en
+status: true
+dependencies:
+  theme:
+    - digital_gov
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: digital_gov_primary_admin_actions
+theme: digital_gov
+region: header
+weight: -5
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

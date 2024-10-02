@@ -1,0 +1,18 @@
+@use "uswds-core" as *;
+
+.dg-resource-topics-grid {
+  @include at-media("tablet") {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include at-media("desktop") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dg-resource-topics-list {
+  &__list-item {
+    padding-bottom: units(1);
+  }
+}

@@ -1,0 +1,22 @@
+uuid: fdb988f5-cce2-4ce7-b81e-ce0879688744
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - digital_gov
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: digital_gov_powered
+theme: digital_gov
+region: header
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

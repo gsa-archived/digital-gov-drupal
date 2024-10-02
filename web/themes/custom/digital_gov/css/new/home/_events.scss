@@ -1,0 +1,18 @@
+@use "uswds-core" as *;
+
+.events.section {
+  .paper {
+    @include u-bg("blue-warm-5");
+  }
+}
+
+.non-youtube-event-card {
+  display: none;
+}
+
+@media screen and (width: 640px) {
+  .non-youtube-event-card {
+    display: flex;
+    justify-content: center;
+  }
+}

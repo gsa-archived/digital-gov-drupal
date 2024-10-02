@@ -1,0 +1,26 @@
+@use "uswds-core" as *;
+
+.page-head {
+  @include u-padding-y(5);
+  @include u-text("center");
+
+  h1,
+  h2 {
+    @include u-text("center");
+    @include u-text("heavy");
+    margin-bottom: units(1);
+  }
+
+  .deck,
+  p {
+    @include u-margin(0);
+    @include u-text("light");
+    @include u-maxw("none");
+    @include u-font("sans", "md");
+    @include u-line-height("sans", 3);
+
+    @include at-media("tablet") {
+      @include u-font("sans", "lg");
+    }
+  }
+}

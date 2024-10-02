@@ -1,0 +1,25 @@
+@use "uswds-core" as *;
+
+.author-profile {
+  img.profile {
+    border: 5px color("gray-warm-5") solid;
+    margin-right: units("105");
+    @include u-circle(10);
+  }
+
+  h1 {
+    font-size: font-size("sans", "2xl");
+    font-weight: font-weight("heavy");
+    margin: 0;
+  }
+
+  .bio {
+    p {
+      font-family: font-family("sans");
+      font-size: font-size("sans", "md");
+      font-weight: font-weight("light");
+      margin-bottom: units("105");
+      margin-top: 0;
+    }
+  }
+}

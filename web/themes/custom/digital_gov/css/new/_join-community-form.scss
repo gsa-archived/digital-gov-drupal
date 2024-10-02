@@ -1,0 +1,99 @@
+@use "sass:map";
+@use "uswds-core" as *;
+
+// Styles for inline form on the DG7 community pages
+
+$communities-of-practice-colors: (
+  "CC": color("blue-60v"),
+  "FCN": color("magenta-50"),
+  "ML": color("red-50"),
+  "PL": color("blue-cool-60v"),
+  "SM": color("gold-40v"),
+  "UX": color("mint-cool-50"),
+  "WAO": color("orange-50v"),
+  "WCM": color("indigo-60v"),
+);
+
+@each $community, $color in $communities-of-practice-colors {
+  .join-community-form--#{$community} {
+    border: units("05") solid $color;
+  }
+}
+
+.join-community-form {
+  color: color("gray-90");
+  font-weight: font-weight("light");
+  margin-bottom: units(5);
+  padding-bottom: units(4);
+  padding-left: units(3);
+  padding-right: units(3);
+  padding-top: units(2.5);
+  @include u-radius("sm");
+
+  &__header {
+    align-items: center;
+    display: flex;
+    font-family: font-family("sans");
+    font-size: font-size("sans", "lg");
+    font-weight: font-weight("normal");
+    margin-bottom: units("105");
+    margin-top: 0;
+
+    h3 {
+      margin: 0;
+      padding-left: units(2);
+    }
+
+    img {
+      max-width: units(8);
+      object-fit: cover;
+    }
+  }
+
+  &__header-svg {
+    margin-right: units(2);
+  }
+
+  &__body {
+    font-weight: font-weight(400);
+    padding-top: units(2);
+  }
+
+  &__body-eligibility {
+    padding-bottom: units(2);
+  }
+
+  &__body-form-button {
+    background-color: color("cyan-60v");
+    color: color("gray-warm-1");
+
+    &:hover {
+      background-color: color("cyan-70v");
+      color: color("gray-warm-1");
+    }
+  }
+
+  strong {
+    font-weight: font-weight("medium");
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  blockquote {
+    border: 0;
+    padding-left: 0;
+  }
+
+  ol,
+  ul {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: units("205");
+
+    li {
+      margin-bottom: units(2);
+    }
+  }
+}

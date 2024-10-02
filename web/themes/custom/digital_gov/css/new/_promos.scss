@@ -1,0 +1,44 @@
+@use "uswds-core" as *;
+
+.dg-sidebar {
+  @include u-font("sans", "2xs");
+}
+
+// promos
+.dg-promos {
+  margin-bottom: units(6);
+}
+
+.dg-promos__heading {
+  margin-bottom: units(1);
+}
+
+.dg-promos__list {
+  list-style: none;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.dg-promos__list-item {
+  margin-bottom: units(1);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.dg-promos__link {
+  @include u-border("1px", "gray-cool-10", "solid");
+  @include u-line-height("sans", 2);
+  @include u-radius("md");
+  @include u-text("semibold");
+  color: color("indigo-80");
+  display: flex;
+  margin-top: 0;
+  padding: units("105");
+
+  &:hover {
+    @include u-bg("gray-cool-5");
+    text-decoration-color: color("accent-warm");
+  }
+}

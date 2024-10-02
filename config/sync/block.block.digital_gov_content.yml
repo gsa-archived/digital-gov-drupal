@@ -1,0 +1,22 @@
+uuid: 06864d96-1a15-45f8-a1b2-5cff7831886d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - digital_gov
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: digital_gov_content
+theme: digital_gov
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

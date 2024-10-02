@@ -1,0 +1,17 @@
+@use "uswds-core" as *;
+
+.services-contacts {
+  background-color: color("blue-warm-5");
+}
+
+.service-contact-heading {
+  display: block;
+
+  @include at-media("tablet") {
+    display: block;
+  }
+}
+
+.services-directory {
+  padding-bottom: units(10);
+}
