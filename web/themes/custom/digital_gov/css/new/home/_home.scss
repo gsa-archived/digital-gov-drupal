@@ -1,0 +1,9 @@
+@use "uswds-core" as *;
+
+// Home
+
+.home {
+  main {
+    @include u-padding-y(0);
+  }
+}

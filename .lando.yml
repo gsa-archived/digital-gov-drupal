@@ -4,3 +4,18 @@ config:
 services:
   cache:
     type: 'memcached:1.5.12'
+  node:
+    type: 'node:20'
+    build:
+      - ./orch/build_node.sh
+    scanner: false
+    globals:
+      gulp-cli: latest
+tooling:
+  be:
+    service: appserver
+    cmd: "env COMPOSER_DEV=1 ./orch/build.sh"
+  fe:
+    service: node
+    cmd: "./orch/build_node.sh"
+

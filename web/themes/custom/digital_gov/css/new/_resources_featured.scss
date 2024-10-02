@@ -1,0 +1,47 @@
+@use "uswds-core" as *;
+
+#resources_featured {
+  background-color: color("white");
+  padding: units(2) 0;
+  padding-top: units(4);
+}
+
+.home #resources_featured {
+  background-color: color("primary-dark");
+  padding: 0;
+
+  @include at-media("tablet-lg") {
+    padding-top: units(3);
+  }
+
+  .box {
+    background-color: color("transparent");
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+
+    .resources-featured__title {
+      @include u-font("sans", "xl");
+      @include u-line-height("sans", 2);
+      @include u-text("white", "thin");
+      margin: 0;
+      padding: units(2) units(4) 0 units(2);
+      width: 75%;
+
+      @include at-media("tablet-lg") {
+        margin: units(4) 0;
+        padding: 0;
+        @include u-font("sans", "2xl");
+      }
+    }
+  }
+
+  .resources-content {
+    background-color: color("white");
+    padding: units(3) units(2);
+
+    @include at-media("tablet-lg") {
+      @include u-radius-top("lg");
+    }
+  }
+}

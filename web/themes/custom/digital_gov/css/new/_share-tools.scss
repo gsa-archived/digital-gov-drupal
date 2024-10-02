@@ -1,0 +1,69 @@
+@use "uswds-core" as *;
+
+.share-tools {
+  @include u-margin-top(3);
+
+  a {
+    @include u-padding-top(1);
+    @include u-padding-bottom(1);
+    @include u-padding-x(0);
+    @include u-text("gray-1");
+    @include u-text("center");
+    @include u-text("no-underline");
+    @include u-display("block");
+
+    &:hover {
+      @include u-bg("gray-2");
+    }
+  }
+
+  .facebook {
+    background: rgb(59 89 152 / 100%);
+
+    &:hover {
+      background: rgb(59 89 152 / 80%);
+    }
+  }
+
+  .twitter {
+    background: rgb(29 161 242 / 100%);
+
+    &:hover {
+      background: rgb(29 161 242 / 80%);
+    }
+  }
+
+  .linkedin {
+    background: rgb(0 119 181 / 100%);
+
+    &:hover {
+      background: rgb(0 119 181 / 80%);
+    }
+  }
+
+  .email {
+    @include u-padding-y(1);
+    @include u-bg("indigo-5");
+    @include u-text("indigo-warm-60");
+
+    &:hover {
+      @include u-bg("indigo-20");
+    }
+
+    i {
+      font-size: 1rem;
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  .print {
+    @include u-padding-y(1);
+    @include u-bg("indigo-5");
+    @include u-text("indigo-warm-60");
+
+    &:hover {
+      @include u-bg("indigo-20");
+    }
+  }
+}
