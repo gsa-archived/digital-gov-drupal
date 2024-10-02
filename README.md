@@ -1,5 +1,7 @@
 # Digital.gov (Drupal)
 
-## Contributing
+Welcome to the Digital.gov Drupal site.
 
-To get started with a local environment, please see the Wiki for the [Drupal Env Lando](https://github.com/mattsqd/drupal-env-lando/wiki) project.
+See our [CONTRIBUTING.md](CONTRIBUTING.md).
+
+
