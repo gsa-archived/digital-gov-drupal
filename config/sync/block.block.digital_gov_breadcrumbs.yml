@@ -1,0 +1,22 @@
+uuid: 19fc36c3-63d1-4a9c-93c9-938325585d9a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - digital_gov
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: digital_gov_breadcrumbs
+theme: digital_gov
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }
