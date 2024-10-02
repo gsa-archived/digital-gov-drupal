@@ -1,0 +1,19 @@
+uuid: d443c56a-4e50-4819-82fc-76c43b344537
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_github_account
+    - node.type.display_name
+id: node.display_name.field_github_account
+field_name: field_github_account
+entity_type: node
+bundle: display_name
+label: 'Github Account'
+description: 'Github account name.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,22 @@
+uuid: 01f3a569-2667-44d5-8438-feec50f9a1d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bio
+    - node.type.display_name
+  module:
+    - text
+id: node.display_name.field_bio
+field_name: field_bio
+entity_type: node
+bundle: display_name
+label: Bio
+description: "Author's bio. "
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

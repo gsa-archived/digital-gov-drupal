@@ -1,0 +1,44 @@
+uuid: c22b7388-6be5-4cdd-a0f9-c2550c61c8f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.display_name.field_agency_full_name
+    - field.field.node.display_name.field_bio
+    - field.field.node.display_name.field_bio_image
+    - field.field.node.display_name.field_bio_url
+    - field.field.node.display_name.field_email
+    - field.field.node.display_name.field_facebook_account
+    - field.field.node.display_name.field_github_account
+    - field.field.node.display_name.field_instagram_account
+    - field.field.node.display_name.field_linkedin_account
+    - field.field.node.display_name.field_pronouns
+    - field.field.node.display_name.field_twitter_account
+    - field.field.node.display_name.field_youtube_account
+    - node.type.display_name
+  module:
+    - user
+id: node.display_name.teaser
+targetEntityType: node
+bundle: display_name
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_agency_full_name: true
+  field_bio: true
+  field_bio_image: true
+  field_bio_url: true
+  field_email: true
+  field_facebook_account: true
+  field_github_account: true
+  field_instagram_account: true
+  field_linkedin_account: true
+  field_pronouns: true
+  field_twitter_account: true
+  field_youtube_account: true

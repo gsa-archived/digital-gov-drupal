@@ -1,0 +1,19 @@
+uuid: 89bfe444-f927-4398-9687-5369051a7b44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_youtube_account
+    - node.type.display_name
+id: node.display_name.field_youtube_account
+field_name: field_youtube_account
+entity_type: node
+bundle: display_name
+label: 'Youtube Account'
+description: 'Youtube Account Name'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

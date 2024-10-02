@@ -1,0 +1,23 @@
+uuid: 7dc31115-d11e-4d7a-b864-f74c2e7c3f76
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - link
+    - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_bio_url
+field_name: field_bio_url
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

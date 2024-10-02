@@ -1,0 +1,19 @@
+uuid: c785f5fd-c027-4f07-9673-2b33ccc30577
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_facebook_account
+    - node.type.display_name
+id: node.display_name.field_facebook_account
+field_name: field_facebook_account
+entity_type: node
+bundle: display_name
+label: 'Facebook Account'
+description: 'Facebook Account Name'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
