@@ -1,10 +1,12 @@
-uuid: 6073011a-fec0-42bd-9954-1402e70e38e1
+uuid: caa10e82-c552-421f-948d-6e689b210ef4
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_captions
     - node.type.event
+  module:
+    - link
 id: node.event.field_captions
 field_name: field_captions
 entity_type: node
@@ -15,5 +17,7 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
-field_type: string
+settings:
+  title: 0
+  link_type: 17
+field_type: link

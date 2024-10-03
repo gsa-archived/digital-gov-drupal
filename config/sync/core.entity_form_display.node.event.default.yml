@@ -4,12 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.event.body
-    - field.field.node.event.field_aliases
     - field.field.node.event.field_captions
-    - field.field.node.event.field_date
     - field.field.node.event.field_deck
-    - field.field.node.event.field_draft
-    - field.field.node.event.field_end_date
     - field.field.node.event.field_event_organizer
     - field.field.node.event.field_event_platform
     - field.field.node.event.field_expiry_date
@@ -23,7 +19,6 @@ dependencies:
     - field.field.node.event.field_start_date
     - field.field.node.event.field_summary
     - field.field.node.event.field_youtube_id
-    - field.field.node.event.field_zoom_link
     - node.type.event
   module:
     - content_moderation
@@ -52,27 +47,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_aliases:
-    type: string_textfield
-    weight: 125
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_captions:
-    type: string_textfield
-    weight: 138
+    type: link_default
+    weight: 143
     region: content
     settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_date:
-    type: datetime_default
-    weight: 123
-    region: content
-    settings: {  }
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_deck:
     type: text_textfield
@@ -81,19 +62,6 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  field_draft:
-    type: boolean_checkbox
-    weight: 127
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  field_end_date:
-    type: datetime_default
-    weight: 132
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_event_organizer:
     type: string_textfield
@@ -185,20 +153,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_youtube_id:
-    type: link_default
-    weight: 135
+    type: string_textfield
+    weight: 142
     region: content
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_zoom_link:
-    type: link_default
-    weight: 140
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default

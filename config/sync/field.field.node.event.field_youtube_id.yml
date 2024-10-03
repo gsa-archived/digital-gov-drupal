@@ -1,12 +1,10 @@
-uuid: 2caef9b8-f196-4b25-9198-4e9fba06c79e
+uuid: e4c823bc-0e10-4601-b7ab-4936aa950610
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_youtube_id
     - node.type.event
-  module:
-    - link
 id: node.event.field_youtube_id
 field_name: field_youtube_id
 entity_type: node
@@ -17,7 +15,5 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings:
-  title: 1
-  link_type: 17
-field_type: link
+settings: {  }
+field_type: string

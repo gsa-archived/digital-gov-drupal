@@ -1,18 +1,16 @@
-uuid: 91b89d36-71f7-4676-aff4-06fc0a5c43fe
+uuid: a7c94266-3901-46ef-8c58-9e149133a5e9
 langcode: en
 status: true
 dependencies:
   module:
+    - link
     - node
 id: node.field_captions
 field_name: field_captions
 entity_type: node
-type: string
-settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
-module: core
+type: link
+settings: {  }
+module: link
 locked: false
 cardinality: 1
 translatable: true

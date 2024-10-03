@@ -15,7 +15,7 @@ entity_type: node
 bundle: event
 label: Summary
 description: '1-sentence description that does not repeat the headline'
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
