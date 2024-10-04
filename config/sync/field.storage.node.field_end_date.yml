@@ -1,12 +1,12 @@
-uuid: cdd94ea5-1050-4176-acf9-171116b617d4
+uuid: 600b5bb6-e5e8-4c77-b4f1-7d15a30b4789
 langcode: en
 status: true
 dependencies:
   module:
     - datetime
     - node
-id: node.field_expiry_date
-field_name: field_expiry_date
+id: node.field_end_date
+field_name: field_end_date
 entity_type: node
 type: datetime
 settings:

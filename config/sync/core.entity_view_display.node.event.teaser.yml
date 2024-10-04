@@ -7,9 +7,9 @@ dependencies:
     - field.field.node.event.body
     - field.field.node.event.field_captions
     - field.field.node.event.field_deck
+    - field.field.node.event.field_end_date
     - field.field.node.event.field_event_organizer
     - field.field.node.event.field_event_platform
-    - field.field.node.event.field_expiry_date
     - field.field.node.event.field_featured_image
     - field.field.node.event.field_host
     - field.field.node.event.field_kicker
@@ -45,9 +45,9 @@ content:
 hidden:
   field_captions: true
   field_deck: true
+  field_end_date: true
   field_event_organizer: true
   field_event_platform: true
-  field_expiry_date: true
   field_featured_image: true
   field_host: true
   field_kicker: true

@@ -6,9 +6,9 @@ dependencies:
     - field.field.node.event.body
     - field.field.node.event.field_captions
     - field.field.node.event.field_deck
+    - field.field.node.event.field_end_date
     - field.field.node.event.field_event_organizer
     - field.field.node.event.field_event_platform
-    - field.field.node.event.field_expiry_date
     - field.field.node.event.field_featured_image
     - field.field.node.event.field_host
     - field.field.node.event.field_kicker
@@ -56,6 +56,15 @@ content:
     third_party_settings: {  }
     weight: 108
     region: content
+  field_end_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 124
+    region: content
   field_event_organizer:
     type: string
     label: above
@@ -71,15 +80,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 113
-    region: content
-  field_expiry_date:
-    type: datetime_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 121
     region: content
   field_featured_image:
     type: entity_reference_entity_view

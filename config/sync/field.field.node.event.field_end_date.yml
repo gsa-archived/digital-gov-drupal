@@ -1,17 +1,17 @@
-uuid: c83070dc-bde7-4830-b4d0-953dd54396fa
+uuid: 94bb59cb-63ed-4ba1-848c-405d8192bb8c
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_expiry_date
+    - field.storage.node.field_end_date
     - node.type.event
   module:
     - datetime
-id: node.event.field_expiry_date
-field_name: field_expiry_date
+id: node.event.field_end_date
+field_name: field_end_date
 entity_type: node
 bundle: event
-label: 'Expiry Date'
+label: 'End Date'
 description: ''
 required: false
 translatable: false
