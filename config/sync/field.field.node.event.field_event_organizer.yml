@@ -1,0 +1,19 @@
+uuid: fa1c12dc-1d9c-4bac-982c-ca52418c6cc6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_organizer
+    - node.type.event
+id: node.event.field_event_organizer
+field_name: field_event_organizer
+entity_type: node
+bundle: event
+label: 'Event Organizer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

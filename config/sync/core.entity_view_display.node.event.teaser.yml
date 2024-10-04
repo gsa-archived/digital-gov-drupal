@@ -1,0 +1,60 @@
+uuid: c53f1e4e-3877-45c9-ad34-85782fe1c771
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.event.body
+    - field.field.node.event.field_captions
+    - field.field.node.event.field_deck
+    - field.field.node.event.field_end_date
+    - field.field.node.event.field_event_organizer
+    - field.field.node.event.field_event_platform
+    - field.field.node.event.field_featured_image
+    - field.field.node.event.field_host
+    - field.field.node.event.field_kicker
+    - field.field.node.event.field_page_weight
+    - field.field.node.event.field_primary_image
+    - field.field.node.event.field_registration_url
+    - field.field.node.event.field_slug
+    - field.field.node.event.field_start_date
+    - field.field.node.event.field_summary
+    - field.field.node.event.field_youtube_id
+    - node.type.event
+  module:
+    - text
+    - user
+id: node.event.teaser
+targetEntityType: node
+bundle: event
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_captions: true
+  field_deck: true
+  field_end_date: true
+  field_event_organizer: true
+  field_event_platform: true
+  field_featured_image: true
+  field_host: true
+  field_kicker: true
+  field_page_weight: true
+  field_primary_image: true
+  field_registration_url: true
+  field_slug: true
+  field_start_date: true
+  field_summary: true
+  field_youtube_id: true

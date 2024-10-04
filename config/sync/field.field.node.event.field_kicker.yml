@@ -1,0 +1,19 @@
+uuid: 3cfccb89-05aa-46c1-aedc-c6ec353686e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_kicker
+    - node.type.event
+id: node.event.field_kicker
+field_name: field_kicker
+entity_type: node
+bundle: event
+label: Kicker
+description: 'Highlight the relevant topic. This displays above the event title on the /events/ page. Should always be included. Use only one or two words.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
