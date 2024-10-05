@@ -1,0 +1,74 @@
+uuid: efb4a014-119d-4c88-9754-29ef1831c63f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.guides.body
+    - field.field.node.guides.field_deck
+    - field.field.node.guides.field_featured_image
+    - field.field.node.guides.field_page_weight
+    - field.field.node.guides.field_primary_image
+    - field.field.node.guides.field_summary
+    - node.type.guides
+  module:
+    - text
+    - user
+id: node.guides.default
+targetEntityType: node
+bundle: guides
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_deck:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_featured_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 119
+    region: content
+  field_page_weight:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_primary_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  field_summary:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }
