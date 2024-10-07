@@ -1,0 +1,19 @@
+uuid: b45e771b-3e51-43c0-8a04-f605979bb1c7
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_button_landing
+field_name: field_button_landing
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

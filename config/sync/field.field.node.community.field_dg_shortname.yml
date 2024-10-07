@@ -1,0 +1,19 @@
+uuid: 9efa3b87-71b4-4d98-a141-d8fd6c029047
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dg_shortname
+    - node.type.community
+id: node.community.field_dg_shortname
+field_name: field_dg_shortname
+entity_type: node
+bundle: community
+label: 'DG Shortname'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

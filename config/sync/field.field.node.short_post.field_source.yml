@@ -1,0 +1,19 @@
+uuid: 8f97fcc7-c238-459a-8713-523e8da97fa3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_source
+    - node.type.short_post
+id: node.short_post.field_source
+field_name: field_source
+entity_type: node
+bundle: short_post
+label: Source
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

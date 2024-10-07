@@ -6,10 +6,12 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.guides.body
     - field.field.node.guides.field_deck
+    - field.field.node.guides.field_expiry_date
     - field.field.node.guides.field_featured_image
     - field.field.node.guides.field_page_weight
     - field.field.node.guides.field_primary_image
     - field.field.node.guides.field_summary
+    - field.field.node.guides.field_title
     - node.type.guides
   module:
     - text
@@ -34,7 +36,9 @@ content:
     region: content
 hidden:
   field_deck: true
+  field_expiry_date: true
   field_featured_image: true
   field_page_weight: true
   field_primary_image: true
   field_summary: true
+  field_title: true

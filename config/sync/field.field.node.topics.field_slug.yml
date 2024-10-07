@@ -1,0 +1,19 @@
+uuid: 905802c0-988f-428e-a35c-dfcd64934e22
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_slug
+    - node.type.topics
+id: node.topics.field_slug
+field_name: field_slug
+entity_type: node
+bundle: topics
+label: Slug
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

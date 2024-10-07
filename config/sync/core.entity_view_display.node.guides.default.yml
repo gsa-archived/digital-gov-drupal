@@ -5,12 +5,15 @@ dependencies:
   config:
     - field.field.node.guides.body
     - field.field.node.guides.field_deck
+    - field.field.node.guides.field_expiry_date
     - field.field.node.guides.field_featured_image
     - field.field.node.guides.field_page_weight
     - field.field.node.guides.field_primary_image
     - field.field.node.guides.field_summary
+    - field.field.node.guides.field_title
     - node.type.guides
   module:
+    - datetime
     - text
     - user
 id: node.guides.default
@@ -31,6 +34,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 108
+    region: content
+  field_expiry_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 115
     region: content
   field_featured_image:
     type: entity_reference_entity_view
@@ -65,6 +77,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
     region: content
   links:
     settings: {  }

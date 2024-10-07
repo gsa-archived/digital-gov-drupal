@@ -5,13 +5,16 @@ dependencies:
   config:
     - field.field.node.guides.body
     - field.field.node.guides.field_deck
+    - field.field.node.guides.field_expiry_date
     - field.field.node.guides.field_featured_image
     - field.field.node.guides.field_page_weight
     - field.field.node.guides.field_primary_image
     - field.field.node.guides.field_summary
+    - field.field.node.guides.field_title
     - node.type.guides
   module:
     - content_moderation
+    - datetime
     - media_library
     - text
 id: node.guides.default
@@ -43,6 +46,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_expiry_date:
+    type: datetime_default
+    weight: 135
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_featured_image:
     type: media_library_widget
     weight: 139
@@ -67,6 +76,14 @@ content:
   field_summary:
     type: text_textfield
     weight: 124
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 122
     region: content
     settings:
       size: 60

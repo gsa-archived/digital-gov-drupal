@@ -1,0 +1,42 @@
+uuid: 21fce387-ec83-4464-b94d-5681d6c25a35
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.resources.body
+    - field.field.node.resources.field_deck
+    - field.field.node.resources.field_expiry_date
+    - field.field.node.resources.field_page_weight
+    - field.field.node.resources.field_slug
+    - field.field.node.resources.field_summary
+    - field.field.node.resources.field_title
+    - node.type.resources
+  module:
+    - text
+    - user
+id: node.resources.teaser
+targetEntityType: node
+bundle: resources
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_deck: true
+  field_expiry_date: true
+  field_page_weight: true
+  field_slug: true
+  field_summary: true
+  field_title: true

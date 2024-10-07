@@ -1,0 +1,24 @@
+uuid: 4ee3e02e-980c-4170-a3e2-d9f87b23178e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.community
+  module:
+    - text
+id: node.community.body
+field_name: body
+entity_type: node
+bundle: community
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

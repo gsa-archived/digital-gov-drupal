@@ -5,12 +5,18 @@ dependencies:
   config:
     - field.field.node.news.body
     - field.field.node.news.field_deck
+    - field.field.node.news.field_expiry_date
     - field.field.node.news.field_featured_image
     - field.field.node.news.field_kicker
+    - field.field.node.news.field_page_weight
     - field.field.node.news.field_primary_image
+    - field.field.node.news.field_slug
+    - field.field.node.news.field_summary
+    - field.field.node.news.field_title
     - node.type.news
   module:
     - content_moderation
+    - datetime
     - media_library
     - text
 id: node.news.default
@@ -42,6 +48,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_expiry_date:
+    type: datetime_default
+    weight: 135
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_featured_image:
     type: media_library_widget
     weight: 139
@@ -57,12 +69,43 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_page_weight:
+    type: number
+    weight: 122
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_primary_image:
     type: media_library_widget
     weight: 134
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_slug:
+    type: string_textfield
+    weight: 126
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_summary:
+    type: text_textfield
+    weight: 124
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 122
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default

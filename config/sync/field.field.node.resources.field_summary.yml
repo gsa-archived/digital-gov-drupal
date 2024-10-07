@@ -1,0 +1,26 @@
+uuid: 182c0aa1-9780-4a30-887d-653ac96a5a96
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - filter.format.html
+    - filter.format.plain_text
+    - node.type.resources
+  module:
+    - text
+id: node.resources.field_summary
+field_name: field_summary
+entity_type: node
+bundle: resources
+label: Summary
+description: '1-sentence description that does not repeat the headline'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - html
+    - plain_text
+field_type: text

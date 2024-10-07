@@ -1,0 +1,19 @@
+uuid: 183963bf-6de5-4d4b-b917-fe96abd39e7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dg_highlight
+    - node.type.community
+id: node.community.field_dg_highlight
+field_name: field_dg_highlight
+entity_type: node
+bundle: community
+label: 'DG Highlight'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

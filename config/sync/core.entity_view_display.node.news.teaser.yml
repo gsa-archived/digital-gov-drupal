@@ -6,9 +6,14 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.news.body
     - field.field.node.news.field_deck
+    - field.field.node.news.field_expiry_date
     - field.field.node.news.field_featured_image
     - field.field.node.news.field_kicker
+    - field.field.node.news.field_page_weight
     - field.field.node.news.field_primary_image
+    - field.field.node.news.field_slug
+    - field.field.node.news.field_summary
+    - field.field.node.news.field_title
     - node.type.news
   module:
     - text
@@ -33,6 +38,11 @@ content:
     region: content
 hidden:
   field_deck: true
+  field_expiry_date: true
   field_featured_image: true
   field_kicker: true
+  field_page_weight: true
   field_primary_image: true
+  field_slug: true
+  field_summary: true
+  field_title: true

@@ -1,0 +1,42 @@
+uuid: cc1c1b29-4cec-4041-b224-35c96a2746ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.source.body
+    - field.field.node.source.field_logo
+    - field.field.node.source.field_logo_name
+    - field.field.node.source.field_page_weight
+    - field.field.node.source.field_slug
+    - field.field.node.source.field_summary
+    - field.field.node.source.field_title
+    - node.type.source
+  module:
+    - text
+    - user
+id: node.source.teaser
+targetEntityType: node
+bundle: source
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_logo: true
+  field_logo_name: true
+  field_page_weight: true
+  field_slug: true
+  field_summary: true
+  field_title: true
