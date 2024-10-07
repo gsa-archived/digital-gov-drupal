@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.event.body
+    - field.field.node.event.field_authors_reference
     - field.field.node.event.field_captions
     - field.field.node.event.field_deck
     - field.field.node.event.field_end_date
@@ -20,6 +21,8 @@ dependencies:
     - field.field.node.event.field_start_date
     - field.field.node.event.field_summary
     - field.field.node.event.field_title
+    - field.field.node.event.field_topics_reference
+    - field.field.node.event.field_type
     - field.field.node.event.field_youtube_id
     - node.type.event
   module:
@@ -44,6 +47,7 @@ content:
     weight: 100
     region: content
 hidden:
+  field_authors_reference: true
   field_captions: true
   field_deck: true
   field_end_date: true
@@ -59,4 +63,6 @@ hidden:
   field_start_date: true
   field_summary: true
   field_title: true
+  field_topics_reference: true
+  field_type: true
   field_youtube_id: true

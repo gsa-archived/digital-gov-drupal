@@ -1,0 +1,19 @@
+uuid: f8dfe727-0266-4220-847e-ea393032bf4f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_community_reference
+field_name: field_community_reference
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

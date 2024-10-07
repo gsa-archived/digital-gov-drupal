@@ -10,7 +10,9 @@ dependencies:
     - field.field.node.guides.field_page_weight
     - field.field.node.guides.field_primary_image
     - field.field.node.guides.field_summary
+    - field.field.node.guides.field_summary_box
     - field.field.node.guides.field_title
+    - field.field.node.guides.field_topics_reference
     - node.type.guides
   module:
     - datetime
@@ -78,6 +80,16 @@ content:
     third_party_settings: {  }
     weight: 104
     region: content
+  field_summary_box:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 126
+    region: content
   field_title:
     type: string
     label: above
@@ -85,6 +97,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_topics_reference:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 125
     region: content
   links:
     settings: {  }

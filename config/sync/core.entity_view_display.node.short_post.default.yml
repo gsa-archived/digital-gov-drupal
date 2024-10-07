@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.short_post.field_source
     - field.field.node.short_post.field_source_url
     - field.field.node.short_post.field_summary
+    - field.field.node.short_post.field_topics_reference
     - field.field.node.short_post.field_type
     - node.type.short_post
   module:
@@ -63,6 +64,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_topics_reference:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 125
     region: content
   field_type:
     type: string

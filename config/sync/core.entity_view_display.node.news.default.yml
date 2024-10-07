@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
+    - field.field.node.news.field_authors_reference
     - field.field.node.news.field_deck
     - field.field.node.news.field_expiry_date
     - field.field.node.news.field_featured_image
@@ -13,6 +14,7 @@ dependencies:
     - field.field.node.news.field_slug
     - field.field.node.news.field_summary
     - field.field.node.news.field_title
+    - field.field.node.news.field_topics_reference
     - node.type.news
   module:
     - datetime
@@ -29,6 +31,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_authors_reference:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 126
     region: content
   field_deck:
     type: text_default
@@ -103,6 +113,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_topics_reference:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 125
     region: content
   links:
     settings: {  }

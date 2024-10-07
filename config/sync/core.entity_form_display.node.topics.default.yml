@@ -4,18 +4,17 @@ status: true
 dependencies:
   config:
     - field.field.node.topics.body
+    - field.field.node.topics.field_community_reference
     - field.field.node.topics.field_deck
     - field.field.node.topics.field_expiry_date
     - field.field.node.topics.field_page_weight
     - field.field.node.topics.field_primary_image
-    - field.field.node.topics.field_redirect
     - field.field.node.topics.field_slug
     - field.field.node.topics.field_summary
     - node.type.topics
   module:
     - content_moderation
     - datetime
-    - link
     - media_library
     - text
 id: node.topics.default
@@ -38,6 +37,16 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_community_reference:
+    type: entity_reference_autocomplete
+    weight: 136
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_deck:
     type: text_textfield
@@ -66,14 +75,6 @@ content:
     region: content
     settings:
       media_types: {  }
-    third_party_settings: {  }
-  field_redirect:
-    type: link_default
-    weight: 135
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
     third_party_settings: {  }
   field_slug:
     type: string_textfield

@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.news.body
+    - field.field.node.news.field_authors_reference
     - field.field.node.news.field_deck
     - field.field.node.news.field_expiry_date
     - field.field.node.news.field_featured_image
@@ -14,6 +15,7 @@ dependencies:
     - field.field.node.news.field_slug
     - field.field.node.news.field_summary
     - field.field.node.news.field_title
+    - field.field.node.news.field_topics_reference
     - node.type.news
   module:
     - text
@@ -37,6 +39,7 @@ content:
     weight: 100
     region: content
 hidden:
+  field_authors_reference: true
   field_deck: true
   field_expiry_date: true
   field_featured_image: true
@@ -46,3 +49,4 @@ hidden:
   field_slug: true
   field_summary: true
   field_title: true
+  field_topics_reference: true
