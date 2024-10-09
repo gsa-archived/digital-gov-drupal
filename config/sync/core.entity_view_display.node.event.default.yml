@@ -20,7 +20,6 @@ dependencies:
     - field.field.node.event.field_start_date
     - field.field.node.event.field_summary
     - field.field.node.event.field_topics_reference
-    - field.field.node.event.field_type
     - field.field.node.event.field_youtube_id
     - node.type.event
   module:
@@ -178,14 +177,6 @@ content:
       link: true
     third_party_settings: {  }
     weight: 125
-    region: content
-  field_type:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 111
     region: content
   field_youtube_id:
     type: string
