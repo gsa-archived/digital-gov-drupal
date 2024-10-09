@@ -9,7 +9,7 @@ id: node.community.field_dg_shortname
 field_name: field_dg_shortname
 entity_type: node
 bundle: community
-label: 'DG Shortname'
+label: Shortname
 description: ''
 required: false
 translatable: false

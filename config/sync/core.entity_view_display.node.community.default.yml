@@ -14,7 +14,6 @@ dependencies:
     - field.field.node.community.field_primary_image
     - field.field.node.community.field_slug
     - field.field.node.community.field_summary
-    - field.field.node.community.field_title
     - node.type.community
   module:
     - datetime
@@ -113,14 +112,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 104
-    region: content
-  field_title:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 102
     region: content
   links:
     settings: {  }

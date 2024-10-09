@@ -1,12 +1,12 @@
-uuid: 4c70273f-32fc-4acc-9fc0-89d66e49b50e
+uuid: b2ccc589-2acf-4940-af3e-473144bbb243
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - text
-id: node.field_frist_name
-field_name: field_frist_name
+id: node.field_first_name
+field_name: field_first_name
 entity_type: node
 type: text
 settings:

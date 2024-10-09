@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.authors.field_display_name
     - field.field.node.authors.field_email
     - field.field.node.authors.field_facebook
-    - field.field.node.authors.field_frist_name
+    - field.field.node.authors.field_first_name
     - field.field.node.authors.field_github
     - field.field.node.authors.field_instagram
     - field.field.node.authors.field_last_name
@@ -21,7 +21,6 @@ dependencies:
     - field.field.node.authors.field_pronouns
     - field.field.node.authors.field_slug
     - field.field.node.authors.field_summary
-    - field.field.node.authors.field_title
     - field.field.node.authors.field_twitter
     - field.field.node.authors.field_youtube
     - node.type.authors
@@ -107,12 +106,12 @@ content:
     third_party_settings: {  }
     weight: 115
     region: content
-  field_frist_name:
+  field_first_name:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 103
+    weight: 119
     region: content
   field_github:
     type: string
@@ -175,14 +174,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 104
-    region: content
-  field_title:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 102
     region: content
   field_twitter:
     type: string

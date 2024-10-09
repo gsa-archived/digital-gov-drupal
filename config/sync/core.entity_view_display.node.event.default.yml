@@ -19,7 +19,6 @@ dependencies:
     - field.field.node.event.field_slug
     - field.field.node.event.field_start_date
     - field.field.node.event.field_summary
-    - field.field.node.event.field_title
     - field.field.node.event.field_topics_reference
     - field.field.node.event.field_type
     - field.field.node.event.field_youtube_id
@@ -171,14 +170,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 104
-    region: content
-  field_title:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 102
     region: content
   field_topics_reference:
     type: entity_reference_label

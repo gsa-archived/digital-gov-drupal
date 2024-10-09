@@ -1,19 +1,18 @@
-uuid: d5c1b073-3ac8-4b66-be49-5e7a2f58f88b
+uuid: 7e68cbc1-6d80-40ea-8fc0-08a7ddca286d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_frist_name
+    - field.storage.node.field_first_name
     - filter.format.html
-    - filter.format.plain_text
     - node.type.authors
   module:
     - text
-id: node.authors.field_frist_name
-field_name: field_frist_name
+id: node.authors.field_first_name
+field_name: field_first_name
 entity_type: node
 bundle: authors
-label: 'Frist Name'
+label: 'First Name'
 description: ''
 required: false
 translatable: false
@@ -22,5 +21,4 @@ default_value_callback: ''
 settings:
   allowed_formats:
     - html
-    - plain_text
 field_type: text

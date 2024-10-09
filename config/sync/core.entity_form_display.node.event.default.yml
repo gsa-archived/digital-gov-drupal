@@ -19,7 +19,6 @@ dependencies:
     - field.field.node.event.field_slug
     - field.field.node.event.field_start_date
     - field.field.node.event.field_summary
-    - field.field.node.event.field_title
     - field.field.node.event.field_topics_reference
     - field.field.node.event.field_type
     - field.field.node.event.field_youtube_id
@@ -161,14 +160,6 @@ content:
   field_summary:
     type: text_textfield
     weight: 124
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_title:
-    type: string_textfield
-    weight: 122
     region: content
     settings:
       size: 60

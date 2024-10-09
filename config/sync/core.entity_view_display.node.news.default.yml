@@ -13,7 +13,6 @@ dependencies:
     - field.field.node.news.field_primary_image
     - field.field.node.news.field_slug
     - field.field.node.news.field_summary
-    - field.field.node.news.field_title
     - field.field.node.news.field_topics_reference
     - node.type.news
   module:
@@ -105,14 +104,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 104
-    region: content
-  field_title:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 102
     region: content
   field_topics_reference:
     type: entity_reference_label
