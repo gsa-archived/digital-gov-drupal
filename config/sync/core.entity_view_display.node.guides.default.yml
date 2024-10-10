@@ -5,17 +5,15 @@ dependencies:
   config:
     - field.field.node.guides.body
     - field.field.node.guides.field_deck
-    - field.field.node.guides.field_expiry_date
     - field.field.node.guides.field_featured_image
+    - field.field.node.guides.field_guide_weight
     - field.field.node.guides.field_page_weight
     - field.field.node.guides.field_primary_image
     - field.field.node.guides.field_summary
     - field.field.node.guides.field_summary_box
-    - field.field.node.guides.field_title
     - field.field.node.guides.field_topics_reference
     - node.type.guides
   module:
-    - datetime
     - text
     - user
 id: node.guides.default
@@ -37,15 +35,6 @@ content:
     third_party_settings: {  }
     weight: 108
     region: content
-  field_expiry_date:
-    type: datetime_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 115
-    region: content
   field_featured_image:
     type: entity_reference_entity_view
     label: above
@@ -54,6 +43,15 @@ content:
       link: false
     third_party_settings: {  }
     weight: 119
+    region: content
+  field_guide_weight:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 127
     region: content
   field_page_weight:
     type: number_integer
@@ -89,14 +87,6 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 126
-    region: content
-  field_title:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 102
     region: content
   field_topics_reference:
     type: entity_reference_label
