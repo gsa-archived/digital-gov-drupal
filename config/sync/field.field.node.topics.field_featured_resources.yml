@@ -1,0 +1,43 @@
+uuid: 43faab23-74f5-47b8-b04c-ed565dae23e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured_resources
+    - node.type.topics
+    - paragraphs.paragraphs_type.featured_resources
+  module:
+    - entity_reference_revisions
+id: node.topics.field_featured_resources
+field_name: field_featured_resources
+entity_type: node
+bundle: topics
+label: 'Featured Resources'
+description: 'This is the featured resources paragraph'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      featured_resources: featured_resources
+    negate: 0
+    target_bundles_drag_drop:
+      featured_resources:
+        weight: 6
+        enabled: true
+      featured_resources_card:
+        weight: 7
+        enabled: false
+      featured_resources_links:
+        weight: 8
+        enabled: false
+      featured_resources_title:
+        weight: 9
+        enabled: false
+      venue:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions

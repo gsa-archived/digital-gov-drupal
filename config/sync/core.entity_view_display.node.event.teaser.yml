@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.event.field_start_date
     - field.field.node.event.field_summary
     - field.field.node.event.field_topics
+    - field.field.node.event.field_venue
     - field.field.node.event.field_youtube_id
     - node.type.event
   module:
@@ -61,4 +62,5 @@ hidden:
   field_start_date: true
   field_summary: true
   field_topics: true
+  field_venue: true
   field_youtube_id: true
