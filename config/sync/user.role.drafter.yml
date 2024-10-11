@@ -15,9 +15,7 @@ weight: 3
 is_admin: null
 permissions:
   - 'create article content'
-  - 'create body'
   - 'create field_google_doc'
-  - 'edit body'
   - 'edit own field_google_doc'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition forward_peer_review'

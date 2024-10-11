@@ -1,0 +1,21 @@
+uuid: ed4d66d0-6a0a-46b8-a06b-e0f3099f1069
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_dg_shortname
+field_name: field_dg_shortname
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

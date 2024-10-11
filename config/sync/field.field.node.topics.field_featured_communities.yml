@@ -1,0 +1,29 @@
+uuid: 980b3fcf-ffbb-47ae-b574-12787a4dc0fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured_communities
+    - node.type.community
+    - node.type.topics
+id: node.topics.field_featured_communities
+field_name: field_featured_communities
+entity_type: node
+bundle: topics
+label: 'Featured Communities'
+description: 'Featured community to display at the top of the page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      community: community
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

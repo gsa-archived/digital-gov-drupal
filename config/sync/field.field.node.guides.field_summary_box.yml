@@ -1,0 +1,21 @@
+uuid: e2dccd05-02c4-4883-ad5f-3020561e9934
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary_box
+    - node.type.guides
+id: node.guides.field_summary_box
+field_name: field_summary_box
+entity_type: node
+bundle: guides
+label: 'Summary Box'
+description: 'Show a summary box above this guide.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

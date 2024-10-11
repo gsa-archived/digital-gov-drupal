@@ -1,0 +1,22 @@
+uuid: cc1c1b29-4cec-4041-b224-35c96a2746ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.source.field_logo
+    - node.type.source
+  module:
+    - user
+id: node.source.teaser
+targetEntityType: node
+bundle: source
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_logo: true

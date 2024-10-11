@@ -1,0 +1,29 @@
+uuid: 643eeeb3-d665-413f-8787-c73aef1810b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.source.field_logo
+    - node.type.source
+  module:
+    - user
+id: node.source.default
+targetEntityType: node
+bundle: source
+mode: default
+content:
+  field_logo:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

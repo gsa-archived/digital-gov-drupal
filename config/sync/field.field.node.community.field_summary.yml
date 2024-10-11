@@ -1,0 +1,24 @@
+uuid: aa465135-7236-4d0e-831d-15f924c5f2af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - filter.format.html
+    - node.type.community
+  module:
+    - text
+id: node.community.field_summary
+field_name: field_summary
+entity_type: node
+bundle: community
+label: Summary
+description: '1-sentence description that does not repeat the headline'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - html
+field_type: text

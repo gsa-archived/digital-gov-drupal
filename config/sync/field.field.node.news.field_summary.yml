@@ -1,0 +1,24 @@
+uuid: 6d4e32c3-9567-4b89-881c-4b243792715a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - filter.format.html
+    - node.type.news
+  module:
+    - text
+id: node.news.field_summary
+field_name: field_summary
+entity_type: node
+bundle: news
+label: Summary
+description: '1-sentence description that does not repeat the headline'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - html
+field_type: text

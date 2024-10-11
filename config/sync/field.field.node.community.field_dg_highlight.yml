@@ -1,0 +1,21 @@
+uuid: 65a1245d-69ae-49be-82fd-05a026280b69
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dg_highlight
+    - node.type.community
+id: node.community.field_dg_highlight
+field_name: field_dg_highlight
+entity_type: node
+bundle: community
+label: Highlight
+description: 'Highlight this community on the communities landing page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

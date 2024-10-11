@@ -1,0 +1,19 @@
+uuid: 9e5bc310-01c2-4b37-acc1-aab93becac48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_slug
+    - node.type.authors
+id: node.authors.field_slug
+field_name: field_slug
+entity_type: node
+bundle: authors
+label: Slug
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

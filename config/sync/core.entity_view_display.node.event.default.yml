@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.event.body
+    - field.field.node.event.field_authors
     - field.field.node.event.field_captions
     - field.field.node.event.field_deck
     - field.field.node.event.field_end_date
@@ -18,6 +19,7 @@ dependencies:
     - field.field.node.event.field_slug
     - field.field.node.event.field_start_date
     - field.field.node.event.field_summary
+    - field.field.node.event.field_topics
     - field.field.node.event.field_youtube_id
     - node.type.event
   module:
@@ -36,6 +38,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_authors:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 126
     region: content
   field_captions:
     type: link
@@ -159,6 +169,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_topics:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 125
     region: content
   field_youtube_id:
     type: string

@@ -1,0 +1,19 @@
+uuid: c066950a-5561-47e5-a55b-ab5a391b0b04
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dg_shortname
+    - node.type.community
+id: node.community.field_dg_shortname
+field_name: field_dg_shortname
+entity_type: node
+bundle: community
+label: Shortname
+description: 'The title of the community when highlighted on the communities landing page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

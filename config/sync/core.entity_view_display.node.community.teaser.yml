@@ -1,0 +1,52 @@
+uuid: 0b801a2f-20af-4a82-8808-a6f47521c927
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.community.body
+    - field.field.node.community.field_deck
+    - field.field.node.community.field_dg_acronym
+    - field.field.node.community.field_dg_highlight
+    - field.field.node.community.field_dg_logo
+    - field.field.node.community.field_dg_shortname
+    - field.field.node.community.field_members
+    - field.field.node.community.field_page_weight
+    - field.field.node.community.field_primary_image
+    - field.field.node.community.field_slug
+    - field.field.node.community.field_subscribe_email_subject
+    - field.field.node.community.field_summary
+    - node.type.community
+  module:
+    - text
+    - user
+id: node.community.teaser
+targetEntityType: node
+bundle: community
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_deck: true
+  field_dg_acronym: true
+  field_dg_highlight: true
+  field_dg_logo: true
+  field_dg_shortname: true
+  field_members: true
+  field_page_weight: true
+  field_primary_image: true
+  field_slug: true
+  field_subscribe_email_subject: true
+  field_summary: true

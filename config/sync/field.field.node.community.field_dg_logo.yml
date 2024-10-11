@@ -1,0 +1,29 @@
+uuid: 1322dcb8-f07b-4d3e-abbf-e3df2504b6ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dg_logo
+    - media.type.image
+    - node.type.community
+id: node.community.field_dg_logo
+field_name: field_dg_logo
+entity_type: node
+bundle: community
+label: Logo
+description: "When highlighted on the communities landing page or a join button is shown when 'Subscribe Email Subject' is set, this is the small logo that is shown."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: 2057753f-f657-4680-96b9-4f76ac9600b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_agency_full_name
+    - node.type.authors
+id: node.authors.field_agency_full_name
+field_name: field_agency_full_name
+entity_type: node
+bundle: authors
+label: 'Agency Full Name'
+description: 'e.g. U.S. General Services Administration'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
