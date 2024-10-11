@@ -11,7 +11,7 @@ dependencies:
     - field.field.node.guides.field_primary_image
     - field.field.node.guides.field_summary
     - field.field.node.guides.field_summary_box
-    - field.field.node.guides.field_topics_reference
+    - field.field.node.guides.field_topics
     - node.type.guides
   module:
     - content_moderation
@@ -89,7 +89,7 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  field_topics_reference:
+  field_topics:
     type: entity_reference_autocomplete
     weight: 13
     region: content

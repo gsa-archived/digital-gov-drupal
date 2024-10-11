@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
-    - field.field.node.news.field_authors_reference
+    - field.field.node.news.field_authors
     - field.field.node.news.field_deck
     - field.field.node.news.field_featured_image
     - field.field.node.news.field_kicker
@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.news.field_primary_image
     - field.field.node.news.field_slug
     - field.field.node.news.field_summary
-    - field.field.node.news.field_topics_reference
+    - field.field.node.news.field_topics
     - node.type.news
   module:
     - content_moderation
@@ -39,7 +39,7 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_authors_reference:
+  field_authors:
     type: entity_reference_autocomplete
     weight: 13
     region: content
@@ -94,7 +94,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_topics_reference:
+  field_topics:
     type: entity_reference_autocomplete
     weight: 12
     region: content

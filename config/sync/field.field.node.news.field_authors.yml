@@ -1,16 +1,16 @@
-uuid: f02057a7-f84b-4621-b33e-9b22fa322638
+uuid: 93f91d9b-c480-4c74-91e8-9fa852f6a5fe
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_authors_reference
+    - field.storage.node.field_authors
     - node.type.authors
-    - node.type.event
-id: node.event.field_authors_reference
-field_name: field_authors_reference
+    - node.type.news
+id: node.news.field_authors
+field_name: field_authors
 entity_type: node
-bundle: event
-label: 'Authors Reference'
+bundle: news
+label: 'Authors'
 description: ''
 required: false
 translatable: false

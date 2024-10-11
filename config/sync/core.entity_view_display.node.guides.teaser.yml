@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.guides.field_primary_image
     - field.field.node.guides.field_summary
     - field.field.node.guides.field_summary_box
-    - field.field.node.guides.field_topics_reference
+    - field.field.node.guides.field_topics
     - node.type.guides
   module:
     - text
@@ -43,4 +43,4 @@ hidden:
   field_primary_image: true
   field_summary: true
   field_summary_box: true
-  field_topics_reference: true
+  field_topics: true

@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
-    - field.field.node.news.field_authors_reference
+    - field.field.node.news.field_authors
     - field.field.node.news.field_deck
     - field.field.node.news.field_featured_image
     - field.field.node.news.field_kicker
@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.news.field_primary_image
     - field.field.node.news.field_slug
     - field.field.node.news.field_summary
-    - field.field.node.news.field_topics_reference
+    - field.field.node.news.field_topics
     - node.type.news
   module:
     - text
@@ -29,7 +29,7 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
-  field_authors_reference:
+  field_authors:
     type: entity_reference_label
     label: above
     settings:
@@ -94,7 +94,7 @@ content:
     third_party_settings: {  }
     weight: 104
     region: content
-  field_topics_reference:
+  field_topics:
     type: entity_reference_label
     label: above
     settings:

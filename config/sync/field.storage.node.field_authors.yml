@@ -4,8 +4,8 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_authors_reference
-field_name: field_authors_reference
+id: node.field_authors
+field_name: field_authors
 entity_type: node
 type: entity_reference
 settings:

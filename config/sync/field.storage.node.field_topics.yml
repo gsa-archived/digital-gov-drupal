@@ -4,8 +4,8 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_topics_reference
-field_name: field_topics_reference
+id: node.field_topics
+field_name: field_topics
 entity_type: node
 type: entity_reference
 settings:

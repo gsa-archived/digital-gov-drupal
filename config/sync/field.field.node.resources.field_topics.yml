@@ -1,16 +1,16 @@
-uuid: 00e3a13f-0838-42ad-ba08-d6eb45f74bed
+uuid: a1a5dc14-1018-4b68-8ccb-76310eb06cce
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_topics_reference
-    - node.type.short_post
+    - field.storage.node.field_topics
+    - node.type.resources
     - node.type.topics
-id: node.short_post.field_topics_reference
-field_name: field_topics_reference
+id: node.resources.field_topics
+field_name: field_topics
 entity_type: node
-bundle: short_post
-label: 'Topics Reference'
+bundle: resources
+label: 'Topics'
 description: ''
 required: false
 translatable: false

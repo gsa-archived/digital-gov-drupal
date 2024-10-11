@@ -8,7 +8,7 @@ dependencies:
     - field.field.node.resources.field_page_weight
     - field.field.node.resources.field_slug
     - field.field.node.resources.field_summary
-    - field.field.node.resources.field_topics_reference
+    - field.field.node.resources.field_topics
     - node.type.resources
   module:
     - content_moderation
@@ -57,7 +57,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_topics_reference:
+  field_topics:
     type: entity_reference_autocomplete
     weight: 4
     region: content

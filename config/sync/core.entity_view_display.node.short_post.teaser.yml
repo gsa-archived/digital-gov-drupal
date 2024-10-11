@@ -9,7 +9,7 @@ dependencies:
     - field.field.node.short_post.field_slug
     - field.field.node.short_post.field_source
     - field.field.node.short_post.field_summary
-    - field.field.node.short_post.field_topics_reference
+    - field.field.node.short_post.field_topics
     - node.type.short_post
   module:
     - user
@@ -29,4 +29,4 @@ hidden:
   field_slug: true
   field_source: true
   field_summary: true
-  field_topics_reference: true
+  field_topics: true

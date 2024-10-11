@@ -11,7 +11,7 @@ dependencies:
     - field.field.node.guides.field_primary_image
     - field.field.node.guides.field_summary
     - field.field.node.guides.field_summary_box
-    - field.field.node.guides.field_topics_reference
+    - field.field.node.guides.field_topics
     - node.type.guides
   module:
     - text
@@ -88,7 +88,7 @@ content:
     third_party_settings: {  }
     weight: 126
     region: content
-  field_topics_reference:
+  field_topics:
     type: entity_reference_label
     label: above
     settings:

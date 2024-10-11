@@ -9,7 +9,7 @@ dependencies:
     - field.field.node.services.field_page_weight
     - field.field.node.services.field_slug
     - field.field.node.services.field_summary
-    - field.field.node.services.field_topics_reference
+    - field.field.node.services.field_topics
     - node.type.services
   module:
     - text
@@ -37,4 +37,4 @@ hidden:
   field_page_weight: true
   field_slug: true
   field_summary: true
-  field_topics_reference: true
+  field_topics: true
