@@ -4,31 +4,20 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.short_post.body
     - field.field.node.short_post.field_deck
+    - field.field.node.short_post.field_short_post_type
     - field.field.node.short_post.field_slug
     - field.field.node.short_post.field_source
-    - field.field.node.short_post.field_source_url
     - field.field.node.short_post.field_summary
     - field.field.node.short_post.field_topics_reference
-    - field.field.node.short_post.field_type
     - node.type.short_post
   module:
-    - text
     - user
 id: node.short_post.teaser
 targetEntityType: node
 bundle: short_post
 mode: teaser
 content:
-  body:
-    type: text_summary_or_trimmed
-    label: hidden
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
-    weight: 101
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -36,9 +25,8 @@ content:
     region: content
 hidden:
   field_deck: true
+  field_short_post_type: true
   field_slug: true
   field_source: true
-  field_source_url: true
   field_summary: true
   field_topics_reference: true
-  field_type: true

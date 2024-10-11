@@ -1,0 +1,23 @@
+uuid: 9503f7b1-a0d8-44e9-a086-df44823aaa3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_members
+    - node.type.community
+id: node.community.field_members
+field_name: field_members
+entity_type: node
+bundle: community
+label: 'Member Count'
+description: 'The total number of members in this community.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

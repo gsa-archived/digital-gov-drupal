@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.news.body
     - field.field.node.news.field_authors_reference
     - field.field.node.news.field_deck
-    - field.field.node.news.field_expiry_date
     - field.field.node.news.field_featured_image
     - field.field.node.news.field_kicker
     - field.field.node.news.field_page_weight
@@ -40,7 +39,6 @@ content:
 hidden:
   field_authors_reference: true
   field_deck: true
-  field_expiry_date: true
   field_featured_image: true
   field_kicker: true
   field_page_weight: true

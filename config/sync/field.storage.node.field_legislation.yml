@@ -1,18 +1,16 @@
-uuid: 92862c37-62bf-4348-afd3-2f906a594c97
+uuid: 4fa48680-e4b1-49be-9faa-0778e2fa4aa0
 langcode: en
 status: true
 dependencies:
   module:
+    - link
     - node
-id: node.field_title
-field_name: field_title
+id: node.field_legislation
+field_name: field_legislation
 entity_type: node
-type: string
-settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
-module: core
+type: link
+settings: {  }
+module: link
 locked: false
 cardinality: 1
 translatable: true

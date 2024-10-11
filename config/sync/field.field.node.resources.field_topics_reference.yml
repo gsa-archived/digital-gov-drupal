@@ -1,18 +1,18 @@
-uuid: e2a90bb0-187b-4071-aecf-8e0f7f755251
+uuid: a1a5dc14-1018-4b68-8ccb-76310eb06cce
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_source
-    - node.type.short_post
-    - node.type.source
-id: node.short_post.field_source
-field_name: field_source
+    - field.storage.node.field_topics_reference
+    - node.type.resources
+    - node.type.topics
+id: node.resources.field_topics_reference
+field_name: field_topics_reference
 entity_type: node
-bundle: short_post
-label: Source
-description: 'Provides the logo for this short post.'
-required: true
+bundle: resources
+label: 'Topics Reference'
+description: ''
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -20,7 +20,7 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      source: source
+      topics: topics
     sort:
       field: _none
       direction: ASC

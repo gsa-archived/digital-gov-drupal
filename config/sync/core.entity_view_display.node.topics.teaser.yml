@@ -5,9 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.topics.body
-    - field.field.node.topics.field_community_reference
     - field.field.node.topics.field_deck
-    - field.field.node.topics.field_expiry_date
+    - field.field.node.topics.field_featured_communities
+    - field.field.node.topics.field_legislation
     - field.field.node.topics.field_page_weight
     - field.field.node.topics.field_primary_image
     - field.field.node.topics.field_slug
@@ -35,9 +35,9 @@ content:
     weight: 100
     region: content
 hidden:
-  field_community_reference: true
   field_deck: true
-  field_expiry_date: true
+  field_featured_communities: true
+  field_legislation: true
   field_page_weight: true
   field_primary_image: true
   field_slug: true

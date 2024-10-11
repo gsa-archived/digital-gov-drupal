@@ -10,10 +10,11 @@ dependencies:
     - field.field.node.community.field_dg_highlight
     - field.field.node.community.field_dg_logo
     - field.field.node.community.field_dg_shortname
-    - field.field.node.community.field_expiry_date
+    - field.field.node.community.field_members
     - field.field.node.community.field_page_weight
     - field.field.node.community.field_primary_image
     - field.field.node.community.field_slug
+    - field.field.node.community.field_subscribe_email_subject
     - field.field.node.community.field_summary
     - node.type.community
   module:
@@ -43,8 +44,9 @@ hidden:
   field_dg_highlight: true
   field_dg_logo: true
   field_dg_shortname: true
-  field_expiry_date: true
+  field_members: true
   field_page_weight: true
   field_primary_image: true
   field_slug: true
+  field_subscribe_email_subject: true
   field_summary: true

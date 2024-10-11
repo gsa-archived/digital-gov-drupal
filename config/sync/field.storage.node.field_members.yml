@@ -1,15 +1,16 @@
-uuid: f8dfe727-0266-4220-847e-ea393032bf4f
+uuid: 40ddde25-b6d8-4723-82bc-3d9858699f59
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_community_reference
-field_name: field_community_reference
+id: node.field_members
+field_name: field_members
 entity_type: node
-type: entity_reference
+type: integer
 settings:
-  target_type: node
+  unsigned: false
+  size: normal
 module: core
 locked: false
 cardinality: 1

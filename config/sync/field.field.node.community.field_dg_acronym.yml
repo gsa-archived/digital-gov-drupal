@@ -1,19 +1,21 @@
-uuid: ca77f7cb-e887-4815-83e0-d2dd8ec00a88
+uuid: f6ffe032-ca2c-4026-a7fa-c8a86cda2db3
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_dg_acronym
     - node.type.community
+  module:
+    - options
 id: node.community.field_dg_acronym
 field_name: field_dg_acronym
 entity_type: node
 bundle: community
 label: Acronym
-description: ''
+description: "When highlighted on the homepage or a join button is shown when 'Subscribe Email Subject' is set, this will control the color of the card."
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string
+field_type: list_string

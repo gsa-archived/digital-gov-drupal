@@ -4,16 +4,16 @@ status: true
 dependencies:
   config:
     - field.field.node.topics.body
-    - field.field.node.topics.field_community_reference
     - field.field.node.topics.field_deck
-    - field.field.node.topics.field_expiry_date
+    - field.field.node.topics.field_featured_communities
+    - field.field.node.topics.field_legislation
     - field.field.node.topics.field_page_weight
     - field.field.node.topics.field_primary_image
     - field.field.node.topics.field_slug
     - field.field.node.topics.field_summary
     - node.type.topics
   module:
-    - datetime
+    - link
     - text
     - user
 id: node.topics.default
@@ -28,14 +28,6 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
-  field_community_reference:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 116
-    region: content
   field_deck:
     type: text_default
     label: above
@@ -43,14 +35,25 @@ content:
     third_party_settings: {  }
     weight: 108
     region: content
-  field_expiry_date:
-    type: datetime_default
+  field_featured_communities:
+    type: entity_reference_label
     label: above
     settings:
-      timezone_override: ''
-      format_type: medium
+      link: true
     third_party_settings: {  }
-    weight: 115
+    weight: 118
+    region: content
+  field_legislation:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 117
     region: content
   field_page_weight:
     type: number_integer

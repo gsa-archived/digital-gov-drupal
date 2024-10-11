@@ -1,0 +1,30 @@
+uuid: 90f48d6b-95a2-49b0-8467-4ab9e6d933e9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_short_post_type
+field_name: field_short_post_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: resource
+      label: Resource
+    -
+      value: service
+      label: Service
+    -
+      value: news
+      label: News
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -21,7 +21,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 9
+    weight: 7
     region: content
     settings:
       rows: 9
@@ -45,14 +45,14 @@ content:
     third_party_settings: {  }
   field_featured_image:
     type: media_library_widget
-    weight: 11
+    weight: 9
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_page_weight:
     type: number
-    weight: 10
+    weight: 8
     region: content
     settings:
       placeholder: ''
@@ -67,25 +67,11 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 7
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    weight: 5
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   status:
-    type: boolean_checkbox
-    weight: 8
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  sticky:
     type: boolean_checkbox
     weight: 6
     region: content
@@ -112,7 +98,9 @@ content:
     third_party_settings: {  }
 hidden:
   field_slug: true
+  promote: true
   publish_on: true
   publish_state: true
+  sticky: true
   unpublish_on: true
   unpublish_state: true

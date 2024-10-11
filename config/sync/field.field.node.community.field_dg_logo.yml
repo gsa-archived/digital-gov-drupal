@@ -11,7 +11,7 @@ field_name: field_dg_logo
 entity_type: node
 bundle: community
 label: Logo
-description: ''
+description: "When highlighted on the communities landing page or a join button is shown when 'Subscribe Email Subject' is set, this is the small logo that is shown."
 required: false
 translatable: false
 default_value: {  }

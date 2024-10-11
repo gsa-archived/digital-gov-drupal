@@ -1,0 +1,19 @@
+uuid: 8a64bc8c-9d28-4508-a653-ae4e41393d17
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subscribe_email_subject
+    - node.type.community
+id: node.community.field_subscribe_email_subject
+field_name: field_subscribe_email_subject
+entity_type: node
+bundle: community
+label: 'Subscribe Email Subject'
+description: 'Will cause the community to display a join link. This will be the button text.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

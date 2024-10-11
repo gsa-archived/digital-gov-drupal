@@ -8,8 +8,8 @@ dependencies:
     - field.field.node.services.field_contact
     - field.field.node.services.field_page_weight
     - field.field.node.services.field_slug
-    - field.field.node.services.field_source_url
     - field.field.node.services.field_summary
+    - field.field.node.services.field_topics_reference
     - node.type.services
   module:
     - text
@@ -36,5 +36,5 @@ hidden:
   field_contact: true
   field_page_weight: true
   field_slug: true
-  field_source_url: true
   field_summary: true
+  field_topics_reference: true

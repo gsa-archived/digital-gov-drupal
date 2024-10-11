@@ -1,4 +1,4 @@
-uuid: 182c0aa1-9780-4a30-887d-653ac96a5a96
+uuid: d8803ef0-0757-488e-a013-453b615425d9
 langcode: en
 status: true
 dependencies:
@@ -14,7 +14,7 @@ entity_type: node
 bundle: resources
 label: Summary
 description: '1-sentence description that does not repeat the headline'
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

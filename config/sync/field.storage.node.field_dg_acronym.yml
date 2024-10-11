@@ -1,18 +1,42 @@
-uuid: 37059ef3-0465-4721-af03-8686d736dcfc
+uuid: 734bed89-b20d-490a-95e0-47add03a4f6b
 langcode: en
 status: true
 dependencies:
   module:
     - node
+    - options
 id: node.field_dg_acronym
 field_name: field_dg_acronym
 entity_type: node
-type: string
+type: list_string
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
-module: core
+  allowed_values:
+    -
+      value: ML
+      label: ML
+    -
+      value: FCN
+      label: FCN
+    -
+      value: CC
+      label: CC
+    -
+      value: PL
+      label: PL
+    -
+      value: SM
+      label: SM
+    -
+      value: UX
+      label: UX
+    -
+      value: WAO
+      label: WAO
+    -
+      value: WCM
+      label: WCM
+  allowed_values_function: ''
+module: options
 locked: false
 cardinality: 1
 translatable: true

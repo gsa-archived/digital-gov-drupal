@@ -1,11 +1,11 @@
-uuid: 478e0f6c-8a4b-487a-ba77-81327d635edc
+uuid: ae1d3054-c408-48a4-b6ff-d353ab87d4c1
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_source_url
-field_name: field_source_url
+id: node.field_subscribe_email_subject
+field_name: field_subscribe_email_subject
 entity_type: node
 type: string
 settings:

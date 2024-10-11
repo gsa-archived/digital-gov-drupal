@@ -1,4 +1,4 @@
-uuid: bb67737e-0aa8-401d-8518-8a471adbc666
+uuid: eeef06a5-6da8-4321-a1fc-5b096ec4094a
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,8 @@ dependencies:
 id: node.field_dg_highlight
 field_name: field_dg_highlight
 entity_type: node
-type: string
-settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+type: boolean
+settings: {  }
 module: core
 locked: false
 cardinality: 1

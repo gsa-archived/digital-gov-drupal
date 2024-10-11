@@ -1,12 +1,12 @@
-uuid: b45e771b-3e51-43c0-8a04-f605979bb1c7
+uuid: 536dcaa3-376d-4ebb-8676-4d4617d3ff3f
 langcode: en
 status: true
 dependencies:
   module:
     - link
     - node
-id: node.field_button_landing
-field_name: field_button_landing
+id: node.field_buttons
+field_name: field_buttons
 entity_type: node
 type: link
 settings: {  }

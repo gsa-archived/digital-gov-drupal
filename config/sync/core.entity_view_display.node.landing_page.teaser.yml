@@ -5,10 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.landing_page.body
-    - field.field.node.landing_page.field_button_landing
+    - field.field.node.landing_page.field_buttons
     - field.field.node.landing_page.field_summary
-    - field.field.node.landing_page.field_title
-    - field.field.node.landing_page.field_type
     - node.type.landing_page
   module:
     - text
@@ -32,7 +30,5 @@ content:
     weight: 100
     region: content
 hidden:
-  field_button_landing: true
+  field_buttons: true
   field_summary: true
-  field_title: true
-  field_type: true

@@ -6,7 +6,6 @@ dependencies:
     - field.field.node.news.body
     - field.field.node.news.field_authors_reference
     - field.field.node.news.field_deck
-    - field.field.node.news.field_expiry_date
     - field.field.node.news.field_featured_image
     - field.field.node.news.field_kicker
     - field.field.node.news.field_page_weight
@@ -16,7 +15,6 @@ dependencies:
     - field.field.node.news.field_topics_reference
     - node.type.news
   module:
-    - datetime
     - text
     - user
 id: node.news.default
@@ -45,15 +43,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 108
-    region: content
-  field_expiry_date:
-    type: datetime_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 115
     region: content
   field_featured_image:
     type: entity_reference_entity_view
