@@ -4,13 +4,11 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_content
-    - node.type.article
     - node.type.authors
     - node.type.basic_page
     - node.type.community
     - node.type.event
     - node.type.guides
-    - node.type.landing_page
     - node.type.news
     - node.type.resources
     - node.type.services
@@ -30,13 +28,11 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      article: article
       authors: authors
       basic_page: basic_page
       community: community
       event: event
       guides: guides
-      landing_page: landing_page
       news: news
       resources: resources
       services: services
@@ -45,5 +41,5 @@ settings:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: article
+    auto_create_bundle: authors
 field_type: entity_reference
