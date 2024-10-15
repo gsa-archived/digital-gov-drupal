@@ -1,14 +1,13 @@
-uuid: e7860160-9a4a-414f-bffe-05ce2552f38e
+uuid: 5cb2ad17-d06e-4c2c-ab0e-2f50b7f12ed1
 langcode: en
 status: true
 dependencies:
   module:
     - entity_reference_revisions
-    - node
     - paragraphs
-id: node.field_resource_links
-field_name: field_resource_links
-entity_type: node
+id: paragraph.field_links
+field_name: field_links
+entity_type: paragraph
 type: entity_reference_revisions
 settings:
   target_type: paragraph

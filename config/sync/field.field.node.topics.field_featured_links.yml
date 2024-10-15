@@ -1,20 +1,19 @@
-uuid: 43faab23-74f5-47b8-b04c-ed565dae23e2
+uuid: cbef7e46-9269-4ff2-b3be-7f2d61d959ef
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_featured_resources
+    - field.storage.node.field_featured_links
     - node.type.topics
-    - paragraphs.paragraphs_type.external_content
-    - paragraphs.paragraphs_type.internal_content
+    - paragraphs.paragraphs_type.featured_links
   module:
     - entity_reference_revisions
-id: node.topics.field_featured_resources
-field_name: field_featured_resources
+id: node.topics.field_featured_links
+field_name: field_featured_links
 entity_type: node
 bundle: topics
-label: 'Featured Resources'
-description: 'Highlight these resources on the current topic page.'
+label: 'Featured Links'
+description: 'Featured external links.'
 required: false
 translatable: false
 default_value: {  }
@@ -23,26 +22,25 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      external_content: external_content
-      internal_content: internal_content
+      featured_links: featured_links
     negate: 0
     target_bundles_drag_drop:
       external_content:
         weight: 7
-        enabled: true
+        enabled: false
       external_featured_resource:
-        weight: 4
+        weight: 8
         enabled: false
       featured_links:
         weight: 9
-        enabled: false
+        enabled: true
       interal_featured_resource:
-        weight: 5
+        weight: 10
         enabled: false
       internal_content:
-        weight: 10
-        enabled: true
+        weight: 11
+        enabled: false
       venue:
-        weight: 10
+        weight: 12
         enabled: false
 field_type: entity_reference_revisions
