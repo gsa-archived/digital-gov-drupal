@@ -10,7 +10,7 @@ id: node.guides.field_topics
 field_name: field_topics
 entity_type: node
 bundle: guides
-label: 'Topics'
+label: Topics
 description: ''
 required: false
 translatable: false

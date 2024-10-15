@@ -20,10 +20,12 @@ dependencies:
     - field.field.node.event.field_start_date
     - field.field.node.event.field_summary
     - field.field.node.event.field_topics
+    - field.field.node.event.field_venue
     - field.field.node.event.field_youtube_id
     - node.type.event
   module:
     - datetime
+    - entity_reference_revisions
     - link
     - text
     - user
@@ -177,6 +179,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 125
+    region: content
+  field_venue:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 128
     region: content
   field_youtube_id:
     type: string
