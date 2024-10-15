@@ -13,7 +13,7 @@ field_name: field_featured_resources
 entity_type: node
 bundle: topics
 label: 'Featured Resources'
-description: 'This is the featured resources paragraph'
+description: 'Highlight these resources on the current topic page.'
 required: false
 translatable: false
 default_value: {  }
