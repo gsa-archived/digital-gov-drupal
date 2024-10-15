@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.topics.body
     - field.field.node.topics.field_deck
     - field.field.node.topics.field_featured_communities
+    - field.field.node.topics.field_featured_links
+    - field.field.node.topics.field_featured_resources
     - field.field.node.topics.field_legislation
     - field.field.node.topics.field_page_weight
     - field.field.node.topics.field_primary_image
@@ -37,6 +39,8 @@ content:
 hidden:
   field_deck: true
   field_featured_communities: true
+  field_featured_links: true
+  field_featured_resources: true
   field_legislation: true
   field_page_weight: true
   field_primary_image: true

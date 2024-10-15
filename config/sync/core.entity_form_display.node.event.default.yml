@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.event.field_start_date
     - field.field.node.event.field_summary
     - field.field.node.event.field_topics
+    - field.field.node.event.field_venue
     - field.field.node.event.field_youtube_id
     - node.type.event
   module:
@@ -28,6 +29,7 @@ dependencies:
     - inline_entity_form
     - link
     - media_library
+    - paragraphs
     - text
 id: node.event.default
 targetEntityType: node
@@ -182,6 +184,26 @@ content:
       collapsed: true
       revision: false
       removed_reference: optional
+    third_party_settings: {  }
+  field_venue:
+    type: paragraphs
+    weight: 27
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: venue
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings: {  }
   field_youtube_id:
     type: string_textfield
