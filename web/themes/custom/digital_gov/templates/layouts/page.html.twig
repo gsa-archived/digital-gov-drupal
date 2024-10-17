@@ -33,6 +33,18 @@
 * - page.content: The main content of the current page.
 * - page.sidebar: Items for the sidebar.
 * - page.footer: Items for the footer region.
+//these are the regions for digital.gov
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  featured: 'Featured'
+  breadcrumb: 'Breadcrumb'
+  content: 'Content'
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: 'Footer'
 *
 * @see template_preprocess_page()
 * @see html.html.twig
@@ -42,21 +54,26 @@
 {% if logged_in %}
   {{ attach_library('bixaluswds/logged-in') }}
 {% endif %}
+<div class="paper">
+    <header>  
+      {#
+      {{- partialCached "core/usa-banner.html" . -}}
+      {{- partialCached "core/sitewide-alert.html" . -}}
+      {{- partialCached "core/header.html" . -}} #}
+    </header>
 
-{% set banner_gov_text %}
-  <p>
-    <strong>Official websites use .gov</strong><br />
-    A <strong>.gov</strong> website belongs to an official government organization in the United States.
-  </p>
-{% endset %}
+    <main>
+      <h1>Welcome to the new digital.gov</h1>
+      {% include 'themes/custom/digital_gov/templates/layouts/core/usa-banner.html' %}
+    {#{{- partialCached "core/notice-bar.html" . -}}
+      
+      {{/* Main Content */}}
+      #includes main page, communities and news.
+      {{ block "data" . }}{{ end }}
+      {{ block "content" . }}The BASE CONTENT didn't load. :/{{ end }} #}
+  </main>
 
-{% set banner_https_text %}
-  <p>
-    <strong>Secure .gov websites use HTTPS</strong><br />
-    A <strong>lock</strong> (<span class=\"icon-lock\">@</span>) or <strong>https://</strong> means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
-  </p>
-{% endset %}
-
+  <footer>
 {% include '@uswds_templates/usa-banner.html.twig' with {
   'aria_label': 'Official website of the United States government' | t,
   'header_text': 'An official website of the United States government' | t,
@@ -97,22 +114,7 @@
 {% endblock %}
 
 <footer class="usa-footer" role="contentinfo">
-  {# Footer partial. #}
-  {% include 'themes/custom/digital_gov/templates/layouts/usa-footer.html.twig' with {
-    'footer_menu': drupal_entity('block', 'footer_menu'),
-    'sitename': drupal_link(site_name, '<front>', { attributes: { 'title': site_name, 'class': 'usa-link' }}),
-    'facebook_url': 'https://facebook.com',
-    'instagram_url': 'https://instagram.com',
-    'twitter_url': 'https://twitter.com',
-    'youtube_url': 'https://youtube.com',
-    'rss_url': '/rss',
-    'contact_sitename': site_name ~ ' ' ~ 'Contact Center'|t,
-    'phone': "(800) 555-5555",
-    'email': "info@agency.gov"
-  } %}
 </footer>
-
-{# Identifier partial. #}
 {% include 'themes/custom/digital_gov/templates/layouts/usa-identifier.html.twig' with {
   'domain': 'domain.gov',
   'agencyname': "General Service Administration" | t,
@@ -121,3 +123,4 @@
   'description_link_url': "https://www.usa.gov/",
   'description_link_text': 'Visit USA.gov' | t,
 } %}
+</div>
