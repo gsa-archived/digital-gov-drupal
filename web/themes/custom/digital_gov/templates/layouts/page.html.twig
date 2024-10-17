@@ -54,67 +54,60 @@
 {% if logged_in %}
   {{ attach_library('bixaluswds/logged-in') }}
 {% endif %}
-<div class="paper">
-    <header>  
-      {#
-      {{- partialCached "core/usa-banner.html" . -}}
-      {{- partialCached "core/sitewide-alert.html" . -}}
-      {{- partialCached "core/header.html" . -}} #}
-    </header>
-
-    <main>
-      <h1>Welcome to the new digital.gov</h1>
-      {% include 'themes/custom/digital_gov/templates/layouts/core/usa-banner.html' %}
-    {#{{- partialCached "core/notice-bar.html" . -}}
-      
-      {{/* Main Content */}}
-      #includes main page, communities and news.
-      {{ block "data" . }}{{ end }}
-      {{ block "content" . }}The BASE CONTENT didn't load. :/{{ end }} #}
-  </main>
-
-  <footer>
-{% include '@uswds_templates/usa-banner.html.twig' with {
-  'aria_label': 'Official website of the United States government' | t,
-  'header_text': 'An official website of the United States government' | t,
-  'button_text': 'Here’s how you know' | t,
-  'uswds_img_path': uswds_img_path ~ '/',
-  'gov_text': banner_gov_text,
-  'https_text': banner_https_text
-} %}
-
 <div class="usa-overlay"></div>
 <header role="banner" class="usa-header" id="header">
-  {{ page.header }}
+  HEADER{{ page.header }}END HEADER
+    {#this is the direct import and the twig with variables. #}
+    <br><Br>INCLUDE BANNER{% include 'themes/custom/digital_gov/templates/layouts/core/usa-banner.html' %}STOP INCLUDE  
+    {% include '@uswds_templates/usa-banner.html.twig' with {
+      'aria_label': 'Official website of the United States government' | t,
+      'header_text': 'An official wedsagsdbsite of the United States government' | t,
+      'button_text': 'Here’s how you know' | t,
+      'uswds_img_path': uswds_img_path ~ '/',
+      'gov_text': banner_gov_text,
+      'https_text': banner_https_text
+    } %}  
+    {#
+    {{- partialCached "core/sitewide-alert.html" . -}}
+    {{- partialCached "core/header.html" . -}} #}
 </header>
 
 {{ page.admin }}
 
 {% block main %}
-  {% if page.sidebar %}
-
+  {% if page.sidebar_first %}
     <aside id="sidebar" role="complementary">
-      {{ page.sidebar }}
+      {{ page.sidebar_first }}
     </aside>
     <main role="main">
       {# link is in html.html.twig #}
       <a id="main-content" tabindex="-1"></a>
+      {#{{- partialCached "core/notice-bar.html" . -}}      
+      {{/* Main Content */}}
+      #includes main page, communities and news.
+      {{ block "data" . }}{{ end }}
+      {{ block "content" . }}The BASE CONTENT didn't load. :/{{ end }} #}
       {{ page.content }}
     </main>
-
   {% else %}
-
     <main role="main" id="main">
       {# link is in html.html.twig #}
       <a id="main-content" tabindex="-1"></a>
       {{ page.content }}
     </main>
-
   {% endif %}
 {% endblock %}
 
-<footer class="usa-footer" role="contentinfo">
-</footer>
+
+
+
+
+
+
+
+
+
+{{ page.footer }}
 {% include 'themes/custom/digital_gov/templates/layouts/usa-identifier.html.twig' with {
   'domain': 'domain.gov',
   'agencyname': "General Service Administration" | t,
@@ -123,4 +116,3 @@
   'description_link_url': "https://www.usa.gov/",
   'description_link_text': 'Visit USA.gov' | t,
 } %}
-</div>
