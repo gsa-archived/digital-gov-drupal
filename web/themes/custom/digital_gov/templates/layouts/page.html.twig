@@ -55,24 +55,15 @@
   {{ attach_library('bixaluswds/logged-in') }}
 {% endif %}
 <div class="usa-overlay"></div>
-<header role="banner" class="usa-header" id="header">
-  HEADER{{ page.header }}END HEADER
-    {#this is the direct import and the twig with variables. #}
-    <br><Br>INCLUDE BANNER{% include 'themes/custom/digital_gov/templates/layouts/core/usa-banner.html' %}STOP INCLUDE  
-    {% include '@uswds_templates/usa-banner.html.twig' with {
-      'aria_label': 'Official website of the United States government' | t,
-      'header_text': 'An official wedsagsdbsite of the United States government' | t,
-      'button_text': 'Here’s how you know' | t,
-      'uswds_img_path': uswds_img_path ~ '/',
-      'gov_text': banner_gov_text,
-      'https_text': banner_https_text
-    } %}  
+    {{ page.header }}
+    {# these are just holding items so we are sure to include them #}
+    {% include 'themes/custom/digital_gov/templates/layouts/core/sitewide-alert.html'%}
+    {% include 'themes/custom/digital_gov/templates/layouts/core/header.html'%}
     {#
     {{- partialCached "core/sitewide-alert.html" . -}}
     {{- partialCached "core/header.html" . -}} #}
-</header>
+    {#{{ page.admin }}#}
 
-{{ page.admin }}
 
 {% block main %}
   {% if page.sidebar_first %}
@@ -84,30 +75,22 @@
       <a id="main-content" tabindex="-1"></a>
       {#{{- partialCached "core/notice-bar.html" . -}}      
       {{/* Main Content */}}
-      #includes main page, communities and news.
-      {{ block "data" . }}{{ end }}
-      {{ block "content" . }}The BASE CONTENT didn't load. :/{{ end }} #}
+      #includes main page, communities and news.#}
+      {{ page.primary_menu }}
       {{ page.content }}
     </main>
   {% else %}
     <main role="main" id="main">
       {# link is in html.html.twig #}
       <a id="main-content" tabindex="-1"></a>
+      {{ page.primary_menu }}x
       {{ page.content }}
     </main>
   {% endif %}
 {% endblock %}
 
-
-
-
-
-
-
-
-
-
 {{ page.footer }}
+{% include 'themes/custom/digital_gov/templates/layouts/core/newsletter-signup.html' %}
 {% include 'themes/custom/digital_gov/templates/layouts/usa-identifier.html.twig' with {
   'domain': 'domain.gov',
   'agencyname': "General Service Administration" | t,
