@@ -1,0 +1,37 @@
+uuid: f5a2816b-af08-4467-9034-49abbd95a5cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured_resources_boxes
+    - node.type.article
+    - paragraphs.paragraphs_type.featured_resources_card
+  module:
+    - entity_reference_revisions
+id: node.article.field_featured_resources_boxes
+field_name: field_featured_resources_boxes
+entity_type: node
+bundle: article
+label: 'Featured Resources Boxes'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      featured_resources_card: featured_resources_card
+    negate: 0
+    target_bundles_drag_drop:
+      featured_resources:
+        weight: 4
+        enabled: false
+      featured_resources_card:
+        weight: 5
+        enabled: true
+      featured_resources_title:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

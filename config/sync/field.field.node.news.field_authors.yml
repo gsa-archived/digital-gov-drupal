@@ -10,7 +10,7 @@ id: node.news.field_authors
 field_name: field_authors
 entity_type: node
 bundle: news
-label: 'Authors'
+label: Authors
 description: ''
 required: false
 translatable: false

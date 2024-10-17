@@ -10,7 +10,7 @@ id: node.services.field_topics
 field_name: field_topics
 entity_type: node
 bundle: services
-label: 'Topics'
+label: Topics
 description: ''
 required: false
 translatable: false
