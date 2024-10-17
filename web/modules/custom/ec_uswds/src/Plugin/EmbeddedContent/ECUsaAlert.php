@@ -2,8 +2,8 @@
 
 namespace Drupal\ec_uswds\Plugin\EmbeddedContent;
 
-use Drupal\ckeditor5_embedded_content\EmbeddedContentInterface;
-use Drupal\ckeditor5_embedded_content\EmbeddedContentPluginBase;
+use Drupal\embedded_content\EmbeddedContentInterface;
+use Drupal\embedded_content\EmbeddedContentPluginBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
@@ -71,6 +71,13 @@ class ECUsaAlert extends EmbeddedContentPluginBase implements EmbeddedContentInt
       '#required' => TRUE,
     ];
     return $form;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function isInline(): bool {
+    return FALSE;
   }
 
 }
