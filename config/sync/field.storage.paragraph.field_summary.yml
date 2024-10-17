@@ -1,16 +1,17 @@
-uuid: 16444798-f098-4525-8f7a-98961b1c4efc
+uuid: edd43672-73ee-461c-9ac3-44c3e688dc82
 langcode: en
 status: true
 dependencies:
   module:
-    - link
     - paragraphs
-id: paragraph.field_venue_map
-field_name: field_venue_map
+    - text
+id: paragraph.field_summary
+field_name: field_summary
 entity_type: paragraph
-type: link
-settings: {  }
-module: link
+type: text
+settings:
+  max_length: 255
+module: text
 locked: false
 cardinality: 1
 translatable: true

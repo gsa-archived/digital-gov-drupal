@@ -1,12 +1,12 @@
-uuid: 16444798-f098-4525-8f7a-98961b1c4efc
+uuid: 55bfe9ad-0237-42d9-bf31-eb9083f5c83d
 langcode: en
 status: true
 dependencies:
   module:
     - link
     - paragraphs
-id: paragraph.field_venue_map
-field_name: field_venue_map
+id: paragraph.field_link
+field_name: field_link
 entity_type: paragraph
 type: link
 settings: {  }
