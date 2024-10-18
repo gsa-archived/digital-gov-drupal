@@ -18,6 +18,7 @@ module:
   devel: 0
   dynamic_page_cache: 0
   ec_placeholder: 0
+  ec_shortcodes: 0
   ec_touchpoints_survey: 0
   ec_uswds: 0
   editor: 0
