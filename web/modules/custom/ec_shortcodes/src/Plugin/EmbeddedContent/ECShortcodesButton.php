@@ -1,5 +1,6 @@
 <?php
-namespace Drupal\ec_button\Plugin\EmbeddedContent;
+
+namespace Drupal\ec_shortcodes_button\Plugin\EmbeddedContent;
 
 use Drupal\embedded_content\EmbeddedContentInterface;
 use Drupal\embedded_content\EmbeddedContentPluginBase;
