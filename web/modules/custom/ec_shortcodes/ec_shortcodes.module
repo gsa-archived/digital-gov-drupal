@@ -10,7 +10,7 @@
  */
 function ec_shortcodes_theme($existing, $type, $theme, $path) {
   return [
-    'ec_shortcode_button' => [
+    'ec_shortcodes_button' => [
       'variables' => [
          'url' => NULL,
          'text' => NULL,
