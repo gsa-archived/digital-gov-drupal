@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * The module file with theming functions.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function ec_button_theme($existing, $type, $theme, $path) {
+  return [
+    'ec_button' => [
+      'variables' => [
+         'url' => null,
+         'text' => null,
+      ],
+      'template' => 'embedded-content/ec-button',
+    ],
+  ];
+}
+
