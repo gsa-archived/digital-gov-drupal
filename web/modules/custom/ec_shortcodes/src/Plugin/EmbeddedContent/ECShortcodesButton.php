@@ -10,12 +10,12 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
  * Plugin iframes.
  *
  * @EmbeddedContent(
- *   id = "ec_shortcode_button",
+ *   id = "ec_shortcodes_button",
  *   label = @Translation("Button"),
  *   description = @Translation("Renders a button."),
  * )
  */
-class ECShortcodeButton extends EmbeddedContentPluginBase implements EmbeddedContentInterface
+class ECShortcodesButton extends EmbeddedContentPluginBase implements EmbeddedContentInterface
 {
 
     use StringTranslationTrait;
@@ -37,12 +37,15 @@ class ECShortcodeButton extends EmbeddedContentPluginBase implements EmbeddedCon
     public function build(): array
     {
         return [
-        '#theme' => 'ec_shortcode_button',
+        '#theme' => 'ec_shortcodes_button',
         '#url' => $this->configuration['url'],
         '#text' => $this->configuration['text'],
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function buildConfigurationForm(array $form, FormStateInterface $form_state)
     {
         $form['url'] = [
