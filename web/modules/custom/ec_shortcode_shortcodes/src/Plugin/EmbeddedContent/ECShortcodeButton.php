@@ -6,17 +6,16 @@ use Drupal\embedded_content\EmbeddedContentPluginBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
-// ! update for example
 /**
  * Plugin iframes.
  *
  * @EmbeddedContent(
- *   id = "ec_placeholder",
- *   label = @Translation("Placeholder"),
- *   description = @Translation("Renders a placeholder for replacement."),
+ *   id = "ec_shortcode_button",
+ *   label = @Translation("Button"),
+ *   description = @Translation("Renders a button."),
  * )
  */
-class ECButton extends EmbeddedContentPluginBase implements EmbeddedContentInterface
+class ECShortcodeButton extends EmbeddedContentPluginBase implements EmbeddedContentInterface
 {
 
     use StringTranslationTrait;
@@ -27,8 +26,8 @@ class ECButton extends EmbeddedContentPluginBase implements EmbeddedContentInter
     public function defaultConfiguration()
     {
         return [
-        'url' => null,
-        'text' => null,
+        'url' => NULL,
+        'text' => NULL,
         ];
     }
 
@@ -38,7 +37,7 @@ class ECButton extends EmbeddedContentPluginBase implements EmbeddedContentInter
     public function build(): array
     {
         return [
-        '#theme' => 'ec_button',
+        '#theme' => 'ec_shortcode_button',
         '#url' => $this->configuration['url'],
         '#text' => $this->configuration['text'],
         ];
@@ -50,13 +49,13 @@ class ECButton extends EmbeddedContentPluginBase implements EmbeddedContentInter
         '#type' => 'url',
         '#title' => $this->t('Url'),
         '#default_value' => $this->configuration['url'],
-        '#required' => true,
+        '#required' => TRUE,
         ];
         $form['text'] = [
         '#type' => 'textfield',
         '#title' => $this->t('text'),
         '#default_value' => $this->configuration['text'],
-        '#required' => true,
+        '#required' => TRUE,
         ];
         return $form;
     }
@@ -66,7 +65,7 @@ class ECButton extends EmbeddedContentPluginBase implements EmbeddedContentInter
      */
     public function isInline(): bool
     {
-        return false;
+        return FALSE;
     }
 
 }

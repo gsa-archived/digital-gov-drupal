@@ -1,6 +1,6 @@
-name: Embedded Content - Button
+name: Embedded Content - Short Codes
 type: module
-description: Add button element with link and text
+description: Short Codes
 package: Custom
 core_version_requirement: ^9 || ^10
 dependencies:
