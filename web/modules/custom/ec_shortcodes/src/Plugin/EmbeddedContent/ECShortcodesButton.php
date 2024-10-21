@@ -57,7 +57,7 @@ class ECShortcodesButton extends EmbeddedContentPluginBase implements EmbeddedCo
         ];
         $form['text'] = [
         '#type' => 'textfield',
-        '#title' => $this->t('text'),
+        '#title' => $this->t('Text'),
         '#default_value' => $this->configuration['text'],
         '#required' => TRUE,
         ];
