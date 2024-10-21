@@ -23,6 +23,12 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
          'icon' => NULL,
       ],
     ],
+    'ec_shortcodes_author_bio' => [
+      'variables' => [
+         'name' => NULL,
+         'bio' => NULL,
+      ],
+    ],
   ];
 }
 
