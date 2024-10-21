@@ -36,11 +36,17 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
          'src' => NULL,
       ],
     ],
-    'ec_shortcodes_card_policy' => [
+    'ec_shortcodes_card_prompt' => [
       'variables' => [
          'intro' => NULL,
          'text' => NULL,
          'url' => NULL,
+      ],
+    ],
+    'ec_shortcodes_card_quote' => [
+      'variables' => [
+         'text' => NULL,
+         'cite' => NULL,
       ],
     ],
   ];
