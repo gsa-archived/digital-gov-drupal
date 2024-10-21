@@ -39,7 +39,7 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
     public function build(): array
     {
         return [
-        '#theme' => 'ec_shortcodes_button',
+        '#theme' => 'ec_shortcodes_accordion',
         '#kicker' => $this->configuration['kicker'],
         '#title' => $this->configuration['title'],
         '#icon' => $this->configuration['icon'],
