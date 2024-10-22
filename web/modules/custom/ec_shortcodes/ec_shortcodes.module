@@ -52,7 +52,11 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
     'ec_shortcodes_checkbox' => [
       'variables' => [
          'text' => NULL,
-         'cite' => NULL,
+      ],
+    ],
+    'ec_shortcodes_checklist' => [
+      'variables' => [
+         'text' => NULL,
       ],
     ],
   ];
