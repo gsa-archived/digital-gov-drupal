@@ -11,12 +11,12 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
  * Plugin iframes.
  *
  * @EmbeddedContent(
- *   id = "ec_shortcodes_checkbox",
- *   label = @Translation("Checkbox"),
- *   description = @Translation("Renders a checkbox with text."),
+ *   id = "ec_shortcodes_checklist",
+ *   label = @Translation("Checklist"),
+ *   description = @Translation("Renders a checklist."),
  * )
  */
-class ECShortcodesCheckbox extends EmbeddedContentPluginBase implements EmbeddedContentInterface
+class ECShortcodesChecklist extends EmbeddedContentPluginBase implements EmbeddedContentInterface
 {
 
     use StringTranslationTrait;
@@ -37,7 +37,7 @@ class ECShortcodesCheckbox extends EmbeddedContentPluginBase implements Embedded
     public function build(): array
     {
         return [
-        '#theme' => 'ec_shortcodes_checkbox',
+        '#theme' => 'ec_shortcodes_checklist',
         '#text' => $this->configuration['text'],
         ];
     }
