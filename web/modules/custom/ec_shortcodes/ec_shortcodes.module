@@ -65,6 +65,13 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
          'text' => NULL,
       ],
     ],
+    'ec_shortcodes_featured_resource' => [
+      'variables' => [
+          'kicker' => NULL,
+          'url' => NULL,
+          'summary' => NULL,
+      ],
+    ],
   ];
 }
 
