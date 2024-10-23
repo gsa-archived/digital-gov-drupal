@@ -69,6 +69,7 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
       'variables' => [
           'kicker' => NULL,
           'url' => NULL,
+          'text' => NULL,
           'summary' => NULL,
       ],
     ],

@@ -29,6 +29,7 @@ class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase implements 
         return [
         'kicker' => NULL,
         'url' => NULL,
+        'text' => NULL,
         'summary' => NULL,
         ];
     }
@@ -42,6 +43,7 @@ class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase implements 
         '#theme' => 'ec_shortcodes_featured_resource',
         '#kicker' => $this->configuration['kicker'],
         '#url' => $this->configuration['url'],
+        '#text' => $this->configuration['text'],
         '#summary' => $this->configuration['summary'],
         ];
     }
@@ -62,6 +64,12 @@ class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase implements 
         '#title' => $this->t('Url'),
         '#default_value' => $this->configuration['url'],
         '#required' => TRUE,
+        ];
+        $form['text'] = [
+          '#type' => 'textfield',
+          '#title' => $this->t('Text'),
+          '#default_value' => $this->configuration['text'],
+          '#required' => TRUE,
         ];
         $form['summary'] = [
         '#type' => 'textfield',
