@@ -77,6 +77,13 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
           'text' => NULL,
       ],
     ],
+    'ec_shortcodes_note' => [
+      'variables' => [
+        'heading' => null,
+        'type' => null,
+        'text' => null,
+      ],
+    ],
   ];
 }
 
