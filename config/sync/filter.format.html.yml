@@ -49,7 +49,7 @@ filters:
     status: false
     weight: -48
     settings:
-      allowed_html: ''
+      allowed_html: '<span class="highlight-text"> <div class="box">'
       filter_html_help: true
       filter_html_nofollow: false
   filter_html_escape:
