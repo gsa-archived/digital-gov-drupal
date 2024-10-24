@@ -2,10 +2,10 @@
 
 namespace Drupal\ec_shortcodes\Plugin\EmbeddedContent;
 
-use Drupal\embedded_content\EmbeddedContentInterface;
-use Drupal\embedded_content\EmbeddedContentPluginBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\embedded_content\EmbeddedContentInterface;
+use Drupal\embedded_content\EmbeddedContentPluginBase;
 
 /**
  * Plugin iframes.
@@ -16,70 +16,65 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
  *   description = @Translation("Renders an Accordion."),
  * )
  */
-class ECShortcodesAccordion extends EmbeddedContentPluginBase implements EmbeddedContentInterface
-{
+class ECShortcodesAccordion extends EmbeddedContentPluginBase implements EmbeddedContentInterface {
 
-    use StringTranslationTrait;
+  use StringTranslationTrait;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function defaultConfiguration()
-    {
-        return [
-        'kicker' => NULL,
-        'title' => NULL,
-        'icon' => NULL,
-        ];
-    }
+  /**
+   * {@inheritdoc}
+   */
+  public function defaultConfiguration() {
+    return [
+      'kicker' => NULL,
+      'title' => NULL,
+      'icon' => NULL,
+    ];
+  }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function build(): array
-    {
-        return [
-        '#theme' => 'ec_shortcodes_accordion',
-        '#kicker' => $this->configuration['kicker'],
-        '#title' => $this->configuration['title'],
-        '#icon' => $this->configuration['icon'],
-        ];
-    }
+  /**
+   * {@inheritdoc}
+   */
+  public function build(): array {
+    return [
+      '#theme' => 'ec_shortcodes_accordion',
+      '#kicker' => $this->configuration['kicker'],
+      '#title' => $this->configuration['title'],
+      '#icon' => $this->configuration['icon'],
+    ];
+  }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildConfigurationForm(array $form, FormStateInterface $form_state)
-    {
-        $form['kicker'] = [
-        '#type' => 'textfield',
-        '#title' => $this->t('Kicker'),
-        '#default_value' => $this->configuration['text'],
-        '#required' => TRUE,
-        ];
-        $form['title'] = [
-        '#type' => 'textfield',
-        '#title' => $this->t('Title'),
-        '#default_value' => $this->configuration['text'],
-        '#required' => TRUE,
-        ];
-        $form['icon'] = [
-        '#type' =>'media_library',
-        '#title' => $this->t('Icon'),
-        '#default_value' => $this->configuration['media_library'],
-        '#required' => TRUE,
-        '#media_types' => ['image'],
-        ];
+  /**
+   * {@inheritdoc}
+   */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form['kicker'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Kicker'),
+      '#default_value' => $this->configuration['text'],
+      '#required' => TRUE,
+    ];
+    $form['title'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Title'),
+      '#default_value' => $this->configuration['text'],
+      '#required' => TRUE,
+    ];
+    $form['icon'] = [
+      '#type' => 'media_library',
+      '#title' => $this->t('Icon'),
+      '#default_value' => $this->configuration['media_library'],
+      '#required' => TRUE,
+      '#media_types' => ['image'],
+    ];
 
-        return $form;
-    }
+    return $form;
+  }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function isInline(): bool
-    {
-        return FALSE;
-    }
+  /**
+   * {@inheritDoc}
+   */
+  public function isInline(): bool {
+    return FALSE;
+  }
 
 }

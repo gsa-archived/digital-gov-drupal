@@ -2,10 +2,10 @@
 
 namespace Drupal\ec_touchpoints_survey\Plugin\EmbeddedContent;
 
-use Drupal\embedded_content\EmbeddedContentInterface;
-use Drupal\embedded_content\EmbeddedContentPluginBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\embedded_content\EmbeddedContentInterface;
+use Drupal\embedded_content\EmbeddedContentPluginBase;
 
 /**
  * Plugin iframes.
@@ -50,7 +50,7 @@ class TouchpointsSurvey extends EmbeddedContentPluginBase implements EmbeddedCon
       '#title' => $this->t('Touchpoints js file name'),
       '#default_value' => $this->configuration['file_name'],
       '#required' => TRUE,
-      '#description' => 'example: x1678367.js',
+      '#description' => $this->t('example: x1678367.js'),
     ];
     $form['id'] = [
       '#type' => 'textfield',

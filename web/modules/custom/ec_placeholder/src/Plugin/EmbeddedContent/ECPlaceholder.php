@@ -2,10 +2,10 @@
 
 namespace Drupal\ec_placeholder\Plugin\EmbeddedContent;
 
-use Drupal\embedded_content\EmbeddedContentInterface;
-use Drupal\embedded_content\EmbeddedContentPluginBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\embedded_content\EmbeddedContentInterface;
+use Drupal\embedded_content\EmbeddedContentPluginBase;
 
 /**
  * Plugin iframes.
@@ -48,7 +48,7 @@ class ECPlaceholder extends EmbeddedContentPluginBase implements EmbeddedContent
       '#title' => $this->t('Placeholder name'),
       '#default_value' => $this->configuration['machine_name'],
       '#required' => TRUE,
-      '#description' => 'example: machine_name',
+      '#description' => $this->t('example: machine_name'),
     ];
     return $form;
   }
