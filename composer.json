@@ -31,6 +31,7 @@
         "drupal/maillog": "dev-1.x",
         "drupal/mailsystem": "^4.4",
         "drupal/memcache": "^2.5",
+        "drupal/multivalue_form_element": "@beta",
         "drupal/paragraphs": "^1.18",
         "drupal/require_revision_log_message": "^2.0",
         "drupal/scheduler": "^2.0",

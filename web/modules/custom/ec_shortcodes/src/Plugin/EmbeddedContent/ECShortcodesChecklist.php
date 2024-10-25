@@ -6,6 +6,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\embedded_content\EmbeddedContentInterface;
 use Drupal\embedded_content\EmbeddedContentPluginBase;
+use Drupal\multivalue_form_element\Element\MultiValue;
 
 /**
  * Plugin iframes.
@@ -25,7 +26,7 @@ class ECShortcodesChecklist extends EmbeddedContentPluginBase implements Embedde
    */
   public function defaultConfiguration() {
     return [
-      'text' => NULL,
+      'checklist' => NULL,
     ];
   }
 
@@ -35,7 +36,7 @@ class ECShortcodesChecklist extends EmbeddedContentPluginBase implements Embedde
   public function build(): array {
     return [
       '#theme' => 'ec_shortcodes_checklist',
-      '#text' => $this->configuration['text'],
+      '#checklist' => $this->configuration['checklist'],
     ];
   }
 
@@ -43,12 +44,22 @@ class ECShortcodesChecklist extends EmbeddedContentPluginBase implements Embedde
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form['text'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Text'),
-      '#default_value' => $this->configuration['text'],
-      '#required' => TRUE,
+    $form['checklist'] = [
+      '#type' => 'multivalue',
+      '#title' => $this->t('Checkbox List'),
+      '#cardinality' => MultiValue::CARDINALITY_UNLIMITED,
+      '#default_value' => $this->configuration['checklist'],
+      'checkbox' => [
+        '#type' => 'textfield',
+        '#title' => $this->t('Checkbox text'),
+      ],
+      'sublist' => [
+        '#type' => 'textarea',
+        '#title' => $this->t('Sublist'),
+        '#description' => $this->t('Add each bullet point as a new line')
+      ],
     ];
+
     return $form;
   }
 
