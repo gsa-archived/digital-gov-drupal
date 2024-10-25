@@ -4,8 +4,6 @@ _meta:
   uuid: 220a49de-e1ee-4314-ba79-39e0b3cf552a
   bundle: authors
   default_langcode: en
-  depends:
-    6bd8641f-84c6-4ddb-b8b2-9c076b017198: media
 default:
   revision_uid:
     -
@@ -18,7 +16,7 @@ default:
       target_id: 1
   title:
     -
-      value: Authors
+      value: 'Erika Brown'
   created:
     -
       value: 1729604607
@@ -31,13 +29,6 @@ default:
   field_bio:
     -
       value: 'Erika is a Marketing and Communication Coordinator for Peace Corps Response, a short-term, high-impact Peace Corps program.'
-      format: html
-  field_bio_image:
-    -
-      entity: 6bd8641f-84c6-4ddb-b8b2-9c076b017198
-  field_display_name:
-    -
-      value: 'Erika Brown'
       format: html
   field_email:
     -
