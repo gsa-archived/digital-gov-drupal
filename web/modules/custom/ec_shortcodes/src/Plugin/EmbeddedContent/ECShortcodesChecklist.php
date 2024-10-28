@@ -56,7 +56,7 @@ class ECShortcodesChecklist extends EmbeddedContentPluginBase implements Embedde
       'sublist' => [
         '#type' => 'textarea',
         '#title' => $this->t('Sublist'),
-        '#description' => $this->t('Add each bullet point as a new line')
+        '#description' => $this->t('Add each bullet point as a new line'),
       ],
     ];
 
