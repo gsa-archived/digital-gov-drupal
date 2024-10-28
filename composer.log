@@ -29,3 +29,4 @@ ea93266b87251a27fec5df04a3cbd5d0|Matt Poole|feature/DIGITAL-28-shortcode-embed|T
 19e48982b7d8f46673a705bf49e7b861|Matt Poole|feature/DIGITAL-45-roles-and-perms|Wed Nov  6 09:56:09 EST 2024|./composer.sh require drupal/vbo_workflow_transition:1.0.x-dev@dev
 3d742a578663c259c7f20fe529971425|Matt Poole|feature/DIGITAL-45-roles-and-perms|Wed Nov  6 09:56:58 EST 2024|./composer.sh require drupal/views_bulk_operations
 1eaf30055796759652004514d15f30d9|christian medders|feature/DIGITAL-31-sitemap-path-auto|Fri Nov  8 14:03:39 EST 2024|./composer.sh require drupal/pathauto:^1.13
+58d882c244d0e746a3ad90844a2f361f|christian medders|feature/DIGITAL-31-sitemap-path-auto|Fri Nov  8 14:05:23 EST 2024|./composer.sh require drupal/xmlsitemap:^1.5

@@ -44,6 +44,7 @@
         "drupal/uswds_templates": "^3.0@dev",
         "drupal/vbo_workflow_transition": "1.0.x-dev@dev",
         "drupal/views_bulk_operations": "^4.3",
+        "drupal/xmlsitemap": "^1.5",
         "drush/drush": "^12.5",
         "league/commonmark": "^2.5",
         "mattsqd/drupal-env": "dev-main",
