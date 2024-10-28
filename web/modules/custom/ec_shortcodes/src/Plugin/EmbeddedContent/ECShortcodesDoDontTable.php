@@ -6,6 +6,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\embedded_content\EmbeddedContentInterface;
 use Drupal\embedded_content\EmbeddedContentPluginBase;
+use Drupal\multivalue_form_element\Element\MultiValue;
 
 /**
  * Plugin iframes.
@@ -27,6 +28,7 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
     return [
       'heading' => NULL,
       'text' => NULL,
+      'checklist' => NULL,
     ];
   }
 
@@ -38,6 +40,7 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
       '#theme' => 'ec_shortcodes_do_dont_table',
       '#heading' => $this->configuration['text'],
       '#text' => $this->configuration['text'],
+      '#checklist' => $this->configuration['checklist'],
     ];
   }
 
@@ -56,6 +59,23 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
       '#title' => $this->t('Text'),
       '#default_value' => $this->configuration['text'],
       '#required' => TRUE,
+    ];
+    $form['checklist'] = [
+      '#type' => 'multivalue',
+      '#title' => $this->t("Do/Don't Table"),
+      '#add_more_label' => $this->t('Add Row'),
+      '#cardinality' => MultiValue::CARDINALITY_UNLIMITED,
+      '#default_value' => $this->configuration['checklist'],
+      'checkbox' => [
+        '#type' => 'textarea',
+        '#title' => $this->t('Do'),
+        '#description' => $this->t('This will add text for the Do Colum'),
+      ],
+      'sublist' => [
+        '#type' => 'textarea',
+        '#title' => $this->t("Don't"),
+        '#description' => $this->t("This will add text for the Don't Colum"),
+      ],
     ];
     return $form;
   }
