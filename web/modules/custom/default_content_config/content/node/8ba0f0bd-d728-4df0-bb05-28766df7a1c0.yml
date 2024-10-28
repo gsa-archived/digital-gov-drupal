@@ -1,0 +1,44 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 8ba0f0bd-d728-4df0-bb05-28766df7a1c0
+  bundle: short_post
+  default_langcode: en
+  depends:
+    3ab69aca-ed46-4591-86fc-b52d71f75a88: node
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Foundations of Agile, Part I'
+  created:
+    -
+      value: 1730151730
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  field_deck:
+    -
+      value: "18F's Alan Atlas and Alan Brouilette cover the fundamentals of Agile."
+      format: html
+  field_short_post_type:
+    -
+      value: resource
+  field_source:
+    -
+      entity: 3ab69aca-ed46-4591-86fc-b52d71f75a88
+  field_summary:
+    -
+      value: "18F's Alan Atlas and Alan Brouilette cover the fundamentals of Agile."
+      format: html

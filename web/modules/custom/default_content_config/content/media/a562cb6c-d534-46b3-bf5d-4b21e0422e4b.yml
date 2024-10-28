@@ -1,0 +1,28 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: a562cb6c-d534-46b3-bf5d-4b21e0422e4b
+  bundle: image
+  default_langcode: en
+  depends:
+    3a18cd8e-58c6-4e48-b1c9-6acdbb6808b3: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: dotgov-icon.png
+  created:
+    -
+      value: 1730153074
+  field_media_image:
+    -
+      entity: 3a18cd8e-58c6-4e48-b1c9-6acdbb6808b3
+      alt: 'dot gov'
+      title: ''
+      width: 50
+      height: 50

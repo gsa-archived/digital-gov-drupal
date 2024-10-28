@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 2356fbee-5307-45ef-be92-c721305c8f7a
+  bundle: source
+  default_langcode: en
+  depends:
+    6198c0ab-4772-4efd-8280-1070a4c662a8: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: usagov
+  created:
+    -
+      value: 1730152549
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  field_logo:
+    -
+      entity: 6198c0ab-4772-4efd-8280-1070a4c662a8

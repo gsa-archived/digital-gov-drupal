@@ -1,0 +1,40 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: ea91eff1-f23a-4efc-a197-2606f95ced68
+  bundle: short_post
+  default_langcode: en
+  depends:
+    2356fbee-5307-45ef-be92-c721305c8f7a: node
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'USAGov and USAGov en Español'
+  created:
+    -
+      value: 1730152519
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  field_short_post_type:
+    -
+      value: service
+  field_source:
+    -
+      entity: 2356fbee-5307-45ef-be92-c721305c8f7a
+  field_summary:
+    -
+      value: 'A customer service platform that helps the public navigate the government space by providing topical  information and services in English and Spanish.'
+      format: html

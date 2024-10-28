@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 3bd037d5-850f-4ab9-a99a-e8e066c19726
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: doj-icon.png
+  uri:
+    -
+      value: 'public://2024-10/doj-icon.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 8125
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1730153283
