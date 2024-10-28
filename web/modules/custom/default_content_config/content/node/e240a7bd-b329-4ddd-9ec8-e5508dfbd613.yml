@@ -20,7 +20,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'EVENT-all fields'
+      value: 'Event-all fields'
   created:
     -
       value: 1729461236

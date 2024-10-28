@@ -18,7 +18,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'AUTHORS-all fields'
+      value: 'Authors-all fields'
   created:
     -
       value: 1729458390

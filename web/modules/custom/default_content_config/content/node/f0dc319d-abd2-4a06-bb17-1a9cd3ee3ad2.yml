@@ -16,7 +16,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'GUIDE-all required fields'
+      value: 'Guide-all required fields'
   created:
     -
       value: 1729463294

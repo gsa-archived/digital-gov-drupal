@@ -16,7 +16,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'SERVICES-all required fields'
+      value: 'Services-all required fields'
   created:
     -
       value: 1729471454

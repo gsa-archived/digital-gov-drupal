@@ -16,7 +16,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'JOB BOARD'
+      value: 'Job Board'
   created:
     -
       value: 1729528301

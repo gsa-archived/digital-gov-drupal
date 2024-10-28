@@ -16,7 +16,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'TOPICS-all required fields'
+      value: 'Topics-all required fields'
   created:
     -
       value: 1729471958

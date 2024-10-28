@@ -18,7 +18,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'BASIC-PAGE-all fields'
+      value: 'Basic-page-all fields'
   created:
     -
       value: 1729524469

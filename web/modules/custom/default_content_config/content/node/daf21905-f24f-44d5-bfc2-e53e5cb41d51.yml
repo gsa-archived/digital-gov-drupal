@@ -18,7 +18,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'SOURCE-all required fields'
+      value: 'Source-all required fields'
   created:
     -
       value: 1729471725

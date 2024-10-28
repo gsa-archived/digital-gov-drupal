@@ -16,7 +16,7 @@ default:
       target_id: 1
   title:
     -
-      value: EVENTS
+      value: Events
   created:
     -
       value: 1729527420

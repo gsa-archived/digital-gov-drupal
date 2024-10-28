@@ -16,7 +16,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'RESOURCES-all fields'
+      value: 'Resources-all fields'
   created:
     -
       value: 1729470990

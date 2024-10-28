@@ -16,7 +16,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'NEWS-all required fields'
+      value: 'News-all required fields'
   created:
     -
       value: 1729467592

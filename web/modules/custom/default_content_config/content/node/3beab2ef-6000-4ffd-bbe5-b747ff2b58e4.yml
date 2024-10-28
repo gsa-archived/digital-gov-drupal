@@ -16,7 +16,7 @@ default:
       target_id: 1
   title:
     -
-      value: RESOURCES
+      value: Resources
   created:
     -
       value: 1729527768
