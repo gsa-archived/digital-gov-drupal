@@ -4,8 +4,6 @@ _meta:
   uuid: 38cd1f1f-47ba-4e50-bc50-9cc1d8916638
   bundle: authors
   default_langcode: en
-  depends:
-    6bd8641f-84c6-4ddb-b8b2-9c076b017198: media
 default:
   revision_uid:
     -
@@ -43,18 +41,11 @@ default:
     -
       value: 's proin in erat. Penatibus urna diam mes proin in <b>erat</b> commodo feugiat ornare viverra. Purus massa justo ultrices nam, parturient platea tincidunt. Volutpat lorem sociosqu class,'
       format: html
-  field_bio_image:
-    -
-      entity: 6bd8641f-84c6-4ddb-b8b2-9c076b017198
   field_bio_url:
     -
       uri: 'http://www.lorem.com'
       title: ''
       options: {  }
-  field_display_name:
-    -
-      value: 'nulla iaculis ligula fames proin in <b>erat</b>'
-      format: html
   field_email:
     -
       value: praesent@alk.gov

@@ -8,9 +8,7 @@ dependencies:
     - field.field.node.authors.field_agency_acronym
     - field.field.node.authors.field_agency_full_name
     - field.field.node.authors.field_bio
-    - field.field.node.authors.field_bio_image
     - field.field.node.authors.field_bio_url
-    - field.field.node.authors.field_display_name
     - field.field.node.authors.field_email
     - field.field.node.authors.field_facebook
     - field.field.node.authors.field_first_name
@@ -50,9 +48,7 @@ hidden:
   field_agency_acronym: true
   field_agency_full_name: true
   field_bio: true
-  field_bio_image: true
   field_bio_url: true
-  field_display_name: true
   field_email: true
   field_facebook: true
   field_first_name: true
