@@ -35,6 +35,7 @@
         "drupal/multivalue_form_element": "@beta",
         "drupal/override_node_options": "^2.8",
         "drupal/paragraphs": "^1.18",
+        "drupal/pathauto": "^1.13",
         "drupal/remove_username": "^1.5",
         "drupal/require_revision_log_message": "^2.0",
         "drupal/scheduler": "^2.0",
