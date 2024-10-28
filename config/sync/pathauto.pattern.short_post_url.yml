@@ -1,0 +1,22 @@
+uuid: 99e44240-776d-4600-8469-452ccc2a6f69
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: short_post_url
+label: 'Short Post URL'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  71d7aaa7-9f51-4cc6-ae0f-572f7cad8fa0:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 71d7aaa7-9f51-4cc6-ae0f-572f7cad8fa0
+    context_mapping:
+      node: node
+    bundles:
+      short_post: short_post
+selection_logic: and
+weight: -5
+relationships: {  }
