@@ -6,7 +6,6 @@ _meta:
   default_langcode: en
   depends:
     623a2982-602b-4762-a59e-9a7c30c64f36: node
-    64a78ab7-c48e-4681-9cbe-4484d7130d44: node
     47d1784c-68a3-4a3b-a341-3e4f8d092253: media
 default:
   revision_uid:
@@ -106,9 +105,6 @@ default:
           behavior_settings:
             -
               value: {  }
-          field_content:
-            -
-              entity: 64a78ab7-c48e-4681-9cbe-4484d7130d44
   field_legislation:
     -
       uri: 'https://www.section508.gov/manage/laws-and-policies/'
