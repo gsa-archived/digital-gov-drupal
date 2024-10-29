@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 003cf81c-66f0-4e2b-9531-de671277fc70
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: fedramp-icon.png
+  uri:
+    -
+      value: 'public://2024-10/fedramp-icon.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 4106
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1730152940

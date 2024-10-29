@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 15f8ba87-e748-4ce9-99a1-005e0c6fa75f
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: digitalgov-icon.png
+  uri:
+    -
+      value: 'public://2024-10/digitalgov-icon.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 2261
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1730151686

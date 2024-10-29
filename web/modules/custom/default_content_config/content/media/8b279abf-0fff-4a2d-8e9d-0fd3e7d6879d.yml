@@ -1,0 +1,28 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 8b279abf-0fff-4a2d-8e9d-0fd3e7d6879d
+  bundle: image
+  default_langcode: en
+  depends:
+    15f8ba87-e748-4ce9-99a1-005e0c6fa75f: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: digitalgov-icon.png
+  created:
+    -
+      value: 1730151686
+  field_media_image:
+    -
+      entity: 15f8ba87-e748-4ce9-99a1-005e0c6fa75f
+      alt: digitalgov
+      title: ''
+      width: 50
+      height: 50

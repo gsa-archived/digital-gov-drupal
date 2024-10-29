@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 1a32a323-f872-42ed-85ed-486d71dba022
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: 18f-icon.png
+  uri:
+    -
+      value: 'public://2024-10/18f-icon.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 1298
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1730153194

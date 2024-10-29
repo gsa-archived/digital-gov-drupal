@@ -1,0 +1,28 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 0e7e6ef9-a1e2-4dc4-925b-402bdf4215bb
+  bundle: image
+  default_langcode: en
+  depends:
+    1a32a323-f872-42ed-85ed-486d71dba022: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: 18f-icon.png
+  created:
+    -
+      value: 1730153194
+  field_media_image:
+    -
+      entity: 1a32a323-f872-42ed-85ed-486d71dba022
+      alt: 18f
+      title: ''
+      width: 50
+      height: 50

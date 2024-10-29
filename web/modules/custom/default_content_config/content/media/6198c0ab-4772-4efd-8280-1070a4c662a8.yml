@@ -1,0 +1,28 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 6198c0ab-4772-4efd-8280-1070a4c662a8
+  bundle: image
+  default_langcode: en
+  depends:
+    14b18359-d908-4660-81fd-887fc7e5d986: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: usagov-icon.png
+  created:
+    -
+      value: 1730153425
+  field_media_image:
+    -
+      entity: 14b18359-d908-4660-81fd-887fc7e5d986
+      alt: usagov
+      title: ''
+      width: 50
+      height: 50
