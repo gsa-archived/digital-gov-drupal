@@ -56,8 +56,8 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
     ],
     'ec_shortcodes_do_dont_table' => [
       'variables' => [
-        'heading' => NULL,
-        'text' => NULL,
+        'caption' => NULL,
+        'checklist' => NULL,
       ],
     ],
     'ec_shortcodes_featured_resource' => [

@@ -26,8 +26,7 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
    */
   public function defaultConfiguration() {
     return [
-      'heading' => NULL,
-      'text' => NULL,
+      'caption' => NULL,
       'checklist' => NULL,
     ];
   }
@@ -38,8 +37,7 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
   public function build(): array {
     return [
       '#theme' => 'ec_shortcodes_do_dont_table',
-      '#heading' => $this->configuration['text'],
-      '#text' => $this->configuration['text'],
+      '#caption' => $this->configuration['text'],
       '#checklist' => $this->configuration['checklist'],
     ];
   }
@@ -48,15 +46,9 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form['heading'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Heading'),
-      '#default_value' => $this->configuration['text'],
-      '#required' => TRUE,
-    ];
     $form['text'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Text'),
+      '#title' => $this->t('Caption'),
       '#default_value' => $this->configuration['text'],
       '#required' => TRUE,
     ];
@@ -66,12 +58,12 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
       '#add_more_label' => $this->t('Add Row'),
       '#cardinality' => MultiValue::CARDINALITY_UNLIMITED,
       '#default_value' => $this->configuration['checklist'],
-      'checkbox' => [
+      'Do' => [
         '#type' => 'textarea',
         '#title' => $this->t('Do'),
         '#description' => $this->t('This will add text for the Do Colum'),
       ],
-      'sublist' => [
+      "Don't" => [
         '#type' => 'textarea',
         '#title' => $this->t("Don't"),
         '#description' => $this->t("This will add text for the Don't Colum"),
