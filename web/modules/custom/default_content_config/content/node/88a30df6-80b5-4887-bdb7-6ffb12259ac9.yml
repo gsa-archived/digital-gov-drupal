@@ -1,0 +1,44 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 88a30df6-80b5-4887-bdb7-6ffb12259ac9
+  bundle: short_post
+  default_langcode: en
+  depends:
+    75eea0f2-8628-4f99-9181-18c9d5e776b6: node
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Case study: Removing barriers to applying for a presidential pardon'
+  created:
+    -
+      value: 1730152729
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  field_deck:
+    -
+      value: 'At the Department of Justice, Access DOJ and the Office of the Pardon Attorney (PARDON) partnered to simplify and streamline the presidential pardon application process. By conducting usability testing and gathering feedback, they identified key issues wi'
+      format: html
+  field_short_post_type:
+    -
+      value: news
+  field_source:
+    -
+      entity: 75eea0f2-8628-4f99-9181-18c9d5e776b6
+  field_summary:
+    -
+      value: 'At the Department of Justice, Access DOJ and the Office of the Pardon Attorney (PARDON) partnered to simplify and streamline the presidential pardon application process. By conducting usability testing and gathering feedback, they identified key issues wi'
+      format: html

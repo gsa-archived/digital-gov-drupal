@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 14b18359-d908-4660-81fd-887fc7e5d986
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: usagov-icon.png
+  uri:
+    -
+      value: 'public://2024-10/usagov-icon.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 2619
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1730153425

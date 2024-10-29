@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 063eb5b2-3a79-4559-a893-a149cfa2c757
+  bundle: source
+  default_langcode: en
+  depends:
+    a562cb6c-d534-46b3-bf5d-4b21e0422e4b: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: dotgov
+  created:
+    -
+      value: 1730152679
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  field_logo:
+    -
+      entity: a562cb6c-d534-46b3-bf5d-4b21e0422e4b

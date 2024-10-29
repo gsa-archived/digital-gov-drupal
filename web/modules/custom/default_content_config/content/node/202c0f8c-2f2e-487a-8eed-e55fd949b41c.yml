@@ -1,0 +1,44 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 202c0f8c-2f2e-487a-8eed-e55fd949b41c
+  bundle: short_post
+  default_langcode: en
+  depends:
+    dca37217-ad30-4e9d-8728-57c32c603503: node
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: '18F Accessibility Guide'
+  created:
+    -
+      value: 1730150056
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  field_deck:
+    -
+      value: 'A resource for developing accessible products.'
+      format: html
+  field_short_post_type:
+    -
+      value: resource
+  field_source:
+    -
+      entity: dca37217-ad30-4e9d-8728-57c32c603503
+  field_summary:
+    -
+      value: 'A resource for developing accessible products.'
+      format: html

@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 3a18cd8e-58c6-4e48-b1c9-6acdbb6808b3
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: dotgov-icon.png
+  uri:
+    -
+      value: 'public://2024-10/dotgov-icon.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 2057
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1730153074

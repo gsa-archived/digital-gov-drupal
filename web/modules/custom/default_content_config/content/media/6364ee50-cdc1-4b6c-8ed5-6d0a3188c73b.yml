@@ -1,0 +1,28 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 6364ee50-cdc1-4b6c-8ed5-6d0a3188c73b
+  bundle: image
+  default_langcode: en
+  depends:
+    003cf81c-66f0-4e2b-9531-de671277fc70: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: fedramp-icon.png
+  created:
+    -
+      value: 1730152940
+  field_media_image:
+    -
+      entity: 003cf81c-66f0-4e2b-9531-de671277fc70
+      alt: fedramp
+      title: ''
+      width: 50
+      height: 50

@@ -1,0 +1,40 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: d22455bc-ccf3-4079-a2bb-ecf67310af4b
+  bundle: short_post
+  default_langcode: en
+  depends:
+    a6224150-45d6-40ba-aa33-6a3e61a6830c: node
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Centers of Excellence'
+  created:
+    -
+      value: 1730152361
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  field_short_post_type:
+    -
+      value: service
+  field_source:
+    -
+      entity: a6224150-45d6-40ba-aa33-6a3e61a6830c
+  field_summary:
+    -
+      value: 'We implement IT modernization at federal agencies by leveraging private   sector innovation and government services while centralizing best practices   and expertise for holistic transformation.'
+      format: html

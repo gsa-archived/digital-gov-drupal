@@ -1,0 +1,28 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 37560ea7-308c-42dc-b77b-0a5d982dbedb
+  bundle: image
+  default_langcode: en
+  depends:
+    8701b58c-ec06-4767-a4d2-f2c478545228: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: coe-icon.png
+  created:
+    -
+      value: 1730153511
+  field_media_image:
+    -
+      entity: 8701b58c-ec06-4767-a4d2-f2c478545228
+      alt: coe
+      title: ''
+      width: 50
+      height: 50
