@@ -7,7 +7,6 @@ module:
   block: 0
   breakpoint: 0
   ckeditor5: 0
-  ckeditor5_embedded_content: 0
   comment: 0
   content_moderation: 0
   content_moderation_notifications: 0
@@ -18,10 +17,9 @@ module:
   default_content_config: 0
   devel: 0
   dynamic_page_cache: 0
-  ec_placeholder: 0
-  ec_touchpoints_survey: 0
-  ec_uswds: 0
+  ec_shortcodes: 0
   editor: 0
+  embedded_content: 0
   entity_reference_revisions: 0
   field: 0
   field_group: 0
@@ -41,6 +39,7 @@ module:
   memcache: 0
   menu_link_content: 0
   menu_ui: 0
+  multivalue_form_element: 0
   mysql: 0
   node: 0
   options: 0

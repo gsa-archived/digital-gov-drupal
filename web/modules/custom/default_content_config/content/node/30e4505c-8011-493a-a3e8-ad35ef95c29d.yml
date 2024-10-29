@@ -1,0 +1,40 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 30e4505c-8011-493a-a3e8-ad35ef95c29d
+  bundle: short_post
+  default_langcode: en
+  depends:
+    063eb5b2-3a79-4559-a893-a149cfa2c757: node
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'DotGov Registry'
+  created:
+    -
+      value: 1730152632
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  field_short_post_type:
+    -
+      value: service
+  field_source:
+    -
+      entity: 063eb5b2-3a79-4559-a893-a149cfa2c757
+  field_summary:
+    -
+      value: 'We make it easy to register and manage a .gov domain for US-based government organizations.'
+      format: html

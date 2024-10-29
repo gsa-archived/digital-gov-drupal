@@ -1,0 +1,26 @@
+uuid: 6d18f942-2598-4589-b6aa-2c1a50e74ce5
+langcode: en
+status: true
+dependencies:
+  module:
+    - linkit
+name: 'Single Inline HTML'
+format: single_inline_html
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<a href hreflang> <em> <strong>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: 0
+    settings:
+      title: true

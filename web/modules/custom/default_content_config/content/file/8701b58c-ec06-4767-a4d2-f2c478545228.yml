@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 8701b58c-ec06-4767-a4d2-f2c478545228
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: coe-icon.png
+  uri:
+    -
+      value: 'public://2024-10/coe-icon.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 4075
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1730153511

@@ -1,0 +1,9 @@
+name: Embedded Content - Short Codes
+type: module
+description: Short Codes
+package: Custom
+core_version_requirement: ^9 || ^10
+dependencies:
+  - embedded_content
+  - uswds_templates
+  - twig_tweak
