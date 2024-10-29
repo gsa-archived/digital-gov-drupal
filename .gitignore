@@ -1,6 +1,7 @@
 #### Digital.gov Specific
 
-web/themes/custom/digital_gov/static
+web/themes/custom/digital_gov/static/dist
+web/themes/custom/digital_gov/static/uswds
 
 #### End Digital.gov Specific
 

@@ -1,0 +1,130 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - in_preview: Whether the plugin is being rendered in preview mode.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+ #}
+<div class="usa-overlay"></div>
+<header class="usa-header usa-header--extended" role="banner">
+  <div class="usa-navbar">
+    <div class="usa-logo" id="extended-logo">
+      <em class="usa-logo__text">
+        <a
+            href="{{ drupal_url('<front>') }}"
+            title="{{ site_name }} Home"
+            aria-label="{{ site_name }} Home"
+        >
+          <img
+            class="logo-black"
+            src="{{ logo_url }}"
+            alt=""
+            width="220"
+            height="36"
+        />
+        </a>
+      </em>
+      <p class="sub-head display-none">{{ site_slogan }}</p>
+    </div>
+
+    <button class="usa-menu-btn">
+      <svg
+          class="usa-icon dg-icon dg-icon--standard margin-bottom-2px"
+          aria-hidden="true"
+          focusable="false"
+          role="img"
+      >
+        <use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#menu') }}"></use>
+      </svg>
+      Menu
+    </button>
+  </div>
+  <nav aria-label="Primary navigation" class="usa-nav">
+    <div class="usa-nav__inner">
+      <button class="usa-nav__close">
+        <img src="{{ drupal_url(theme_path ~ '/static/digitalgov/img/close.svg') }}" alt="close" />
+      </button>
+      [main Menu Placeholder]  {{ drupal_menu('main') }}
+      [secondary Menu placeholder] (This is just /subscribe and search, maybe not a menu)]
+      {# NOT-MIGRATED
+      {{- $currentNode := . -}}
+      {{- $menuClasses := "usa-nav__primary-item" -}}
+      <ul class="usa-nav__primary usa-accordion">
+
+        {{- range .Site.Menus.primary -}}
+        <li
+            class="usa-nav__primary-item {{ if or ($currentNode.IsMenuCurrent "primary" .) ($currentNode.HasMenuCurrent "primary" .) }}
+              usa-current
+            {{ end }}"
+        >
+          <a class="usa-nav__link" href="{{- .URL -}}"
+          ><span>{{- .Name -}}</span></a
+          >
+        </li>
+        {{- end -}}
+      </ul>
+      <!-- .nav -->
+
+      <div class="usa-nav__secondary">
+        <ul class="usa-nav__secondary-links">
+          <li class="usa-nav__secondary-item">
+            <a href="{{- "subscribe" | relURL -}}"
+            ><span>Subscribe to our newsletter</span></a
+            >
+          </li>
+        </ul>
+
+        <form
+            accept-charset="UTF-8"
+            action="https://find.digitalgov.gov/search"
+            id="search_form"
+            method="get"
+            class="usa-search usa-search--small"
+        >
+          <input name="utf8" type="hidden" value="&#x2713;" />
+          <input
+              id="affiliate"
+              name="affiliate"
+              type="hidden"
+              value="digitalgov"
+          />
+          <div role="search">
+            <label class="usa-sr-only" for="query">Search small</label>
+            <input class="usa-input" id="query" type="search" name="query" />
+            <button class="usa-button" name="commit" type="submit">
+              <img
+                  src="{{- "uswds/img/usa-icons-bg/search--white.svg" | relURL -}}"
+                  class="usa-search__submit-icon"
+                  alt="Search"
+              />
+            </button>
+          </div>
+        </form>
+      </div>
+      #}
+    </div>
+  </nav>
+</header>

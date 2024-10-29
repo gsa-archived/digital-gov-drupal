@@ -1,0 +1,20 @@
+uuid: 3653b82d-afbc-4ed5-b5a4-0f6c4c41e216
+langcode: en
+status: true
+dependencies:
+  module:
+    - site_wrapper
+  theme:
+    - digital_gov
+id: digital_gov_sitewrapperheader
+theme: digital_gov
+region: header
+weight: 0
+provider: null
+plugin: site_wrapper_header
+settings:
+  id: site_wrapper_header
+  label: 'Site Wrapper: Header'
+  label_display: '0'
+  provider: site_wrapper
+visibility: {  }

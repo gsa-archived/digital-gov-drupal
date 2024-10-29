@@ -1,0 +1,20 @@
+uuid: 8fa881b9-af33-4839-9129-fe462f1692be
+langcode: en
+status: true
+dependencies:
+  module:
+    - site_wrapper
+  theme:
+    - digital_gov
+id: digital_gov_sitewrapperusabanner
+theme: digital_gov
+region: header
+weight: -2
+provider: null
+plugin: site_wrapper_usa_banner
+settings:
+  id: site_wrapper_usa_banner
+  label: 'Site Wrapper: USA Banner'
+  label_display: '0'
+  provider: site_wrapper
+visibility: {  }

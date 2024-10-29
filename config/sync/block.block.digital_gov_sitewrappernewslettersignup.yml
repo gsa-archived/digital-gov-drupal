@@ -1,0 +1,20 @@
+uuid: 54bd9d9f-2c6d-4cc3-a78c-459556dbbcd7
+langcode: en
+status: true
+dependencies:
+  module:
+    - site_wrapper
+  theme:
+    - digital_gov
+id: digital_gov_sitewrappernewslettersignup
+theme: digital_gov
+region: footer
+weight: -6
+provider: null
+plugin: site_wrapper_newsletter_signup
+settings:
+  id: site_wrapper_newsletter_signup
+  label: 'Site Wrapper: Newsletter Signup'
+  label_display: '0'
+  provider: site_wrapper
+visibility: {  }
