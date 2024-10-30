@@ -864,6 +864,10 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # $settings['migrate_file_public_path'] = '';
 # $settings['migrate_file_private_path'] = '';
 
+// @TODO add logic for detecting if the current environment is a non-production
+// remote environment.
+$config['environment']['env_non_prod_remote'] = FALSE;
+
 /**
  * Load local development override configuration, if available.
  *

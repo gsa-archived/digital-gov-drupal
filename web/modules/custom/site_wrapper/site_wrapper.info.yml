@@ -1,0 +1,5 @@
+name: 'Site Wrapper'
+type: module
+description: 'Provides the global elements for the site wrapper.'
+package: Custom
+core_version_requirement: ^10 || ^11
