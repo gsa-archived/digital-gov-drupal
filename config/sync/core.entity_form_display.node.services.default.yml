@@ -82,12 +82,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  path:
-    type: path
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   promote:
     type: boolean_checkbox
     weight: 5
@@ -137,6 +131,7 @@ content:
     third_party_settings: {  }
 hidden:
   field_slug: true
+  path: true
   publish_on: true
   publish_state: true
   unpublish_on: true

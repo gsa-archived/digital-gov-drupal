@@ -7,12 +7,12 @@ dependencies:
 id: topics_url
 label: 'Topics URL'
 type: 'canonical_entities:node'
-pattern: '/topics/[node:title]'
+pattern: 'topics/[node:title]'
 selection_criteria:
-  f3d40c51-19fd-47b3-b884-373e7085fcfc:
+  f1a0e196-6dee-460c-9c14-ff40ba8113da:
     id: 'entity_bundle:node'
     negate: false
-    uuid: f3d40c51-19fd-47b3-b884-373e7085fcfc
+    uuid: f1a0e196-6dee-460c-9c14-ff40ba8113da
     context_mapping:
       node: node
     bundles:
