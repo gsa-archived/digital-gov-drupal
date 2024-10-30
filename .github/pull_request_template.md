@@ -3,37 +3,29 @@
 ## Jira ticket
 
 <!-- Insert a link to the Jira ticket (e.g DIGITAL-XXX). -->
-<!-- Update the example below with number and past url to ticket in the ()
-     should match the following [DIGITAL-xxx](www.pathtoticket.com)
--->
+<!-- Update the example below with number and past url to ticket in the () -->
+<!-- Should match the following [DIGITAL-xxx](www.pathtoticket.com) -->
 [DIGITAL- ]()
 
 ## Purpose
 
-<!--
-Insert a brief summary of the changes included in this PR and any additional information or context which may help the reviewer.
+<!--Insert a brief summary of the changes included in this PR and any additional information or context which may help the reviewer.
 
 It can be helpful to understand:
 1. What the solution is,
 2. Why this approach was chosen,
 3. How you implemented the change
-4. Possible limitations of this approach and alternate solution paths.
--->
+4. Possible limitations of this approach and alternate solution paths. -->
 
 ## Deployment and testing
 
 ### Local Setup
 
-<!--
-Insert any required steps to take before beginning to test.
-  such as `lando rebuild`, rebuilding frontend or config updates needed to follow the testing steps.
- -->
+<!--Insert any required steps to take before beginning to test. Such as `lando rebuild`, rebuilding frontend or config updates needed to follow the testing steps.-->
 
 ### QA/Testing instructions
 
-<!--
-Insert steps to test and confirm the result meets the "definition of done".
--->
+<!--Insert steps to test and confirm the result meets the "definition of done".-->
 
 ## Checklist for the Developer
 
