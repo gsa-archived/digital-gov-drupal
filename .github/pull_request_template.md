@@ -3,9 +3,9 @@
 ## Jira ticket
 
 <!-- Insert a link to the Jira ticket (e.g DIGITAL-XXX). -->
-<!-- Update the example below with number and past url to ticket in the () -->
+<!-- Update the example below with number and paste url to ticket in the () -->
 <!-- Should match the following [DIGITAL-xxx](www.pathtoticket.com) -->
-[DIGITAL- ]()
+[DIGITAL-]()
 
 ## Purpose
 
@@ -16,6 +16,10 @@ It can be helpful to understand:
 2. Why this approach was chosen,
 3. How you implemented the change
 4. Possible limitations of this approach and alternate solution paths. -->
+
+## Includes the following PRs that must be merged first
+
+<!-- Optional: List any PRs that must be merged before this one can be reviewed. -->
 
 ## Deployment and testing
 
@@ -49,6 +53,6 @@ It can be helpful to understand:
 Before opening this PR, make sure you’ve done whichever of these applies to you:
 - Branch is up-to-date and includes latest from `develop`
 - Target branch is correct
-- You have ran code standards locally before assigning `./robo.sh validate:all`
+- You have ran code standards locally before assigning -`./robo.sh validate:all`
 - PR is clear in both the reason it was opened and how the reviewer can confirm the work is done
 -->
