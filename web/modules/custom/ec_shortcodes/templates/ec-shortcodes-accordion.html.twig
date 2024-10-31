@@ -1,36 +1,18 @@
-
-{#
-{{ kicker | json_encode(constant('JSON_PRETTY_PRINT')) }}
-{{ title | json_encode(constant('JSON_PRETTY_PRINT')) }}
-
-
-{% set heading_id = 'some text'|clean_id %}
-{% set heading_id = 'some text'|clean_id %}
-{% set heading_id = 'some text'|clean_id %}
-
-{{ heading_id }}
-
-{{ random(50, 100) }}
-{{ random(50, 100) }}
-{{ random(1, 9999) }}
- #}
-
-
 <div class="usa-accordion accordion">
-{% set count = random(1, 9999) %}
+	{% set count = random(1, 9999) %}
 
 	<h3 class="usa-accordion__heading">
 		<button class="usa-accordion__button" title="View {{ title }}" aria-expanded="false" aria-controls="accordion-{{ count }}">
 			{% if icon %}
 				<span class="icon">
 					<svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
-            <use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#' ~ icon ) }}"></use>
+						<use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#' ~ icon ) }}"></use>
 					</svg>
 				</span>
 			{% else %}
 				<span class="icon">
 					<svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false" role="img">
-        <use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#unfold_more') }}"></use>
+						<use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#unfold_more') }}"></use>
 					</svg>
 				</span>
 			{% endif %}
@@ -48,7 +30,12 @@
 
 	{% if text %}
 		<div id="accordion-{{ count }}" class="accordion-body usa-accordion__content usa-prose">
-    {{ text }}
+			{% set text = {
+        '#type':   'processed_text',
+        '#text':    text.value,
+        '#format':  text.format,
+      } %}
+			{{ text }}
 		</div>
 	{% endif %}
 

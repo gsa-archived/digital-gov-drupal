@@ -28,7 +28,7 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
       'kicker' => NULL,
       'title' => NULL,
       'icon' => NULL,
-      'body' => NULL,
+      'text' => NULL,
     ];
   }
 
@@ -52,26 +52,27 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
     $form['kicker'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Kicker'),
-      '#default_value' => $this->configuration['text'],
+      '#default_value' => $this->configuration['kicker'],
       '#required' => TRUE,
     ];
     $form['title'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Title'),
-      '#default_value' => $this->configuration['text'],
+      '#default_value' => $this->configuration['title'],
       '#required' => TRUE,
     ];
     $form['icon'] = [
-      '#type' => 'media_library',
+      '#type' => 'textfield',
       '#title' => $this->t('Icon'),
-      '#default_value' => $this->configuration['media_library'],
+      '#default_value' => $this->configuration['icon'],
       '#required' => TRUE,
-      '#media_types' => ['image'],
     ];
     $form['text'] = [
-      '#title' => $this->t('Body'),
       '#type' => 'text_format',
-      '#format'=> 'html',
+      '#title' => $this->t('Body'),
+      // '#description' => print_r($this->configuration['text'],true),
+      '#default_value' => $this->configuration['text']['value'] ?? '',
+      '#format' => 'html',
       '#allowed_formats' => ['html'],
     ];
 
