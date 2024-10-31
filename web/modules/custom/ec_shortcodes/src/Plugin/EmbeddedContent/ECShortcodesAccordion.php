@@ -28,6 +28,7 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
       'kicker' => NULL,
       'title' => NULL,
       'icon' => NULL,
+      'body' => NULL,
     ];
   }
 
@@ -40,6 +41,7 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
       '#kicker' => $this->configuration['kicker'],
       '#title' => $this->configuration['title'],
       '#icon' => $this->configuration['icon'],
+      '#text' => $this->configuration['text'],
     ];
   }
 
@@ -65,6 +67,12 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
       '#default_value' => $this->configuration['media_library'],
       '#required' => TRUE,
       '#media_types' => ['image'],
+    ];
+    $form['text'] = [
+      '#title' => $this->t('Body'),
+      '#type' => 'text_format',
+      '#format'=> 'html',
+      '#allowed_formats' => ['html'],
     ];
 
     return $form;

@@ -21,6 +21,7 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
         'kicker' => NULL,
         'title' => NULL,
         'icon' => NULL,
+        'text' => NULL,
       ],
     ],
     'ec_shortcodes_author_bio' => [
@@ -81,4 +82,11 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
       ],
     ],
   ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ec_shortcodes_preprocess_ec_shortcodes_accordion(&$variables) {
+  $variables['theme_path'] = \Drupal::theme()->getActiveTheme()->getPath();
 }
