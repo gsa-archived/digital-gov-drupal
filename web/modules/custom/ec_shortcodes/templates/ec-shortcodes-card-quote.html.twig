@@ -1,14 +1,29 @@
-{# * takes in text and then citeing the person the quote is rendering - looks to be calling a partial? {{- partial "core/quote-block" (dict "bg" $bg "cite" $cite "text" $text) -}} #}
+{# {{/* quote-block partial to display a block of quoted text with optional citation
 
-<div class="usa-alert usa-alert--info">
-  <div class="usa-alert__body">
-    <h4 class="usa-alert__heading">Informative status</h4>
-    <p class="usa-alert__text">
-      Lorem ipsum dolor sit amet,
-      <a class="usa-link" href="javascript:void(0);">consectetur adipiscing</a>
-      elit, sed do eiusmod.
-    </p>
-  </div>
-</div>
+  @param {string} bg - optional value of "dark" to display a dark background color otherwise will display as gold
+  @param {string} cite - optional string to display a citation
+  @param {string} text - required text for displaying a quote
+
+  @example usage
+  {{< quote-block text="The big idea goes here" cite="Dr. Meredith Larson, Department of Education"
+>}}
+
+*/}}
+{{ $bg := .bg }}
+{{ $cite := .cite }}
+{{ $text := .text }} #}
+
+{# ! bg does not seemed to be used in this short code #}
+{# <div class="quote-block {{ if $bg }}quote-block--{{ $bg }}{{ end }}"> #}
+	<div class="quote-block">
+		<blockquote>
+			<span class="quote-block__quotation-mark">“</span>
+			{{ text }}
+			<span class="quote-block__quotation-mark">”</span>
+			{% if cite %}
+				<cite>—{{ cite }}</cite>
+			{% endif %}
+		</blockquote>
+	</div>
 
 
