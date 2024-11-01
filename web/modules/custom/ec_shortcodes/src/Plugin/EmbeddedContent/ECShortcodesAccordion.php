@@ -70,7 +70,6 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
     $form['text'] = [
       '#type' => 'text_format',
       '#title' => $this->t('Body'),
-      // '#description' => print_r($this->configuration['text'],true),
       '#default_value' => $this->configuration['text']['value'] ?? '',
       '#format' => 'html',
       '#allowed_formats' => ['html'],
