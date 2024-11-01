@@ -1,6 +1,6 @@
 {# * update to take in intro, button text and url #}
 
-<div class="usa-alert usa-alert--info">
+{# <div class="usa-alert usa-alert--info">
   <div class="usa-alert__body">
     <h4 class="usa-alert__heading">Informative status</h4>
     <p class="usa-alert__text">
@@ -9,4 +9,46 @@
       elit, sed do eiusmod.
     </p>
   </div>
+</div> #}
+
+
+
+	<div class="note comment card-prompt">
+	{% if intro %}
+		<div class="intro">
+			<div class="icon">
+				<svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
+        <use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#comment' ) }}"></use>
+				</svg>
+			</div>
+		<p>{{ intro }}</p>
+	</div>
+  {% endif %}
+
+{% if prompt %}
+<div class="prompt">
+	{{ prompt }}
 </div>
+{% endif %}
+
+<a class="usa-button usa-button--outline" href="{{ url }}">
+	{{ text }}
+</a>
+
+
+{# update this to use the btn component #}
+{# {{/* Checks if the button exists */}}
+{{- if (.Get "button-text") -}}
+	{{ partial "core/usa-button.html" (dict "href" (.Get "button-url") "text" (.Get "button-text")) }}
+{{ end }} #}
+
+
+{# this does not seemed to be used at all #}
+{# {{/* Fallback text (I forget what this was for) */}}
+{{- if (.Get "fallback") -}}
+	<p class="fallback">{{- .Get "fallback" | markdownify -}}</p>
+{{- end -}} #}
+
+</div>
+
+

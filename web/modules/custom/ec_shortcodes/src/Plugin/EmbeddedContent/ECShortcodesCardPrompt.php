@@ -26,6 +26,7 @@ class ECShortcodesCardPrompt extends EmbeddedContentPluginBase implements Embedd
   public function defaultConfiguration() {
     return [
       'intro' => NULL,
+      'prompt' => NULL,
       'text' => NULL,
       'url' => NULL,
     ];
@@ -38,6 +39,7 @@ class ECShortcodesCardPrompt extends EmbeddedContentPluginBase implements Embedd
     return [
       '#theme' => 'ec_shortcodes_card_prompt',
       '#intro' => $this->configuration['intro'],
+      '#prompt' => $this->configuration['prompt'],
       '#text' => $this->configuration['text'],
       '#url' => $this->configuration['url'],
     ];
@@ -50,7 +52,13 @@ class ECShortcodesCardPrompt extends EmbeddedContentPluginBase implements Embedd
     $form['intro'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Intro'),
-      '#default_value' => $this->configuration['text'],
+      '#default_value' => $this->configuration['intro'],
+      '#required' => TRUE,
+    ];
+    $form['prompt'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Prompt'),
+      '#default_value' => $this->configuration['prompt'],
       '#required' => TRUE,
     ];
     $form['text'] = [
