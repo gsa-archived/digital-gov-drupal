@@ -28,6 +28,7 @@ class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements Embedd
       'kicker' => NULL,
       'title' => NULL,
       'src' => NULL,
+      'text' => NULL,
     ];
   }
 
@@ -40,6 +41,8 @@ class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements Embedd
       '#kicker' => $this->configuration['kicker'],
       '#title' => $this->configuration['title'],
       '#src' => $this->configuration['src'],
+      '#text' => $this->configuration['text'],
+
     ];
   }
 
@@ -50,13 +53,13 @@ class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements Embedd
     $form['kicker'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Kicker'),
-      '#default_value' => $this->configuration['text'],
+      '#default_value' => $this->configuration['kicker'],
       '#required' => TRUE,
     ];
     $form['title'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Title'),
-      '#default_value' => $this->configuration['text'],
+      '#default_value' => $this->configuration['title'],
       '#required' => TRUE,
     ];
     $form['url'] = [
@@ -64,6 +67,13 @@ class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements Embedd
       '#title' => $this->t('Src'),
       '#default_value' => $this->configuration['url'],
       '#required' => TRUE,
+    ];
+    $form['text'] = [
+      '#type' => 'text_format',
+      '#title' => $this->t('Body'),
+      '#default_value' => $this->configuration['text']['value'] ?? '',
+      '#format' => 'html',
+      '#allowed_formats' => ['html'],
     ];
 
     return $form;
