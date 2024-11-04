@@ -106,3 +106,10 @@ function ec_shortcodes_preprocess_ec_shortcodes_card_policy(&$variables) {
 function ec_shortcodes_preprocess_ec_shortcodes_card_prompt(&$variables) {
   $variables['theme_path'] = \Drupal::theme()->getActiveTheme()->getPath();
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ec_shortcodes_preprocess_ec_shortcodes_note(&$variables) {
+  $variables['theme_path'] = \Drupal::theme()->getActiveTheme()->getPath();
+}

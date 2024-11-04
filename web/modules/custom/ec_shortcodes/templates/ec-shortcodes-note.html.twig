@@ -1,4 +1,4 @@
-{% set noteType = form.type.value %}
+{% set selectedType = type | title %}
 {% set icons = {
   'activity': 'assessment',
   'action': 'campaign',
@@ -9,30 +9,31 @@
   'note': 'notifications',
   'disclaimer': 'info',
 } %}
+{% set icon = icons[selectedType | lower] %}
 
-{% set icon = icons[noteType] %}
-{% set iconPath = 'uswds/img/sprite.svg#' ~ icon %}
 
-<article class="dg-note {{ noteType? 'dg-note--' ~ variant|lower : '' }}">
+<article class="dg-note {{ selectedType ? 'dg-note--' ~ type : '' }}">
 	<h4 class="dg-note__heading">
 		<svg class="dg-note__icon usa-icon dg-icon dg-icon--large" aria-hidden="true" focusable="false">
-			<use xlink:href="{{ $iconPath | relURL }}"></use>
+			<use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#' ~ icon ) }}"></use>
 		</svg>
-		{{ if $variant }}
-			{{ if eq noteType "join" }}
-				Who can join?
-			{{ else }}
-				{{ noteType | title }}
-			{{ end }}
-		{{ else }}
-			Note
-		{{ end }}
+		{% if selectedType == "Join" %}
+			Who can join?
+		{% else %}
+			{{ heading }}
+		{% endif %}
 	</h4>
-	{{ if eq noteType "disclaimer" }}
-      All references to specific brands, products, and/or companies are used only
-      for illustrative purposes and do not imply endorsement by the U.S. federal
-      government or any federal government agency.
-	{{ else }}
+	{% if selectedType == "Disclaimer" %}
+		All references to specific brands, products, and/or companies are used only
+    for illustrative purposes and do not imply endorsement by the U.S. federal
+    government or any federal government agency.
+	{% else %}
+		{% set text = {
+        '#type':   'processed_text',
+        '#text':    text.value,
+        '#format':  text.format,
+      } %}
 		{{ text }}
-	{{ end }}
+
+	{% endif %}
 </article>
