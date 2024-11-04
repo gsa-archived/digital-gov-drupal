@@ -56,7 +56,12 @@
                     class="usa-footer__primary-content usa-footer__primary-content--collapsible"
             >
               <h4 class="usa-footer__primary-link">Connect</h4>
-              {{ drupal_menu('Footer')}}
+              <ul class="usa-list usa-list--unstyled">
+                {% set menu_footer_connect = drupal_menu('Footer') %}
+                {% for item in menu_footer_connect['#items'] %}
+                  <li class="usa-footer__secondary-link"><a href={{item.url}}>{{ item.title }}</a></li>
+                {% endfor %}
+              </ul>
               {# NOT-MIGRATED
               <ul class="usa-list usa-list--unstyled">
                 {{- range .Site.Menus.primary -}}
@@ -73,7 +78,12 @@
                     class="usa-footer__primary-content usa-footer__primary-content--collapsible"
             >
               <h4 class="usa-footer__primary-link">Learn</h4>
-              {{ drupal_menu('footer-learn')}}
+              <ul class="usa-list usa-list--unstyled">
+                {% set menu_footer_learn = drupal_menu('footer-learn') %}
+                {% for item in menu_footer_learn['#items'] %}
+                  <li class="usa-footer__secondary-link"><a href={{item.url}}>{{ item.title }}</a></li>
+                {% endfor %}
+              </ul>
               {# NOT-MIGRATED
               <ul class="usa-list usa-list--unstyled">
                 {{- range .Site.Menus.contribute -}}
@@ -90,7 +100,12 @@
                     class="usa-footer__primary-content usa-footer__primary-content--collapsible"
             >
               <h4 class="usa-footer__primary-link">Grow</h4>
-              {{ drupal_menu('footer-grow')}}
+              <ul class="usa-list usa-list--unstyled">
+                {% set menu_footer_grow = drupal_menu('footer-grow') %}
+                {% for item in menu_footer_grow['#items'] %}
+                  <li class="usa-footer__secondary-link"><a href={{item.url}}>{{ item.title }}</a></li>
+                {% endfor %}
+              </ul>
               {# NOT-MIGRATED
               <ul class="usa-list usa-list--unstyled">
                 {{- range .Site.Menus.about -}}
