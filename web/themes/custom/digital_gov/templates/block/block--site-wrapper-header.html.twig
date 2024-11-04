@@ -69,16 +69,10 @@
       </button>
       {{ "<ul class='usa-nav__primary usa-accordion'>" }}
         {% set menu_main = drupal_menu('main') %}
-        {% for key, item in menu_main %}
-          {% if key == "#items" %}
-            {% for key, value in item %}
-              <li class="usa-nav__primary-item"><a class="usa-nav__link" href={{value.url}}>{{ value.title }}</a></li>
-            {% endfor %}
-          {% endif %}
+        {% for item in menu_main['#items'] %}
+              <li class="usa-nav__primary-item"><a class="usa-nav__link" href={{item.url}}>{{ item.title }}</a></li>
         {% endfor %}
       {{ "</ul" }}
-
-
 
       [secondary Menu placeholder] (This is just /subscribe and search, maybe not a menu)]
       {# NOT-MIGRATED
