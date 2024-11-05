@@ -7,12 +7,12 @@ dependencies:
 id: news_url
 label: 'News URL'
 type: 'canonical_entities:node'
-pattern: '[current-date:custom:Y\/m\/d]/[node:title]'
+pattern: '[node:created:custom:Y\/m\/d]/[node:title]'
 selection_criteria:
-  ec9c6fdb-0dbe-425a-8f2b-1c08c78f2401:
+  d94e1f75-d25a-443a-b0b4-3afd45699411:
     id: 'entity_bundle:node'
     negate: false
-    uuid: ec9c6fdb-0dbe-425a-8f2b-1c08c78f2401
+    uuid: d94e1f75-d25a-443a-b0b4-3afd45699411
     context_mapping:
       node: node
     bundles:

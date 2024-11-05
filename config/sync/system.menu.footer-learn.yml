@@ -1,8 +1,0 @@
-uuid: 2892f2a8-44a7-4e47-a31d-d8eb3df7afdb
-langcode: en
-status: true
-dependencies: {  }
-id: footer-learn
-label: 'Footer Learn'
-description: 'Footer Learn Links'
-locked: false
