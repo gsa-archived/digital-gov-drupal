@@ -1,47 +1,70 @@
-<table class="usa-table usa-table--borderless">
-  <caption>
-    Borderless table: A borderless table can be useful when you want the
-    information to feel more a part of the text it accompanies and extends.
-  </caption>
-  <thead>
-    <tr>
-      <th scope="col">Document title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Declaration of Independence</th>
-      <td>
-        Statement adopted by the Continental Congress declaring independence
-        from the British Empire.
-      </td>
-      <td>1776</td>
-    </tr>
-    <tr>
-      <th scope="row">Bill of Rights</th>
-      <td>
-        The first ten amendments of the U.S. Constitution guaranteeing rights
-        and freedoms.
-      </td>
-      <td>1791</td>
-    </tr>
-    <tr>
-      <th scope="row">Declaration of Sentiments</th>
-      <td>
-        A document written during the Seneca Falls Convention outlining the
-        rights that American women should be entitled to as citizens.
-      </td>
-      <td>1848</td>
-    </tr>
-    <tr>
-      <th scope="row">Emancipation Proclamation</th>
-      <td>
-        An executive order granting freedom to slaves in designated southern
-        states.
-      </td>
-      <td>1863</td>
-    </tr>
-  </tbody>
+{# {{/* prettier-ignore-start */}}
+{{/*
+  When setting up a **do-dont-table**, you need to make sure you have the correct formatting.
+
+  1. Start with a a **do-dont-table**
+  2. Add a caption to **do-dont-table** that describes the table contents
+  3. Create an opening and closing {{< row >}}
+  4. Nest **do-row** and **dont-row** inside
+  5. Place text, markdown and shortcodes between the {{ do-row }} & {{ dont-row }}
+*/}}
+
+{{/*
+  Example:
+
+  {{< do-dont-table caption="This is a table" >}}
+    {{< row >}}
+      {{< do-row >}} [Multilingual](https://digital.gov/communities/multilingual/)
+      {{< /do-row >}}
+      {{< dont-row >}} Don't follow these bad
+      practices{{< /dont-row >}}
+    {{< /row >}}
+
+    {{< row >}}
+      {{< do-row >}} open &#34;the door&#34; for those who need a hand{{< /do-row >}}
+      {{< dont-row >}} Don't follow these bad practices{{< /dont-row >}}
+    {{< /row >}}
+
+    {{< row >}}
+      {{< do-row >}} read `the directions` before using{{< /do-row >}}
+      {{< dont-row >}}
+        forget {{< highlight >}}to wash your hands{{< /highlight >}} for 20 seconds
+      {{< /dont-row >}}
+    {{< /row >}}
+  {{< /do-dont-table >}}
+*/}}
+{{/* prettier-ignore-end */}} #}
+
+<table class="usa-table usa-table--borderless dg-do-dont-table usa-table--stacked">
+	<caption>
+		{{ caption }}
+	</caption>
+	<thead class="dg-do-dont-table__header">
+		<tr class="dg-do-dont-table__header-row" scope="row">
+			<th class="dg-do-dont-table__header dg-do-dont-table__header--do" scope="col">
+				<svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
+					<use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#check_circle') }}"></use>
+				</svg>
+				What you should do
+			</th>
+			<th class="dg-do-dont-table__header dg-do-dont-table__header--dont" scope="col">
+				<svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
+					<use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#cancel') }}"></use>
+				</svg>
+				What you shouldn't do
+			</th>
+		</tr>
+	</thead>
+	<tbody class="dg-do-dont-table__body">
+		{% for row in rows %}
+			<tr>
+				<td data-label="Do">
+					{{ row.do }}
+				</td>
+				<td data-label="Don't">
+					{{ row.dont }}
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
 </table>
