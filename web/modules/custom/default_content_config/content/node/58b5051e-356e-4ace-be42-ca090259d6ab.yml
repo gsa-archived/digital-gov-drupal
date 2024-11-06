@@ -31,6 +31,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   field_deck:
     -
       value: 'As agencies carry out their diverse missions, they must also respect and protect personally identifiable information (PII)'

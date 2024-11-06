@@ -28,6 +28,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   field_deck:
     -
       value: 'At the Department of Justice, Access DOJ and the Office of the Pardon Attorney (PARDON) partnered to simplify and streamline the presidential pardon application process. By conducting usability testing and gathering feedback, they identified key issues wi'

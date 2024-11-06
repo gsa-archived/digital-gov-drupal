@@ -26,6 +26,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   field_dg_highlight:
     -
       value: false
