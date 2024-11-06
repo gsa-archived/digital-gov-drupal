@@ -1,0 +1,44 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: a45f5a48-6b2b-4273-8aae-b57c128c7de7
+  default_langcode: en
+default:
+  preferred_langcode:
+    -
+      value: en
+  preferred_admin_langcode:
+    -
+      value: en
+  name:
+    -
+      value: contentadmin@example.com
+  pass:
+    -
+      value: $2y$10$Vwm3Ait4P24yhhssBHuUa.pX1Tx4t1SUrleMfYo5AeE3IvN/exRDC
+      existing: ''
+      pre_hashed: true
+  mail:
+    -
+      value: contentadmin@example.com
+  timezone:
+    -
+      value: America/New_York
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1730820530
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0
+  init:
+    -
+      value: contentadmin@example.com
+  roles:
+    -
+      target_id: content_admin

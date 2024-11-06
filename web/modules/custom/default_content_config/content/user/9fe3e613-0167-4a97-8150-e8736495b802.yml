@@ -1,0 +1,38 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: 9fe3e613-0167-4a97-8150-e8736495b802
+  default_langcode: en
+default:
+  preferred_langcode:
+    -
+      value: en
+  name:
+    -
+      value: admin@example.com
+  pass:
+    -
+      value: $2y$10$dzLJotPuWzNxlNXF6ajKg.CTDTjASRP0r9GnALz7BE8X4kol3hgb2
+      existing: ''
+      pre_hashed: true
+  mail:
+    -
+      value: admin@example.com
+  timezone:
+    -
+      value: America/New_York
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1730818656
+  access:
+    -
+      value: 1730905460
+  login:
+    -
+      value: 1730818704
+  init:
+    -
+      value: admin@example.com
