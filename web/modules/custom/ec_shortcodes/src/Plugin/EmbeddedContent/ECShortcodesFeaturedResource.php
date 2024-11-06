@@ -25,10 +25,11 @@ class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase implements 
    */
   public function defaultConfiguration() {
     return [
-      'kicker' => NULL,
-      'url' => NULL,
-      'text' => NULL,
-      'summary' => NULL,
+      // 'kicker' => NULL,
+      // 'url' => NULL,
+      // 'text' => NULL,
+      // 'summary' => NULL,
+      'content_reference' => NULL,
     ];
   }
 
@@ -38,10 +39,12 @@ class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase implements 
   public function build(): array {
     return [
       '#theme' => 'ec_shortcodes_featured_resource',
-      '#kicker' => $this->configuration['kicker'],
-      '#url' => $this->configuration['url'],
-      '#title' => $this->configuration['text'],
-      '#summary' => $this->configuration['summary'],
+      // '#kicker' => $this->configuration['kicker'],
+      // '#url' => $this->configuration['url'],
+      // '#title' => $this->configuration['text'],
+      // '#summary' => $this->configuration['summary'],
+      '#content_reference' => $this->configuration['content_reference'],
+
     ];
   }
 
@@ -49,29 +52,42 @@ class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase implements 
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form['kicker'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Kicker'),
-      '#default_value' => $this->configuration['text'],
+    // $form['kicker'] = [
+    //   '#type' => 'textfield',
+    //   '#title' => $this->t('Kicker'),
+    //   '#default_value' => $this->configuration['text'],
+    //   '#required' => TRUE,
+    // ];
+    // $form['url'] = [
+    //   '#type' => 'url',
+    //   '#title' => $this->t('Url'),
+    //   '#default_value' => $this->configuration['url'],
+    //   '#required' => TRUE,
+    // ];
+    // $form['title'] = [
+    //   '#type' => 'textfield',
+    //   '#title' => $this->t('Text'),
+    //   '#default_value' => $this->configuration['text'],
+    //   '#required' => TRUE,
+    // ];
+    // $form['summary'] = [
+    //   '#type' => 'textfield',
+    //   '#title' => $this->t('Summary'),
+    //   '#default_value' => $this->configuration['text'],
+    //   '#required' => TRUE,
+    // ];
+$form['content_reference'] = [
+      '#type' => 'entity_autocomplete',
+      '#title' => $this->t('Content Reference'),
+      '#target_type' => 'node',
+      '#process_default_value' => FALSE,
+      '#value_callback' => 'entity_autocomplete_value_callback',
+      '#default_value' => $this->configuration['content_reference'],
+      '#selection_handler' => 'default',
       '#required' => TRUE,
-    ];
-    $form['url'] = [
-      '#type' => 'url',
-      '#title' => $this->t('Url'),
-      '#default_value' => $this->configuration['url'],
-      '#required' => TRUE,
-    ];
-    $form['title'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Text'),
-      '#default_value' => $this->configuration['text'],
-      '#required' => TRUE,
-    ];
-    $form['summary'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Summary'),
-      '#default_value' => $this->configuration['text'],
-      '#required' => TRUE,
+      '#selection_settings' => [
+        'target_bundles' => ['authors', 'basic_page', 'community', 'event', 'gide', 'news','resources','services', 'topics'],
+      ],
     ];
     return $form;
   }

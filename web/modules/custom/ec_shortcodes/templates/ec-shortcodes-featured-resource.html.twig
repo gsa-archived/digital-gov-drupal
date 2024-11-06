@@ -1,100 +1,27 @@
-{#
-{{/*
+{% set nodeType = content_reference | title %}
 
-  Featured Resource Component displays an internal or external resource wrapped in a gray rounded box.
-  If the link is internal the hugo page lookup will return the fields to display.
-  If the link is external then yaml data or shortcode fields will be used to populate the display fields.
-  The source data can be from a hugo page, yaml data from a topics page frontmatter, or a shortcode used in markdown.
-
-  @params {object} resource_data - a dictionary object of strings to display a resource composed of the following properties:
-  - link (required) - can be internal hugo path or external http(s) link
-  - title (required) - the title of the resource
-  - summary (required) - the short description for the resource
-  - kicker (optional) - a short label or message at the top of the resource box
-
-  @example link paths allowed:
-  - 18f-accessibility-guide
-  - /18f-accessibility-guide
-  - /resources/18f-accessibility-guide
-  - https://wwww.ai.gov
-  - http://www.usps.com/
-
-  @example shortcode with internal link:
-  {{< featured-resource link="/guides/hcd/discovery-concepts"
->}}
-@example shortcode with external link:
-{{< featured-resource link="https://wwww.ai.gov" >}}
-
-@example display a community in a shortcode:
-{{< featured-resource link="/communities/communicators" kicker="Join the Community" >}}
-
-@example allowed community resource paths: - communicators - multilingual -
-plain-language - social-media - user-experience - web-analytics-and-optimization
-- web-managers-forum */}}
-<!-- prettier-ignore-end -->
-
-{{ $resource := .resource_data }}
-{{ $title := "" }}
-{{ $summary := "" }}
-{{ $image := "" }}
-{{ $kicker := "" }}
-{{ $internalLink := "" }}
-{{ $externalLink := "" }}
-{{ $href := "" }}
-{{ $isExternal := false }}
-
-{{/* Check if page is an external link, otherwise return a hugo page object */}}
-{{ if or (strings.HasPrefix $resource.link "https://") (strings.HasPrefix $resource.link "http://") }}
-  {{ $isExternal = true }}
-  {{ $title = $resource.title }}
-  {{ $summary = $resource.summary }}
-  {{ $kicker = $resource.kicker }}
-  {{ $externalLink = $resource.link }}
-{{ else }}
-  {{ $page := .Site.GetPage $resource.link }}
-  {{ $title = $page.Title }}
-  {{ $summary = $page.Params.summary }}
-  {{ $image = $page.Params.image }}
-  {{ $internalLink = $page.Permalink }}
-
-  {{/* Check if kicker is present as a custom key, otherwise use page parameter to set */}}
-  {{ if $resource.kicker }}
-    {{ $kicker = $resource.kicker }}
-  {{ else }}
-    {{ if $page.Params.kicker }}
-      {{ $kicker = $page.Params.kicker }}
-    {{ end }}
-  {{ end }}
-{{ end }}
-
-{{ if $isExternal }}
-  {{ $href = $externalLink }}
-{{ else }}
-  {{ $href = ($internalLink | relURL) }}
-{{ end }} #}
 
 
 <div class="dg-featured-resource">
 <a href="{{ url }}" class="dg-featured-resource__body">
 	<div class="dg-featured-resource__text">
 		<p class="dg-featured-resource__kicker">
-			{% if kicker %}
-				{{ kicker }}
-			{% else %}
 				Featured Resource
-			{% endif %}
 		</p>
 		{% if title %}
 			<h2 class="dg-featured-resource__text-title">
 				{{ title }}
 			</h2>
 		{% endif %}
-		{% if summary %}
 			<p class="dg-featured-resource__text-description">
 				{{ summary }}
 			</p>
-		{% endif %}
 	</div>
 </a>
 </div>
+
+
+{{ content_reference | json_encode(constant('JSON_PRETTY_PRINT')) }}
+
+
 

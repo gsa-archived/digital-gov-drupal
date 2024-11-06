@@ -1,0 +1,102 @@
+<?php
+
+namespace Drupal\ec_shortcodes\Plugin\EmbeddedContent;
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\embedded_content\EmbeddedContentInterface;
+use Drupal\embedded_content\EmbeddedContentPluginBase;
+
+/**
+ * Plugin iframes.
+ *
+ * @EmbeddedContent(
+ *   id = "ec_shortcodes_featured_resource_ext",
+ *   label = @Translation("Featured Resource - External"),
+ *   description = @Translation("Renders a styled button link."),
+ * )
+ */
+class ECShortcodesFeaturedResourceExt extends EmbeddedContentPluginBase implements EmbeddedContentInterface {
+
+  use StringTranslationTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function defaultConfiguration() {
+    return [
+      'kicker' => NULL,
+      'url' => NULL,
+      'text' => NULL,
+      'summary' => NULL,
+      'node' => NULL,
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function build(): array {
+    return [
+      '#theme' => 'ec_shortcodes_featured_resource_ext',
+      '#kicker' => $this->configuration['kicker'],
+      '#url' => $this->configuration['url'],
+      '#title' => $this->configuration['text'],
+      '#summary' => $this->configuration['summary'],
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form['kicker'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Kicker'),
+      '#default_value' => $this->configuration['text'],
+      '#required' => TRUE,
+    ];
+    $form['url'] = [
+      '#type' => 'url',
+      '#title' => $this->t('Url'),
+      '#default_value' => $this->configuration['url'],
+      '#required' => TRUE,
+    ];
+    $form['title'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Text'),
+      '#default_value' => $this->configuration['text'],
+      '#required' => TRUE,
+    ];
+    $form['summary'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Summary'),
+      '#default_value' => $this->configuration['text'],
+      '#required' => TRUE,
+    ];
+//         $form['node'] = [
+//         '#type' => 'entity_autocomplete',
+//         '#title' => $this->t('Content Reference'),
+//         '#target_type' => 'node',
+//         '#tags' => TRUE,
+//         '#default_value' => $node,
+//         '#selection_handler' => 'default',
+//         '#selection_settings' => [
+//           'target_bundles' => ['authors', 'basic_page', 'community', 'event', 'gide', 'news', 'resources', 'services', 'topics'],
+//           ],
+//         '#autocreate' => [
+//           'bundle' => 'article',
+//           // 'uid' => <a valid user ID>,
+//   ],
+// ];
+    return $form;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function isInline(): bool {
+    return FALSE;
+  }
+
+}
