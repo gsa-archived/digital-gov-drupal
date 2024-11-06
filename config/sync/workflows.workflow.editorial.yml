@@ -89,6 +89,16 @@ type_settings:
         - draft
       to: ready_to_review
       weight: 1
+    override_publish:
+      label: 'Override Publish'
+      from:
+        - archived
+        - draft
+        - published
+        - ready_to_archive
+        - ready_to_review
+      to: published
+      weight: 18
     publishing_failed:
       label: 'Publishing failed'
       from:
@@ -155,6 +165,12 @@ type_settings:
         - ready_to_review
       to: ready_to_review
       weight: 8
+    unarchive:
+      label: Unarchive
+      from:
+        - archived
+      to: draft
+      weight: 19
     unpublish:
       label: Unpublish
       from:
