@@ -1,20 +1,3 @@
-{# {{/* quote-block partial to display a block of quoted text with optional citation
-
-  @param {string} bg - optional value of "dark" to display a dark background color otherwise will display as gold
-  @param {string} cite - optional string to display a citation
-  @param {string} text - required text for displaying a quote
-
-  @example usage
-  {{< quote-block text="The big idea goes here" cite="Dr. Meredith Larson, Department of Education"
->}}
-
-*/}}
-{{ $bg := .bg }}
-{{ $cite := .cite }}
-{{ $text := .text }} #}
-
-{# ! bg does not seemed to be used in this short code #}
-{# <div class="quote-block {{ if $bg }}quote-block--{{ $bg }}{{ end }}"> #}
 	<div class="quote-block">
 		<blockquote>
 			<span class="quote-block__quotation-mark">“</span>
@@ -25,5 +8,3 @@
 			{% endif %}
 		</blockquote>
 	</div>
-
-

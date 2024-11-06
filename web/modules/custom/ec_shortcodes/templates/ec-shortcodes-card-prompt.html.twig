@@ -19,13 +19,4 @@
 <a class="usa-button usa-button--outline" href="{{ url }}">
 	{{ text }}
 </a>
-
-{# this does not seemed to be used at all #}
-{# {{/* Fallback text (I forget what this was for) */}}
-{{- if (.Get "fallback") -}}
-	<p class="fallback">{{- .Get "fallback" | markdownify -}}</p>
-{{- end -}} #}
-
 </div>
-
-
