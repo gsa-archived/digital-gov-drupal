@@ -24,12 +24,6 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
         'text' => NULL,
       ],
     ],
-    'ec_shortcodes_author_bio' => [
-      'variables' => [
-        'name' => NULL,
-        'bio' => NULL,
-      ],
-    ],
     'ec_shortcodes_card_policy' => [
       'variables' => [
         'kicker' => NULL,
@@ -69,6 +63,11 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
         'url' => NULL,
         'title' => NULL,
         'summary' => NULL,
+      ],
+    ],
+  'ec_shortcodes_featured_resource_ext' => [
+      'variables' => [
+        'node' => NULL,
       ],
     ],
     'ec_shortcodes_note' => [
