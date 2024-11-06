@@ -78,6 +78,17 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
         'text' => NULL,
       ],
     ],
+
+    'ec_shortcodes_note_join' => [
+      'variables' => [
+        'text' => NULL,
+      ],
+    ],
+    'ec_shortcodes_note_disclaimer' => [
+      'variables' => [
+        'heading' => NULL,
+      ],
+    ],
   ];
 }
 
@@ -86,7 +97,7 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
  */
 function ec_shortcodes_preprocess(&$variables, $hook) {
   if (in_array($hook, ['ec_shortcodes_accordion', 'ec_shortcodes_card_policy', 'ec_shortcodes_card_prompt',
-    'ec_shortcodes_note', 'ec_shortcodes_do_dont_table',
+    'ec_shortcodes_note', 'ec_shortcodes_do_dont_table', 'ec_shortcodes_note_join', 'ec_shortcodes_note_disclaimer',
   ])) {
     $variables['theme_path'] = \Drupal::theme()->getActiveTheme()->getPath();
   }

@@ -1,0 +1,15 @@
+<article class="dg-note dg-note--join">
+	<h4 class="dg-note__heading">
+		<svg class="dg-note__icon usa-icon dg-icon dg-icon--large" aria-hidden="true" focusable="false">
+			<use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#groups' ) }}"></use>
+		</svg>
+			Who can join?
+	</h4>
+		{% set text = {
+        '#type':   'processed_text',
+        '#text':    text.value,
+        '#format':  text.format,
+      } %}
+		{{ text }}
+</article>
+
