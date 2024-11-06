@@ -6,16 +6,11 @@ dependencies:
     - filter.format.html
     - filter.format.multiline_inline_html
     - filter.format.single_inline_html
-    - node.type.article
-    - node.type.test
   module:
     - admin_toolbar_search
-    - comment
     - content_moderation
-    - field_permissions
     - filter
     - media
-    - node
     - system
     - toolbar
 _core:
@@ -25,29 +20,13 @@ label: 'Authenticated user'
 weight: 1
 is_admin: false
 permissions:
+  - 'access administration pages'
   - 'access content'
-  - 'access content overview'
   - 'access toolbar'
-  - 'create test content'
-  - 'delete any test content'
-  - 'delete own test content'
-  - 'delete test revisions'
-  - 'edit any article content'
-  - 'edit any test content'
-  - 'edit own comments'
-  - 'edit own test content'
-  - 'revert test revisions'
   - 'use admin toolbar search'
   - 'use text format html'
   - 'use text format multiline_inline_html'
   - 'use text format single_inline_html'
-  - 'view all revisions'
-  - 'view any unpublished content'
-  - 'view article revisions'
-  - 'view field_content_manager_approved'
-  - 'view field_google_doc'
-  - 'view field_sme_approved'
   - 'view latest version'
   - 'view media'
-  - 'view test revisions'
   - 'view the administration theme'

@@ -1,4 +1,4 @@
-uuid: 2516e009-903e-4cbb-941c-a6f0e74dc07c
+uuid: e78235d0-cc98-491e-a77f-a9fc08b4318c
 langcode: en
 status: true
 dependencies:
@@ -24,10 +24,9 @@ dependencies:
     - node
     - override_node_options
     - paragraphs_type_permissions
-    - scheduler
-id: publisher
-label: Publisher
-weight: 2
+id: editor
+label: Editor
+weight: 4
 is_admin: null
 permissions:
   - 'access content overview'
@@ -35,7 +34,6 @@ permissions:
   - 'access media overview'
   - 'bypass paragraphs type content access'
   - 'create media'
-  - 'delete any media'
   - 'edit any authors content'
   - 'edit any basic_page content'
   - 'edit any community content'
@@ -50,21 +48,12 @@ permissions:
   - 'edit any topics content'
   - 'override all authored by option'
   - 'override all authored on option'
-  - 'schedule publishing of nodes'
   - 'update any media'
   - 'use default embedded content button'
-  - 'use editorial transition cancel_draft'
-  - 'use editorial transition cancel_publishing'
-  - 'use editorial transition cancel_review'
-  - 'use editorial transition content_still_needed_in_draft'
-  - 'use editorial transition content_still_needed_in_review'
-  - 'use editorial transition publishing_failed'
-  - 'use editorial transition publishing_passed'
-  - 'use editorial transition recommended_archived_content_archived'
-  - 'use editorial transition start_draft_process_again'
-  - 'use editorial transition stay_in_publishing'
-  - 'use editorial transition unpublish'
+  - 'use editorial transition recommend_cancel_review'
+  - 'use editorial transition review_failed'
+  - 'use editorial transition review_passed'
+  - 'use editorial transition stay_in_review'
   - 'view all media revisions'
   - 'view all revisions'
   - 'view any unpublished content'
-  - 'view scheduled content'

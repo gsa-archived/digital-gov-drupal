@@ -40,7 +40,7 @@ if (isset($lando_info->database)) {
       throw new \Exception('The Database type "' . $lando_info->database->type . "' is not automatically able to be configured.");
   }
 }
-
+/*
 if (isset($lando_info->cache->type)) {
   switch ($lando_info->cache->type) {
     case 'redis':
@@ -66,7 +66,7 @@ if (isset($lando_info->cache->type)) {
       throw new \Exception('The Cache type "' . $lando_info->cache->type . "' is not automatically able to be configured.");
 
   }
-}
+}*/
 
 if (isset($lando_info->search->type)) {
   switch ($lando_info->search->type) {

@@ -1,4 +1,4 @@
-uuid: 2516e009-903e-4cbb-941c-a6f0e74dc07c
+uuid: 5e903fec-dafa-49d4-b72d-1bbd59d0a289
 langcode: en
 status: true
 dependencies:
@@ -25,16 +25,28 @@ dependencies:
     - override_node_options
     - paragraphs_type_permissions
     - scheduler
-id: publisher
-label: Publisher
-weight: 2
+id: content_admin
+label: 'Content Admin'
+weight: 5
 is_admin: null
 permissions:
   - 'access content overview'
   - 'access files overview'
   - 'access media overview'
   - 'bypass paragraphs type content access'
+  - 'create authors content'
+  - 'create basic_page content'
+  - 'create community content'
+  - 'create event content'
+  - 'create guides content'
+  - 'create landing_page content'
   - 'create media'
+  - 'create news content'
+  - 'create resources content'
+  - 'create services content'
+  - 'create short_post content'
+  - 'create source content'
+  - 'create topics content'
   - 'delete any media'
   - 'edit any authors content'
   - 'edit any basic_page content'
@@ -58,11 +70,16 @@ permissions:
   - 'use editorial transition cancel_review'
   - 'use editorial transition content_still_needed_in_draft'
   - 'use editorial transition content_still_needed_in_review'
+  - 'use editorial transition draft_ready_for_review'
   - 'use editorial transition publishing_failed'
   - 'use editorial transition publishing_passed'
   - 'use editorial transition recommended_archived_content_archived'
+  - 'use editorial transition review_failed'
+  - 'use editorial transition review_passed'
   - 'use editorial transition start_draft_process_again'
+  - 'use editorial transition stay_in_draft'
   - 'use editorial transition stay_in_publishing'
+  - 'use editorial transition stay_in_review'
   - 'use editorial transition unpublish'
   - 'view all media revisions'
   - 'view all revisions'

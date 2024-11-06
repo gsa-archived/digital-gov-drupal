@@ -1,0 +1,69 @@
+uuid: d197febe-0b92-439a-9354-186b40f413b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.authors
+    - node.type.basic_page
+    - node.type.community
+    - node.type.event
+    - node.type.guides
+    - node.type.landing_page
+    - node.type.news
+    - node.type.resources
+    - node.type.services
+    - node.type.short_post
+    - node.type.source
+    - node.type.topics
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - embedded_content
+    - file
+    - media
+    - node
+    - override_node_options
+    - paragraphs_type_permissions
+id: author
+label: Author
+weight: 3
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access files overview'
+  - 'access media overview'
+  - 'bypass paragraphs type content access'
+  - 'create authors content'
+  - 'create basic_page content'
+  - 'create community content'
+  - 'create event content'
+  - 'create guides content'
+  - 'create landing_page content'
+  - 'create media'
+  - 'create news content'
+  - 'create resources content'
+  - 'create services content'
+  - 'create short_post content'
+  - 'create source content'
+  - 'create topics content'
+  - 'edit own authors content'
+  - 'edit own basic_page content'
+  - 'edit own community content'
+  - 'edit own event content'
+  - 'edit own guides content'
+  - 'edit own landing_page content'
+  - 'edit own news content'
+  - 'edit own resources content'
+  - 'edit own services content'
+  - 'edit own short_post content'
+  - 'edit own source content'
+  - 'edit own topics content'
+  - 'override all authored on option'
+  - 'update media'
+  - 'use default embedded content button'
+  - 'use editorial transition draft_ready_for_review'
+  - 'use editorial transition recommend_cancel_draft'
+  - 'use editorial transition start_draft_process_again'
+  - 'use editorial transition stay_in_draft'
+  - 'view all revisions'
+  - 'view own unpublished content'

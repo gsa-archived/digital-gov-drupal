@@ -1,0 +1,14 @@
+uuid: 9c3e8cbd-6bff-41f1-acd2-93bb4a4d14f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.data_analyst
+  module:
+    - user
+id: user_remove_role_action.data_analyst
+label: 'Remove the Data Analyst role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: data_analyst
