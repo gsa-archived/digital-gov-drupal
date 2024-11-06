@@ -65,5 +65,6 @@ permissions:
   - 'use editorial transition recommend_cancel_draft'
   - 'use editorial transition start_draft_process_again'
   - 'use editorial transition stay_in_draft'
+  - 'use editorial transition unarchive'
   - 'view all revisions'
   - 'view own unpublished content'

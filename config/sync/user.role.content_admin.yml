@@ -71,6 +71,7 @@ permissions:
   - 'use editorial transition content_still_needed_in_draft'
   - 'use editorial transition content_still_needed_in_review'
   - 'use editorial transition draft_ready_for_review'
+  - 'use editorial transition override_publish'
   - 'use editorial transition publishing_failed'
   - 'use editorial transition publishing_passed'
   - 'use editorial transition recommended_archived_content_archived'

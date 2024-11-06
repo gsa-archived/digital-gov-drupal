@@ -63,6 +63,7 @@ permissions:
   - 'use editorial transition recommended_archived_content_archived'
   - 'use editorial transition start_draft_process_again'
   - 'use editorial transition stay_in_publishing'
+  - 'use editorial transition unarchive'
   - 'use editorial transition unpublish'
   - 'view all media revisions'
   - 'view all revisions'
