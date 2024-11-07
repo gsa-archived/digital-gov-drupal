@@ -27,9 +27,8 @@ class ECShortcodesFeaturedResourceExt extends EmbeddedContentPluginBase implemen
     return [
       'kicker' => NULL,
       'url' => NULL,
-      'text' => NULL,
+      'title' => NULL,
       'summary' => NULL,
-      'node' => NULL,
     ];
   }
 
@@ -74,21 +73,6 @@ class ECShortcodesFeaturedResourceExt extends EmbeddedContentPluginBase implemen
       '#default_value' => $this->configuration['text'],
       '#required' => TRUE,
     ];
-//         $form['node'] = [
-//         '#type' => 'entity_autocomplete',
-//         '#title' => $this->t('Content Reference'),
-//         '#target_type' => 'node',
-//         '#tags' => TRUE,
-//         '#default_value' => $node,
-//         '#selection_handler' => 'default',
-//         '#selection_settings' => [
-//           'target_bundles' => ['authors', 'basic_page', 'community', 'event', 'gide', 'news', 'resources', 'services', 'topics'],
-//           ],
-//         '#autocreate' => [
-//           'bundle' => 'article',
-//           // 'uid' => <a valid user ID>,
-//   ],
-// ];
     return $form;
   }
 

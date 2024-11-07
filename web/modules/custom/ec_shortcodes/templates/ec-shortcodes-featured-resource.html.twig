@@ -1,12 +1,10 @@
-{% set nodeType = content_reference | title %}
-
-
+{% set nodeType = content_reference.label | title %}
 
 <div class="dg-featured-resource">
 <a href="{{ url }}" class="dg-featured-resource__body">
 	<div class="dg-featured-resource__text">
 		<p class="dg-featured-resource__kicker">
-				Featured Resource
+				{{ 'Featured Resource'|t }}
 		</p>
 		{% if title %}
 			<h2 class="dg-featured-resource__text-title">
@@ -21,7 +19,7 @@
 </div>
 
 
-{{ content_reference | json_encode(constant('JSON_PRETTY_PRINT')) }}
+{{ node | json_encode(constant('JSON_PRETTY_PRINT')) }}
 
 
 

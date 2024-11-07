@@ -17,23 +17,12 @@
 		<svg class="dg-note__icon usa-icon dg-icon dg-icon--large" aria-hidden="true" focusable="false">
 			<use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#' ~ icon ) }}"></use>
 		</svg>
-		{% if selectedType == "Join" %}
-			Who can join?
-		{% else %}
 			{{ heading }}
-		{% endif %}
 	</h4>
-	{% if selectedType == "Disclaimer" %}
-		All references to specific brands, products, and/or companies are used only
-    for illustrative purposes and do not imply endorsement by the U.S. federal
-    government or any federal government agency.
-	{% else %}
 		{% set text = {
         '#type':   'processed_text',
         '#text':    text.value,
         '#format':  text.format,
       } %}
 		{{ text }}
-
-	{% endif %}
 </article>
