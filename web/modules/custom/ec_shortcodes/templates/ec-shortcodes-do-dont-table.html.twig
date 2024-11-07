@@ -1,35 +1,41 @@
-<table class="usa-table usa-table--borderless dg-do-dont-table usa-table--stacked">
-	<caption>
-		{{ caption }}
-	</caption>
-	<thead class="dg-do-dont-table__header">
-		<tr class="dg-do-dont-table__header-row" scope="row">
-			<th class="dg-do-dont-table__header dg-do-dont-table__header--do" scope="col">
-				<svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
-					<use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#check_circle') }}"></use>
-				</svg>
-				What you should do
-			</th>
-			<th class="dg-do-dont-table__header dg-do-dont-table__header--dont" scope="col">
-				<svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
-					<use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#cancel') }}"></use>
-				</svg>
-				What you shouldn't do
-			</th>
-		</tr>
-	</thead>
-	<tbody class="dg-do-dont-table__body">
-{% if rows is not empty %}
-		{% for row in rows %}
-			<tr>
-				<td data-label="Do">
-					{{ row.do }}
-				</td>
-				<td data-label="Don't">
-					{{ row.dont }}
-				</td>
-			</tr>
-		{% endfor %}
-  {% endif %}
-	</tbody>
-</table>
+{% if rows %}
+  {% set table_rows %}{% apply spaceless %}
+    {% for row in rows %}
+      {% if row.do is not empty and row.dont is not empty %}
+        <tr>
+          <td data-label="Do">
+            {{ row.do }}
+          </td>
+          <td data-label="Don't">
+            {{ row.dont }}
+          </td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+  {% endapply %}{% endset %}
+{% endif %}
+
+{% if table_rows %}
+  <table class="usa-table usa-table--borderless dg-do-dont-table usa-table--stacked">
+    <caption>{{ caption }}</caption>
+    <thead class="dg-do-dont-table__header">
+      <tr class="dg-do-dont-table__header-row" scope="row">
+        <th class="dg-do-dont-table__header dg-do-dont-table__header--do" scope="col">
+          <svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
+            <use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#check_circle') }}"></use>
+          </svg>
+          {{ 'What you should do'|t }}
+        </th>
+        <th class="dg-do-dont-table__header dg-do-dont-table__header--dont" scope="col">
+          <svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
+            <use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#cancel') }}"></use>
+          </svg>
+          {{ "What you shouldn't do"|t }}
+        </th>
+      </tr>
+    </thead>
+    <tbody class="dg-do-dont-table__body">
+      {{ table_rows }}
+    </tbody>
+  </table>
+{% endif %}
