@@ -25,8 +25,6 @@ class ECShortcodesNoteJoin extends EmbeddedContentPluginBase implements Embedded
    */
   public function defaultConfiguration() {
     return [
-      // 'heading' => NULL,
-      // 'type' => NULL,
       'text' => NULL,
     ];
   }
@@ -37,8 +35,6 @@ class ECShortcodesNoteJoin extends EmbeddedContentPluginBase implements Embedded
   public function build(): array {
     return [
       '#theme' => 'ec_shortcodes_note_join',
-      // '#heading' => $this->configuration['heading'],
-      // '#type' => $this->configuration['type'],
       '#text' => $this->configuration['text'],
     ];
   }
@@ -47,27 +43,6 @@ class ECShortcodesNoteJoin extends EmbeddedContentPluginBase implements Embedded
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    // $form['heading'] = [
-    //   '#type' => 'textfield',
-    //   '#title' => $this->t('Note Heading'),
-    //   '#default_value' => $this->configuration['heading'],
-    // ];
-    // $form['type'] = [
-    //   '#type' => 'select',
-    //   '#title' => $this->t('Note Type'),
-    //   '#options' => [
-    //     'activity' => $this->t('Activity'),
-    //     'action' => $this->t('Action'),
-    //     'alert' => $this->t('Alert'),
-    //     'comment' => $this->t('Comment'),
-    //     'video' => $this->t('Video'),
-    //     'join' => $this->t('Join'),
-    //     'note' => $this->t('Note'),
-    //     'disclaimer' => $this->t('Disclaimer'),
-    //   ],
-    //   '#default_value' => $this->configuration['type'],
-    //   '#required' => TRUE,
-    // ];
     $form['text'] = [
       '#type' => 'text_format',
       '#title' => $this->t('Note Text'),

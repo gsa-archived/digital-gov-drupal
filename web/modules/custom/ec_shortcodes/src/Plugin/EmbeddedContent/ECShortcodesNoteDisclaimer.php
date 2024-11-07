@@ -52,30 +52,6 @@ class ECShortcodesNoteDisclaimer extends EmbeddedContentPluginBase implements Em
       '#title' => $this->t('Note Heading'),
       '#default_value' => $this->configuration['heading'],
     ];
-    // $form['type'] = [
-    //   '#type' => 'select',
-    //   '#title' => $this->t('Note Type'),
-    //   '#options' => [
-    //     'activity' => $this->t('Activity'),
-    //     'action' => $this->t('Action'),
-    //     'alert' => $this->t('Alert'),
-    //     'comment' => $this->t('Comment'),
-    //     'video' => $this->t('Video'),
-    //     'join' => $this->t('Join'),
-    //     'note' => $this->t('Note'),
-    //     'disclaimer' => $this->t('Disclaimer'),
-    //   ],
-    //   '#default_value' => $this->configuration['type'],
-    //   '#required' => TRUE,
-    // ];
-    // $form['text'] = [
-    //   '#type' => 'text_format',
-    //   '#title' => $this->t('Note Text'),
-    //   '#format' => $this->configuration['text']['format'] ?? 'html',
-    //   '#allowed_formats' => ['html'],
-    //   '#default_value' => $this->configuration['text']['value'] ?? '',
-    //   '#required' => TRUE,
-    // ];
     return $form;
   }
 

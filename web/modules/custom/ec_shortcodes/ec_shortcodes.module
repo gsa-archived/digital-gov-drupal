@@ -65,7 +65,7 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
         'summary' => NULL,
       ],
     ],
-  'ec_shortcodes_featured_resource' => [
+    'ec_shortcodes_featured_resource' => [
       'variables' => [
         'content_reference' => NULL,
       ],

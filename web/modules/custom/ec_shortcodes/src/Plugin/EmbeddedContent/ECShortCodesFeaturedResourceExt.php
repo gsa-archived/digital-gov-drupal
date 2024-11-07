@@ -16,7 +16,7 @@ use Drupal\embedded_content\EmbeddedContentPluginBase;
  *   description = @Translation("Renders a styled button link."),
  * )
  */
-class ECShortcodesFeaturedResourceExt extends EmbeddedContentPluginBase implements EmbeddedContentInterface {
+class ECShortCodesFeaturedResourceExt extends EmbeddedContentPluginBase implements EmbeddedContentInterface {
 
   use StringTranslationTrait;
 
