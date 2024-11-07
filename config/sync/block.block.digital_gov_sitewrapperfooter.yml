@@ -1,0 +1,20 @@
+uuid: 56ad64e2-df62-4018-8e39-705125aeb1aa
+langcode: en
+status: true
+dependencies:
+  module:
+    - site_wrapper
+  theme:
+    - digital_gov
+id: digital_gov_sitewrapperfooter
+theme: digital_gov
+region: footer
+weight: -5
+provider: null
+plugin: site_wrapper_footer
+settings:
+  id: site_wrapper_footer
+  label: 'Site Wrapper: Footer'
+  label_display: '0'
+  provider: site_wrapper
+visibility: {  }

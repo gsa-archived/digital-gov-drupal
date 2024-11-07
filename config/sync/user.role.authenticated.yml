@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - filter.format.html
+    - filter.format.multiline_inline_html
+    - filter.format.single_inline_html
     - node.type.article
     - node.type.test
   module:
@@ -37,6 +39,8 @@ permissions:
   - 'revert test revisions'
   - 'use admin toolbar search'
   - 'use text format html'
+  - 'use text format multiline_inline_html'
+  - 'use text format single_inline_html'
   - 'view all revisions'
   - 'view any unpublished content'
   - 'view article revisions'

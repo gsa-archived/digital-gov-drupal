@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Functions to support theming in the Digital.gov theme.
+ */
+
 declare(strict_types=1);
 
 /**
@@ -26,4 +31,37 @@ function digital_gov_preprocess_page(array &$variables): void {
  */
 function digital_gov_preprocess_node(array &$variables): void {
 
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function digital_gov_preprocess_block__site_wrapper_header(&$variables) {
+  $variables['theme_path'] = \Drupal::theme()->getActiveTheme()->getPath();
+  $variables['logo_url'] = theme_get_setting('logo.url');
+  $site_config = \Drupal::config('system.site');
+  $variables['site_name'] = $site_config->get('name');
+  $variables['site_slogan'] = $site_config->get('slogan');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function digital_gov_preprocess_block__site_wrapper_usa_banner(&$variables) {
+  $variables['theme_path'] = \Drupal::theme()->getActiveTheme()->getPath();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function digital_gov_preprocess_block__site_wrapper_notice_bar(&$variables) {
+  $site_config = \Drupal::config('environment');
+  $variables['env_non_prod_remote'] = $site_config->get('env_non_prod_remote');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function digital_gov_preprocess_block__site_wrapper_footer(&$variables) {
+  $variables['theme_path'] = \Drupal::theme()->getActiveTheme()->getPath();
 }

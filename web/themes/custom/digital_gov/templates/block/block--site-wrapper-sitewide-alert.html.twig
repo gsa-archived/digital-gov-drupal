@@ -1,0 +1,78 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - in_preview: Whether the plugin is being rendered in preview mode.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+ #}
+[Placeholder: Site Wide Alert. The modules out there don't have the fields we need. Use config_pages to drive this data.]
+{# NOT-MIGRATED
+{{ range .Site.Data.sitewide_alert }}
+  {{ $is_emergency := .is_emergency }}
+  {{ $has_icon := .has_icon }}
+  {{ $is_slim := .is_slim }}
+  {{ $header := .header }}
+
+  {{ $variant := "usa-site-alert--info" }}
+  {{ if $is_emergency }}
+    {{ $variant = "usa-site-alert--emergency" }}
+  {{ end }}
+
+  {{ if (eq .display_alert true ) }}
+<section
+    class="dg-site-alert usa-site-alert {{ $variant }}
+      {{ if not $has_icon }}usa-site-alert--no-icon{{ end }}
+      {{ if $is_slim }}usa-site-alert--slim{{ end }}"
+    aria-label="Site alert"
+>
+  <div class="usa-alert">
+    <div class="usa-alert__body">
+      {{ if $header }}
+      <h3 class="usa-alert__heading">{{- $header -}}</h3>
+      {{ end }}
+      {{ if eq (len .alerts) 1 }}
+      <p class="usa-alert__text">
+        {{ index (.alerts) 0 | markdownify }}
+      </p>
+      {{ else }}
+      <ul class="usa-list">
+        {{ range .alerts }}
+        <li>{{ . | markdownify }}</li>
+        {{ end }}
+      </ul>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+
+<script type="text/javascript">
+  {{/*  Add the usa-link classes to for consistent link styles  */}}
+  const links = document.querySelectorAll(".dg-site-alert a");
+  links.forEach((link) => link.classList.add("usa-link"));
+</script>
+#}

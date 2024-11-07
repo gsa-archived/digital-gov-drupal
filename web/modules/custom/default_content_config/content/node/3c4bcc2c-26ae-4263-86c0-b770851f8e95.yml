@@ -1,0 +1,44 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 3c4bcc2c-26ae-4263-86c0-b770851f8e95
+  bundle: short_post
+  default_langcode: en
+  depends:
+    3ab69aca-ed46-4591-86fc-b52d71f75a88: node
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Usability Testing with Steve Krug'
+  created:
+    -
+      value: 1730151562
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  field_deck:
+    -
+      value: 'Get started making usability fixes to your website or product.'
+      format: html
+  field_short_post_type:
+    -
+      value: resource
+  field_source:
+    -
+      entity: 3ab69aca-ed46-4591-86fc-b52d71f75a88
+  field_summary:
+    -
+      value: 'Get started making usability fixes to your website or product.'
+      format: html

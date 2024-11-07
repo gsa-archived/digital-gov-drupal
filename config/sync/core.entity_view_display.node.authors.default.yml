@@ -7,9 +7,7 @@ dependencies:
     - field.field.node.authors.field_agency_acronym
     - field.field.node.authors.field_agency_full_name
     - field.field.node.authors.field_bio
-    - field.field.node.authors.field_bio_image
     - field.field.node.authors.field_bio_url
-    - field.field.node.authors.field_display_name
     - field.field.node.authors.field_email
     - field.field.node.authors.field_facebook
     - field.field.node.authors.field_first_name
@@ -63,15 +61,6 @@ content:
     third_party_settings: {  }
     weight: 110
     region: content
-  field_bio_image:
-    type: entity_reference_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 112
-    region: content
   field_bio_url:
     type: link
     label: above
@@ -83,13 +72,6 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 111
-    region: content
-  field_display_name:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 102
     region: content
   field_email:
     type: basic_string

@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - in_preview: Whether the plugin is being rendered in preview mode.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+ #}
+{# GovDelivery Newsletter Form #}
+<section
+        id="newsletter-signup"
+        aria-label="{{ 'Subscribe to the Digital.gov newsletter'|t }}"
+>
+  <div class="grid-container grid-container-desktop">
+    <div class="grid-row tablet-lg:grid-gap-6">
+      <div class="grid-col-12 tablet:grid-col-7">
+        <section class="usa-sign-up">
+          <p class="blurb" id="newsletter-subscribe-description">
+            {{ '<strong>Join 18,000 others in government</strong> and subscribe to
+            our newsletter — a round-up of the best digital news in government
+            and across our field.'|t }}
+          </p>
+        </section>
+      </div>
+      <div class="grid-col-12 tablet:grid-col-5">
+        <section
+                class="usa-sign-up"
+                aria-describedby="newsletter-subscribe-description"
+        >
+          <script
+                  src="https://public.govdelivery.com/assets/Signup.js"
+                  data-account-code="USGSA"
+                  data-signup-id="34948"
+          ></script>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

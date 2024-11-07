@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 3ab69aca-ed46-4591-86fc-b52d71f75a88
+  bundle: source
+  default_langcode: en
+  depends:
+    8b279abf-0fff-4a2d-8e9d-0fd3e7d6879d: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: digitalgov
+  created:
+    -
+      value: 1730151657
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  field_logo:
+    -
+      entity: 8b279abf-0fff-4a2d-8e9d-0fd3e7d6879d

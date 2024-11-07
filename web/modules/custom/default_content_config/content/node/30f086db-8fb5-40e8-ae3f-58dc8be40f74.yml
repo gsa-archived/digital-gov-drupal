@@ -1,0 +1,40 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 30f086db-8fb5-40e8-ae3f-58dc8be40f74
+  bundle: short_post
+  default_langcode: en
+  depends:
+    6931b9cf-d5cf-483b-be10-7db1f533480b: node
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: FedRAMP
+  created:
+    -
+      value: 1730152899
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  field_short_post_type:
+    -
+      value: news
+  field_source:
+    -
+      entity: 6931b9cf-d5cf-483b-be10-7db1f533480b
+  field_summary:
+    -
+      value: 'The Federal Risk and Authorization Management (FedRAMP) is a process that authorizes cloud products and services.'
+      format: html

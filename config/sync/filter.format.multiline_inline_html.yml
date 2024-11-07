@@ -1,0 +1,32 @@
+uuid: 07c40a8c-c511-4b33-ab01-bb050c3c16c6
+langcode: en
+status: true
+dependencies:
+  module:
+    - linkit
+name: 'Multiline Inline HTML'
+format: multiline_inline_html
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<br> <p> <strong> <em> <a href data-entity-type data-entity-uuid data-entity-substitution>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
+    settings: {  }
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: 0
+    settings:
+      title: true
