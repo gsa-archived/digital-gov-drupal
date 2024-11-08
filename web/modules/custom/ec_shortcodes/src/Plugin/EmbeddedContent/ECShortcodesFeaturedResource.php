@@ -3,13 +3,13 @@
 namespace Drupal\ec_shortcodes\Plugin\EmbeddedContent;
 
 use Drupal\Core\Entity\Element\EntityAutocomplete;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\embedded_content\EmbeddedContentInterface;
 use Drupal\embedded_content\EmbeddedContentPluginBase;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * Plugin iframes.
@@ -31,7 +31,7 @@ class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase implements 
    */
   protected $entityTypeManager;
 
-/**
+  /**
    * Constructs a ECShortcodesFeaturedResource.
    *
    * @param array $configuration
@@ -41,9 +41,7 @@ class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase implements 
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-
    *   The entity type manager.
-
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
@@ -86,13 +84,13 @@ class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase implements 
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-      $node = null;
-          if (!empty($this->configuration['content_reference'])) {
-              $node = \Drupal::entityTypeManager()->getStorage('node')->load($this->configuration['content_reference']);
-              $node = EntityAutocomplete::getEntityLabels([$node]);
-            }
+    $node = NULL;
+    if (!empty($this->configuration['content_reference'])) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($this->configuration['content_reference']);
+      $node = EntityAutocomplete::getEntityLabels([$node]);
+    }
 
-$form['content_reference'] = [
+    $form['content_reference'] = [
       '#type' => 'entity_autocomplete',
       '#title' => $this->t('Content Reference'),
       '#target_type' => 'node',
@@ -102,7 +100,9 @@ $form['content_reference'] = [
       '#selection_handler' => 'default',
       '#required' => TRUE,
       '#selection_settings' => [
-        'target_bundles' => ['authors', 'basic_page', 'community', 'event', 'gide', 'news','resources','services', 'topics'],
+        'target_bundles' => ['authors', 'basic_page', 'community', 'event', 'gide',
+          'news', 'resources', 'services', 'topics',
+        ],
       ],
     ];
     return $form;
