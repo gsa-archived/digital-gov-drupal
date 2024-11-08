@@ -1,0 +1,14 @@
+uuid: 91a81fb0-0e0d-4ea7-9b85-22f1a5bba139
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.data_analyst
+  module:
+    - user
+id: user_add_role_action.data_analyst
+label: 'Add the Data Analyst role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: data_analyst

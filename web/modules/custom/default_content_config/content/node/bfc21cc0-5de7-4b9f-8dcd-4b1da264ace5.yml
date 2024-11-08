@@ -30,6 +30,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   field_featured_communities:
     -
       entity: f8ffffda-7ab8-48d7-8e20-2f5d5277ec6d

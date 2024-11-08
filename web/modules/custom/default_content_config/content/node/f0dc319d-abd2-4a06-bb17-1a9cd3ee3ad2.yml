@@ -26,6 +26,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   field_summary:
     -
       value: 'A ‘quick-start’ guide for embedding accessibility and inclusive design practices into your team’s workflow'

@@ -7,6 +7,8 @@
 
 declare(strict_types=1);
 
+use Drupal\Core\Template\Attribute;
+
 /**
  * @file
  * Functions to support theming in the Digital.gov theme.
@@ -64,4 +66,48 @@ function digital_gov_preprocess_block__site_wrapper_notice_bar(&$variables) {
  */
 function digital_gov_preprocess_block__site_wrapper_footer(&$variables) {
   $variables['theme_path'] = \Drupal::theme()->getActiveTheme()->getPath();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function digital_gov_preprocess_menu(&$variables, $hook) {
+  $menu_attributes = NULL;
+  $menu_item_attributes = NULL;
+  switch ($variables['menu_name']) {
+    case 'footer':
+    case 'footer-learn':
+    case 'footer-grow':
+      $menu_attributes = new Attribute();
+      $menu_attributes->addClass([
+        'usa-list',
+        'usa-list--unstyled',
+      ]);
+      $menu_item_attributes = new Attribute();
+      $menu_item_attributes->addClass([
+        'usa-footer__secondary-link',
+      ]);
+      break;
+
+    case 'main':
+      $menu_attributes = new Attribute();
+      $menu_attributes->addClass([
+        'usa-nav__primary',
+        'usa-accordion',
+      ]);
+      $menu_item_attributes = new Attribute();
+      $menu_item_attributes->addClass([
+        'usa-nav__primary-item',
+      ]);
+      break;
+
+  }
+  if ($menu_attributes) {
+    $variables['attributes'] = $menu_attributes;
+  }
+  if ($menu_item_attributes && !empty($variables['items'])) {
+    foreach ($variables['items'] as &$item) {
+      $item['attributes'] = $menu_item_attributes;
+    }
+  }
 }

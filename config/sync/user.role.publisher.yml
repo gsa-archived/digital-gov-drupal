@@ -3,21 +3,69 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.authors
+    - node.type.basic_page
+    - node.type.community
+    - node.type.event
+    - node.type.guides
+    - node.type.landing_page
+    - node.type.news
+    - node.type.resources
+    - node.type.services
+    - node.type.short_post
+    - node.type.source
+    - node.type.topics
     - workflows.workflow.editorial
   module:
     - content_moderation
+    - embedded_content
+    - file
+    - media
+    - node
+    - override_node_options
+    - paragraphs_type_permissions
     - scheduler
 id: publisher
 label: Publisher
 weight: 2
 is_admin: null
 permissions:
+  - 'access content overview'
+  - 'access files overview'
+  - 'access media overview'
+  - 'bypass paragraphs type content access'
+  - 'create media'
+  - 'delete any media'
+  - 'edit any authors content'
+  - 'edit any basic_page content'
+  - 'edit any community content'
+  - 'edit any event content'
+  - 'edit any guides content'
+  - 'edit any landing_page content'
+  - 'edit any news content'
+  - 'edit any resources content'
+  - 'edit any services content'
+  - 'edit any short_post content'
+  - 'edit any source content'
+  - 'edit any topics content'
+  - 'override all authored by option'
+  - 'override all authored on option'
   - 'schedule publishing of nodes'
-  - 'use editorial transition archive'
-  - 'use editorial transition back_federal_review'
-  - 'use editorial transition back_from_published_draft'
-  - 'use editorial transition back_from_ready_to_publish_draft'
-  - 'use editorial transition forward_from_archived_draft'
-  - 'use editorial transition publish'
-  - 'use editorial transition stay_ready_to_publish'
+  - 'update any media'
+  - 'use default embedded content button'
+  - 'use editorial transition cancel_draft'
+  - 'use editorial transition cancel_publishing'
+  - 'use editorial transition cancel_review'
+  - 'use editorial transition content_still_needed_in_draft'
+  - 'use editorial transition content_still_needed_in_review'
+  - 'use editorial transition publishing_failed'
+  - 'use editorial transition publishing_passed'
+  - 'use editorial transition recommended_archived_content_archived'
+  - 'use editorial transition start_draft_process_again'
+  - 'use editorial transition stay_in_publishing'
+  - 'use editorial transition unarchive'
+  - 'use editorial transition unpublish'
+  - 'view all media revisions'
+  - 'view all revisions'
+  - 'view any unpublished content'
   - 'view scheduled content'

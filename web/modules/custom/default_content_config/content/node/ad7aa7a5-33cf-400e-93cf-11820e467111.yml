@@ -29,6 +29,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   field_deck:
     -
       value: 'The design of products, devices, services, or environments for people with disabilities'

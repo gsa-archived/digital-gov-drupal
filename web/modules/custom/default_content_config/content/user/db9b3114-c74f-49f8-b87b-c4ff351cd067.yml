@@ -1,0 +1,46 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: db9b3114-c74f-49f8-b87b-c4ff351cd067
+  default_langcode: en
+default:
+  preferred_langcode:
+    -
+      value: en
+  preferred_admin_langcode:
+    -
+      value: en
+  name:
+    -
+      value: editorpublisher@example.com
+  pass:
+    -
+      value: $2y$10$hvYs4UK7asGgvfb/s3kGo.r70m45m9stHMgVDIlrCYGj0rayFb51i
+      existing: ''
+      pre_hashed: true
+  mail:
+    -
+      value: editorpublisher@example.com
+  timezone:
+    -
+      value: America/New_York
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1730903546
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0
+  init:
+    -
+      value: editorpublisher@example.com
+  roles:
+    -
+      target_id: publisher
+    -
+      target_id: editor

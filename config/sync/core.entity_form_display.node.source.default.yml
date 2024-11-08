@@ -58,6 +58,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  path: true
   promote: true
   publish_on: true
   publish_state: true

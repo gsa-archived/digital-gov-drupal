@@ -26,6 +26,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   body:
     -
       value: '<p>This is placeholder text in the body field</p>'

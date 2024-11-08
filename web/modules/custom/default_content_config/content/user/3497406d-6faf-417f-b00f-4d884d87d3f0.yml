@@ -1,0 +1,44 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: 3497406d-6faf-417f-b00f-4d884d87d3f0
+  default_langcode: en
+default:
+  preferred_langcode:
+    -
+      value: en
+  preferred_admin_langcode:
+    -
+      value: en
+  name:
+    -
+      value: dataanalyst@example.com
+  pass:
+    -
+      value: $2y$10$KpxQSgNA30bgrG98OhkLsuIUV9Jmh1c7LXMXZ8vBD6ujHsgfBY0j6
+      existing: ''
+      pre_hashed: true
+  mail:
+    -
+      value: dataanalyst@example.com
+  timezone:
+    -
+      value: America/New_York
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1730820554
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0
+  init:
+    -
+      value: dataanalyst@example.com
+  roles:
+    -
+      target_id: data_analyst

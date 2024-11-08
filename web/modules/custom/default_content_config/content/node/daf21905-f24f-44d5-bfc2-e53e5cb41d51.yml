@@ -28,6 +28,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   field_logo:
     -
       entity: 261021f8-1c56-4529-b0fe-e008bb65d033
