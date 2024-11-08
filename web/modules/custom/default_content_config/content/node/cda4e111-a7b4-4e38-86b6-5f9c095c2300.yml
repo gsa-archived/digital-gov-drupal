@@ -26,6 +26,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   field_summary:
     -
       value: 'Lorem ipsum odor amet, consectetuer <b>adipi</b>'

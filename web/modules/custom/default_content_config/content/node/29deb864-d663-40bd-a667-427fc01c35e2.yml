@@ -26,3 +26,6 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published

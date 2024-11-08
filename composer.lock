@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "863e3efceeba94300161b2363b680513",
+    "content-hash": "eb5c7b0e7397809c0c95b90b68e4ea5b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1818,6 +1818,50 @@
             }
         },
         {
+            "name": "drupal/disable_user_1_edit",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/disable_user_1_edit.git",
+                "reference": "8.x-1.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/disable_user_1_edit-8.x-1.6.zip",
+                "reference": "8.x-1.6",
+                "shasum": "72d53e457b2e6a7188dfec84b4f7c62fbb90ea79"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.6",
+                    "datestamp": "1670751933",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "eiriksm",
+                    "homepage": "https://www.drupal.org/user/1014468"
+                }
+            ],
+            "description": "Disable Editing User 1",
+            "homepage": "https://www.drupal.org/project/disable_user_1_edit",
+            "support": {
+                "source": "https://git.drupalcode.org/project/disable_user_1_edit"
+            }
+        },
+        {
             "name": "drupal/embedded_content",
             "version": "2.0.2",
             "source": {
@@ -2483,6 +2527,51 @@
             }
         },
         {
+            "name": "drupal/override_node_options",
+            "version": "2.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/override_node_options.git",
+                "reference": "8.x-2.8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/override_node_options-8.x-2.8.zip",
+                "reference": "8.x-2.8",
+                "shasum": "79ad92c63e4dfc03bed74438bcf9df437ad2bca5"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.8",
+                    "datestamp": "1713475051",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Davies",
+                    "homepage": "https://www.drupal.org/user/381388",
+                    "email": "oliver@oliverdavies.uk"
+                }
+            ],
+            "description": "Allows permissions to be set on each node option such as published and authoring information.",
+            "homepage": "https://www.drupal.org/project/override_node_options",
+            "support": {
+                "source": "https://git.drupalcode.org/project/override_node_options"
+            }
+        },
+        {
             "name": "drupal/paragraphs",
             "version": "1.18.0",
             "source": {
@@ -2604,6 +2693,70 @@
                 "source": "https://git.drupalcode.org/project/rat/-/tree/1.0.0"
             },
             "time": "2023-07-19T22:22:22+00:00"
+        },
+        {
+            "name": "drupal/remove_username",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/remove_username.git",
+                "reference": "8.x-1.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/remove_username-8.x-1.5.zip",
+                "reference": "8.x-1.5",
+                "shasum": "8c6aa079d2216e712df045ed4471afed216b0b86"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.5",
+                    "datestamp": "1714048023",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Cristian Romanescu (cristiroma)",
+                    "homepage": "https://www.drupal.org/u/cristiroma",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Octavian Belu (tavib47)",
+                    "homepage": "https://www.drupal.org/u/tavib47",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Sadashiv Dalvi (sadashiv)",
+                    "homepage": "https://www.drupal.org/u/sadashiv",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Viktor Holovachek (AstonVictor)",
+                    "homepage": "https://www.drupal.org/u/astonvictor",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "This simple module is removing the 'name' field from the user management forms by making the 'email' field required and copying the email address into the username field.",
+            "homepage": "https://www.drupal.org/project/remove_username",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/remove_username",
+                "issues": "https://www.drupal.org/project/issues/remove_username"
+            }
         },
         {
             "name": "drupal/require_revision_log_message",
@@ -2889,6 +3042,110 @@
             "homepage": "https://www.drupal.org/project/uswds_templates",
             "support": {
                 "source": "https://git.drupalcode.org/project/uswds_templates"
+            }
+        },
+        {
+            "name": "drupal/vbo_workflow_transition",
+            "version": "dev-1.0.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/vbo_workflow_transition.git",
+                "reference": "3a57ff7fe2ce34f9b37c6d88e8051c2ae6913d77"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.0.x": "1.0.x-dev"
+                },
+                "drupal": {
+                    "version": "1.0.x-dev",
+                    "datestamp": "1705087576",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "mattsqd",
+                    "homepage": "https://www.drupal.org/user/892310"
+                }
+            ],
+            "description": "Provides a views bulk operation action that can transition entities that are part of a workflow.",
+            "homepage": "https://www.drupal.org/project/vbo_workflow_transition",
+            "support": {
+                "source": "https://git.drupalcode.org/project/vbo_workflow_transition"
+            }
+        },
+        {
+            "name": "drupal/views_bulk_operations",
+            "version": "4.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/views_bulk_operations.git",
+                "reference": "4.3.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/views_bulk_operations-4.3.1.zip",
+                "reference": "4.3.1",
+                "shasum": "1089fe41ddb01313f34d55e19e8f3a5157889430"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "conflict": {
+                "drush/drush": "<12.5.1"
+            },
+            "require-dev": {
+                "drush/drush": "^12 || ^13"
+            },
+            "suggest": {
+                "drush/drush": "^12 || ^13"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.3.1",
+                    "datestamp": "1729683242",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Marcin Grabias",
+                    "homepage": "https://www.drupal.org/u/graber"
+                },
+                {
+                    "name": "graber",
+                    "homepage": "https://www.drupal.org/user/1599440"
+                },
+                {
+                    "name": "joelpittet",
+                    "homepage": "https://www.drupal.org/user/160302"
+                }
+            ],
+            "description": "Adds an ability to perform bulk operations on selected entities from view results. Provides an API to create such operations.",
+            "homepage": "https://www.drupal.org/project/views_bulk_operations",
+            "support": {
+                "source": "https://git.drupalcode.org/project/views_bulk_operations/-/tree/8.x-3.x",
+                "issues": "https://www.drupal.org/project/issues/views_bulk_operations?version=8.x",
+                "docs": "https://www.drupal.org/docs/8/modules/views-bulk-operations-vbo"
             }
         },
         {
@@ -14102,6 +14359,7 @@
         "drupal/multivalue_form_element": 10,
         "drupal/scheduler_content_moderation_integration": 10,
         "drupal/uswds_templates": 20,
+        "drupal/vbo_workflow_transition": 20,
         "mattsqd/drupal-env": 20,
         "mattsqd/drupal-env-lando": 20,
         "mattsqd/robovalidate": 15

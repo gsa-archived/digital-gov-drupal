@@ -29,6 +29,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   field_deck:
     -
       value: 'Digital infrastructure means hardware and software. It Includes physical and virtual “cloud” storage spaces.'

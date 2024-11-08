@@ -23,3 +23,8 @@ ae2759e9c45acbf0d8378d04e842d0a8|Matt Poole|develop|Tue Jul  2 13:45:43 EDT 2024
 19cf61801de888c57552ec84d66ac668|christian medders|feature/dg-28-shortcode-embed|Wed Oct 16 15:12:23 EDT 2024|./composer.sh require drupal/embedded_content:^2.0
 5cef6cc07d3331402a059556429ad233|christian medders|feature/dg-28-shortcode-embed|Wed Oct 16 15:53:48 EDT 2024|./composer.sh remove drupal/ckeditor5_embedded_content
 ea93266b87251a27fec5df04a3cbd5d0|Matt Poole|feature/DIGITAL-28-shortcode-embed|Thu Oct 24 16:50:38 EDT 2024|./composer.sh require drupal/multivalue_form_element:@beta
+90c5ee5cfbe63ac6954ed970139ed378|Matt Poole|feature/DIGITAL-45-roles-and-perms|Tue Nov  5 10:26:54 EST 2024|./composer.sh require drupal/remove_username:^1.5
+5221f503d2bf9ec96f0acb4d425c1afa|Matt Poole|feature/DIGITAL-45-roles-and-perms|Tue Nov  5 12:50:14 EST 2024|./composer.sh require drupal/override_node_options
+2c4015cb5bdeefb05c1994e70b9762f1|Matt Poole|feature/DIGITAL-45-roles-and-perms|Wed Nov  6 09:44:05 EST 2024|./composer.sh require drupal/disable_user_1_edit:^1.6
+19e48982b7d8f46673a705bf49e7b861|Matt Poole|feature/DIGITAL-45-roles-and-perms|Wed Nov  6 09:56:09 EST 2024|./composer.sh require drupal/vbo_workflow_transition:1.0.x-dev@dev
+3d742a578663c259c7f20fe529971425|Matt Poole|feature/DIGITAL-45-roles-and-perms|Wed Nov  6 09:56:58 EST 2024|./composer.sh require drupal/views_bulk_operations
