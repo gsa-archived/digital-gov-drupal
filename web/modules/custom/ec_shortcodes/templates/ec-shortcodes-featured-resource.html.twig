@@ -1,4 +1,4 @@
-{% set nodeType = content_reference.label | title %}
+{% set summary = drupal_field('field_summary','node', content_reference) | field_value %}
 
 <div class="dg-featured-resource">
 <a href="{{ url }}" class="dg-featured-resource__body">
@@ -6,20 +6,14 @@
 		<p class="dg-featured-resource__kicker">
 				{{ 'Featured Resource'|t }}
 		</p>
-		{% if title %}
 			<h2 class="dg-featured-resource__text-title">
-				{{ title }}
+      {{ drupal_field('title','node', content_reference) | field_value }}
 			</h2>
-		{% endif %}
+      {% if summary %}
 			<p class="dg-featured-resource__text-description">
-				{{ summary }}
+{{ summary }}
 			</p>
+{% endif %}
 	</div>
 </a>
 </div>
-
-
-{{ node | json_encode(constant('JSON_PRETTY_PRINT')) }}
-
-
-
