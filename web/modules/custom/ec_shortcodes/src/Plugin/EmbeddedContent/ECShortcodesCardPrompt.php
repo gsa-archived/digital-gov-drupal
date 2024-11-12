@@ -50,15 +50,19 @@ class ECShortcodesCardPrompt extends EmbeddedContentPluginBase implements Embedd
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['intro'] = [
-      '#type' => 'textfield',
+      '#type' => 'text_format',
       '#title' => $this->t('Intro'),
-      '#default_value' => $this->configuration['intro'],
+      '#format' => 'multiline_inline_html',
+      '#allowed_formats' => ['multiline_inline_html'],
+      '#default_value' => $this->configuration['text']['value'] ?? '',
       '#required' => TRUE,
     ];
     $form['prompt'] = [
-      '#type' => 'textfield',
+      '#type' => 'text_format',
       '#title' => $this->t('Prompt'),
-      '#default_value' => $this->configuration['prompt'],
+      '#format' => 'multiline_inline_html',
+      '#allowed_formats' => ['multiline_inline_html'],
+      '#default_value' => $this->configuration['text']['value'] ?? '',
       '#required' => TRUE,
     ];
     $form['text'] = [

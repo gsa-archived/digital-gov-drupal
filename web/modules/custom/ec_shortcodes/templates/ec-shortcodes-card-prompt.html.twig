@@ -1,22 +1,36 @@
-	<div class="note comment card-prompt">
-	{% if intro %}
-		<div class="intro">
-			<div class="icon">
-				<svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
-        <use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#comment' ) }}"></use>
-				</svg>
-			</div>
-		<p>{{ intro }}</p>
-	</div>
+<div class="note comment card-prompt">
+  {% if intro %}
+    <div class="intro">
+      <div class="icon">
+        <svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
+          <use href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#comment' ) }}"></use>
+        </svg>
+      </div>
+      {% set intro = {
+        '#type':   'processed_text',
+        '#text':    intro.value,
+        '#format':  intro.format,
+      } %}
+      <p>{{ intro }}</p>
+    </div>
   {% endif %}
 
-{% if prompt %}
-<div class="prompt">
-	{{ prompt }}
-</div>
-{% endif %}
+  {% if prompt.value %}
+    <div class="prompt">
+      {% set prompt = {
+        '#type':   'processed_text',
+        '#text':    prompt.value,
+        '#format':  prompt.format,
+      } %}
+      {{ prompt }}
+    </div>
+  {% endif %}
 
-<a class="usa-button usa-button--outline" href="{{ url }}">
-	{{ text }}
-</a>
+  {# NOT-MIGRATED
+  	This was what was here before, when we migrate the partial, use it.
+    {{ partial "core/usa-button.html" (dict "href" (.Get "button-url") "text" (.Get "button-text")) }}
+  #}
+  <a class="usa-button usa-button--outline" href="{{ url }}">
+    {{ text }}
+  </a>
 </div>
