@@ -52,7 +52,7 @@ class ECShortCodesFeaturedResourceExt extends EmbeddedContentPluginBase implemen
     $form['kicker'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Kicker'),
-      '#default_value' => $this->configuration['text'],
+      '#default_value' => $this->configuration['kicker'],
       '#required' => TRUE,
     ];
     $form['url'] = [
@@ -64,13 +64,13 @@ class ECShortCodesFeaturedResourceExt extends EmbeddedContentPluginBase implemen
     $form['title'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Text'),
-      '#default_value' => $this->configuration['text'],
+      '#default_value' => $this->configuration['title'],
       '#required' => TRUE,
     ];
     $form['summary'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Summary'),
-      '#default_value' => $this->configuration['text'],
+      '#default_value' => $this->configuration['summary'],
       '#required' => TRUE,
     ];
     return $form;
