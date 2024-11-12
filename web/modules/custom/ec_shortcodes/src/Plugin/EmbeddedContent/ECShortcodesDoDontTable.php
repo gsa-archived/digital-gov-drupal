@@ -52,6 +52,16 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
       '#default_value' => $this->configuration['caption'],
       '#required' => TRUE,
     ];
+    // Required to change the value of text_format to just be value.
+    if (!empty($this->configuration['rows'])) {
+      foreach ($this->configuration['rows'] as $key => &$row) {
+        if ($key === 'add_more') {
+          continue;
+        }
+        $row['do'] = $row['do']['value'];
+        $row['dont'] = $row['dont']['value'];
+      }
+    }
     $form['rows'] = [
       '#type' => 'multivalue',
       '#title' => $this->t("Rows"),
@@ -59,14 +69,18 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
       '#cardinality' => MultiValue::CARDINALITY_UNLIMITED,
       '#default_value' => $this->configuration['rows'],
       'do' => [
-        '#type' => 'textarea',
+        '#type' => 'text_format',
         '#title' => $this->t('Do'),
+        '#format' => 'multiline_inline_html',
+        '#allowed_formats' => ['multiline_inline_html'],
         '#description' => $this->t('This will add text for the Do Colum'),
       ],
       'dont' => [
-        '#type' => 'textarea',
         '#title' => $this->t("Don't"),
         '#description' => $this->t("This will add text for the Don't Colum"),
+        '#type' => 'text_format',
+        '#format' => 'multiline_inline_html',
+        '#allowed_formats' => ['multiline_inline_html'],
       ],
     ];
     return $form;

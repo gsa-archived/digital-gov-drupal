@@ -1,0 +1,18 @@
+Index: src/Plugin/Filter/EmbeddedContent.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Plugin/Filter/EmbeddedContent.php b/src/Plugin/Filter/EmbeddedContent.php
+--- a/src/Plugin/Filter/EmbeddedContent.php	
++++ b/src/Plugin/Filter/EmbeddedContent.php	(date 1731427147463)
+@@ -88,6 +88,8 @@
+         $replacement = $instance->build();
+         $context = new RenderContext();
+         $render = $this->renderer->executeInRenderContext($context, fn() => $this->renderer->render($replacement));
++        // Allow &nbsp; in the xml by replacing them with decimal entity.
++        $render = str_replace('&nbsp;', '&#160;', $render);
+         if (!$context->isEmpty()) {
+           $bubbleable = $bubbleable->merge($context->pop());
+         }
+

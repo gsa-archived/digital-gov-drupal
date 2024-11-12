@@ -11,12 +11,12 @@ use Drupal\embedded_content\EmbeddedContentPluginBase;
  * Plugin iframes.
  *
  * @EmbeddedContent(
- *   id = "ec_shortcodes_card_policy",
- *   label = @Translation("Card Policy"),
- *   description = @Translation("Renders an accordion with policy."),
+ *   id = "ec_shortcodes_featured_resource_ext",
+ *   label = @Translation("Featured Resource - External"),
+ *   description = @Translation("Renders a styled button link."),
  * )
  */
-class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements EmbeddedContentInterface {
+class ECShortCodesFeaturedResourceExt extends EmbeddedContentPluginBase implements EmbeddedContentInterface {
 
   use StringTranslationTrait;
 
@@ -26,9 +26,9 @@ class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements Embedd
   public function defaultConfiguration() {
     return [
       'kicker' => NULL,
+      'url' => NULL,
       'title' => NULL,
-      'src' => NULL,
-      'text' => NULL,
+      'summary' => NULL,
     ];
   }
 
@@ -37,12 +37,11 @@ class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements Embedd
    */
   public function build(): array {
     return [
-      '#theme' => 'ec_shortcodes_card_policy',
+      '#theme' => 'ec_shortcodes_featured_resource_ext',
       '#kicker' => $this->configuration['kicker'],
-      '#title' => $this->configuration['title'],
-      '#src' => $this->configuration['src'],
-      '#text' => $this->configuration['text'],
-
+      '#url' => $this->configuration['url'],
+      '#title' => $this->configuration['text'],
+      '#summary' => $this->configuration['summary'],
     ];
   }
 
@@ -56,26 +55,24 @@ class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements Embedd
       '#default_value' => $this->configuration['kicker'],
       '#required' => TRUE,
     ];
-    $form['title'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Title'),
-      '#default_value' => $this->configuration['title'],
-      '#required' => TRUE,
-    ];
     $form['url'] = [
       '#type' => 'url',
-      '#title' => $this->t('Src'),
+      '#title' => $this->t('Url'),
       '#default_value' => $this->configuration['url'],
       '#required' => TRUE,
     ];
-    $form['text'] = [
-      '#type' => 'text_format',
-      '#title' => $this->t('Body'),
-      '#default_value' => $this->configuration['text']['value'] ?? '',
-      '#format' => 'multiline_inline_html',
-      '#allowed_formats' => ['multiline_inline_html'],
+    $form['title'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Text'),
+      '#default_value' => $this->configuration['title'],
+      '#required' => TRUE,
     ];
-
+    $form['summary'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Summary'),
+      '#default_value' => $this->configuration['summary'],
+      '#required' => TRUE,
+    ];
     return $form;
   }
 

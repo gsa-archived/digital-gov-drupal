@@ -11,12 +11,12 @@ use Drupal\embedded_content\EmbeddedContentPluginBase;
  * Plugin iframes.
  *
  * @EmbeddedContent(
- *   id = "ec_shortcodes_highlight",
- *   label = @Translation("Highlight"),
- *   description = @Translation("Highlights a content string."),
+ *   id = "ec_shortcodes_note_join",
+ *   label = @Translation("Note - Join"),
+ *   description = @Translation("Renders Note - Join component."),
  * )
  */
-class ECShortcodesHighlight extends EmbeddedContentPluginBase implements EmbeddedContentInterface {
+class ECShortcodesNoteJoin extends EmbeddedContentPluginBase implements EmbeddedContentInterface {
 
   use StringTranslationTrait;
 
@@ -34,7 +34,7 @@ class ECShortcodesHighlight extends EmbeddedContentPluginBase implements Embedde
    */
   public function build(): array {
     return [
-      '#theme' => 'ec_shortcodes_highlight',
+      '#theme' => 'ec_shortcodes_note_join',
       '#text' => $this->configuration['text'],
     ];
   }
@@ -44,9 +44,11 @@ class ECShortcodesHighlight extends EmbeddedContentPluginBase implements Embedde
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['text'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Text'),
-      '#default_value' => $this->configuration['text'],
+      '#type' => 'text_format',
+      '#title' => $this->t('Note Text'),
+      '#format' => $this->configuration['text']['format'] ?? 'html',
+      '#allowed_formats' => ['html'],
+      '#default_value' => $this->configuration['text']['value'] ?? '',
       '#required' => TRUE,
     ];
     return $form;
@@ -56,7 +58,7 @@ class ECShortcodesHighlight extends EmbeddedContentPluginBase implements Embedde
    * {@inheritDoc}
    */
   public function isInline(): bool {
-    return TRUE;
+    return FALSE;
   }
 
 }

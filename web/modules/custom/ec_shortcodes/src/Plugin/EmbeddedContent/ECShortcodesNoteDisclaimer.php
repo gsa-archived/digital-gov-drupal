@@ -11,12 +11,12 @@ use Drupal\embedded_content\EmbeddedContentPluginBase;
  * Plugin iframes.
  *
  * @EmbeddedContent(
- *   id = "ec_shortcodes_author_bio",
- *   label = @Translation("Author Bio"),
- *   description = @Translation("Renders Author bio content."),
+ *   id = "ec_shortcodes_note_disclaimer",
+ *   label = @Translation("Note - Disclaimer"),
+ *   description = @Translation("Renders Note - Disclaimer component."),
  * )
  */
-class ECShortcodesAuthorBio extends EmbeddedContentPluginBase implements EmbeddedContentInterface {
+class ECShortcodesNoteDisclaimer extends EmbeddedContentPluginBase implements EmbeddedContentInterface {
 
   use StringTranslationTrait;
 
@@ -25,8 +25,7 @@ class ECShortcodesAuthorBio extends EmbeddedContentPluginBase implements Embedde
    */
   public function defaultConfiguration() {
     return [
-      'name' => NULL,
-      'bio' => NULL,
+      'heading' => NULL,
     ];
   }
 
@@ -35,9 +34,8 @@ class ECShortcodesAuthorBio extends EmbeddedContentPluginBase implements Embedde
    */
   public function build(): array {
     return [
-      '#theme' => 'ec_shortcodes_author_bio',
-      '#name' => $this->configuration['name'],
-      '#bio' => $this->configuration['bio'],
+      '#theme' => 'ec_shortcodes_note_disclaimer',
+      '#heading' => $this->configuration['heading'],
     ];
   }
 
@@ -45,17 +43,10 @@ class ECShortcodesAuthorBio extends EmbeddedContentPluginBase implements Embedde
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form['name'] = [
+    $form['heading'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Name'),
-      '#default_value' => $this->configuration['name'],
-      '#required' => TRUE,
-    ];
-    $form['bio'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Bio'),
-      '#default_value' => $this->configuration['bio'],
-      '#required' => TRUE,
+      '#title' => $this->t('Note Heading'),
+      '#default_value' => $this->configuration['heading'],
     ];
     return $form;
   }
