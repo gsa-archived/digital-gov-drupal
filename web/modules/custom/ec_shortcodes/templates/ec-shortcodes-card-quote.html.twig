@@ -1,10 +1,14 @@
-	<div class="quote-block">
-		<blockquote>
-			<span class="quote-block__quotation-mark">“</span>
-			{{ text }}
-			<span class="quote-block__quotation-mark">”</span>
-			{% if cite %}
-				<cite>—{{ cite }}</cite>
-			{% endif %}
-		</blockquote>
-	</div>
+{# NOT-MIGRATED
+	Text and cite need to support HTML.
+#}
+
+<div class="quote-block">
+  <blockquote>
+    <span class="quote-block__quotation-mark">“</span>
+    {{ text }}
+    <span class="quote-block__quotation-mark">”</span>
+    {% if cite %}
+      <cite>— {{ cite }}</cite>
+    {% endif %}
+  </blockquote>
+</div>
