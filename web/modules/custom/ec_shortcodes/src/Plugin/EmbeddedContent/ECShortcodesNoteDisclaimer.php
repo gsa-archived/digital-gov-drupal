@@ -26,8 +26,6 @@ class ECShortcodesNoteDisclaimer extends EmbeddedContentPluginBase implements Em
   public function defaultConfiguration() {
     return [
       'heading' => NULL,
-      // 'type' => NULL,
-      // 'text' => NULL,
     ];
   }
 
@@ -38,8 +36,6 @@ class ECShortcodesNoteDisclaimer extends EmbeddedContentPluginBase implements Em
     return [
       '#theme' => 'ec_shortcodes_note_disclaimer',
       '#heading' => $this->configuration['heading'],
-      // '#type' => $this->configuration['type'],
-      // '#text' => $this->configuration['text'],
     ];
   }
 

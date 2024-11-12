@@ -75,6 +75,7 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
         'heading' => NULL,
         'type' => NULL,
         'text' => NULL,
+        'text_override' => NULL,
       ],
     ],
 

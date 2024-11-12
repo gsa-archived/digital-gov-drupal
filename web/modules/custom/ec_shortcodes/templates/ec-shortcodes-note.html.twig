@@ -1,4 +1,4 @@
-{% set selectedType = type | title %}
+{% set selectedType = type | lower %}
 {% set icons = {
   'activity': 'assessment',
   'action': 'campaign',
@@ -19,10 +19,14 @@
 		</svg>
 			{{ heading }}
 	</h4>
-		{% set text = {
-        '#type':   'processed_text',
-        '#text':    text.value,
-        '#format':  text.format,
-      } %}
-		{{ text }}
+    {% if text_override %}
+      {{ text_override }}
+    {% else %}
+      {% set text = {
+          '#type':   'processed_text',
+          '#text':    text.value,
+          '#format':  text.format,
+        } %}
+      {{ text }}
+    {% endif %}
 </article>

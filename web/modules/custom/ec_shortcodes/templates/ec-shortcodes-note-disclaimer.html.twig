@@ -1,13 +1,9 @@
-<article class="dg-note dg-note--disclaimer">
-	<h4 class="dg-note__heading">
-		<svg class="dg-note__icon usa-icon dg-icon dg-icon--large" aria-hidden="true" focusable="false">
-			<use xlink:href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#info' ) }}"></use>
-		</svg>
-			{{ heading }}
-	</h4>
-  {% trans %}
-		All references to specific brands, products, and/or companies are used only
+{{ {
+  '#theme': 'ec_shortcodes_note',
+  '#type': 'disclaimer',
+  '#heading': heading,
+  '#text_override': 'All references to specific brands, products, and/or companies are used only
     for illustrative purposes and do not imply endorsement by the U.S. federal
-    government or any federal government agency.
-  {% endtrans %}
-</article>
+    government or any federal government agency.' | t
+}
+}}
