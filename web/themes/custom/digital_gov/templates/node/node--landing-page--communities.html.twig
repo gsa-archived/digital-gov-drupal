@@ -61,56 +61,33 @@
  *
  * @ingroup themeable
  */
-
 #}
-<main role="main" id="main-content">
-  <section class="author-profile">
-    <div class="grid-container-desktop">
-      <header class="margin-top-5">
-        {% if node.field_github.value %}
-          <img
-            class="profile"
-            src="https://github.com/{{ node.field_github.value }}.png?size=100"
-            srcset="https://www.github.com/{{ node.field_github.value }}.png?size=200"
-            alt="Profile image for {{ node.title.value }}"
-          />
-        {% else %}
-        <img
-          class="profile"
-          src="{{ active_theme_path() }}/static/digitalgov/img/digit-light.png"
-          alt="Profile image for {{ node.title.value }}"
-          />
-        {% endif %}
 
-        <div>
-          <h1>{{ node.title.value }}</h1>
+<main role="main" id="main-content" class="grid-container-desktop" >
+  <div class="page-head">
+    <h1>{{ node.title.value }}</h1>
 
-          <div class="bio">
-            {% if node.field_pronouns.value %}
-            <p class="pronouns">{{ node.field_pronouns.value }}</p>
-            {% endif %}
+    {% if content.field_deck %}
+      <div class="deck">{{ content.field_deck | field_value}}</div>
+    {% endif %}
+  </div>
 
-            {% if node.field_agency_full_name.value %}
-            <p>
-              {{ node.field_agency_full_name.value }}
-            </p>
-            {% endif %}
-          </div>
-        </div>
-      </header>
+  [placeholder Featured Communities]
+  {# NOT-MIGRATED
+  {{ partial "core/featured-communities.html" (dict "context" . "outline" true "layout" "has-image") }}
+  #}
+  {# Other Communities of Practice #}
+  <div class="page-head">
+    <h2>Other Communities of Practice</h2>
+    <div class="deck">
+      These communities are not managed by Digital.gov, but are listed here
+      <br />because they overlap with
+      <a class="usa-link" href="/about">our mission</a>.
     </div>
-  </section>
+  </div>
 
-  <section id="news">
-    <div class="grid-container-desktop">
-      <div class="grid-row tablet-lg:grid-gap-4">
-        <section class="stream">
-          <h2>Latest Content by {{ node.title.value }}</h2>
-
-          [placeholder for latest content]
-        </section>
-      </div>
-      {{ include('@digital_gov/partials/see-all-footer.html.twig') }}
-    </div>
-  </section>
+  [placeholder Other Communities]
+  {# NOT-MIGRATED
+  {{ partial "core/collection/collection-grid-list.html" (dict "list_data" $other_communities) }}
+  #}
 </main>

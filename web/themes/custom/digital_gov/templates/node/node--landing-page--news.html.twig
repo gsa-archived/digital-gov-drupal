@@ -61,56 +61,61 @@
  *
  * @ingroup themeable
  */
-
 #}
-<main role="main" id="main-content">
-  <section class="author-profile">
-    <div class="grid-container-desktop">
-      <header class="margin-top-5">
-        {% if node.field_github.value %}
-          <img
-            class="profile"
-            src="https://github.com/{{ node.field_github.value }}.png?size=100"
-            srcset="https://www.github.com/{{ node.field_github.value }}.png?size=200"
-            alt="Profile image for {{ node.title.value }}"
-          />
-        {% else %}
-        <img
-          class="profile"
-          src="{{ active_theme_path() }}/static/digitalgov/img/digit-light.png"
-          alt="Profile image for {{ node.title.value }}"
-          />
-        {% endif %}
 
-        <div>
+<main role="main" id="main-content">
+  <div class="grid-container grid-container-desktop">
+    <div class="grid-row">
+      <div class="grid-col-12">
+        <header class="page-head page-head-{{ .Type }}">
+          {# Page Title #}
           <h1>{{ node.title.value }}</h1>
 
-          <div class="bio">
-            {% if node.field_pronouns.value %}
-            <p class="pronouns">{{ node.field_pronouns.value }}</p>
-            {% endif %}
+          {# Deck #}
+          {% if content.field_deck %}
+            <h2 class="deck">{{ content.field_deck | field_value}}</h2>
+          {% endif %}
 
-            {% if node.field_agency_full_name.value %}
-            <p>
-              {{ node.field_agency_full_name.value }}
-            </p>
-            {% endif %}
-          </div>
-        </div>
-      </header>
-    </div>
-  </section>
-
-  <section id="news">
-    <div class="grid-container-desktop">
-      <div class="grid-row tablet-lg:grid-gap-4">
-        <section class="stream">
-          <h2>Latest Content by {{ node.title.value }}</h2>
-
-          [placeholder for latest content]
-        </section>
+        </header>
       </div>
-      {{ include('@digital_gov/partials/see-all-footer.html.twig') }}
+    </div>
+  </div>
+
+  <section class="stream">
+    <div class="grid-container grid-container-desktop">
+      [placeholder Blog Posts by Topic —
+      List all of the blog posts and events tagged with this topic]
+
+      {# NOT-MIGRATED #}
+      {# Gets the past events #}
+      {# $events := where .Site.RegularPages.ByDate.Reverse "Section" "events" #}
+
+      {# $past_events := where (where .Site.RegularPages.ByDate.Reverse "Section" "events") ".Date.Unix" "<" now.Unix #}
+
+      {# $all_events := union $past_events $events #}
+
+      {# Gets the recent blog posts #}
+      {# $posts := where .Pages "Section" "news" #}
+
+      {# Merges the past events and the recent blog posts #}
+      {# $stream := union $all_events $posts #}
+
+      {# If there are any items at all... #}
+      {# if $stream #}
+      {# Loop through all the pages #}
+      {# Also sorting all the items by date and reverse chron #}
+      {# range (.Paginate ( $stream.ByDate.Reverse )).Pages #}
+
+      {# if eq .Type "events" #}
+      {# .Render "card-event" #}
+      {# endif #}
+
+      {# if eq .Type "news" #}
+      {# .Render "card-news" #}
+      {# endif #}
+      {# endif #}
+      {# endif #}
+      {# partial "core/pagination.html" . #}
     </div>
   </section>
 </main>

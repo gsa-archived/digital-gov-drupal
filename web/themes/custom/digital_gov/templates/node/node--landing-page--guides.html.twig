@@ -61,56 +61,51 @@
  *
  * @ingroup themeable
  */
-
 #}
+
 <main role="main" id="main-content">
-  <section class="author-profile">
-    <div class="grid-container-desktop">
-      <header class="margin-top-5">
-        {% if node.field_github.value %}
-          <img
-            class="profile"
-            src="https://github.com/{{ node.field_github.value }}.png?size=100"
-            srcset="https://www.github.com/{{ node.field_github.value }}.png?size=200"
-            alt="Profile image for {{ node.title.value }}"
-          />
-        {% else %}
-        <img
-          class="profile"
-          src="{{ active_theme_path() }}/static/digitalgov/img/digit-light.png"
-          alt="Profile image for {{ node.title.value }}"
-          />
-        {% endif %}
+  <div class="grid-container-desktop margin-bottom-5">
+    <header class="page-head">
+      <h1>{{ node.title.value }}</h1>
+      {% if content.field_deck %}
+        <h2 class="deck">{{ content.field_deck | field_value}}</h2>
+      {% endif %}
+    </header>
+    <section class="dg-guides">
+      <ul class="usa-card-group">
+        [placeholder for Guide cards]
 
-        <div>
-          <h1>{{ node.title.value }}</h1>
+        {# NOT-MIGRATED
+        {{ range $guidePages.ByParam "guide_weight" }}
+        {{ $image := .Params.image }}
+        {{ $layout := "" }}
+        {{ if $image }}
+        {{ $layout = "has-image" }}
+        {{ else }}
+        {{ $layout = "no-image" }}
+        {{ end }}
+        {{ $kicker := "Digital.gov Guide" }}
+        {{ if .Params.guide_weight }}
+        <li class="usa-card tablet:grid-col-4 dg-guides-card">
+          {{ $card_data := (dict
+          "header" .Title
+          "body" .Params.summary
+          "link" (.Permalink | relURL)
+          "link_title" .Title
+          "image" $image
+          "alt" "Test Alt"
+          "layout" $layout
+          "kicker" $kicker
+          "site" .Site
+          )
+          }}
 
-          <div class="bio">
-            {% if node.field_pronouns.value %}
-            <p class="pronouns">{{ node.field_pronouns.value }}</p>
-            {% endif %}
-
-            {% if node.field_agency_full_name.value %}
-            <p>
-              {{ node.field_agency_full_name.value }}
-            </p>
-            {% endif %}
-          </div>
-        </div>
-      </header>
-    </div>
-  </section>
-
-  <section id="news">
-    <div class="grid-container-desktop">
-      <div class="grid-row tablet-lg:grid-gap-4">
-        <section class="stream">
-          <h2>Latest Content by {{ node.title.value }}</h2>
-
-          [placeholder for latest content]
-        </section>
-      </div>
-      {{ include('@digital_gov/partials/see-all-footer.html.twig') }}
-    </div>
-  </section>
+          {{ partial "core/usa-card.html" (dict "card_data" $card_data) }}
+        </li>
+        {{ end }}
+        {{ end }}
+        #}
+      </ul>
+    </section>
+  </div>
 </main>

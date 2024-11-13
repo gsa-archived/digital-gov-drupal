@@ -79,7 +79,12 @@
       {{ node.title.value }}
     </h1>
 
-    {{ content.field_deck }}
+    {# Deck #}
+    {% if content.field_deck %}
+      <p class="dg-topic__deck margin-0">
+        {{ content.field_deck | field_value }}</div>
+      </p>
+    {% endif %}
   </header>
 
   {# Collection — Summary & Legislation #}
@@ -220,9 +225,8 @@
             {% if eq .Type "news" %}
             {{ .Render "card-news" }}
             {% endif %}
-            #}
-          {% end %}
           #}
+          {# end #}
         {% endif %}
         {# NOT-MIGRATED #}
         {# partial "core/pagination.html" . #}
