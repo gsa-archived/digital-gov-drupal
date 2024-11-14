@@ -7,6 +7,7 @@ module:
   block: 0
   breakpoint: 0
   ckeditor5: 0
+  config_split: 0
   content_moderation: 0
   content_moderation_notifications: 0
   convert_text: 0
@@ -52,10 +53,15 @@ module:
   require_revision_log_message: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
+  serialization: 0
   site_wrapper: 0
   system: 0
   text: 0
   token: 0
+  tome: 0
+  tome_base: 0
+  tome_static: 0
+  tome_sync: 0
   toolbar: 0
   twig_field_value: 0
   twig_tweak: 0
