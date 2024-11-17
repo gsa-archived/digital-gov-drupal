@@ -3,8 +3,8 @@ _core:
 applies_admin_routes: true
 include_invalid_paths: false
 excluded_paths: ''
-replaced_titles: 'Communities:: Digital.gov Communities of Practice'
-custom_paths: ''
+replaced_titles: "Communities:: Digital.gov Communities of Practice\r\nResources::Topics"
+custom_paths: "blogs::news\r\nresources::topics"
 include_home_segment: true
 alternative_title_field: field_breadcrumb_title
 home_segment_title: Home
@@ -32,6 +32,7 @@ capitalizator_ignored_words:
   - 'y'
   - o
   - a
+  - the
 capitalizator_forced_words: {  }
 capitalizator_forced_words_case_sensitivity: true
 capitalizator_forced_words_first_letter: false

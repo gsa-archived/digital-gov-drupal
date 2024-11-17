@@ -17,6 +17,7 @@ module:
   devel: 0
   disable_user_1_edit: 0
   dynamic_page_cache: 0
+  easy_breadcrumb: 0
   ec_shortcodes: 0
   editor: 0
   embedded_content: 0
@@ -48,6 +49,7 @@ module:
   paragraphs_type_permissions: 0
   path: 0
   path_alias: 0
+  redirect: 0
   remove_username: 0
   require_revision_log_message: 0
   scheduler: 0
