@@ -1,11 +1,24 @@
-{#
-  See themes/digital.gov/layouts/partials/core/featured-resource.html for documentation notes
-
-
-  @example with internal link:
-  {{< featured-resource link="/guides/dap/" kicker="kicker to display"
->}}
-@example with external link:
-{{< featured-resource link="https://www.ai.gov" kicker="Visit ai.gov" title="Check out ai.gov" summary="ai.gov is the go to reference for all artifical intelligence in the federal government" >}}
-
+{# NOT-MIGRATED:
+	This should be the partial for featured recources
+	The title and summary should be able to be overriden from the form
 #}
+{% set summary = drupal_field('field_summary','node', content_reference) | field_value %}
+
+<div class="dg-featured-resource">
+  <a href="{{ path('entity.node.canonical', {'node': content_reference}) }}"
+     class="dg-featured-resource__body">
+    <div class="dg-featured-resource__text">
+      <p class="dg-featured-resource__kicker">
+        {{ 'Featured Resource'|t }}
+      </p>
+      <h2 class="dg-featured-resource__text-title">
+        {{ drupal_field('title','node', content_reference) | field_value }}
+      </h2>
+      {% if summary %}
+        <p class="dg-featured-resource__text-description">
+          {{ summary }}
+        </p>
+      {% endif %}
+    </div>
+  </a>
+</div>

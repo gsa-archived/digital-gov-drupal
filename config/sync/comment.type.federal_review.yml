@@ -1,8 +1,0 @@
-uuid: 56b3d36d-19f7-4282-bbe5-5949ec45dd99
-langcode: en
-status: true
-dependencies: {  }
-id: federal_review
-label: 'Federal Review'
-target_entity_type_id: node
-description: 'Comments that are made during the federal review process.'

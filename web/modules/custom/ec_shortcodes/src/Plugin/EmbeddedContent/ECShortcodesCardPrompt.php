@@ -26,6 +26,7 @@ class ECShortcodesCardPrompt extends EmbeddedContentPluginBase implements Embedd
   public function defaultConfiguration() {
     return [
       'intro' => NULL,
+      'prompt' => NULL,
       'text' => NULL,
       'url' => NULL,
     ];
@@ -38,6 +39,7 @@ class ECShortcodesCardPrompt extends EmbeddedContentPluginBase implements Embedd
     return [
       '#theme' => 'ec_shortcodes_card_prompt',
       '#intro' => $this->configuration['intro'],
+      '#prompt' => $this->configuration['prompt'],
       '#text' => $this->configuration['text'],
       '#url' => $this->configuration['url'],
     ];
@@ -48,9 +50,19 @@ class ECShortcodesCardPrompt extends EmbeddedContentPluginBase implements Embedd
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['intro'] = [
-      '#type' => 'textfield',
+      '#type' => 'text_format',
       '#title' => $this->t('Intro'),
-      '#default_value' => $this->configuration['text'],
+      '#format' => 'multiline_inline_html',
+      '#allowed_formats' => ['multiline_inline_html'],
+      '#default_value' => $this->configuration['text']['value'] ?? '',
+      '#required' => TRUE,
+    ];
+    $form['prompt'] = [
+      '#type' => 'text_format',
+      '#title' => $this->t('Prompt'),
+      '#format' => 'multiline_inline_html',
+      '#allowed_formats' => ['multiline_inline_html'],
+      '#default_value' => $this->configuration['text']['value'] ?? '',
       '#required' => TRUE,
     ];
     $form['text'] = [

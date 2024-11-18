@@ -28,6 +28,7 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
       'kicker' => NULL,
       'title' => NULL,
       'icon' => NULL,
+      'text' => NULL,
     ];
   }
 
@@ -40,6 +41,7 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
       '#kicker' => $this->configuration['kicker'],
       '#title' => $this->configuration['title'],
       '#icon' => $this->configuration['icon'],
+      '#text' => $this->configuration['text'],
     ];
   }
 
@@ -50,21 +52,27 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
     $form['kicker'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Kicker'),
-      '#default_value' => $this->configuration['text'],
+      '#default_value' => $this->configuration['kicker'],
       '#required' => TRUE,
     ];
     $form['title'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Title'),
-      '#default_value' => $this->configuration['text'],
+      '#default_value' => $this->configuration['title'],
       '#required' => TRUE,
     ];
     $form['icon'] = [
-      '#type' => 'media_library',
+      '#type' => 'textfield',
       '#title' => $this->t('Icon'),
-      '#default_value' => $this->configuration['media_library'],
+      '#default_value' => $this->configuration['icon'],
       '#required' => TRUE,
-      '#media_types' => ['image'],
+    ];
+    $form['text'] = [
+      '#type' => 'text_format',
+      '#title' => $this->t('Body'),
+      '#default_value' => $this->configuration['text']['value'] ?? '',
+      '#format' => 'multiline_inline_html',
+      '#allowed_formats' => ['multiline_inline_html'],
     ];
 
     return $form;

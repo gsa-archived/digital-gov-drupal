@@ -1,0 +1,22 @@
+uuid: 6c9775d4-86cf-4481-8acd-320e7e84159d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: community_url
+label: 'Community URL'
+type: 'canonical_entities:node'
+pattern: 'communities/[node:title]'
+selection_criteria:
+  2103ed47-d4bd-4eb7-afb7-fbc2ffddbb3c:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 2103ed47-d4bd-4eb7-afb7-fbc2ffddbb3c
+    context_mapping:
+      node: node
+    bundles:
+      community: community
+selection_logic: and
+weight: -5
+relationships: {  }
