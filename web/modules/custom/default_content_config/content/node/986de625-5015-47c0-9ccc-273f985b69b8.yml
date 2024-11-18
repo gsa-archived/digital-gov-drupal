@@ -29,9 +29,14 @@ default:
   moderation_state:
     -
       value: published
+  path:
+    -
+      alias: /news
+      langcode: en
+      pathauto: 0
   body:
     -
-      value: '<p>This is placeholder text in the body field</p>'
+      value: '<p>This is placeholder text in the body field</p><p>&nbsp;</p><p>TEST THESE BREADCRUMBS TO EVENTS</p><p><a style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:var(--color-link);font-family:&quot;system-ui&quot;, -apple-system, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;" href="/node/67" data-entity-type="node" data-entity-uuid="7ea91000-46a3-4115-a8db-e7deacb4a0f6" data-entity-substitution="canonical" hreflang="en">The Intersection Between Plain Language and 508 Compliance</a></p><p><a style="-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:var(--color-link);font-family:&quot;system-ui&quot;, -apple-system, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;" href="/node/69" data-entity-type="node" data-entity-uuid="cd2adb55-9ee9-4ff2-b400-7c0ae1daff48" data-entity-substitution="canonical" hreflang="en">Plain Language: Accessibility for Content</a></p><p>&nbsp;</p><p>TEST THESE BREADCRUMBS TO NEWS</p><p><a style="-webkit-text-stroke-width:0px;background-color:rgb(245, 248, 255);color:var(--color-link);font-family:&quot;system-ui&quot;, -apple-system, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;" href="/node/62" hreflang="en" data-entity-type="node" data-entity-uuid="b5f41387-ec98-4f72-964e-0a5c26612d15" data-entity-substitution="canonical">Security is Everyone''s Responsibility: Delivering Secure, Usable Login for Government</a></p>'
       format: html
       summary: ''
   field_buttons:

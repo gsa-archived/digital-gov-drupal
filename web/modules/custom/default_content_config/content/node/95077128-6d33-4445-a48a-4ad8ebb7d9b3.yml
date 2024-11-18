@@ -32,6 +32,11 @@ default:
   moderation_state:
     -
       value: published
+  path:
+    -
+      alias: /topics/cloud-and-infrastructure
+      langcode: en
+      pathauto: 1
   field_deck:
     -
       value: 'Digital infrastructure means hardware and software. It Includes physical and virtual “cloud” storage spaces.'

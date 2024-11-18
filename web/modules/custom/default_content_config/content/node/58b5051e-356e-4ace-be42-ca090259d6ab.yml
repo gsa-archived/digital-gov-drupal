@@ -34,6 +34,11 @@ default:
   moderation_state:
     -
       value: published
+  path:
+    -
+      alias: /topics/privacy
+      langcode: en
+      pathauto: 1
   field_deck:
     -
       value: 'As agencies carry out their diverse missions, they must also respect and protect personally identifiable information (PII)'

@@ -33,6 +33,11 @@ default:
   moderation_state:
     -
       value: published
+  path:
+    -
+      alias: /event/2021/03/10/plain-language-accessibility-content
+      langcode: en
+      pathauto: 1
   body:
     -
       value: '<p>{{&lt; asset-static file="plain-accessibility-slides-march-2021.pdf" label="View the accessible slides (PDF, 186 KB, 17 pages)" &gt;}}</p><p>The presentation will focus on concerns and opportunities shared by the Section 508 and plain language communities. Topics will include:</p><ul><li>The shared goal of making it easy for everyone to understand and act on content</li><li>Word choice</li><li>Typography and layout</li><li>Headings, lists, and tables</li><li>Graphics</li></ul><h2>Presenters:</h2><ul><li><strong>Bethany Letalien</strong>, Section 508 Program Manager, U.S. Office of Personnel Management, Office of Communications</li><li><strong>Alex Wilson</strong>, Program Analyst, U.S. General Services Administration, Office of Government-wide Policy</li></ul><hr><p>*The <a href="https://www.plainlanguage.gov/">Plain Language Action and Information Network (PLAIN)</a> is a group of federal employees from different agencies and specialties who support the use of clear communication in government</p>'

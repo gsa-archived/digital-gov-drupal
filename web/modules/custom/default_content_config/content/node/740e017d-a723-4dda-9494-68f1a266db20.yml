@@ -29,6 +29,11 @@ default:
   moderation_state:
     -
       value: published
+  path:
+    -
+      alias: /tools
+      langcode: en
+      pathauto: 1
   body:
     -
       value: '<p>Body Field</p>'

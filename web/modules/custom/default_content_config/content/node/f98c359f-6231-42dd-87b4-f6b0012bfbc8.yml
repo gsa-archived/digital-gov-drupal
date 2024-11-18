@@ -29,9 +29,14 @@ default:
   moderation_state:
     -
       value: published
+  path:
+    -
+      alias: /communities
+      langcode: en
+      pathauto: 1
   body:
     -
-      value: '<h2>What we do</h2><p>The A/B Testing Community of Practice organizes meetings to discuss the latest in A/B testing. We invite guest speakers, share case studies, explore new tools, and provide support for new and current members trying to grow their A/B testing practice and knowledge.</p><h2>Who we are</h2><p>The A/B Testing Community of Practice started with a team at the Consumer Financial Protection Bureau (CFPB), circa 2016. We were inspired by what we’d learned from our own tests that, and see what we could learn from case studies outside CFPB. We are driven to foster a group that can share their experiences and learn from one another.</p><p><strong>Community Managers:</strong></p><ul><li><a href="mailto:kelley.holden@cfpb.gov">Kelley Holden</a>, works at the CFPB as a Digital Analytics Program Manager on the Data Science and Analytics team. She has worked on multiple projects that include SEO strategy, A/B and RCT testing, web analysis, analytics visualizations, data science, and user behavior analysis.</li></ul>'
+      value: '<h2>What we do</h2><p>The A/B Testing Community of Practice organizes meetings to discuss the latest in A/B testing. We invite guest speakers, share case studies, explore new tools, and provide support for new and current members trying to grow their A/B testing practice and knowledge.</p><h2>Who we are</h2><p>The A/B Testing Community of Practice started with a team at the Consumer Financial Protection Bureau (CFPB), circa 2016. We were inspired by what we’d learned from our own tests that, and see what we could learn from case studies outside CFPB. We are driven to foster a group that can share their experiences and learn from one another.</p><p><strong>Community Managers:</strong></p><ul><li><a href="mailto:kelley.holden@cfpb.gov">Kelley Holden</a>, works at the CFPB as a Digital Analytics Program Manager on the Data Science and Analytics team. She has worked on multiple projects that include SEO strategy, A/B and RCT testing, web analysis, analytics visualizations, data science, and user behavior analysis.</li></ul><p><a style="-webkit-text-stroke-width:0px;background-color:rgb(245, 248, 255);color:var(--color-link);font-family:&quot;system-ui&quot;, -apple-system, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;" href="/node/39" data-entity-type="node" data-entity-uuid="623a2982-602b-4762-a59e-9a7c30c64f36" data-entity-substitution="canonical" hreflang="en">Join the Web Managers Community</a></p>'
       format: html
       summary: ''
   field_buttons:
