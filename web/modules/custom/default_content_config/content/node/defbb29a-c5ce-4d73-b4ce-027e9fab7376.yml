@@ -26,6 +26,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   field_start_date:
     -
       value: '9999-09-09T13:09:09'

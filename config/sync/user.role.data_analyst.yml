@@ -1,0 +1,9 @@
+uuid: 53110726-a7bd-4396-973c-bef409bde442
+langcode: en
+status: true
+dependencies: {  }
+id: data_analyst
+label: 'Data Analyst'
+weight: 6
+is_admin: null
+permissions: {  }

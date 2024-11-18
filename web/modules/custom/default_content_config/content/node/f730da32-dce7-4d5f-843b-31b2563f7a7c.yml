@@ -28,6 +28,9 @@ default:
   sticky:
     -
       value: false
+  moderation_state:
+    -
+      value: published
   field_contact:
     -
       value: uswds@gsa.gov

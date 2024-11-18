@@ -1,0 +1,59 @@
+uuid: e78235d0-cc98-491e-a77f-a9fc08b4318c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.authors
+    - node.type.basic_page
+    - node.type.community
+    - node.type.event
+    - node.type.guides
+    - node.type.landing_page
+    - node.type.news
+    - node.type.resources
+    - node.type.services
+    - node.type.short_post
+    - node.type.source
+    - node.type.topics
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - embedded_content
+    - file
+    - media
+    - node
+    - override_node_options
+    - paragraphs_type_permissions
+id: editor
+label: Editor
+weight: 4
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access files overview'
+  - 'access media overview'
+  - 'bypass paragraphs type content access'
+  - 'create media'
+  - 'edit any authors content'
+  - 'edit any basic_page content'
+  - 'edit any community content'
+  - 'edit any event content'
+  - 'edit any guides content'
+  - 'edit any landing_page content'
+  - 'edit any news content'
+  - 'edit any resources content'
+  - 'edit any services content'
+  - 'edit any short_post content'
+  - 'edit any source content'
+  - 'edit any topics content'
+  - 'override all authored by option'
+  - 'override all authored on option'
+  - 'update any media'
+  - 'use default embedded content button'
+  - 'use editorial transition recommend_cancel_review'
+  - 'use editorial transition review_failed'
+  - 'use editorial transition review_passed'
+  - 'use editorial transition stay_in_review'
+  - 'view all media revisions'
+  - 'view all revisions'
+  - 'view any unpublished content'
