@@ -1,7 +1,3 @@
-{# {{ $now := now.Format "2006-01-02" }}
-{{ $eventDate := .Date.Format "2006-01-02" }}
-{{ $is_past_event := cond (lt $eventDate $now) true false }} #}
-
 {% set is_past_event = end_date < now? true : false %}
 {% set title = node.label %}
 {% set summary = content.field_summary | field_value %}
@@ -12,11 +8,6 @@
 {% set day = content.field_start_date.value | date("d") %}
 {% set year = content.field_start_date.value | date("Y") %}
 
-
-
-{# {{ dd(registration_url) }} #}
-
-{# todo: check on `is_past_event` and the url stuff for the data short #}
 <article class="card card-event {% if is_past_event %} card-event--past
 	{% endif %}card-linked" aria-labelledby="{{ title }}">
 	<div class="card-event__main">
@@ -90,6 +81,3 @@
 		</div>
 	</div>
 </article>
-
-
-
