@@ -1,0 +1,13 @@
+{
+  "name": "digital-gov-drupal",
+  "version": "1.0.0",
+  "description": "Welcome to the Digital.gov Drupal site.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
