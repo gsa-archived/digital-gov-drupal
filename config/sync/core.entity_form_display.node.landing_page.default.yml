@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.landing_page.body
     - field.field.node.landing_page.field_buttons
+    - field.field.node.landing_page.field_deck
     - field.field.node.landing_page.field_landing_page_type
     - field.field.node.landing_page.field_summary
     - node.type.landing_page
@@ -37,15 +38,23 @@ content:
     third_party_settings: {  }
   field_buttons:
     type: link_default
-    weight: 2
+    weight: 3
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_deck:
+    type: text_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_landing_page_type:
     type: options_select
-    weight: 3
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
