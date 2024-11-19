@@ -18,7 +18,7 @@ locals {
   tf_backend = {
     type = "pg"
     name_pattern_psql = "${local.project}-terraform-backend-bootstrap"
-    name_pattern_secrets = "${local.project}--pg-secrets-bootstrap"
+    name_pattern_secrets = "${local.project}-pg-secrets-bootstrap"
     space = "prod"
   }
 
@@ -178,7 +178,7 @@ locals {
           services_external = [
             "${local.project}-mysql-${terraform.workspace}",
             "${local.project}-backup-${terraform.workspace}",
-            terraform.workspace == local.tf_backend.space ? "${local.project}-terraform-backend-default" : null
+            terraform.workspace == local.tf_backend.space ? "${local.project}-terraform-backend-bootstrap" : null
           ]
 
           ## The source file should be a directory or a zip file.
