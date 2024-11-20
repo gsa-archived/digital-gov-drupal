@@ -16,7 +16,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'Web Analytics and Optimization'
+      value: 'Join the Web Analytics and Optimization'
   created:
     -
       value: 1729636289
@@ -33,7 +33,7 @@ default:
     -
       alias: /communities/web-analytics-and-optimization
       langcode: en
-      pathauto: 1
+      pathauto: 0
   body:
     -
       value: '<p>In government, those with analytics as part of their duties are faced with a fast-paced, ever-changing environment. Technologies, strategies, and tools change regularly. This community aims to uncover best practices, case studies, tips, and tools for web analytics and optimization.</p><h2>What We Do</h2><p>We run meetings and trainings, engage in collaborative discussion, and send general emails with updates on new technology and trends.</p><h2>Who We Are</h2><p>We’re government website analysts, developers, content strategists, user experience (UX) designers, communications professionals, or any and everyone else who use data to improve the public’s interaction with government sites.</p><h2>Related Resources</h2><ul><li><a href="https://digital.gov/guides/dap/">Digital Analytics Program</a></li><li><a href="https://search.gov/">Search.gov</a></li><li><a href="https://designsystem.digital.gov/">U.S. Web Design System</a></li><li><a href="https://digital.gov/guides/web-analytics-playbook/">Web Analytics Playbook</a></li></ul>'

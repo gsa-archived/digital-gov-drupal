@@ -21,7 +21,7 @@ default:
       target_id: 1
   title:
     -
-      value: Privacy
+      value: 'Guidance for Implementing the Privacy Provisions of the E–Government Act of 2002 (M-03–22)'
   created:
     -
       value: 1729617378
@@ -38,7 +38,7 @@ default:
     -
       alias: /topics/privacy
       langcode: en
-      pathauto: 1
+      pathauto: 0
   field_deck:
     -
       value: 'As agencies carry out their diverse missions, they must also respect and protect personally identifiable information (PII)'

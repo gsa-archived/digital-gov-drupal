@@ -31,7 +31,7 @@ default:
       value: published
   path:
     -
-      alias: /topics/introduction-accessibility
+      alias: /resources/introduction-accessibility
       langcode: en
       pathauto: 0
   body:

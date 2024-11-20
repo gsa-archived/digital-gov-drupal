@@ -36,7 +36,7 @@ default:
     -
       alias: /topics/accessibility
       langcode: en
-      pathauto: 1
+      pathauto: 0
   field_deck:
     -
       value: 'The design of products, devices, services, or environments for people with disabilities'

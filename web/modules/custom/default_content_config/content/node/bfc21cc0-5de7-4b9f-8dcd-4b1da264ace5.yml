@@ -20,7 +20,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'Plain Language'
+      value: 'Plain Language Web Writing Tips'
   created:
     -
       value: 1729618450
@@ -37,7 +37,7 @@ default:
     -
       alias: /topics/plain-language
       langcode: en
-      pathauto: 1
+      pathauto: 0
   field_featured_communities:
     -
       entity: f8ffffda-7ab8-48d7-8e20-2f5d5277ec6d

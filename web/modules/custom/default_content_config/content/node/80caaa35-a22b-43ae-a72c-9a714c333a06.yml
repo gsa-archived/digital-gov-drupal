@@ -37,7 +37,7 @@ default:
     -
       alias: /topics/analytics
       langcode: en
-      pathauto: 1
+      pathauto: 0
   field_deck:
     -
       value: 'easure and plan your site performance with analytics best practices and tools'

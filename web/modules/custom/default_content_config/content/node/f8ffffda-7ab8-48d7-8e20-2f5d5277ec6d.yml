@@ -16,7 +16,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'Plain Language'
+      value: 'Join the Plain Language'
   created:
     -
       value: 1729618654
@@ -33,7 +33,7 @@ default:
     -
       alias: /communities/plain-language
       langcode: en
-      pathauto: 1
+      pathauto: 0
   body:
     -
       value: '<p>The Plain Language community is a group of government employees and contractors dedicated to the idea that citizens deserve clear communications from government. We believe that using plain language saves government agencies time and money and provides better service to the American public.</p><h2>What We Do</h2><p>Throughout the year, the community provides training and hosts plain-language related events. Our community offers support and answers to members’ questions.</p><h2>Who We Are</h2><p>We’re a group of plain language practitioners with varying specialties and different levels of expertise.</p><h2>Related Resources</h2><ul><li><a href="https://www.plainlanguage.gov/law/">Plain Writing Act of 2010</a></li><li><a href="https://www.plainlanguage.gov/guidelines/">Federal Plain Language Guidelines</a></li><li><a href="https://digital.gov/event/2022/08/24/2022-federal-plain-language-summit/">2022 Federal Plain Language Summit</a></li><li><a href="https://digital.gov/event/2021/09/21/2021-federal-plain-language-summit/">2021 Federal Plain Language Summit</a></li><li><a href="https://digital.gov/event/2020/10/27/plain-language-summit-2020/">2020 Federal Plain Language Summit</a></li></ul>'

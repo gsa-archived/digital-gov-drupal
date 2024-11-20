@@ -36,7 +36,7 @@ default:
     -
       alias: /topics/cloud-and-infrastructure
       langcode: en
-      pathauto: 1
+      pathauto: 0
   field_deck:
     -
       value: 'Digital infrastructure means hardware and software. It Includes physical and virtual “cloud” storage spaces.'
