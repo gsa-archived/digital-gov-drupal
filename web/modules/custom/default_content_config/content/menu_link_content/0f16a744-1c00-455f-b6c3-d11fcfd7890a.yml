@@ -5,7 +5,7 @@ _meta:
   bundle: menu_link_content
   default_langcode: en
   depends:
-    3beab2ef-6000-4ffd-bbe5-b747ff2b58e4: node
+    fefddcf3-e162-4622-9176-a3f4c2dadd8e: node
 default:
   enabled:
     -
@@ -18,7 +18,7 @@ default:
       value: main
   link:
     -
-      target_uuid: 3beab2ef-6000-4ffd-bbe5-b747ff2b58e4
+      target_uuid: fefddcf3-e162-4622-9176-a3f4c2dadd8e
       title: ''
       options: {  }
   external:
