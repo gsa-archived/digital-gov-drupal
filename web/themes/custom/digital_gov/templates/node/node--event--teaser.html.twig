@@ -35,21 +35,19 @@
 				<div class="card-event__watch-label">
 					<svg class="usa-icon dg-icon dg-icon--large margin-bottom-05" aria-hidden="true" focusable="false">
 					{# todo: check to see if this path needs to be updated #}
-						{# <use xlink:href="{{ "uswds/img/sprite.svg#youtube" | relURL }}"></use> #}
-{# <use href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#youtube' ) }}"></use> #}
-
-{# todo: check to see if this path needs to be updated #}
-
+          <use href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#youtube') }}"></use>
 					</svg>
 					Watch Video
 				</div>
 			{% endif %}
 
-	{# todo: look into the past event thing this looks to be showing the hosts/authors if ther is not a video thta was added #}
+	{# todo: add back once DIGITAL-30 is merged in #}
 			{# {% if is_past_event %}
-				{{- partial "core/authors-list.html" (dict "scope" . "authors" .Params.authors "isInline" true) -}}
-			{{ end }} #}
-{# todo: look into the past event thing #}
+          {{ include('@digital_gov/partials/authors-list.html.twig', {
+          'inline': true,
+          'authors': content.field_authors,
+          }, with_context = false) }}
+			{% endif %} #}
 
 		</div>
 	</div>
