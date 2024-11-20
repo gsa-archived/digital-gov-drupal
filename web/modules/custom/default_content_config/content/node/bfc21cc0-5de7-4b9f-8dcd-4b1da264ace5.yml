@@ -38,6 +38,11 @@ default:
       alias: /topics/plain-language
       langcode: en
       pathauto: 0
+  body:
+    -
+      value: '<p><a href="/node/16" data-entity-type="node" data-entity-uuid="3b3a9406-9f34-4c96-9de2-8d0362fa8cb2" data-entity-substitution="canonical">Lets go back to resources!</a></p>'
+      format: html
+      summary: ''
   field_featured_communities:
     -
       entity: f8ffffda-7ab8-48d7-8e20-2f5d5277ec6d
