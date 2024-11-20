@@ -1,11 +1,5 @@
 <?php
 
-* This is a doc comment that describes the contents of this file.
- *
- * @author John Doe <johndoe@example.com>
- * @copyright 2023 Example Corporation
- */
-
 use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
