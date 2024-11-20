@@ -14,7 +14,6 @@ use Drupal\node\Entity\Node;
  * Implements hook_system_breadcrumb_alter().
  */
 function dg_breadcrumb_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
-  echo("DLKJADSHFKLJH");
   /** @var \Drupal\node\NodeInterface $current_node */
   $current_node = $route_match->getParameter('node');
   if (!$current_node || $current_node->getType() !== 'news') {
@@ -30,14 +29,15 @@ function dg_breadcrumb_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMat
     return;
   }
   $landing_page_nid = array_shift($landing_page_nids);
-
   $landing_page = Node::load($landing_page_nid);
   $links = $breadcrumb->getLinks();
+
   // If there are already breadcrumbs, that means the 'min length' easy bread
   // crumb did not nuke all the results.
   if (!empty($links)) {
+
     // Insert element at the desired position
-    array_splice($links, 1, 0, [$current_node->toLink()]);
+    array_splice($links, 1, 0, [$landing_page->toLink()]);
   }
   else {
     $breadcrumb->addLink(Link::createFromRoute('Home', '<front>'));
