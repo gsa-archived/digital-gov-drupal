@@ -1,5 +1,11 @@
 <?php
 
+* This is a doc comment that describes the contents of this file.
+ *
+ * @author John Doe <johndoe@example.com>
+ * @copyright 2023 Example Corporation
+ */
+
 use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -22,7 +28,7 @@ function dg_breadcrumb_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMat
   $eq = \Drupal::entityQuery('node');
   $eq->condition('type', 'landing_page');
   // @TODO When this field is in place, uncomment this out.
-  #$eq->condition('field_type', 'news');
+  // $eq->condition('field_type', 'news');
   $eq->accessCheck();
   $landing_page_nids = $eq->execute();
   if (empty($landing_page_nids)) {
@@ -36,7 +42,7 @@ function dg_breadcrumb_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMat
   // crumb did not nuke all the results.
   if (!empty($links)) {
 
-    // Insert element at the desired position
+    // Insert element at the desired position.
     array_splice($links, 1, 0, [$landing_page->toLink()]);
   }
   else {
