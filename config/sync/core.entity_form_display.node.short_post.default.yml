@@ -4,15 +4,18 @@ status: true
 dependencies:
   config:
     - field.field.node.short_post.field_deck
+    - field.field.node.short_post.field_external_url
     - field.field.node.short_post.field_short_post_type
     - field.field.node.short_post.field_slug
     - field.field.node.short_post.field_source
     - field.field.node.short_post.field_summary
     - field.field.node.short_post.field_topics
     - node.type.short_post
+    - workflows.workflow.editorial
   module:
     - content_moderation
     - inline_entity_form
+    - link
     - text
 id: node.short_post.default
 targetEntityType: node
@@ -32,6 +35,14 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_external_url:
+    type: link_default
+    weight: 26
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_short_post_type:
     type: options_select
