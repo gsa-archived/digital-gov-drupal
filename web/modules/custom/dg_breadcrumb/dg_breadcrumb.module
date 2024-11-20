@@ -1,14 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Primary module hooks for Digital.gov Breadcrumb module.
+ */
+
 use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\node\Entity\Node;
 
-/**
- * @file
- * Primary module hooks for Digital.gov Breadcrumb module.
- */
 
 /**
  * Implements hook_system_breadcrumb_alter().
@@ -21,7 +22,7 @@ function dg_breadcrumb_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMat
   }
   $eq = \Drupal::entityQuery('node');
   $eq->condition('type', 'landing_page');
-  // @TODO When this field is in place, uncomment this out.
+  // @todo When this field is in place, uncomment this out.
   // $eq->condition('field_type', 'news');
   $eq->accessCheck();
   $landing_page_nids = $eq->execute();
