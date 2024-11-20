@@ -37,7 +37,7 @@
           {# todo: check to see if this path needs to be updated #}
           <use href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#youtube') }}"></use>
           </svg>
-          Watch Video
+            {{ 'Watch Video'|t }}
         </div>
       {% endif %}
 
@@ -67,10 +67,10 @@
           <span class="card-event__datetime-year">{{ year }}</span>
         </span>
       {% else %}
-        <a aria-label="Register for {{ title }}" class="card-event__cta" href="{{ registration_url }}">
-          Register
+        <a aria-label="Register for {{ title }}" class="card-event__cta" href="{{ registration_url }}">Register
+          {{ 'Register'|t }}
           <time class="card-event__datetime--mobile" datetime="{{ start_date }}">
-            <span>for</span>
+            <span>{{ 'for'|t }}</span>
             <span class="card-event__datetime-month">{{ month }}</span>
             <span class="card-event__datetime-day">{{ day }}</span>
           </time>
