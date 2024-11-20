@@ -4,8 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - node.type.authors
     - node.type.event
     - node.type.news
+    - node.type.short_post
+    - node.type.source
   module:
     - node
     - user
@@ -137,8 +140,11 @@ display:
           plugin_id: bundle
           operator: in
           value:
+            authors: authors
             event: event
             news: news
+            short_post: short_post
+            source: source
           group: 1
           exposed: false
           expose:
