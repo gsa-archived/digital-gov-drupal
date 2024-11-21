@@ -4,6 +4,9 @@ _meta:
   uuid: cbcd65ff-8274-46c7-89bc-9f8c2bdaddd3
   bundle: resources
   default_langcode: en
+  depends:
+    58b5051e-356e-4ace-be42-ca090259d6ab: node
+    80caaa35-a22b-43ae-a72c-9a714c333a06: node
 default:
   revision_uid:
     -
@@ -31,7 +34,7 @@ default:
       value: published
   path:
     -
-      alias: /resources/introduction-privacy
+      alias: /resources/an-introduction-to-privacy
       langcode: en
       pathauto: 0
   body:
@@ -43,7 +46,15 @@ default:
     -
       value: 'Understand privacy requirements for agency websites'
       format: html
+  field_page_weight:
+    -
+      value: 1
   field_summary:
     -
-      value: 'ntroductory guidance on implementing privacy protections for users of federal websites.'
+      value: 'Introductory guidance on implementing privacy protections for users of federal websites.'
       format: html
+  field_topics:
+    -
+      entity: 58b5051e-356e-4ace-be42-ca090259d6ab
+    -
+      entity: 80caaa35-a22b-43ae-a72c-9a714c333a06

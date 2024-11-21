@@ -4,6 +4,8 @@ _meta:
   uuid: a842883f-d724-4e91-a1c7-511707fc59b5
   bundle: resources
   default_langcode: en
+  depends:
+    58b5051e-356e-4ace-be42-ca090259d6ab: node
 default:
   revision_uid:
     -
@@ -31,7 +33,7 @@ default:
       value: published
   path:
     -
-      alias: /resources/guidance-implementing-privacy-provisions-e-government-act-2002-m-03-22
+      alias: /resources/guidance-for-implementing-the-privacy-provisions-of-the-e-government-act-of-2002-m-03-22
       langcode: en
       pathauto: 0
   body:
@@ -43,3 +45,6 @@ default:
     -
       value: 'This guidance provides information to agencies on implementing the privacy provisions of the E-Government Act of 2002. It addresses privacy protections when Americans interact with their government.'
       format: html
+  field_topics:
+    -
+      entity: 58b5051e-356e-4ace-be42-ca090259d6ab

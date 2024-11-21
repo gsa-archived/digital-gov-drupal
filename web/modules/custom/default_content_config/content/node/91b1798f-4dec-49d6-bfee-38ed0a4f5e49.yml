@@ -5,7 +5,7 @@ _meta:
   bundle: guides
   default_langcode: en
   depends:
-    6bd8641f-84c6-4ddb-b8b2-9c076b017198: media
+    cdc07606-1563-4772-9b45-11fa5d99c31a: media
 default:
   revision_uid:
     -
@@ -45,9 +45,6 @@ default:
     -
       value: 'Use web analytics to reach your strategic website goals'
       format: html
-  field_featured_image:
-    -
-      entity: 6bd8641f-84c6-4ddb-b8b2-9c076b017198
   field_guide_weight:
     -
       value: 1
@@ -56,7 +53,7 @@ default:
       value: 0
   field_primary_image:
     -
-      entity: 6bd8641f-84c6-4ddb-b8b2-9c076b017198
+      entity: cdc07606-1563-4772-9b45-11fa5d99c31a
   field_summary:
     -
       value: 'This guide provides actionable strategies for effectively using web analytics to improve federal websites and digital services.'
