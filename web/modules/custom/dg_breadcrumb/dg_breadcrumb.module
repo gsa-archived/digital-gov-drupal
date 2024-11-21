@@ -34,8 +34,8 @@ function dg_breadcrumb_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMat
       $landing_page = Node::load($landing_page_nid);
       $links = $breadcrumb->getLinks();
 
-      // If there are already breadcrumbs, that means the 'min length' easy bread
-      // crumb did not nuke all the results.
+      // If there are already breadcrumbs, that means the 'min length' easy
+      // breadcrumb did not nuke all the results.
       if (!empty($links)) {
         // Insert element at the desired position.
         array_splice($links, 1, 0, [$landing_page->toLink()]);
