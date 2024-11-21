@@ -3,13 +3,13 @@ _meta:
   entity_type: redirect
   uuid: 833c8988-2f3e-4459-aef5-0c7170d3a453
   bundle: redirect
-  default_langcode: und
+  default_langcode: en
   depends:
     fefddcf3-e162-4622-9176-a3f4c2dadd8e: node
 default:
   hash:
     -
-      value: sKCu4ZS_cmjL_EE4n8CL5p3xeU4DjQq6UTe4yDVc7vE
+      value: p5IEy2Oe8VvHyr91G1qeDqHhFrb8_Yro2h3-3tE_5UU
   type:
     -
       value: redirect
