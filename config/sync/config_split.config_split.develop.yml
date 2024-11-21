@@ -10,9 +10,8 @@ stackable: false
 no_patching: false
 storage: folder
 folder: ../config/develop
-module:
-  samlauth: 0
-  externalauth: 10
+module: {  }
 theme: {  }
 complete_list: {  }
-partial_list: {  }
+partial_list:
+  - samlauth.authentication
