@@ -1,24 +1,24 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: fa6a3ed7-e535-4bb3-9119-d6c9c6ef5f0b
+  uuid: ed51bbdd-b4c1-4476-8479-5687d7b5275e
   bundle: menu_link_content
   default_langcode: en
   depends:
-    b759a923-5d7c-438a-abb8-fa90e1750af9: node
+    f98c359f-6231-42dd-87b4-f6b0012bfbc8: node
 default:
   enabled:
     -
       value: true
   title:
     -
-      value: 'Contact Us'
+      value: Communities
   menu_name:
     -
-      value: footer
+      value: main
   link:
     -
-      target_uuid: b759a923-5d7c-438a-abb8-fa90e1750af9
+      target_uuid: f98c359f-6231-42dd-87b4-f6b0012bfbc8
       title: ''
       options: {  }
   external:
@@ -29,7 +29,7 @@ default:
       value: false
   weight:
     -
-      value: 0
+      value: -47
   expanded:
     -
       value: false

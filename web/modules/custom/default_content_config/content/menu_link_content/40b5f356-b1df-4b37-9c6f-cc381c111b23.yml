@@ -1,7 +1,7 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: ee5c7c97-c430-47b4-95be-c78c242c6313
+  uuid: 40b5f356-b1df-4b37-9c6f-cc381c111b23
   bundle: menu_link_content
   default_langcode: en
 default:
@@ -10,13 +10,13 @@ default:
       value: true
   title:
     -
-      value: 'Submit a GitHub Issue'
+      value: 'Content schedule'
   menu_name:
     -
-      value: footer-grow
+      value: footer-about
   link:
     -
-      uri: 'https://github.com/GSA/digitalgov.gov/issues'
+      uri: 'https://digital.gov/about/manage-content/'
       title: ''
       options: {  }
   external:
@@ -27,7 +27,7 @@ default:
       value: false
   weight:
     -
-      value: 0
+      value: -47
   expanded:
     -
       value: false

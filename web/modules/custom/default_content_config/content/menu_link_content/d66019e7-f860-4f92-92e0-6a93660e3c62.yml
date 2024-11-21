@@ -1,7 +1,7 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: 258fe85f-b0eb-440d-a0e1-dd10bf0faef2
+  uuid: d66019e7-f860-4f92-92e0-6a93660e3c62
   bundle: menu_link_content
   default_langcode: en
   depends:
@@ -15,7 +15,7 @@ default:
       value: Guides
   menu_name:
     -
-      value: footer-learn
+      value: footer
   link:
     -
       target_uuid: 2e0f1e02-efde-48e6-9e9e-4cc1e572feec
@@ -29,7 +29,7 @@ default:
       value: false
   weight:
     -
-      value: 0
+      value: -46
   expanded:
     -
       value: false

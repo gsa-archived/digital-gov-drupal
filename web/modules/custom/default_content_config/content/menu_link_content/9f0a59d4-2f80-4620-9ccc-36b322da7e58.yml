@@ -1,7 +1,7 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: dc9a5642-d1e0-4bf6-b5bb-e746193087bf
+  uuid: 9f0a59d4-2f80-4620-9ccc-36b322da7e58
   bundle: menu_link_content
   default_langcode: en
 default:
@@ -10,13 +10,13 @@ default:
       value: true
   title:
     -
-      value: 'Host an Event'
+      value: 'Site Policies'
   menu_name:
     -
-      value: footer-grow
+      value: footer-about
   link:
     -
-      uri: 'internal:/digitalgov-university/'
+      uri: 'https://digital.gov/policies/'
       title: ''
       options: {  }
   external:
@@ -24,10 +24,10 @@ default:
       value: false
   rediscover:
     -
-      value: true
+      value: false
   weight:
     -
-      value: 0
+      value: -49
   expanded:
     -
       value: false

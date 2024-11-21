@@ -1,7 +1,7 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: e0542f86-05b4-4c78-b415-f377caefea27
+  uuid: ced6efe0-ed04-4511-b35f-986fd099f587
   bundle: menu_link_content
   default_langcode: en
 default:
@@ -10,13 +10,13 @@ default:
       value: true
   title:
     -
-      value: 'About Us'
+      value: 'Write for us'
   menu_name:
     -
-      value: footer
+      value: footer-grow
   link:
     -
-      uri: 'internal:/about/'
+      uri: 'https://digital.gov/contribute/'
       title: ''
       options: {  }
   external:
@@ -24,10 +24,10 @@ default:
       value: false
   rediscover:
     -
-      value: true
+      value: false
   weight:
     -
-      value: 0
+      value: -50
   expanded:
     -
       value: false

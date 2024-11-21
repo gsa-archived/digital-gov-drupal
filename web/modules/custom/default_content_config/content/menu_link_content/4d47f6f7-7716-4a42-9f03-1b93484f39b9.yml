@@ -1,24 +1,24 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: 48924e01-578f-4840-98bd-9c59a8fe0e0b
+  uuid: 4d47f6f7-7716-4a42-9f03-1b93484f39b9
   bundle: menu_link_content
   default_langcode: en
   depends:
-    5422ab63-c9a2-48cd-9816-a1892a687169: node
+    73380b43-dd80-4ac0-beee-9803a7548068: node
 default:
   enabled:
     -
       value: true
   title:
     -
-      value: 'Job Board'
+      value: 'About Us'
   menu_name:
     -
-      value: footer-grow
+      value: footer-about
   link:
     -
-      target_uuid: 5422ab63-c9a2-48cd-9816-a1892a687169
+      target_uuid: 73380b43-dd80-4ac0-beee-9803a7548068
       title: ''
       options: {  }
   external:
@@ -29,7 +29,7 @@ default:
       value: false
   weight:
     -
-      value: 0
+      value: -50
   expanded:
     -
       value: false

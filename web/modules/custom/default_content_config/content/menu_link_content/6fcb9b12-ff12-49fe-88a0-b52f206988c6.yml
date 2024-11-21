@@ -1,22 +1,24 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: 3ed1e76c-71ab-414c-bd59-eaef10b6a384
+  uuid: 6fcb9b12-ff12-49fe-88a0-b52f206988c6
   bundle: menu_link_content
   default_langcode: en
+  depends:
+    5422ab63-c9a2-48cd-9816-a1892a687169: node
 default:
   enabled:
     -
       value: true
   title:
     -
-      value: 'Write for Us'
+      value: 'Job board'
   menu_name:
     -
-      value: footer-grow
+      value: footer
   link:
     -
-      uri: 'internal:/contribute/'
+      target_uuid: 5422ab63-c9a2-48cd-9816-a1892a687169
       title: ''
       options: {  }
   external:
@@ -24,10 +26,10 @@ default:
       value: false
   rediscover:
     -
-      value: true
+      value: false
   weight:
     -
-      value: 0
+      value: -45
   expanded:
     -
       value: false

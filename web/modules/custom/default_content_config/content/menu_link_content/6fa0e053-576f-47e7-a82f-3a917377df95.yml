@@ -1,7 +1,7 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: 1f9cf500-488a-44c5-b69b-49ea79f5dae9
+  uuid: 6fa0e053-576f-47e7-a82f-3a917377df95
   bundle: menu_link_content
   default_langcode: en
   depends:
@@ -12,10 +12,10 @@ default:
       value: true
   title:
     -
-      value: 'Events Calendar'
+      value: Events
   menu_name:
     -
-      value: footer-learn
+      value: footer
   link:
     -
       target_uuid: e60a3199-17d7-4c13-8b76-f0bbaef67bcd
@@ -29,7 +29,7 @@ default:
       value: false
   weight:
     -
-      value: 0
+      value: -49
   expanded:
     -
       value: false
