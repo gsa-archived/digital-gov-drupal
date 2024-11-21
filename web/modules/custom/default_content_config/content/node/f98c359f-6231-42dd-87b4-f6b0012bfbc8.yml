@@ -31,9 +31,9 @@ default:
       value: published
   path:
     -
-      alias: /digitalgov-communities-practice
+      alias: /communities
       langcode: en
-      pathauto: 1
+      pathauto: 0
   field_summary:
     -
       value: 'Collaborate and share resources with other communities across government who are focused on building better digital experience in government.'
