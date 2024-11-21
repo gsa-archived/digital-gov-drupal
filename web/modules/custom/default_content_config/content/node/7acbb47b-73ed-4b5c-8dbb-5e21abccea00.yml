@@ -31,7 +31,7 @@ default:
       value: published
   path:
     -
-      alias: /authors/lorena-molina-irizarry
+      alias: /authors/lorena-molinairizarry
       langcode: en
       pathauto: 1
   field_agency_acronym:
