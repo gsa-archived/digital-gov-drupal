@@ -76,7 +76,7 @@ function digital_gov_preprocess_menu(&$variables, $hook) {
   $menu_item_attributes = NULL;
   switch ($variables['menu_name']) {
     case 'footer':
-    case 'footer-learn':
+    case 'footer-about':
     case 'footer-grow':
       $menu_attributes = new Attribute();
       $menu_attributes->addClass([
