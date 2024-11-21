@@ -14,7 +14,7 @@ default:
     -
       value: $2y$10$0XQclWvB5TWWRPOcEkPfg.cwFnvKOCVkoZ5GrPnR9Qmt21ye1UV5W
       existing: ''
-      pre_hashed: false
+      pre_hashed: true
   mail:
     -
       value: admin@example.com
