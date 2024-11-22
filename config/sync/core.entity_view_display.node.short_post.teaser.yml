@@ -12,21 +12,41 @@ dependencies:
     - field.field.node.short_post.field_topics
     - node.type.short_post
   module:
+    - text
     - user
 id: node.short_post.teaser
 targetEntityType: node
 bundle: short_post
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_deck:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_source:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 3
     region: content
 hidden:
-  field_deck: true
   field_short_post_type: true
   field_slug: true
-  field_source: true
   field_summary: true
   field_topics: true
