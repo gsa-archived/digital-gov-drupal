@@ -29,6 +29,11 @@ default:
   moderation_state:
     -
       value: published
+  path:
+    -
+      alias: /blogs
+      langcode: en
+      pathauto: 1
   body:
     -
       value: '<p>This is placeholder text in the body field</p>'

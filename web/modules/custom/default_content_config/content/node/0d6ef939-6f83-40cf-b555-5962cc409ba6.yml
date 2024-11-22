@@ -29,6 +29,11 @@ default:
   moderation_state:
     -
       value: published
+  path:
+    -
+      alias: /event/2050/11/06/way-future-federal-crowdsourcing-webinar-series-episode-3-opportunity-project
+      langcode: en
+      pathauto: 1
   field_captions:
     -
       uri: 'https://www.captionedtext.com'

@@ -29,6 +29,11 @@ default:
   moderation_state:
     -
       value: published
+  path:
+    -
+      alias: /event/2050/12/09/way-future-cultivating-dynamic-career-ux
+      langcode: en
+      pathauto: 1
   body:
     -
       value: '<p>Join us as we explore what success can look like in a dynamic user experience (UX) career. Speakers from the Department of the Treasury and the Library of Congress will share their insights on how their careers in UX have continued to evolve.</p><p>In this session, you’ll learn how to:</p><ul><li>Identify skills that support a quick-moving UX career</li><li>Apply these skills with career-enhancing activities</li><li>Continue to evolve your career in UX</li></ul><p><strong>This event is best suited for:</strong> UX professionals of all levels</p><h2>Speakers</h2><ul><li><strong>UX Community co-lead, Natalie Buda Smith</strong> - Director of Digital Strategy, Library of Congress</li><li><strong>Michelle Zager</strong> - TEI</li><li><strong>Carlos Alvarado</strong> - Senior UX Designer, Library of Congress</li></ul><h2>Moderator</h2><ul><li><strong>UX Community co-lead, Jaime Kern</strong> - Lead Strategist for the Federal Marketplace, GSA</li></ul><h2>Video Clips</h2><ol><li>Cultivating a dynamic career in UX - Natalie Buda Smith (time length: 12:06)</li></ol><p>{{&lt; youtube id="m9L-vJn6OlI" title="Cultivating a dynamic career in UX" &gt;}}</p><ol start="2"><li>Cultivating a dynamic career in UX - Michelle Zager (time length: 7:26)</li></ol><p>{{&lt; youtube id="It-I7gcaaBg" title="Cultivating a dynamic career in UX" &gt;}}</p><ol start="3"><li>Cultivating a dynamic career in UX - Carlos Alvarado (time length: 8:11)</li></ol><p>{{&lt; youtube id="UW8v-I8JM_U" title="Cultivating a dynamic career in UX" &gt;}}</p><hr><p><em>The UX Community of Practice is a group of managers, subject matter experts, designers, developers, writers and others interested in creating efficient, effective and useful technologies. </em><a href="https://digital.gov/communities/user-experience/"><em>Join the UX Community</em></a><em>.</em></p>'
