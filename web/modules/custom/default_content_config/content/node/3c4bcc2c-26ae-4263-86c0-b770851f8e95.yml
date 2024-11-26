@@ -40,6 +40,11 @@ default:
     -
       value: 'Get started making usability fixes to your website or product.'
       format: html
+  field_external_url:
+    -
+      uri: 'https://digital.gov/event/2018/06/14/usability-testing-with-steve-krug/'
+      title: ''
+      options: {  }
   field_short_post_type:
     -
       value: resource

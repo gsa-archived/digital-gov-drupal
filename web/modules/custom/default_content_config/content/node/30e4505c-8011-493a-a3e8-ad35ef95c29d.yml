@@ -36,6 +36,11 @@ default:
       alias: ''
       langcode: en
       pathauto: 1
+  field_external_url:
+    -
+      uri: 'https://home.dotgov.gov'
+      title: ''
+      options: {  }
   field_short_post_type:
     -
       value: service
