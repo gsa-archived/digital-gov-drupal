@@ -6,9 +6,8 @@
 {% set registration_url = content.field_registration_url|render|trim %}
 {# todo: come back and check the date setting... is getting the current date #}
 {% set month = content.field_start_date.value|date('M') %}
-{# {% set day =  content.field_start_date.0['#text'] %} #}
+{% set day = content.field_start_date.0['#text'] | date('d') %}
 {% set year = content.field_start_date.value|date('Y') %}
-{{ dd(day) }}
 
 <article class="card card-event {% if is_past_event %} card-event--past
   {% endif %}card-linked" aria-labelledby="{{ title }}">

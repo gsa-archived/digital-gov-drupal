@@ -85,9 +85,6 @@
   <section class="upcoming-events article-list">
     <div class="grid-container grid-container-desktop">
       <h2>Upcoming Events</h2>
-
-      [placeholder Show upcoming events up until event ends ]
-      NOT-MIGRATED
 {{ drupal_view('events', 'block_1') }}
 {# todo: this is set when there are no upcoming events renders a placeholder text #}
       {# <div class="upcoming-events__placeholder card card--placeholder">
@@ -108,8 +105,7 @@
     </header>
     <div class="article-list">
       <div class="grid-container grid-container-desktop">
-        [placeholder Past Events]
-          {{ drupal_view('events', 'block_1') }}
+          {{ drupal_view('past_events', 'block_1') }}
       </div>
     </div>
   </section>
