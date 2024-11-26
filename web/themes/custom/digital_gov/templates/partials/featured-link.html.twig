@@ -5,12 +5,15 @@ Include in another template:
   'url' : link destination
   'title': text of link
   'summary': optional summary description
+  'logo_source': optional image to use for bullet
 }, with_context = false) }}
 
+If logo_source is not supplied, custom twig function figures out what logo to use.
 #}
 
-{% set logo_source = logo_source ?: '/' ~ active_theme_path() ~ '/static/digitalgov/img/digit-50.png' %}
+{% set logo_source = logo_source ?: dg_logo_source(url, '/' ~ active_theme_path()) %}
 
+{{ logo_source }}
 <li class="usa-collection__item">
   <div class="usa-collection__img-wrapper">
     <img
