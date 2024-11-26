@@ -55,7 +55,7 @@ jobs:
                     vendor/bin/robo validate:coding-standards || status2=$? || status2=0
                     set -x
                     vendor/bin/twig-cs-fixer lint || status4=$? || status4=0
-                    vendor/bin/phpstan --memory-limit=-1 || status5=$? || status5=0
+                    vendor/bin/phpstan --memory-limit=-1 --no-progress || status5=$? || status5=0
                     set +x;
 
                     # Exit with a non-zero status if any command failed
