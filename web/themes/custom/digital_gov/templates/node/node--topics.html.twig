@@ -71,7 +71,7 @@
     {{ drupal_entity('block', 'digital_gov_breadcrumbs') }}
   </div>
 
-  {#  Default & Collection Header #}
+  {# Default & Collection Header #}
   <header class="grid-container-desktop">
     <h1
       class="{{ node.field_legislation.0 ? 'dg-topic__header-title--collection' : 'dg-topic__header-title' }}"
@@ -82,7 +82,7 @@
     {# Deck #}
     {% if content.field_deck %}
       <p class="dg-topic__deck margin-0">
-        {{ content.field_deck | field_value }}</div>
+        {{ content.field_deck|field_value }}</div>
       </p>
     {% endif %}
   </header>
@@ -98,9 +98,9 @@
           <div class="desktop:grid-col">
             {% if node.field_legislation.list %}
               {{ include('@digital_gov/partials/card-legislation.html.twig', {
-                'title': node.field_legislation.0.title,
-                'url': node.field_legislation.0.uri
-              }, with_context = false) }}
+                title: node.field_legislation.0.title,
+                url: node.field_legislation.0.uri,
+              }, with_context=false) }}
             {% endif %}
           </div>
         </div>
@@ -110,7 +110,7 @@
 
   [placeholder featured resources and communities]
   {# Collection — Featured Resources and Communities #}
-  {% if or .Params.featured_resources .Params.featured_communities %}
+  {% if or.Params.featured_resources.Params.featured_communities %}
     {% if is_first_page %}
       <div class="dg-topic__featured grid-container-desktop">
         {# range .Params.featured_resources.resources #}
@@ -261,12 +261,12 @@
           <p>{{ stream_count }} posts</p>
 
           {# range $stream_paginated #}
-          {% if Type == "events" %}
+          {% if Type == 'events' %}
             {# NOT-MIGRATED #}
             {# .Render "card-event" #}
           {% endif %}
 
-          {% if Type == "news" %}
+          {% if Type == 'news' %}
             {# NOT-MIGRATED #}
             {# .Render "card-news" #}
           {% endif %}
