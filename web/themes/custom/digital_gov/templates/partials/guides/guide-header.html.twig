@@ -31,7 +31,7 @@
 
   {% if node.field_featured_image.value %}
   <div class="dg-guide__header-image">
-    {{ content.field_featured_image | field_value }}
+    {{ content.field_featured_image|field_value }}
     {# NOT-MIGRATED
      partial "core/img-flexible.html" (dict "Site" .Site "src" $uid "small" "false")
     #}

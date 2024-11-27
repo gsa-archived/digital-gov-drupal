@@ -73,16 +73,16 @@
     <header>
       {{ include('@digital_gov/partials/blog-date-warning.html.twig') }}
 
-      {{ include("@digital_gov/partials/page-header.html.twig", {
-        'title': node.title.value,
-        'kicker': node.field_kicker.value,
-        'deck': node.field_deck.value
-      }, with_context = false) }}
+      {{ include('@digital_gov/partials/page-header.html.twig', {
+        title: node.title.value,
+        kicker: node.field_kicker.value,
+        deck: node.field_deck.value,
+      }, with_context=false) }}
 
       {{ include('@digital_gov/partials/authors-list.html.twig', {
-        'inline': true,
-        'authors': content.field_authors,
-      }, with_context = false) }}
+        inline: true,
+        authors: content.field_authors,
+      }, with_context=false) }}
 
       <div class="meta">
         <div class="date">
@@ -106,9 +106,9 @@
 
         <div class="dg-sidebar grid-col-12 tablet-lg:grid-col-3">
           {{ include('@digital_gov/partials/authors-list.html.twig', {
-            'inline': false,
-            'authors': content.field_authors,
-          }, with_context = false) }}
+            inline: false,
+            authors: content.field_authors,
+          }, with_context=false) }}
 
           <div class="meta">
             <div class="date">
@@ -120,10 +120,9 @@
 
           {# Share Tools #}
           {{ include('@digital_gov/partials/get-sharetools.html.twig', {
-            'share_path': url,
-            'mailto_subject': node.label,
-          }, with_context = false) }}
-
+            share_path: url,
+            mailto_subject: node.label,
+          }, with_context=false) }}
 
         </div>
       </div>
