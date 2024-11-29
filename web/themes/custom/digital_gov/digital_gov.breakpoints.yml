@@ -1,0 +1,22 @@
+#--note to self: I don't think we need three?---#
+
+digital_gov.small:
+  label: Small Screens
+  mediaQuery: 'all and (max-width: 800px)'
+  weight: 0
+  multipliers: 
+    - 1x
+
+digital_gov.medium:
+  label: Medium Screens
+  mediaQuery: 'all and (min-width: 800px)'
+  weight: 0
+  multipliers: 
+    - 1x
+
+digital_gov.large:
+  label: large Screens
+  mediaQuery: 'all and (min-width: 1200px)'
+  weight: 2
+  multipliers: 
+    - 1x
