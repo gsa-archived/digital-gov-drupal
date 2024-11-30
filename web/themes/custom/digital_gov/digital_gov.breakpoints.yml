@@ -1,4 +1,6 @@
-#--note to self: I don't think we need three?---#
+#Use the w800 image style for screens up to 800 pixels wide.
+#Use the w1200 image style for screens up to 1200 pixels wide.
+#Use the w1200 image style for screens wider than 1200 pixels.
 
 digital_gov.small:
   label: Small Screens
@@ -15,7 +17,7 @@ digital_gov.medium:
     - 1x
 
 digital_gov.large:
-  label: large Screens
+  label: Large Screens
   mediaQuery: 'all and (min-width: 1200px)'
   weight: 2
   multipliers: 

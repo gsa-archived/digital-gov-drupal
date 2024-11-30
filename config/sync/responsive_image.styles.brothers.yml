@@ -27,4 +27,4 @@ image_style_mappings:
     breakpoint_id: digital_gov.small
     multiplier: 1x
 breakpoint_group: digital_gov
-fallback_image_style: dg_small
+fallback_image_style: dg_large_scale_to_1200_convert_to_webp
