@@ -11,6 +11,7 @@ tags:
   canonical_url: '[current-page:url]'
   description: '[site:slogan]'
   fb_admins: '100000569454928'
+  og_description: '[site:slogan]'
   og_image_alt: ' '
   og_locale: '[language:langcode]_'
   og_site_name: '[site:name]'
