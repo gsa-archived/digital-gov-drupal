@@ -7,7 +7,7 @@ _core:
 id: global
 label: Global
 tags:
-  article_publisher: 'https://www.facebook.com/digital.gov'
+  article_publisher: 'https://www.facebook.com/digitalgov'
   canonical_url: '[current-page:url]'
   description: '[node:field_summary]'
   fb_admins: '100000569454928'
