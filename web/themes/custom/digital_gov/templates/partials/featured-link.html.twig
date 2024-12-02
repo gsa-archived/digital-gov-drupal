@@ -13,7 +13,6 @@ If logo_source is not supplied, custom twig function figures out what logo to us
 
 {% set logo_source = logo_source ?: dg_logo_source(url, '/' ~ active_theme_path()) %}
 
-{{ logo_source }}
 <li class="usa-collection__item">
   <div class="usa-collection__img-wrapper">
     <img
