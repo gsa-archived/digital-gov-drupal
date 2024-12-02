@@ -9,6 +9,7 @@ label: Global
 tags:
   article_publisher: 'https://www.facebook.com/digitalgov'
   canonical_url: '[current-page:url]'
+  description: '[site:slogan]'
   fb_admins: '100000569454928'
   og_image_alt: ' '
   og_locale: '[language:langcode]_'
