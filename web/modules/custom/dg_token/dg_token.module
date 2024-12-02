@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Digital.gov Token module.
+ */
+
+use Drupal\Core\Render\BubbleableMetadata;
+
+/**
+ * Implements hook_tokens_alter().
+ */
+function dg_token_tokens_alter(array &$replacements, array $context, BubbleableMetadata $bubbleable_metadata) {
+  if ($context['type'] == 'node' && !empty($context['data']['node'])) {
+    $node = $context['data']['node'];
+    // If token field_summary is empty, use the slogan. This is for the meta
+    // tags.
+    if (isset($context['tokens']['field_summary']) && $node->hasField('field_summary') && $node->get('field_summary')->isEmpty()) {
+      $replacements[$context['tokens']['field_summary']] = \Drupal::config('system.site')->get('slogan');
+    }
+  }
+}
