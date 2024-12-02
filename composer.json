@@ -36,6 +36,7 @@
         "drupal/mailsystem": "^4.4",
         "drupal/media_library_edit": "^3.0",
         "drupal/memcache": "^2.5",
+        "drupal/metatag": "^2.1",
         "drupal/multivalue_form_element": "@beta",
         "drupal/override_node_options": "^2.8",
         "drupal/paragraphs": "^1.18",
