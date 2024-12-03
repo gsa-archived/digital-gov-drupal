@@ -40,3 +40,4 @@ ffbb12f89e9384a89bec33f200cc95a8|Matt Poole|feature/DIGITAL-144-tome-s3|Thu Nov 
 2ff87810c534ec1d564420c97f248217|christian medders|feature/DIGITAL-33-add-views|Tue Nov 26 14:13:17 EST 2024|./composer.sh require --dev vincentlanglet/twig-cs-fixer
 d7bc80171de8363a43d1e8c1f54548b0|John Franklin|feature/DIGITAL-195-sso-configuration|Tue Dec  3 10:33:05 AM EST 2024|./composer.sh require drupal/openid_connect:^3.0@alpha
 f43373d6992ea1ba98d866f92bfad209|John Franklin|feature/DIGITAL-195-sso-configuration|Tue Dec  3 10:35:42 AM EST 2024|./composer.sh remove drupal/samlauth
+33dcffb20649238b9164cd289ae4c02a|John Franklin|feature/DIGITAL-195-sso-configuration|Tue Dec  3 03:39:21 PM EST 2024|./composer.sh require drupal/noreqnewpass

@@ -35,6 +35,7 @@
         "drupal/mailsystem": "^4.4",
         "drupal/memcache": "^2.5",
         "drupal/multivalue_form_element": "@beta",
+        "drupal/noreqnewpass": "^1.4",
         "drupal/openid_connect": "^3.0@alpha",
         "drupal/override_node_options": "^2.8",
         "drupal/paragraphs": "^1.18",
