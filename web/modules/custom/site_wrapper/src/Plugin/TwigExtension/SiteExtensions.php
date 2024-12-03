@@ -38,7 +38,7 @@ class SiteExtensions extends AbstractExtension {
 
     if (!$host || $host === 'digital.gov' || str_contains($host, '.digital.gov')) {
       // Assume a local URL.
-      return $active_theme_path . '/static/digitalgov/img/digit-50.png';
+      return $active_theme_path . '/static/digitalgov/img/logos/digit-50.png';
     }
 
     return self::buildFaviconSearch($uri);
