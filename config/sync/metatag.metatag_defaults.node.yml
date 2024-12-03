@@ -7,7 +7,7 @@ _core:
 id: node
 label: Content
 tags:
-  article_published_time: '[node:created]'
+  article_published_time: '[node:created:html_datetime]'
   description: '[node:field_summary]'
   og_description: '[node:field_summary]'
   og_type: '[dg:og_type]'
