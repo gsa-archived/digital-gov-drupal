@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_tokens_alter().
@@ -19,4 +20,108 @@ function dg_token_tokens_alter(array &$replacements, array $context, BubbleableM
       $replacements[$context['tokens']['field_summary']] = \Drupal::config('system.site')->get('slogan');
     }
   }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function dg_token_token_info(): array {
+  $type = [
+    'name' => t('Digital.gov Tokens'),
+    'description' => t('Custom tokens for Digital.gov.'),
+    'needs-data' => 'node',
+  ];
+
+  $dg['og_type'] = [
+    'name' => t("OG: Type"),
+    'description' => t("Custom logic to create OG Type."),
+    'type' => 'node',
+  ];
+
+  return [
+    'types' => ['dg' => $type],
+    'tokens' => [
+      'dg' => $dg,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function dg_token_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+  $replacements = [];
+
+  if ($type == 'dg') {
+    $node = FALSE;
+    if (!empty($data['node'])) {
+      /** @var \Drupal\node\NodeInterface $node */
+      $node = $data['node'];
+    }
+
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'og_type':
+          $replacements[$original] = _dg_token_is_page($node) ? 'article' : 'website';
+          break;
+
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * For a given node or null, whether .isPage is TRUE.
+ *
+ * This can be seen on old digital.gov when looking at og:type. It is 'website'
+ * for false, and 'article' for true.
+ *
+ * @param \Drupal\node\NodeInterface|null $node
+ *   An optional node.
+ *
+ * @see https://gohugo.io/methods/page/ispage/
+ *
+ * @return bool
+ *   Whether this was a page.
+ */
+function _dg_token_is_page(?NodeInterface $node): bool {
+  if (NULL === $node) {
+    return FALSE;
+  }
+  // Use this to capture any 'true' blocks, otherwise fall down to the end.
+  switch ($node->getType()) {
+    case 'basic_page':
+      // view-source:https://digital.gov/about/: FALSE.
+      // view-source:https://digital.gov/policies/: TRUE.
+      if ($node->label() !== 'About us') {
+        return TRUE;
+      }
+      break;
+
+    // view-source:https://digital.gov/guides/web-analytics-playbook/: FALSE.
+    // view-source:https://digital.gov/guides/web-analytics-playbook/create-a-foundation-for-your-strategy/#content-start:
+    // TRUE.
+    case 'guides':
+      // @todo This will be effected by whatever field we add for the guide nav.
+      // If this is a 'parent' guide, then this should be FALSE.
+      return TRUE;
+
+    // view-source:https://digital.gov/event/2024/11/21/uswds-monthly-call-november-2024/.
+    case 'event':
+      // view-source:https://digital.gov/communities/contact-center/.
+    case 'community':
+      // view-source:https://digital.gov/2024/11/26/navigating-digital-acquisitions/.
+    case 'news':
+      // view-source:https://digital.gov/resources/customer-experience-toolkit/.
+    case 'resources':
+      return TRUE;
+
+  }
+
+  // Topics: view-source:https://digital.gov/topics/accessibility/: FALSE.
+  // Landing pages: https://digital.gov/resources/: FALSE.
+  // Authors: view-source:https://digital.gov/authors/ashley-owens/ FALSE.
+  return FALSE;
 }
