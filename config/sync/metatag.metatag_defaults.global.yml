@@ -12,8 +12,9 @@ tags:
   description: '[site:slogan]'
   fb_admins: '100000569454928'
   og_description: '[site:slogan]'
+  og_image: '[dg:meta_image]'
   og_image_alt: ' '
-  og_locale: '[language:langcode]_'
+  og_locale: en_US
   og_site_name: '[site:name]'
   og_title: '[current-page:title]'
   og_type: website
@@ -22,6 +23,7 @@ tags:
   title: '[current-page:title] | [site:name]'
   twitter_cards_creator: '@Digital_gov'
   twitter_cards_description: '@Digital_gov'
+  twitter_cards_image: '[dg:meta_image]'
   twitter_cards_site: '@Digital_gov'
   twitter_cards_title: '[current-page:title]'
   twitter_cards_type: summary_large_image

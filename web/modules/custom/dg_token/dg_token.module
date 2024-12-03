@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 
 /**
@@ -37,6 +38,11 @@ function dg_token_token_info(): array {
     'description' => t("Custom logic to create OG Type."),
     'type' => 'node',
   ];
+  $dg['meta_image'] = [
+    'name' => t("Meta Tag: Image"),
+    'description' => t("Image used for og:image and twitter:image:src meta tags.."),
+    'type' => 'node',
+  ];
 
   return [
     'types' => ['dg' => $type],
@@ -53,7 +59,7 @@ function dg_token_tokens($type, $tokens, array $data, array $options, Bubbleable
   $replacements = [];
 
   if ($type == 'dg') {
-    $node = FALSE;
+    $node = NULL;
     if (!empty($data['node'])) {
       /** @var \Drupal\node\NodeInterface $node */
       $node = $data['node'];
@@ -64,12 +70,64 @@ function dg_token_tokens($type, $tokens, array $data, array $options, Bubbleable
         case 'og_type':
           $replacements[$original] = _dg_token_is_page($node) ? 'article' : 'website';
           break;
+        case 'meta_image':
+          $replacements[$original] = _dg_token_meta_image($node);
+          break;
 
       }
     }
   }
 
   return $replacements;
+}
+
+/**
+ * For a given node or null, return the meta tag image URL.
+ *
+ * @param \Drupal\node\NodeInterface|null $node
+ *
+ * @return string
+ *   The URL to the meta tag image.
+ */
+function _dg_token_meta_image(?NodeInterface $node): string {
+  $media = NULL;
+  // Use primary image first.
+  if ($node && $node->hasField('field_primary_image') && !$node->get('field_primary_image')->isEmpty()) {
+    $media = $node->get('field_primary_image')->entity;
+  }
+  // Featured image second.
+  elseif ($node && $node->hasField('field_featured_image') && !$node->get('field_featured_image')->isEmpty()) {
+    $media = $node->get('field_featured_image')->entity;
+  }
+  if ($media) {
+    $file_uri = $media->get('field_media_image')->entity->getFileUri();
+    /** @var \Drupal\Core\File\FileUrlGeneratorInterface $file_url_generator */
+    $file_url_generator = \Drupal::service('file_url_generator');
+    $url = $file_url_generator->generate($file_uri);
+  }
+  else {
+    // If no primary or featured image, and this is a topic, get the the topics
+    // landing page primary image.
+    if ($node && $node->bundle() === 'topics') {
+      $nids = \Drupal::entityQuery('node')
+        ->accessCheck()
+        ->condition('type', 'landing_page')
+        ->condition('field_landing_page_type', 'resources')
+        ->execute();
+      if (!empty($nids)) {
+        $landing_page_nid = array_shift($nids);
+        $landing_page = \Drupal::entityTypeManager()->getStorage('node')->load($landing_page_nid);
+        return _dg_token_meta_image($landing_page);
+      }
+
+    }
+    // If no image field, then default to a static image.
+    $url = Url::fromUserInput('/' . \Drupal::theme()
+        ->getActiveTheme()
+        ->getPath() . '/static/digitalgov/img/meta/digitalgov-2022-card-v3.png');
+  }
+  // @todo Use the 1200 width style always instead of the original file.
+  return $url->toString();
 }
 
 /**
