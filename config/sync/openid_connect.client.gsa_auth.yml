@@ -1,0 +1,20 @@
+uuid: cb815229-9982-40e4-b812-ea2967fa0d5f
+langcode: en
+status: true
+dependencies: {  }
+id: gsa_auth
+label: 'GSA Auth'
+plugin: generic
+settings:
+  client_id: 'urn:gov:gsa:auth.oidc:sp:sso:gsa:digital.gov'
+  client_secret: 'Secrets not used.'
+  iss_allowed_domains: "digitalgov.lndo.site\r\ndigital.vm"
+  pkce_challenge_transformation: 'S256'
+  issuer_url: 'https://auth-preprod.gsa.gov/'
+  authorization_endpoint: 'https://auth-preprod.gsa.gov/oauth2/v1/authorize'
+  token_endpoint: 'https://auth-preprod.gsa.gov/oauth2/v1/token'
+  userinfo_endpoint: 'https://auth-preprod.gsa.gov/oauth2/v1/userinfo'
+  end_session_endpoint: ''
+  scopes:
+    - openid
+    - email
