@@ -24,7 +24,6 @@ module:
   editor: 0
   embedded_content: 0
   entity_reference_revisions: 0
-  externalauth: 0
   field: 0
   field_group: 0
   field_permissions: 0
@@ -55,7 +54,6 @@ module:
   redirect: 0
   remove_username: 0
   require_revision_log_message: 0
-  samlauth: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
   serialization: 0
