@@ -8,8 +8,8 @@ plugin: generic
 settings:
   client_id: 'urn:gov:gsa:auth.oidc:sp:sso:gsa:digital.gov'
   client_secret: 'Secrets not used.'
-  iss_allowed_domains: "digitalgov.lndo.site\r\ndigital.vm"
-  pkce_challenge_transformation: 'S256'
+  iss_allowed_domains: "digital-gov-drupal-dev.app.cloud.gov\r\ndigital-gov-drupal-staging.app.cloud.gov\r\ndigital-gov-drupal-test.app.cloud.gov\r\ndigitalgov.lndo.site\r\ndigital.vm"
+  pkce_challenge_transformation: S256
   issuer_url: 'https://auth-preprod.gsa.gov/'
   authorization_endpoint: 'https://auth-preprod.gsa.gov/oauth2/v1/authorize'
   token_endpoint: 'https://auth-preprod.gsa.gov/oauth2/v1/token'
