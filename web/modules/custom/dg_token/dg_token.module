@@ -40,7 +40,12 @@ function dg_token_token_info(): array {
   ];
   $dg['meta_image'] = [
     'name' => t("Meta Tag: Image"),
-    'description' => t("Image used for og:image and twitter:image:src meta tags.."),
+    'description' => t("Image used for og:image and twitter:image:src meta tags."),
+    'type' => 'node',
+  ];
+  $dg['meta_video'] = [
+    'name' => t("Meta Tag: Video"),
+    'description' => t("Image used for og:video."),
     'type' => 'node',
   ];
 
@@ -70,8 +75,13 @@ function dg_token_tokens($type, $tokens, array $data, array $options, Bubbleable
         case 'og_type':
           $replacements[$original] = _dg_token_is_page($node) ? 'article' : 'website';
           break;
+
         case 'meta_image':
           $replacements[$original] = _dg_token_meta_image($node);
+          break;
+
+        case 'meta_video':
+          $replacements[$original] = _dg_token_meta_video($node);
           break;
 
       }
@@ -82,9 +92,26 @@ function dg_token_tokens($type, $tokens, array $data, array $options, Bubbleable
 }
 
 /**
+ * For a given node or null, return the meta tag video URL.
+ *
+ * @param \Drupal\node\NodeInterface|null $node
+ *   The node that will have the video.
+ *
+ * @return string
+ *   The URL to the meta tag video.
+ */
+function _dg_token_meta_video(?NodeInterface $node): string {
+  if ($node && $node->hasField('field_youtube_id') && !$node->get('field_youtube_id')->isEmpty()) {
+    return 'https://www.youtube.com/v/' . $node->get('field_youtube_id')->getString();
+  }
+  return '';
+}
+
+/**
  * For a given node or null, return the meta tag image URL.
  *
  * @param \Drupal\node\NodeInterface|null $node
+ *   The node that will have the image.
  *
  * @return string
  *   The URL to the meta tag image.
@@ -123,8 +150,8 @@ function _dg_token_meta_image(?NodeInterface $node): string {
     }
     // If no image field, then default to a static image.
     $url = Url::fromUserInput('/' . \Drupal::theme()
-        ->getActiveTheme()
-        ->getPath() . '/static/digitalgov/img/meta/digitalgov-2022-card-v3.png');
+      ->getActiveTheme()
+      ->getPath() . '/static/digitalgov/img/meta/digitalgov-2022-card-v3.png');
   }
   // @todo Use the 1200 width style always instead of the original file.
   return $url->toString();
