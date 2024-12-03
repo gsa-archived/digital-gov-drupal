@@ -22,7 +22,7 @@ tags:
   robots: 'index, follow'
   title: '[current-page:title] | [site:name]'
   twitter_cards_creator: '@Digital_gov'
-  twitter_cards_description: '@Digital_gov'
+  twitter_cards_description: '[site:slogan]'
   twitter_cards_image: '[dg:meta_image]'
   twitter_cards_site: '@Digital_gov'
   twitter_cards_title: '[current-page:title]'
