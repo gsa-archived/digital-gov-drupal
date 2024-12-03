@@ -8,8 +8,4 @@ id: node
 label: Content
 tags:
   article_published_time: '[node:created:html_datetime]'
-  description: '[node:field_summary]'
-  og_description: '[node:field_summary]'
-  og_type: '[dg:og_type]'
   og_video: '[dg:meta_video]'
-  twitter_cards_description: '[node:field_summary]'

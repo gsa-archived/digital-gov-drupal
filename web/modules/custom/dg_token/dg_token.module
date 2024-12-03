@@ -48,6 +48,11 @@ function dg_token_token_info(): array {
     'description' => t("Image used for og:video."),
     'type' => 'node',
   ];
+  $dg['meta_description'] = [
+    'name' => t("Meta Tag: Description"),
+    'description' => t("Image used for og:description, twitter description, and description."),
+    'type' => 'node',
+  ];
 
   return [
     'types' => ['dg' => $type],
@@ -84,11 +89,32 @@ function dg_token_tokens($type, $tokens, array $data, array $options, Bubbleable
           $replacements[$original] = _dg_token_meta_video($node);
           break;
 
+        case 'meta_description':
+          $replacements[$original] = _dg_token_meta_description($node);
+          break;
+
       }
     }
   }
 
   return $replacements;
+}
+
+/**
+ * For a given node or null, return the meta tag description.
+ *
+ * @param \Drupal\node\NodeInterface|null $node
+ *   The node that will have the description.
+ *
+ * @return string
+ *   The URL to the meta tag description.
+ */
+function _dg_token_meta_description(?NodeInterface $node): string {
+  if ($node && $node->hasField('field_summary') && !$node->get('field_summary')->isEmpty()) {
+    return $node->get('field_summary')->processed;
+  }
+  $config = \Drupal::config('system.site');
+  return $config->get('slogan') ?: '';
 }
 
 /**
