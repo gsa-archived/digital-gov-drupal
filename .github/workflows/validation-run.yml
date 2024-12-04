@@ -10,6 +10,11 @@ jobs:
             -   name: Checkout code
                 uses: actions/checkout@v4
 
+            -   name: Extract branch name
+                shell: bash
+                run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+                id: extract_branch
+
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
@@ -48,7 +53,7 @@ jobs:
                     status3=0
 
                     # Run all commands and capture their exit statuses
-                    vendor/bin/robo validate:branch-name || status1=$? || status1=0
+                    vendor/bin/robo validate:branch-name ${{ steps.extract_branch.outputs.branch }} || status1=$? || status1=0
                     vendor/bin/robo validate:composer-lock || status3=$? || status3=0
                     vendor/bin/robo validate:coding-standards || status2=$? || status2=0
 
