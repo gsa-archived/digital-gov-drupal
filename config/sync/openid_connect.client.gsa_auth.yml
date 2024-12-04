@@ -6,8 +6,8 @@ id: gsa_auth
 label: 'GSA Auth'
 plugin: generic
 settings:
-  client_id: 'urn:gov:gsa:auth.oidc:sp:sso:gsa:digital.gov'
-  client_secret: 'Secrets not used.'
+  client_id: 0oadl1uyc8ET4DYav4h7
+  client_secret: 'Override me'
   iss_allowed_domains: "digital-gov-drupal-dev.app.cloud.gov\r\ndigital-gov-drupal-staging.app.cloud.gov\r\ndigital-gov-drupal-test.app.cloud.gov\r\ndigitalgov.lndo.site\r\ndigital.vm"
   pkce_challenge_transformation: S256
   issuer_url: 'https://auth-preprod.gsa.gov/'
