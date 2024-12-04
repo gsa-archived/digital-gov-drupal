@@ -19,23 +19,23 @@
  */
 #}
 {% if attributes -%}
-	{# override: changed div to section #}
-	<section{{attributes}}>
-	{% endif %}
-	{% if title %}
-		<h3>{{ title }}</h3>
-	{% endif %}
+  {# override: changed div to section #}
+  <section{{ attributes }}>
+  {% endif %}
+  {% if title %}
+    <h3>{{ title }}</h3>
+  {% endif %}
 
-	<{{list.type}}{{list.attributes}}>
+  <{{ list.type }}{{ list.attributes }}>
 
-		{% for row in rows %}
-			<li{{row.attributes}}>
-				{{- row.content -}}
-			</li>
-		{% endfor %}
+    {% for row in rows %}
+      <li{{ row.attributes }}>
+        {{- row.content -}}
+      </li>
+    {% endfor %}
 
-	</{{list.type}}>
+  </{{ list.type }}>
 
-	{% if attributes -%}
-	</section>
+  {% if attributes -%}
+  </section>
 {% endif %}

@@ -7,7 +7,6 @@
 {% set external_link = content.field_external_url.0['#title'] %}
 {# {% set logo = content.field_primary_image.0['#media']|file_uri|image_style('large') %} #}
 
-
 <article class="card card-news--external" aria-labelledby="{{ title }}">
   <div class="card__content">
     <div class="card__summary">
@@ -31,11 +30,11 @@
     </div>
   </div>
 <div class="card__media">
-	{% if logo %}
-		<img src="{{ logo }}" alt="{{ title }} logo"/>
-		{% else %}
-	{# {{/* Otherwise, use the Favicon that Google stores for the site. */}} #}
-	{# <img src="https://www.google.com/s2/favicons?domain={{ title }}.gov" alt="{{ title }} logo"/> #}
+  {% if logo %}
+    <img src="{{ logo }}" alt="{{ title }} logo"/>
+    {% else %}
+  {# {{/* Otherwise, use the Favicon that Google stores for the site. */}} #}
+  {# <img src="https://www.google.com/s2/favicons?domain={{ title }}.gov" alt="{{ title }} logo"/> #}
 {% endif %}
 </div>
 

@@ -71,12 +71,12 @@
 
       {# Deck #}
       {% if content.field_deck %}
-        <div class="deck">{{ content.field_deck | field_value}}</div>
+        <div class="deck">{{ content.field_deck|field_value }}</div>
       {% endif %}
 
       {% if content.field_buttons %}
       <div class="join-buttons">
-        {{ content.field_buttons | field_value }}
+        {{ content.field_buttons|field_value }}
       </div>
       {% endif %}
     </div>

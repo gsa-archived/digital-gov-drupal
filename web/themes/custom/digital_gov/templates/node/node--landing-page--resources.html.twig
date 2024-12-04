@@ -70,7 +70,7 @@
 
       {% if content.field_deck %}
         <p>
-          {{ content.field_deck | field_value}}
+          {{ content.field_deck|field_value }}
         </p>
       {% endif %}
     </header>
@@ -91,20 +91,19 @@
 
 {# ! below is the code from hugo #}
 {# <div class="dg-resource-topics-list">
-	<h3 class="dg-resource-topics-list__header">
-		{{ .title }}
+  <h3 class="dg-resource-topics-list__header">
+    {{ .title }}
     test data
-	</h3>
-	<ul class="dg-resource-topics-list__list usa-list usa-list--unstyled">
-		{{ range $data }}
-			<li class="dg-resource-topics-list__list-item">
-				{{ $page := $scope.GetPage (printf "/topics/%s" . ) }}
-				<a class="dg-resource-topics-list__link" href="{{ link }}">{{ title }}</a>
-			</li>
-		{{ end }}
-	</ul>
+  </h3>
+  <ul class="dg-resource-topics-list__list usa-list usa-list--unstyled">
+    {{ range $data }}
+      <li class="dg-resource-topics-list__list-item">
+        {{ $page := $scope.GetPage (printf "/topics/%s" . ) }}
+        <a class="dg-resource-topics-list__link" href="{{ link }}">{{ title }}</a>
+      </li>
+    {{ end }}
+  </ul>
 </div> #}
-
 
       </div>
     </div>

@@ -74,7 +74,7 @@
           {# Deck #}
           {# todo: check to see if we need to take the summary field out since they are seem to be using deck for landing page #}
           {% if content.field_deck %}
-            <h2 class="deck">{{ content.field_deck | field_value}}</h2>
+            <h2 class="deck">{{ content.field_deck|field_value }}</h2>
           {% endif %}
         </header>
       </div>
@@ -86,8 +86,6 @@
 {# {{ drupal_view('news_posts', 'block_1') }} #}
 
 {{ drupal_view('news_and_events', 'block_1') }}
-
-
 
       {# NOT-MIGRATED #}
       {# Gets the past events #}
