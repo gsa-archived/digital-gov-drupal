@@ -4,6 +4,7 @@
 {% set kicker = content.field_kicker|field_value %}
 {% set youtube_id = content.field_youtube_id|field_value %}
 {% set registration_url = content.field_registration_url|render|trim %}
+{% set external_link = content.field_external_url.0['#title'] %}
 {# {% set logo = content.field_primary_image.0['#media']|file_uri|image_style('large') %} #}
 
 
@@ -11,9 +12,7 @@
   <div class="card__content">
     <div class="card__summary">
       <h3 id="{{ title }}">
-        {# todo: update once ext link file is added to shortpost #}
-        {# <a href="{{- $externalLink -}}">{{- $title | markdownify -}}</a> #}<a>
-        {{ title }}
+        <a href="{{ external_link }}">{{ title }}</a><a>
       </a>
       </h3>
           {% if deck %}
@@ -21,12 +20,12 @@
         {{ deck }}
         {% else %}
         {{ summary }}
-          {# todo: update once ext link file is added to shortpost #}
-          {# {% if sourcePage %}
+          {# todo: update to take in source name #}
+          {# {% if sourcePage %} #}
             <em class="card__source source"> — via
-            <a href="{{ $externalLink }}" title="Read at {{ sourceName }}">{{ sourceName }}</a>
+            <a href="{{ external_link }}" title="Read at {{ sourceName }}">{{ sourceName }}</a>
           </em>
-        {% endif %} #}
+        {# {% endif %} #}
       </p>
         {% endif %}
     </div>
@@ -36,7 +35,7 @@
 		<img src="{{ logo }}" alt="{{ title }} logo"/>
 		{% else %}
 	{# {{/* Otherwise, use the Favicon that Google stores for the site. */}} #}
-	<img src="https://www.google.com/s2/favicons?domain={{ title }}.gov" alt="{{ title }} logo"/>
+	{# <img src="https://www.google.com/s2/favicons?domain={{ title }}.gov" alt="{{ title }} logo"/> #}
 {% endif %}
 </div>
 

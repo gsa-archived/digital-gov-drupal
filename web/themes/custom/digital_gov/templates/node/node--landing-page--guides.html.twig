@@ -64,101 +64,15 @@
 #}
 
 <main role="main" id="main-content">
-  <div class="grid-container-desktop margin-bottom-5">
-    <header class="page-head">
-      <h1>{{ node.title.value }}</h1>
-      {% if content.field_deck %}
-        <h2 class="deck">{{ content.field_deck | field_value}}</h2>
-      {% endif %}
-    </header>
-    <section class="dg-guides">
-      <ul class="usa-card-group">
-        [placeholder for Guide cards]
+	<div class="grid-container-desktop margin-bottom-5">
+		<header class="page-head">
+			<h1>{{ node.title.value }}</h1>
+			{% if content.field_deck %}
+				<h2 class="deck">{{ content.field_deck | field_value}}</h2>
+			{% endif %}
+		</header>
 
-        {# NOT-MIGRATED
-        {{ range $guidePages.ByParam "guide_weight" }}
-        {{ $image := .Params.image }}
-        {{ $layout := "" }}
-        {{ if $image }}
-        {{ $layout = "has-image" }}
-        {{ else }}
-        {{ $layout = "no-image" }}
-        {{ end }}
-        {{ $kicker := "Digital.gov Guide" }}
-        {{ if .Params.guide_weight }}
-        <li class="usa-card tablet:grid-col-4 dg-guides-card">
-          {{ $card_data := (dict
-          "header" .Title
-          "body" .Params.summary
-          "link" (.Permalink | relURL)
-          "link_title" .Title
-          "image" $image
-          "alt" "Test Alt"
-          "layout" $layout
-          "kicker" $kicker
-          "site" .Site
-          )
-          }}
+		{{ drupal_view('guides', 'block_1') }}
 
-          {{ partial "core/usa-card.html" (dict "card_data" $card_data) }}
-        </li>
-        {{ end }}
-        {{ end }}
-        #}
-
-{# ! from hugo... card set up #}
-{# <div class="usa-card__container">
-	{{ if $header }}
-		<div class="usa-card__header">
-			{{ if $kicker }}
-				<span class="usa-card__kicker margin-bottom-2">{{- $kicker -}}</span>
-			{{ end }}
-			<h2 class="usa-card__heading">{{- $header | markdownify -}}</h2>
-		</div>
-	{{ end }}
-
-	{{ if and $has_image (not (eq $image "")) }}
-		<div class="usa-card__media usa-card__media--indent">
-			<div class="usa-card__img">
-				{{ if (strings.Contains $image ".") }}
-					{{ $image_path := (printf "%s/%s" "img" $image | relURL) }}
-					<img src="{{- $image_path -}}" alt="{{- $alt -}}"/>
-				{{ else }}
-					{{- partial "core/img-flexible.html" (dict "Site" $context "src" $image "small" "false") -}}
-				{{ end }}
-			</div>
-		</div>
-	{{ end }}
-
-	{{ if $members }}
-		<div class="usa-card__members">
-			<span class="usa-card__member-count">
-				<svg class="usa-card__members-icon usa-icon dg-icon dg-icon--large margin-bottom-05" aria-hidden="true" focusable="false">
-					<use xlink:href="{{ "uswds/img/sprite.svg#groups" | relURL }}"></use>
-				</svg>
-				{{ $members }}
-				Members
-			</span>
-		</div>
-	{{ end }}
-
-	{{ if $body }}
-		<div class="usa-card__body">
-			<p>{{- $body | markdownify -}}</p>
-		</div>
-	{{ end }}
-
-	{{ if $link }}
-		<div class="usa-card__footer">
-			<a href="{{- $link -}}" class="usa-button {{ if $outline }}usa-button--outline{{ end }}">
-				{{- $link_title | markdownify -}}
-			</a>
-		</div>
-	{{ end }}
-</div> #}
-
-
-      </ul>
-    </section>
-  </div>
+	</div>
 </main>
