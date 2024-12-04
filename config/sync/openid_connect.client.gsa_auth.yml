@@ -1,20 +1,16 @@
-uuid: cb815229-9982-40e4-b812-ea2967fa0d5f
+uuid: bb126b6b-17eb-484a-9120-668fef1359f4
 langcode: en
 status: true
 dependencies: {  }
 id: gsa_auth
 label: 'GSA Auth'
-plugin: generic
+plugin: okta
 settings:
   client_id: 0oadl1uyc8ET4DYav4h7
   client_secret: 'Override me'
   iss_allowed_domains: "digital-gov-drupal-dev.app.cloud.gov\r\ndigital-gov-drupal-staging.app.cloud.gov\r\ndigital-gov-drupal-test.app.cloud.gov\r\ndigitalgov.lndo.site\r\ndigital.vm"
   pkce_challenge_transformation: S256
-  issuer_url: 'https://auth-preprod.gsa.gov/'
-  authorization_endpoint: 'https://auth-preprod.gsa.gov/oauth2/v1/authorize'
-  token_endpoint: 'https://auth-preprod.gsa.gov/oauth2/v1/token'
-  userinfo_endpoint: 'https://auth-preprod.gsa.gov/oauth2/v1/userinfo'
-  end_session_endpoint: ''
+  okta_domain: auth-preprod.gsa.gov
   scopes:
     - openid
     - email

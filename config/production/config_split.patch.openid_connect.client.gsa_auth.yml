@@ -2,15 +2,9 @@ removing:
   settings:
     client_id: 0oadl1uyc8ET4DYav4h7
     iss_allowed_domains: "digital-gov-drupal-dev.app.cloud.gov\r\ndigital-gov-drupal-staging.app.cloud.gov\r\ndigital-gov-drupal-test.app.cloud.gov\r\ndigitalgov.lndo.site\r\ndigital.vm"
-    issuer_url: 'https://auth-preprod.gsa.gov/'
-    authorization_endpoint: 'https://auth-preprod.gsa.gov/oauth2/v1/authorize'
-    token_endpoint: 'https://auth-preprod.gsa.gov/oauth2/v1/token'
-    userinfo_endpoint: 'https://auth-preprod.gsa.gov/oauth2/v1/userinfo'
+    okta_domain: auth-preprod.gsa.gov
 adding:
   settings:
     client_id: 0oadl2z7pcKOtN3zz4h7
     iss_allowed_domains: "cms.digital.gov"
-    issuer_url: 'https://auth.gsa.gov/'
-    authorization_endpoint: 'https://auth.gsa.gov/oauth2/v1/authorize'
-    token_endpoint: 'https://auth.gsa.gov/oauth2/v1/token'
-    userinfo_endpoint: 'https://auth.gsa.gov/oauth2/v1/userinfo'
+    okta_domain: auth.gsa.gov
