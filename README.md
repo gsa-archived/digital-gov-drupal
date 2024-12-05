@@ -10,6 +10,10 @@ The site uses GSA Auth for authentication. You can always use `./drush.sh uli` t
 
 If you would like to use SSO:
 
+* Your account must be initialized in the pre-production GSA Auth site.
+
+Visit https://auth-preprod.gsa.gov/ and use your normal GSA credentials to authenticate your account. Once you sign in and get to your dashboard, you can close the site.
+
 * Your user account must exist first, SSO will never create your account.
 
 Many users are created in default content, but if you're not in there:
