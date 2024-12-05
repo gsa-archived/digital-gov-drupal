@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Template\Attribute;
+use Drupal\config_pages\Entity\ConfigPages;
 
 /**
  * @file
@@ -154,17 +155,19 @@ function digital_gov_preprocess_block__site_wrapper_usa_identifier(&$variables) 
     if (strpos($variable_name, 'title') !== FALSE) {
       $new_string = 'field_' . str_replace('_title', '', $variable_name);
       $variables[$variable_name] = $config_page->get($new_string)->title;
-    } elseif (strpos($variable_name, 'link') !== FALSE) {
+    } 
+    elseif (strpos($variable_name, 'link') !== FALSE) {
       $new_string = 'field_' . $variable_name;l
       $variables[$variable_name] = $config_page->get('field_about_link')->uri;
-    } else {
+    } 
+    else {
       $new_string = 'field_' . $variable_name;
       $variables[$variable_name] = $config_page->get($new_string)->value;
     }
   }
 }
 
-/*
+/**
  * Implements hook_preprocess_HOOK().
  */
 function digital_gov_preprocess_block__site_wrapper_header(&$variables) {
