@@ -38,6 +38,7 @@ module:
   linkit: 0
   maillog: 0
   mailsystem: 0
+  masquerade: 0
   media: 0
   media_library: 0
   memcache: 0
@@ -61,6 +62,7 @@ module:
   redirect: 0
   remove_username: 0
   require_revision_log_message: 0
+  role_delegation: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
   serialization: 0
@@ -75,6 +77,7 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
+  userprotect: 0
   uswds_templates: 0
   vbo_workflow_transition: 0
   views_bulk_operations: 0

@@ -43,3 +43,6 @@ d7bc80171de8363a43d1e8c1f54548b0|John Franklin|feature/DIGITAL-195-sso-configura
 f43373d6992ea1ba98d866f92bfad209|John Franklin|feature/DIGITAL-195-sso-configuration|Tue Dec  3 10:35:42 AM EST 2024|./composer.sh remove drupal/samlauth
 33dcffb20649238b9164cd289ae4c02a|John Franklin|feature/DIGITAL-195-sso-configuration|Tue Dec  3 03:39:21 PM EST 2024|./composer.sh require drupal/noreqnewpass
 8ad344fc6218f05920f1271772d83283|John Franklin|feature/DIGITAL-195-sso-configuration|Wed Dec  4 05:51:11 PM EST 2024|./composer.sh update --lock
+a8e36d32c49aca75de1d6f5efc57a38e|Matt Poole|feature/DIGITAL-195-sso-configuration|Thu Dec  5 12:49:28 EST 2024|./composer.sh require drupal/role_delegation:^1.3
+1d751b05ff3fe3ed6f8dda8a9c160d78|Matt Poole|feature/DIGITAL-195-sso-configuration|Thu Dec  5 12:53:54 EST 2024|./composer.sh require drupal/userprotect
+375ea7aa8ac9c84f804100548773e80a|Matt Poole|feature/DIGITAL-195-sso-configuration|Thu Dec  5 13:06:09 EST 2024|./composer.sh require drupal/masquerade:^2.0
