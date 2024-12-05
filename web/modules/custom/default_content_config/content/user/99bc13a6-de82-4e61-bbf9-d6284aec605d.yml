@@ -1,0 +1,41 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: 99bc13a6-de82-4e61-bbf9-d6284aec605d
+  default_langcode: en
+default:
+  preferred_langcode:
+    -
+      value: en
+  name:
+    -
+      value: toni.bonitto@gsa.gov
+  mail:
+    -
+      value: toni.bonitto@gsa.gov
+  timezone:
+    -
+      value: America/New_York
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1733422414
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0
+  roles:
+    -
+      target_id: admin
+  role_change:
+    -
+      target_id: __role_delegation_empty_field_value__
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1

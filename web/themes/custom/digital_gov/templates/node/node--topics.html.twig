@@ -68,7 +68,7 @@
     {{ drupal_entity('block', 'digital_gov_breadcrumbs') }}
   </div>
 
-  {#  Default & Collection Header #}
+  {# Default & Collection Header #}
   <header class="grid-container-desktop">
     <h1
       class="{{ node.field_legislation.0 ? 'dg-topic__header-title--collection' : 'dg-topic__header-title' }}"
@@ -79,45 +79,49 @@
     {# Deck #}
     {% if content.field_deck %}
       <p class="dg-topic__deck margin-0">
-        {{ content.field_deck | field_value }}</div>
+        {{ content.field_deck|field_value }}
       </p>
     {% endif %}
   </header>
 
   {# Collection — Summary & Legislation #}
   {% if node.field_summary or node.field_legislation %}
-    <div class="grid-container-desktop margin-top-2">
-      <div class="grid-row desktop:grid-gap-4">
-        <div class="desktop:grid-col margin-bottom-4">
-          {{ content.field_summary }}
-        </div>
-        <div class="desktop:grid-col">
-          {% if node.field_legislation.list %}
-            {{ include('@digital_gov/partials/card-legislation.html.twig', {
-              'title': node.field_legislation.0.title,
-              'url': node.field_legislation.0.uri
-            }, with_context = false) }}
-          {% endif %}
+    {% if is_first_page %}
+      <div class="grid-container-desktop margin-top-2">
+        <div class="grid-row desktop:grid-gap-4">
+          <div class="desktop:grid-col margin-bottom-4">
+            {{ content.field_summary }}
+          </div>
+          <div class="desktop:grid-col">
+            {% if node.field_legislation.list %}
+              {{ include('@digital_gov/partials/card-legislation.html.twig', {
+                'title': node.field_legislation.0.title,
+                'url': node.field_legislation.0.uri
+              }, with_context = false) }}
+            {% endif %}
+          </div>
         </div>
       </div>
-    </div>
+    {% endif %}
   {% endif %}
 
   {# Collection — Featured Resources and Communities #}
   {% if content.field_featured_resources or content.field_featured_communities %}
+    {# NOT-MIGRATED
+      {% if is_first_page %}
+    #}
+    <div class="dg-topic__featured grid-container-desktop">
+      {{ content.field_featured_resources }}
 
-      <div class="dg-topic__featured grid-container-desktop">
-        {{ content.field_featured_resources }}
+      [placeholder featured communities]
+      {{ content.field_featured_communities }}
 
-        [placeholder featured communities]
-        {{ content.field_featured_communities }}
-
-        {# range .Params.featured_communities #}
-        {# $community_page := (dict "link" (printf "communities/%s" .)) #}
-        {# NOT-MIGRATED #}
-        {# partial "core/featured-resource.html" (dict "Site" $.Site "resource_data" $community_page) #}
-        {# end #}
-      </div>
+      {# range .Params.featured_communities #}
+      {# $community_page := (dict "link" (printf "communities/%s" .)) #}
+      {# NOT-MIGRATED #}
+      {# partial "core/featured-resource.html" (dict "Site" $.Site "resource_data" $community_page) #}
+      {# end #}
+    </div>
 
   {% endif %}
 
@@ -254,12 +258,12 @@
           <p>{{ stream_count }} posts</p>
 
           {# range $stream_paginated #}
-          {% if Type == "events" %}
+          {% if Type == 'events' %}
             {# NOT-MIGRATED #}
             {# .Render "card-event" #}
           {% endif %}
 
-          {% if Type == "news" %}
+          {% if Type == 'news' %}
             {# NOT-MIGRATED #}
             {# .Render "card-news" #}
           {% endif %}

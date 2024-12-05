@@ -65,7 +65,7 @@
 #}
 <main role="main" id="main-content">
   <article class="dg-guide">
-    {{ include("@digital_gov/partials/guides/guide-header.html.twig") }}
+    {{ include('@digital_gov/partials/guides/guide-header.html.twig') }}
 
     {# NOT - MIGRATED
     {-- partial "core/guides/guide-menu-bar.html" . -}
@@ -84,11 +84,11 @@
         {# partial "core/guides/guide-sidenav.html" . #}
       </aside>
       <div class="dg-guide__content">
-        {{ include("@digital_gov/partials/guides/guide-content.html.twig") }}
+        {{ include('@digital_gov/partials/guides/guide-content.html.twig') }}
       </div>
     </div>
     {% else %}
-      {{ include("@digital_gov/partials/guides/guide-content.html.twig") }}
+      {{ include('@digital_gov/partials/guides/guide-content.html.twig') }}
     {% endif %}
     {# NOT-MIGRATED #}
     {# if .Parent.Params.glossary #}

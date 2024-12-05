@@ -69,10 +69,10 @@
 
       {{ drupal_entity('block', 'digital_gov_breadcrumbs') }}
 
-      {{ include("@digital_gov/partials/page-header.html.twig", {
-        'title': node.title.value,
-        'deck': node.field_deck.value,
-      }, with_context = false) }}
+      {{ include('@digital_gov/partials/page-header.html.twig', {
+        title: node.title.value,
+        deck: node.field_deck.value,
+      }, with_context=false) }}
     </header>
 
     <section class="usa-in-page-nav-container">
