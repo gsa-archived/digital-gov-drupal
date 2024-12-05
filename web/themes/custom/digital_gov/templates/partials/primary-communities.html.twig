@@ -30,7 +30,7 @@ Displays a vertical list of primary CoP's on the sidebar on event pages.
     <footer class="dg-promos__footer">
       {# $communityCount := len (where $.Site.RegularPages "Section" "communities") #}
       <a
-        href="{{ "communities" }}"
+        href="{{ 'communities' }}"
         class="dg-promos__more-link dg-more-link"
       >
         <span> See all {{ communityCount }} communities </span>
@@ -47,4 +47,3 @@ Displays a vertical list of primary CoP's on the sidebar on event pages.
     </footer>
   </article>
 {% endif %}
-

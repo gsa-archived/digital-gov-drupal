@@ -63,7 +63,7 @@
  */
 #}
 
-{#  where does community list come from? #}
+{# where does community list come from? #}
 {% set community_list = true %}
 <main role="main" id="main-content">
   <article class="grid-container-desktop">
@@ -71,11 +71,11 @@
     {{ drupal_entity('block', 'digital_gov_breadcrumbs') }}
 
     <header>
-      {{ include("@digital_gov/partials/page-header.html.twig", {
-        'title': node.title.value,
-        'deck': node.field_deck.value,
-        'append_title_text': 'Community'
-      }, with_context = false) }}
+      {{ include('@digital_gov/partials/page-header.html.twig', {
+        title: node.title.value,
+        deck: node.field_deck.value,
+        append_title_text: 'Community',
+      }, with_context=false) }}
     </header>
 
     <section class="usa-in-page-nav-container">
@@ -97,7 +97,7 @@
                 class="join-community-form join-community-form--{{ community_acronym }}"
               >
                 <div class="join-community-form__header">
-                  {{ content.field_dg_logo | field_value }}
+                  {{ content.field_dg_logo|field_value }}
                   <h3>Connect with us</h3>
                 </div>
                 <div class="join-community-form__body">
@@ -121,7 +121,7 @@
               </section>
             {% endif %}
             <div class="content">
-              {{ content | without('field_dg_logo') }}
+              {{ content|without('field_dg_logo') }}
             </div>
 
             {# @TODO Community Events #}
@@ -131,7 +131,7 @@
             #}
             <div class="community_conduct">
               <h2 id="community-conduct">Community Conduct</h2>
-              {% include('@digital_gov/partials/community-pagefooter.html.twig') %}
+              {{ include(('@digital_gov/partials/community-pagefooter.html.twig')) }}
             </div>
           </div>
         {% endif %}
