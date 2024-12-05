@@ -15,7 +15,6 @@ module:
   dblog: 0
   default_content: 0
   default_content_config: 0
-  devel: 0
   dg_breadcrumb: 0
   dg_token: 0
   disable_user_1_edit: 0
@@ -38,7 +37,6 @@ module:
   linkit: 0
   maillog: 0
   mailsystem: 0
-  masquerade: 0
   media: 0
   media_library: 0
   memcache: 0
