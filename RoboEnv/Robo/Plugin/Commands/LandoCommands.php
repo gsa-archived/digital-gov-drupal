@@ -1378,4 +1378,30 @@ class LandoCommands extends CommonCommands
 
     }
 
+    /**
+     * Set an environment variable.
+     *
+     * This is a new method for Digital.gov, don't remove.
+     *
+     * @command lando:set-env
+     *
+     * @param string $name
+     *   The name of the environment variable, usually all caps.
+     * @param string $value
+     *   The optional value of the environment variable
+     */
+    public function setEnv(SymfonyStyle $io, string $name, string $value = ''): void {
+        $this->isLandoInit();
+        $yml_file = $this->getLandoLocalYml();
+        $yml_value =& $yml_file['services']['appserver']['overrides']['environment'][$name];
+        if ($yml_value === $value) {
+            $this->yell("Environment variable '$name' already set to '$value'.");
+            return;
+        }
+        $this->yell("Environment variable '$name' set to '$value'.");
+        $yml_value = $value;
+        $this->saveLandoLocalYml($yml_file);
+        $this->rebuildRequired($io, TRUE);
+    }
+
 }
