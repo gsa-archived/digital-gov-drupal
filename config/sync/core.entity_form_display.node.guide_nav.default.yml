@@ -1,0 +1,144 @@
+uuid: a0cf85bd-fca1-49b6-87de-cc80b00c8a4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.guide_nav.body
+    - field.field.node.guide_nav.field_guid_nav_parent
+    - field.field.node.guide_nav.field_guide_navigation
+    - field.field.node.guide_nav.field_show_in_page_nav
+    - field.field.node.guide_nav.field_show_next_previous
+    - field.field.node.guide_nav.field_show_read_time
+    - node.type.guide_nav
+  module:
+    - entity_reference_revisions
+    - field_group
+    - paragraphs
+    - path
+third_party_settings:
+  field_group:
+    group_guide_nav_settings:
+      children:
+        - field_guid_nav_parent
+        - field_show_next_previous
+        - field_show_read_time
+        - field_show_in_page_nav
+      label: Settings
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+        required_fields: false
+id: node.guide_nav.default
+targetEntityType: node
+bundle: guide_nav
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_guid_nav_parent:
+    type: entity_reference_revisions_autocomplete
+    weight: 10
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_guide_navigation:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: guide_link
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_show_in_page_nav:
+    type: boolean_checkbox
+    weight: 13
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_show_next_previous:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_show_read_time:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  moderation_state: true
+  promote: true
+  publish_on: true
+  publish_state: true
+  sticky: true
+  unpublish_on: true
+  unpublish_state: true

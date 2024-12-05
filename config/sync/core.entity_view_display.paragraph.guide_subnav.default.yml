@@ -1,0 +1,23 @@
+uuid: cf3a49ed-189c-447b-9724-7bdff6e3d9be
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.guide_subnav.field_subnav_links
+    - paragraphs.paragraphs_type.guide_subnav
+  module:
+    - entity_reference_revisions
+id: paragraph.guide_subnav.default
+targetEntityType: paragraph
+bundle: guide_subnav
+mode: default
+content:
+  field_subnav_links:
+    type: entity_reference_revisions_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

@@ -1,0 +1,32 @@
+uuid: 815a5cb6-0575-40ab-a3e1-9cc99b3cfd38
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.guide_link.field_guide_page
+    - field.field.paragraph.guide_link.field_subnav_links
+    - paragraphs.paragraphs_type.guide_link
+  module:
+    - entity_reference_revisions
+id: paragraph.guide_link.default
+targetEntityType: paragraph
+bundle: guide_link
+mode: default
+content:
+  field_guide_page:
+    type: entity_reference_revisions_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_subnav_links:
+    type: entity_reference_revisions_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

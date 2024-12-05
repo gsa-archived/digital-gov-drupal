@@ -1,0 +1,19 @@
+uuid: 6bb1c5c9-ad86-4ca3-9c5e-0db6a107cbe3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_navigation_title
+    - node.type.guides
+id: node.guides.field_navigation_title
+field_name: field_navigation_title
+entity_type: node
+bundle: guides
+label: 'Navigation Title'
+description: 'Optionally override the title in the guide navigation links.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: d35e3cf5-6e59-425e-9aae-8efbd9fbec82
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_read_time
+    - node.type.guide_nav
+id: node.guide_nav.field_show_read_time
+field_name: field_show_read_time
+entity_type: node
+bundle: guide_nav
+label: 'Show Read Time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

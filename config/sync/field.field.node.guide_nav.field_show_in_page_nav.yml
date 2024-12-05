@@ -1,0 +1,21 @@
+uuid: 3245229c-6edb-4c77-bf54-61eb91396f32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_in_page_nav
+    - node.type.guide_nav
+id: node.guide_nav.field_show_in_page_nav
+field_name: field_show_in_page_nav
+entity_type: node
+bundle: guide_nav
+label: 'Show In-page Nav'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

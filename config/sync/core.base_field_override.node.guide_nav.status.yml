@@ -1,0 +1,22 @@
+uuid: 5eb70f79-ca33-4e0d-a50c-c8dce3b13161
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.guide_nav
+id: node.guide_nav.status
+field_name: status
+entity_type: node
+bundle: guide_nav
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

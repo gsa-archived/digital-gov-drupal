@@ -1,0 +1,21 @@
+uuid: 4e1d205a-6b89-413f-b4d5-d153e06d1fe5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_next_previous
+    - node.type.guide_nav
+id: node.guide_nav.field_show_next_previous
+field_name: field_show_next_previous
+entity_type: node
+bundle: guide_nav
+label: 'Show Next/Previous'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

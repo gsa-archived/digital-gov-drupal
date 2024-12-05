@@ -1,0 +1,10 @@
+uuid: 194ad38e-4482-4736-8c5a-72727b6ef37f
+langcode: en
+status: true
+dependencies: {  }
+id: guide_link
+label: 'Guide Link'
+icon_uuid: null
+icon_default: null
+description: 'A link and optional subnav list of links to use for Guide navigation.'
+behavior_plugins: {  }

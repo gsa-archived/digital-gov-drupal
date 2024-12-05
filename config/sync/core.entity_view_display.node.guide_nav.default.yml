@@ -1,0 +1,48 @@
+uuid: c344d9c1-4a8d-4797-9f83-125f38d669c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.guide_nav.body
+    - field.field.node.guide_nav.field_guid_nav_parent
+    - field.field.node.guide_nav.field_guide_navigation
+    - field.field.node.guide_nav.field_show_in_page_nav
+    - field.field.node.guide_nav.field_show_next_previous
+    - field.field.node.guide_nav.field_show_read_time
+    - node.type.guide_nav
+  module:
+    - entity_reference_revisions
+    - user
+id: node.guide_nav.default
+targetEntityType: node
+bundle: guide_nav
+mode: default
+content:
+  field_guid_nav_parent:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_guide_navigation:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_show_in_page_nav: true
+  field_show_next_previous: true
+  field_show_read_time: true

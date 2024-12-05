@@ -1,17 +1,18 @@
-uuid: 99ca196c-0c47-4402-9a0d-209a4a677b0e
+uuid: 94fb30b8-de2e-4e93-8126-5cea4ab0eed4
 langcode: en
 status: true
 dependencies:
   module:
+    - entity_reference_revisions
     - node
     - paragraphs
-id: paragraph.field_content
-field_name: field_content
+id: paragraph.field_subnav_links
+field_name: field_subnav_links
 entity_type: paragraph
-type: entity_reference
+type: entity_reference_revisions
 settings:
   target_type: node
-module: core
+module: entity_reference_revisions
 locked: false
 cardinality: -1
 translatable: true

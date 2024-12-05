@@ -1,0 +1,27 @@
+uuid: 66e2c9b3-39d2-4851-ac3a-22c3c38b3c8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.guide_subnav.field_subnav_links
+    - paragraphs.paragraphs_type.guide_subnav
+  module:
+    - entity_reference_revisions
+id: paragraph.guide_subnav.default
+targetEntityType: paragraph
+bundle: guide_subnav
+mode: default
+content:
+  field_subnav_links:
+    type: entity_reference_revisions_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
