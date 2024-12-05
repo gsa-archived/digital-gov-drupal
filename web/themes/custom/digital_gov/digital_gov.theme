@@ -122,10 +122,9 @@ function get_icon_url($config_page) {
 
 /**
  * Implements hook_preprocess_HOOK().
- * This is used for the identifier config_pages.
  */
 function digital_gov_preprocess_block__site_wrapper_usa_identifier(&$variables) {
-  $config_page = \Drupal\config_pages\Entity\ConfigPages::config('identifier');
+  $config_page = ConfigPages::config('identifier');
   $variables['config_entity'] = $config_page->toArray();
   $icon_url = get_icon_url($config_page);
   $variables['src'] = $icon_url;
@@ -157,8 +156,8 @@ function digital_gov_preprocess_block__site_wrapper_usa_identifier(&$variables) 
       $variables[$variable_name] = $config_page->get($new_string)->title;
     }
     elseif (strpos($variable_name, 'link') !== FALSE) {
-      $new_string = 'field_' . $variable_name;l
-      $variables[$variable_name] = $config_page->get('field_about_link')->uri;
+      $new_string = 'field_' . $variable_name;
+      $variables[$variable_name] = $config_page->get($new_string)->uri;
     }
     else {
       $new_string = 'field_' . $variable_name;
