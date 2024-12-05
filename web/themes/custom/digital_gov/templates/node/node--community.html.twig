@@ -87,7 +87,6 @@
       <div>
         {# Summary controls if the community content is shown
          but is not displayed on full page #}
-         MEMBERS {{ content.field_members | field_value }} end members
         {% if node.field_summary.value %}
           {% set community_acronym = node.field_dg_acronym.value %}
           {% set subscribe_email_subject = node.field_subscribe_email_subject.value %}
