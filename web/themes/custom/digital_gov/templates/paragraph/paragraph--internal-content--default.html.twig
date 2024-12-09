@@ -42,14 +42,14 @@
 {% set link_title = content.field_content.0['#entity'].title.0.value %}
 {% set link_summary = content.field_content.0['#entity'].field_summary.value %}
 {% if content.field_override_title.0.isnotempty %}
-  {%   set link_title = content.field_override_title | field_value %}
+  {% set link_title = content.field_override_title|field_value %}
 {% endif %}
 {% if content.field_override_summary.isnotempty %}
-  {%    set link_summary = content.field_override_summary | field_value %}
+  {% set link_summary = content.field_override_summary|field_value %}
 {% endif %}
 
-{{ include("@digital_gov/partials/featured-resource.html.twig", {
-  'url' : path('entity.node.canonical', {'node':  content.field_content.0['#entity'].id}),
-  'title': link_title,
-  'summary': link_summary
-}, with_context = false) }}
+{{ include('@digital_gov/partials/featured-resource.html.twig', {
+  url: path('entity.node.canonical', {node: content.field_content.0['#entity'].id}),
+  title: link_title,
+  summary: link_summary,
+}, with_context=false) }}

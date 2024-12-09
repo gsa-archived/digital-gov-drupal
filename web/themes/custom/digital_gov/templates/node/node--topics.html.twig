@@ -95,9 +95,9 @@
           <div class="desktop:grid-col">
             {% if node.field_legislation.list %}
               {{ include('@digital_gov/partials/card-legislation.html.twig', {
-                'title': node.field_legislation.0.title,
-                'url': node.field_legislation.0.uri
-              }, with_context = false) }}
+                title: node.field_legislation.0.title,
+                url: node.field_legislation.0.uri,
+              }, with_context=false) }}
             {% endif %}
           </div>
         </div>

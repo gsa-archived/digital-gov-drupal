@@ -1,9 +1,9 @@
-{% set summary = drupal_field('field_summary','node', content_reference)|field_value %}
-{% set url = path('entity.node.canonical', {'node': content_reference}) %}
-{% set title = drupal_field('title','node', content_reference)|field_value %}
+{% set summary = drupal_field('field_summary', 'node', content_reference)|field_value %}
+{% set url = path('entity.node.canonical', {node: content_reference}) %}
+{% set title = drupal_field('title', 'node', content_reference)|field_value %}
 
-{{ include("@digital_gov/partials/featured-resource.html.twig", {
-  'title': title ?: '',
-  'url': url,
-  'summary': summary ?: ''
-}, with_context = false) }}
+{{ include('@digital_gov/partials/featured-resource.html.twig', {
+  title: title ?: '',
+  url: url,
+  summary: summary ?: '',
+}, with_context=false) }}

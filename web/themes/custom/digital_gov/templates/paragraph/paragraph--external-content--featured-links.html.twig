@@ -39,11 +39,11 @@
  */
 #}
 
-{% set link = content.field_link | field_value %}
+{% set link = content.field_link|field_value %}
 
-{{ include("@digital_gov/partials/featured-link.html.twig", {
-  'url' : link.0['#url'].uri,
-  'title': link.0['#title'],
-  'summary': content.field_summary | field_value,
-  'logo_source': logo_source,
-}, with_context = false) }}
+{{ include('@digital_gov/partials/featured-link.html.twig', {
+  url: link.0['#url'].uri,
+  title: link.0['#title'],
+  summary: content.field_summary|field_value,
+  logo_source: logo_source,
+}, with_context=false) }}
