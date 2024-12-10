@@ -1,17 +1,16 @@
-uuid: 89c0ef8f-af2c-4f5f-be55-02fb7af4aae9
+uuid: e9ed8dfb-c0e4-4831-b20c-05f3c719773a
 langcode: en
 status: true
 dependencies:
   module:
-    - entity_reference_revisions
     - node
 id: node.field_guide_nav_ref
 field_name: field_guide_nav_ref
 entity_type: node
-type: entity_reference_revisions
+type: entity_reference
 settings:
   target_type: node
-module: entity_reference_revisions
+module: core
 locked: false
 cardinality: 1
 translatable: true
