@@ -19,7 +19,6 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
-    - entity_reference_revisions
     - field_group
     - inline_entity_form
     - maxlength
@@ -30,8 +29,8 @@ third_party_settings:
   field_group:
     group_guide_navigation:
       children:
-        - field_guide_nav_ref
         - field_guide_nav_title
+        - field_guide_nav_ref
       label: 'Guide Navigation'
       region: content
       parent_name: ''
@@ -85,14 +84,10 @@ content:
       media_types: {  }
     third_party_settings: {  }
   field_guide_nav_ref:
-    type: entity_reference_revisions_autocomplete
-    weight: 17
+    type: options_select
+    weight: 26
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_guide_nav_title:
     type: string_textfield

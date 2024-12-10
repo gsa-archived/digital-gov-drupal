@@ -35,13 +35,20 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_parent_guide:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
 hidden:
-  field_parent_guide: true
   field_show_in_page_nav: true
   field_show_next_previous: true
   field_show_read_time: true

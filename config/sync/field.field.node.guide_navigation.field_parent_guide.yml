@@ -1,18 +1,16 @@
-uuid: e3af469a-8b6e-415d-b333-659809ced01b
+uuid: 2e9e93c2-3d30-4a49-be9c-3124e243fda8
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_parent_guide
     - node.type.guide_navigation
-  module:
-    - entity_reference_revisions
 id: node.guide_navigation.field_parent_guide
 field_name: field_parent_guide
 entity_type: node
 bundle: guide_navigation
 label: 'Parent Guide'
-description: 'Add a link to this parent guide above title.'
+description: ''
 required: false
 translatable: false
 default_value: {  }
@@ -24,4 +22,4 @@ settings:
       view_name: parent_guide_nav_pages_ref
       display_name: entity_reference_1
       arguments: {  }
-field_type: entity_reference_revisions
+field_type: entity_reference
