@@ -37,6 +37,7 @@ module:
   linkit: 0
   maillog: 0
   mailsystem: 0
+  maxlength: 0
   media: 0
   media_library: 0
   memcache: 0
