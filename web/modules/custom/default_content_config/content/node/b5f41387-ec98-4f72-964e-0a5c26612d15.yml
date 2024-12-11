@@ -50,7 +50,7 @@ default:
   field_deck:
     -
       value: 'How login.gov incorporated human centered design and continuous discovery into their product development process to improve the user experience.'
-      format: html
+      format: single_inline_html
   field_kicker:
     -
       value: Privacy
@@ -63,7 +63,7 @@ default:
   field_summary:
     -
       value: 'How login.gov incorporated human centered design and continuous discovery into their product development process to improve the user experience.'
-      format: html
+      format: single_inline_html
   field_topics:
     -
       entity: 95077128-6d33-4445-a48a-4ad8ebb7d9b3

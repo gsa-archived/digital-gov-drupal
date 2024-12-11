@@ -42,4 +42,4 @@ default:
   field_summary:
     -
       value: 'Help your readers complete their tasks with these Plain Language writing tips.'
-      format: html
+      format: single_inline_html
