@@ -5,20 +5,21 @@ dependencies:
   config:
     - core.entity_view_mode.media.media_library
     - field.field.media.image.field_media_image
+    - image.style.medium
     - media.type.image
   module:
-    - responsive_image
+    - image
 id: media.image.media_library
 targetEntityType: media
 bundle: image
 mode: media_library
 content:
   thumbnail:
-    type: responsive_image
+    type: image
     label: hidden
     settings:
-      responsive_image_style: ''
       image_link: ''
+      image_style: medium
       image_loading:
         attribute: lazy
     third_party_settings: {  }
