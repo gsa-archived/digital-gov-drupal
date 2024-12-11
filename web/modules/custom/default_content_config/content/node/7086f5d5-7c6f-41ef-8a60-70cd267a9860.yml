@@ -42,11 +42,11 @@ default:
   field_deck:
     -
       value: 'nulla iaculis ligula fames proin in <b>erat</b>'
-      format: html
+      format: single_inline_html
   field_page_weight:
     -
       value: 1
   field_summary:
     -
       value: 'nulla iaculis ligula fames proin in <b>erat</b>'
-      format: html
+      format: single_inline_html

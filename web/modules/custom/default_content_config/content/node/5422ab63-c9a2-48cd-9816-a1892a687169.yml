@@ -37,4 +37,4 @@ default:
   field_summary:
     -
       value: 'Discover community- and technology-related job openings in the federal government.'
-      format: html
+      format: single_inline_html

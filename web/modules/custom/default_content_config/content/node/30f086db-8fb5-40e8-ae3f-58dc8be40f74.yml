@@ -50,4 +50,4 @@ default:
   field_summary:
     -
       value: 'The Federal Risk and Authorization Management (FedRAMP) is a process that authorizes cloud products and services.'
-      format: html
+      format: single_inline_html

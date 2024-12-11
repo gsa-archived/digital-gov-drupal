@@ -43,8 +43,6 @@ default:
   field_first_name:
     -
       value: Lorena
-      format: html
   field_last_name:
     -
       value: Molina-Irizarry
-      format: html

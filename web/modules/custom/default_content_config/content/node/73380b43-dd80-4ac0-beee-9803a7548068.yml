@@ -42,8 +42,8 @@ default:
   field_deck:
     -
       value: 'We help the government community deliver better digital services.'
-      format: html
+      format: single_inline_html
   field_summary:
     -
       value: 'Welcome to Digital.gov. Learn more about who we are.'
-      format: html
+      format: single_inline_html

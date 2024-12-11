@@ -44,7 +44,7 @@ default:
   field_deck:
     -
       value: 'nulla iaculis ligula fames proin in <b>erat</b>'
-      format: html
+      format: single_inline_html
   field_featured_image:
     -
       entity: 6bd8641f-84c6-4ddb-b8b2-9c076b017198
@@ -54,4 +54,4 @@ default:
   field_summary:
     -
       value: 'nulla iaculis ligula fames proin in <b>erat</b>'
-      format: html
+      format: single_inline_html

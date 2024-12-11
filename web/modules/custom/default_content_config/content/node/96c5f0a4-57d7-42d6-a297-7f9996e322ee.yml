@@ -45,7 +45,7 @@ default:
   field_summary:
     -
       value: 'We implement IT modernization at federal agencies by leveraging private   sector innovation and government services while centralizing best practices   and expertise for holistic transformation.'
-      format: html
+      format: single_inline_html
   field_topics:
     -
       entity: 95077128-6d33-4445-a48a-4ad8ebb7d9b3

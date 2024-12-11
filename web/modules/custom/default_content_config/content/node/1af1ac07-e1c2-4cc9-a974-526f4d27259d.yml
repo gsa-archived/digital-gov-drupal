@@ -45,7 +45,7 @@ default:
   field_deck:
     -
       value: 'Collaborate and share resources with other communities across government who are focused on building better digital experience in government.'
-      format: html
+      format: single_inline_html
   field_dg_acronym:
     -
       value: FCN
@@ -73,4 +73,4 @@ default:
   field_summary:
     -
       value: 'Collaborate and share resources with others across government.'
-      format: html
+      format: single_inline_html

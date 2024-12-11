@@ -44,7 +44,7 @@ default:
   field_deck:
     -
       value: 'Use web analytics to reach your strategic website goals'
-      format: html
+      format: single_inline_html
   field_guide_weight:
     -
       value: 1
@@ -57,7 +57,7 @@ default:
   field_summary:
     -
       value: 'This guide provides actionable strategies for effectively using web analytics to improve federal websites and digital services.'
-      format: html
+      format: single_inline_html
   field_summary_box:
     -
       value: false

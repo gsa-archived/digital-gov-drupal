@@ -45,7 +45,7 @@ default:
   field_deck:
     -
       value: 'A ‘quick-start’ guide for embedding accessibility and inclusive design practices into your team’s workflow'
-      format: html
+      format: single_inline_html
   field_featured_image:
     -
       entity: c2eb37c0-02a5-4a36-90bc-a7039449b61b
@@ -61,7 +61,7 @@ default:
   field_summary:
     -
       value: 'A ‘quick-start’ guide for embedding accessibility and inclusive design practices into your team’s workflow'
-      format: html
+      format: single_inline_html
   field_summary_box:
     -
       value: true
