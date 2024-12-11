@@ -37,7 +37,7 @@ default:
   field_summary:
     -
       value: 'A ‘quick-start’ guide for embedding accessibility and inclusive design practices into your team’s workflow'
-      format: html
+      format: single_inline_html
   field_summary_box:
     -
       value: false

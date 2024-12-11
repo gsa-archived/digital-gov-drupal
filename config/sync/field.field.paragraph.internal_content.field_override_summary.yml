@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_override_summary
+    - filter.format.single_inline_html
     - paragraphs.paragraphs_type.internal_content
   module:
     - text
@@ -18,5 +19,6 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
-field_type: text
+  allowed_formats:
+    - single_inline_html
+field_type: text_long

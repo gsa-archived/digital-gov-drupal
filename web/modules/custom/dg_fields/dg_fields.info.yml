@@ -1,0 +1,5 @@
+name: 'Digital.gov Fields'
+type: module
+description: 'Allow altering fields and formatters.'
+package: Custom
+core_version_requirement: ^10 || ^11

@@ -39,7 +39,7 @@ default:
   field_deck:
     -
       value: 'A resource for developing accessible products.'
-      format: html
+      format: single_inline_html
   field_external_url:
     -
       uri: 'https://accessibility.18f.gov/'
@@ -54,4 +54,4 @@ default:
   field_summary:
     -
       value: 'A resource for developing accessible products.'
-      format: html
+      format: single_inline_html

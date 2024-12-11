@@ -48,7 +48,7 @@ default:
   field_bio:
     -
       value: 's proin in erat. Penatibus urna diam mes proin in <b>erat</b> commodo feugiat ornare viverra. Purus massa justo ultrices nam, parturient platea tincidunt. Volutpat lorem sociosqu class,'
-      format: html
+      format: single_inline_html
   field_bio_url:
     -
       uri: 'http://www.lorem.com'
@@ -63,7 +63,6 @@ default:
   field_first_name:
     -
       value: 'penatibus fames proin in <b>erat</b>'
-      format: html
   field_github:
     -
       value: 's proin in erat. Penatibus urna diam mes proin in <b>erat</b> commodo feugiat ornare viverra. Purus massa justo ultrices nam, parturient platea tincidunt. Volutpat lorem sociosqu class,'
@@ -73,7 +72,6 @@ default:
   field_last_name:
     -
       value: 'efficitur mes proin in <b>erat</b>'
-      format: html
   field_linkedin:
     -
       value: 's proin in erat. Penatibus urna diam mes proin in <b>erat</b> commodo feugiat ornare viverra. Purus massa justo ultrices nam, parturient platea tincidunt. Volutpat lorem sociosqu class,'
@@ -86,7 +84,7 @@ default:
   field_summary:
     -
       value: 'is nulla iaculis ligula fames proin in erat. Penatibus urna mes proin in <b>erat</b> diam commodo feugiat ornare viverra. Purus massa justo ultrices nam, parturient platea tincidunt. Volutpat lorem'
-      format: html
+      format: single_inline_html
   field_twitter:
     -
       value: 's proin in erat. Penatibus urna diam mes proin in <b>erat</b> commodo feugiat ornare viverra. Purus massa justo ultrices nam, parturient platea tincidunt. Volutpat lorem sociosqu class,'

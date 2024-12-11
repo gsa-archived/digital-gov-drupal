@@ -15,8 +15,9 @@ module:
   dblog: 0
   default_content: 0
   default_content_config: 0
-  devel: 0
   dg_breadcrumb: 0
+  dg_fields: 0
+  dg_token: 0
   disable_user_1_edit: 0
   dynamic_page_cache: 0
   easy_breadcrumb: 0
@@ -25,7 +26,6 @@ module:
   editor: 0
   embedded_content: 0
   entity_reference_revisions: 0
-  externalauth: 0
   field: 0
   field_group: 0
   field_permissions: 0
@@ -39,18 +39,26 @@ module:
   linkit: 0
   maillog: 0
   mailsystem: 0
+  maxlength: 0
   media: 0
   media_library: 0
   media_library_edit: 0
   memcache: 0
   menu_link_content: 0
   menu_ui: 0
+  metatag: 0
+  metatag_facebook: 0
+  metatag_open_graph: 0
+  metatag_twitter_cards: 0
   multivalue_form_element: 0
   mysql: 0
   node: 0
+  noreqnewpass: 0
+  openid_connect: 0
   options: 0
   override_node_options: 0
   page_cache: 0
+  paragraph_view_mode: 0
   paragraphs_type_permissions: 0
   path: 0
   path_alias: 0
@@ -58,7 +66,7 @@ module:
   remove_username: 0
   require_revision_log_message: 0
   responsive_image: 0
-  samlauth: 0
+  role_delegation: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
   serialization: 0
@@ -73,6 +81,7 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
+  userprotect: 0
   uswds_templates: 0
   vbo_workflow_transition: 0
   views_bulk_operations: 0
@@ -80,6 +89,7 @@ module:
   workflows: 0
   pathauto: 1
   xmlsitemap: 1
+  externalauth: 10
   views: 10
   paragraphs: 11
   minimal: 1000

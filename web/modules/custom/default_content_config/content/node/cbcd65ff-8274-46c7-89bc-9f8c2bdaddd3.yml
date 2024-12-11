@@ -45,14 +45,14 @@ default:
   field_deck:
     -
       value: 'Understand privacy requirements for agency websites'
-      format: html
+      format: single_inline_html
   field_page_weight:
     -
       value: 1
   field_summary:
     -
       value: 'Introductory guidance on implementing privacy protections for users of federal websites.'
-      format: html
+      format: single_inline_html
   field_topics:
     -
       entity: 58b5051e-356e-4ace-be42-ca090259d6ab

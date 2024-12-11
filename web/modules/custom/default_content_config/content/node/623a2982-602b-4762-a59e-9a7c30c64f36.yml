@@ -69,4 +69,4 @@ default:
   field_summary:
     -
       value: 'Create a better online experience for the public alongside government web content managers.'
-      format: html
+      format: single_inline_html

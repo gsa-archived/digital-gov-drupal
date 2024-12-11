@@ -1,0 +1,41 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: c4bdcdff-0332-4a3f-a16d-9a97cdd775e1
+  default_langcode: en
+default:
+  preferred_langcode:
+    -
+      value: en
+  name:
+    -
+      value: riley.seaburg@gsa.gov
+  mail:
+    -
+      value: riley.seaburg@gsa.gov
+  timezone:
+    -
+      value: America/New_York
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1733422064
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0
+  roles:
+    -
+      target_id: admin
+  role_change:
+    -
+      target_id: __role_delegation_empty_field_value__
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1

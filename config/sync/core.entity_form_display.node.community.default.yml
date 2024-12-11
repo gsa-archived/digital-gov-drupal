@@ -20,6 +20,7 @@ dependencies:
   module:
     - content_moderation
     - field_group
+    - maxlength
     - media_library
     - media_library_edit
     - path
@@ -69,13 +70,17 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_deck:
-    type: text_textfield
+    type: text_textarea
     weight: 1
     region: content
     settings:
-      size: 60
+      rows: 1
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 255
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
   field_dg_acronym:
     type: options_select
     weight: 38
@@ -140,13 +145,17 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_summary:
-    type: text_textfield
+    type: text_textarea
     weight: 2
     region: content
     settings:
-      size: 60
+      rows: 1
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 255
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
   moderation_state:
     type: moderation_state_default
     weight: 6

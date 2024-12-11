@@ -50,4 +50,4 @@ default:
   field_summary:
     -
       value: 'A customer service platform that helps the public navigate the government space by providing topical  information and services in English and Spanish.'
-      format: html
+      format: single_inline_html

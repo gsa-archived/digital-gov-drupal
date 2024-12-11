@@ -39,7 +39,7 @@ default:
   field_deck:
     -
       value: 'Get started making usability fixes to your website or product.'
-      format: html
+      format: single_inline_html
   field_external_url:
     -
       uri: 'https://digital.gov/event/2018/06/14/usability-testing-with-steve-krug/'
@@ -54,4 +54,4 @@ default:
   field_summary:
     -
       value: 'Get started making usability fixes to your website or product.'
-      format: html
+      format: single_inline_html

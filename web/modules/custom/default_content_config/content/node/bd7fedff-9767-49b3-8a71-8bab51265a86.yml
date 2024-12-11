@@ -59,4 +59,4 @@ default:
   field_summary:
     -
       value: 'Make better decisions using web analytics and other optimization strategies.'
-      format: html
+      format: single_inline_html
