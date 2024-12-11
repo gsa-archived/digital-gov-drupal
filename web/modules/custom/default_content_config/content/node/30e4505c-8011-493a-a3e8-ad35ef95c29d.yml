@@ -50,4 +50,4 @@ default:
   field_summary:
     -
       value: 'We make it easy to register and manage a .gov domain for US-based government organizations.'
-      format: html
+      format: single_inline_html

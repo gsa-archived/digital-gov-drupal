@@ -40,12 +40,10 @@ default:
   field_first_name:
     -
       value: Bridget
-      format: html
   field_last_name:
     -
       value: Roddy
-      format: html
   field_summary:
     -
       value: 'The people who have contributed their stories and guidance over the years.'
-      format: html
+      format: single_inline_html

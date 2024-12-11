@@ -10,9 +10,12 @@ dependencies:
     - field.field.node.resources.field_summary
     - field.field.node.resources.field_topics
     - node.type.resources
+    - workflows.workflow.editorial
   module:
     - content_moderation
     - inline_entity_form
+    - maxlength
+    - path
     - text
 id: node.resources.default
 targetEntityType: node
@@ -36,13 +39,17 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_deck:
-    type: text_textfield
+    type: text_textarea
     weight: 1
     region: content
     settings:
-      size: 60
+      rows: 1
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 255
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
   field_page_weight:
     type: number
     weight: 8
@@ -51,13 +58,17 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_summary:
-    type: text_textfield
+    type: text_textarea
     weight: 2
     region: content
     settings:
-      size: 60
+      rows: 1
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 255
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
   field_topics:
     type: inline_entity_form_complex
     weight: 4

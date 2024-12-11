@@ -46,4 +46,4 @@ default:
   field_summary:
     -
       value: 'Digital.gov provides free webinars that highlight the innovations, case studies, tools, and resources people in government need most.'
-      format: html
+      format: single_inline_html

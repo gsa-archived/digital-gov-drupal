@@ -16,6 +16,7 @@ module:
   default_content: 0
   default_content_config: 0
   dg_breadcrumb: 0
+  dg_fields: 0
   dg_token: 0
   disable_user_1_edit: 0
   dynamic_page_cache: 0
@@ -37,6 +38,7 @@ module:
   linkit: 0
   maillog: 0
   mailsystem: 0
+  maxlength: 0
   media: 0
   media_library: 0
   memcache: 0
@@ -54,6 +56,7 @@ module:
   options: 0
   override_node_options: 0
   page_cache: 0
+  paragraph_view_mode: 0
   paragraphs_type_permissions: 0
   path: 0
   path_alias: 0

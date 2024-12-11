@@ -50,4 +50,4 @@ default:
   field_summary:
     -
       value: 'We implement IT modernization at federal agencies by leveraging private   sector innovation and government services while centralizing best practices   and expertise for holistic transformation.'
-      format: html
+      format: single_inline_html
