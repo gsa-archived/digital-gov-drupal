@@ -45,5 +45,5 @@
   url: link.0['#url'].uri,
   title: link.0['#title'],
   summary: content.field_summary|field_value,
-  logo_source: logo_source,
+  logo_source: dg_local_logo_fallback_lookup_favicon(link.0['#url'].uri),
 }, with_context=false) }}

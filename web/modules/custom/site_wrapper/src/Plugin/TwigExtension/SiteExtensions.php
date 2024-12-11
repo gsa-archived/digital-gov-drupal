@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\site_wrapper\Plugin\TwigExtension;
 
+use Drupal\Core\Theme\ThemeManagerInterface;
+use Drupal\Core\Url;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -13,15 +15,33 @@ use Twig\TwigFunction;
 class SiteExtensions extends AbstractExtension {
 
   /**
+   * The theme manager.
+   *
+   * @var \Drupal\Core\Theme\ThemeManagerInterface
+   */
+  protected ThemeManagerInterface $themeManager;
+
+  /**
+   * Constructs \Drupal\site_wrapper\Plugin\TwigExtension.
+   *
+   * @param \Drupal\Core\Theme\ThemeManagerInterface $theme_manager
+   *   The theme manager.
+   */
+  public function __construct(ThemeManagerInterface $theme_manager) {
+    $this->themeManager = $theme_manager;
+  }
+
+  /**
    * Declare custom twig function.
    *
    * @return \Twig\TwigFunction[]
    *   TwigFunction array.
    */
-  public function getFunctions() {
+  public function getFunctions(): array {
     return [
-      new TwigFunction('dg_logo_source', [$this, 'getLogoSource']),
+      new TwigFunction('dg_local_logo_fallback_lookup_favicon', [$this, 'getLogoFallBackToLocal']),
       new TwigFunction('dg_lookup_favicon', [$this, 'lookupFavicon']),
+      new TwigFunction('dg_local_logo', [$this, 'getLocalLogo']),
     ];
   }
 
@@ -33,15 +53,26 @@ class SiteExtensions extends AbstractExtension {
    * USAGE:
    *    {{ dl_logo_url(my_url, '/' ~ active_theme_path()) }
    */
-  public function getLogoSource(string $uri, string $active_theme_path): string {
+  public function getLogoFallBackToLocal(string $uri): string {
     $host = parse_url($uri, PHP_URL_HOST);
 
-    if (!$host || $host === 'digital.gov' || str_contains($host, '.digital.gov')) {
+    if (!$host || $host === 'digital.gov') {
       // Assume a local URL.
-      return $active_theme_path . '/static/digitalgov/img/logos/digit-50.png';
+      return $this->getLocalLogo();
     }
 
     return self::buildFaviconSearch($uri);
+  }
+
+  /**
+   * Get the Digital.gov logo.
+   *
+   * @return string
+   *   The URL as a string.
+   */
+  public function getLocalLogo(): string {
+    $path = '/' . $this->themeManager->getActiveTheme()->getPath() . '/static/digitalgov/img/logos/digit-50.png';
+    return Url::fromUserInput($path)->toString();
   }
 
   /**
@@ -50,7 +81,7 @@ class SiteExtensions extends AbstractExtension {
    * USAGE:
    *    {{ lookupFavicon(my_url) }}
    */
-  public function lookupFavicon(string $uri, string $active_theme_path): string {
+  public function lookupFavicon(string $uri): string {
     return self::buildFaviconSearch($uri);
   }
 
@@ -59,11 +90,7 @@ class SiteExtensions extends AbstractExtension {
    */
   protected static function buildFaviconSearch(string $uri): string {
     $host = parse_url($uri, PHP_URL_HOST);
-
-    // This is not a foolproof way to get domains.
-    $domain = preg_replace('@^(?:.+?\\.)+(.+?\\.(?:co\\.uk|com|net|org|gov|mil|io))@', '$1', $host);
-
-    return 'https://www.google.com/s2/favicons?domain=' . $domain;
+    return Url::fromUri('https://www.google.com/s2/favicons?domain=' . $host)->toString();
   }
 
 }

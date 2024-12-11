@@ -35,14 +35,16 @@
  * @ingroup themeable
  */
 #}
-{%
-  set links_title = paragraph.field_title.value ? paragraph.field_title.value : 'What you need to know'
-%}
-
 <div class="grid-container-desktop margin-y-6">
-  <h2>{{ links_title }}</h2>
+  <h2>
+    {% if elements.field_title|field_value %}
+      {{ elements.field_title|field_value }}
+    {% else %}
+      {{ 'What you need to know'|t }}
+    {% endif %}
+  </h2>
 
-  <div class="gd-collention">
+  <div class="dg-collection">
     <ul class="usa-collection">
     {{ elements.field_links }}
     </ul>

@@ -1,5 +1,6 @@
 services:
   site_wrapper.twig_extension:
     class: Drupal\site_wrapper\Plugin\TwigExtension\SiteExtensions
+    arguments: ['@theme.manager']
     tags:
       - { name: twig.extension }

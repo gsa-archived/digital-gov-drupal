@@ -11,8 +11,7 @@ Include in another template:
 If logo_source is not supplied, custom twig function figures out what logo to use.
 #}
 
-{% set logo_source = logo_source ?: dg_logo_source(url, '/' ~ active_theme_path()) %}
-
+{% set logo_source = logo_source ?: dg_local_logo_fallback_lookup_favicon(url) %}
 <li class="usa-collection__item">
   <div class="usa-collection__img-wrapper">
     <img
@@ -23,14 +22,13 @@ If logo_source is not supplied, custom twig function figures out what logo to us
     />
   </div>
   <div class="usa-collection__body">
-    <h3>
+    <h3 class="usa-collection__header">
       <a class="usa-link"
-         href="{{ url }}" class="usa-collection__header"
+         href="{{ url }}"
          title="{{ title }} ">
         {{ title }}
       </a>
     </h3>
-
     {% if summary %}
       <p class="usa-collection__description">
         {{ summary }}
