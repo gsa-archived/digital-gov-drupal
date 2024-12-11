@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.basic_page.body
     - field.field.node.basic_page.field_deck
-    - field.field.node.basic_page.field_featured
     - field.field.node.basic_page.field_featured_image
     - field.field.node.basic_page.field_page_weight
     - field.field.node.basic_page.field_slug
@@ -40,7 +39,6 @@ content:
     region: content
 hidden:
   field_deck: true
-  field_featured: true
   field_featured_image: true
   field_page_weight: true
   field_slug: true

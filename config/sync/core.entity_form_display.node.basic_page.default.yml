@@ -123,6 +123,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_featured: true
   field_slug: true
   promote: true
   publish_on: true
