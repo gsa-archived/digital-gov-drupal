@@ -1,7 +1,7 @@
 _core:
   default_config_hash: ou29sK1fi0MGjbVgsIAp1n-2_yofUuGcszRhDDPwpYo
 enabled: true
-timeout: 43200
+timeout: 1800
 max_timeout: 43200
 padding: 30
 logout_regardless_of_activity: true
