@@ -11,7 +11,6 @@ dependencies:
     - node.type.landing_page
     - node.type.news
     - node.type.resources
-    - node.type.services
     - node.type.short_post
     - node.type.source
     - node.type.topics
@@ -21,6 +20,7 @@ dependencies:
     - embedded_content
     - file
     - media
+    - menu_admin_per_menu
     - node
     - override_node_options
     - paragraphs_type_permissions
@@ -33,6 +33,10 @@ permissions:
   - 'access content overview'
   - 'access files overview'
   - 'access media overview'
+  - 'administer footer menu items'
+  - 'administer footer-about menu items'
+  - 'administer footer-grow menu items'
+  - 'administer main menu items'
   - 'bypass paragraphs type content access'
   - 'create authors content'
   - 'create basic_page content'
@@ -43,7 +47,6 @@ permissions:
   - 'create media'
   - 'create news content'
   - 'create resources content'
-  - 'create services content'
   - 'create short_post content'
   - 'create source content'
   - 'create topics content'
@@ -56,7 +59,6 @@ permissions:
   - 'edit any landing_page content'
   - 'edit any news content'
   - 'edit any resources content'
-  - 'edit any services content'
   - 'edit any short_post content'
   - 'edit any source content'
   - 'edit any topics content'

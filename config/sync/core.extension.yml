@@ -68,6 +68,7 @@ module:
   role_delegation: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
+  seckit: 0
   serialization: 0
   site_wrapper: 0
   system: 0
@@ -86,6 +87,7 @@ module:
   views_bulk_operations: 0
   views_ui: 0
   workflows: 0
+  menu_admin_per_menu: 1
   pathauto: 1
   xmlsitemap: 1
   externalauth: 10
