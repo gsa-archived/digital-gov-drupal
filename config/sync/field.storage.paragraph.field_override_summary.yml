@@ -8,9 +8,8 @@ dependencies:
 id: paragraph.field_override_summary
 field_name: field_override_summary
 entity_type: paragraph
-type: text
-settings:
-  max_length: 255
+type: text_long
+settings: {  }
 module: text
 locked: false
 cardinality: 1

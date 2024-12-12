@@ -81,7 +81,7 @@ default:
   field_summary:
     -
       value: 'The Opportunity Project engages government, communities, and the technology industry to create digital tools that address our greatest challenges as a nation. Learn how this initiative is making government data more accessible through cross-sector collabo'
-      format: html
+      format: single_inline_html
   field_topics:
     -
       entity: 4533b7eb-0c1c-4ef0-97ee-1bee41e44b82

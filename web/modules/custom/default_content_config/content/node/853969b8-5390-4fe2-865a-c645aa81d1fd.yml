@@ -40,7 +40,7 @@ default:
   field_deck:
     -
       value: 'The mandate to be agile is everywhere. But agile isn’t an on-off switch. It’s a skill and a mindset that is developed over time, through dedicated work, open teams, and lots (and lots) of practice'
-      format: html
+      format: single_inline_html
   field_external_url:
     -
       uri: 'https://18f.gsa.gov/2019/05/29/you-might-not-be-as-agile-as-you-think-you-are/'
@@ -55,7 +55,7 @@ default:
   field_summary:
     -
       value: 'The mandate to be agile is everywhere. But agile isn’t an on-off switch. It’s a skill and a mindset that is developed over time, through dedicated work, open teams, and lots (and lots) of practice'
-      format: html
+      format: single_inline_html
   field_topics:
     -
       entity: 26f2d370-453e-4fdb-8b51-3f6a932fd3e9

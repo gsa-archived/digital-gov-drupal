@@ -44,7 +44,7 @@ default:
   field_deck:
     -
       value: 'Share and learn with plain language practitioners.'
-      format: html
+      format: single_inline_html
   field_dg_acronym:
     -
       value: PL
@@ -63,4 +63,4 @@ default:
   field_summary:
     -
       value: 'Promote the use of plain language to provide better service to the public.'
-      format: html
+      format: single_inline_html

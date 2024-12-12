@@ -42,11 +42,11 @@ default:
   field_deck:
     -
       value: 'We are human, we promise.'
-      format: html
+      format: single_inline_html
   field_page_weight:
     -
       value: 1
   field_summary:
     -
       value: 'How to contact the Digital.gov team.'
-      format: html
+      format: single_inline_html

@@ -68,4 +68,4 @@ default:
   field_summary:
     -
       value: 'Join us for a discussion on how to adapt your career in user experience (UX) to a quickly changing world.'
-      format: html
+      format: single_inline_html
