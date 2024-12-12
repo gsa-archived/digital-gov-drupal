@@ -10,7 +10,7 @@ default:
       target_id: 1
   status:
     -
-      value: false
+      value: true
   uid:
     -
       target_id: 1
@@ -28,7 +28,7 @@ default:
       value: false
   moderation_state:
     -
-      value: draft
+      value: published
   path:
     -
       alias: /about
@@ -42,8 +42,8 @@ default:
   field_deck:
     -
       value: 'We help the government community deliver better digital services.'
-      format: html
+      format: single_inline_html
   field_summary:
     -
       value: 'Welcome to Digital.gov. Learn more about who we are.'
-      format: html
+      format: single_inline_html

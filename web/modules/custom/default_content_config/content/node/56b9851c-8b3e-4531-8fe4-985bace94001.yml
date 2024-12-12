@@ -45,7 +45,7 @@ default:
   field_summary:
     -
       value: 'A window into how people are interacting with the government online. Powered by the Digital Analytics Program (DAP)'
-      format: html
+      format: single_inline_html
   field_topics:
     -
       entity: 80caaa35-a22b-43ae-a72c-9a714c333a06

@@ -37,4 +37,4 @@ default:
   field_summary:
     -
       value: 'Collaborate and share resources with other communities across government who are focused on building better digital experience in government.'
-      format: html
+      format: single_inline_html

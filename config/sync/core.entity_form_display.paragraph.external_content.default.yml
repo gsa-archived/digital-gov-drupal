@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.external_content
   module:
     - link
+    - maxlength
     - text
 id: paragraph.external_content.default
 targetEntityType: paragraph
@@ -23,13 +24,17 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   field_summary:
-    type: text_textfield
+    type: text_textarea
     weight: 1
     region: content
     settings:
-      size: 60
+      rows: 1
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 255
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
 hidden:
   created: true
   status: true

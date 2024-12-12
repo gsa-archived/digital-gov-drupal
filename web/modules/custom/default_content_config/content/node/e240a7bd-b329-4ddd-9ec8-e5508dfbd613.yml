@@ -54,7 +54,7 @@ default:
   field_deck:
     -
       value: 'nulla iaculis ligula fames proin in <b>erat</b>'
-      format: html
+      format: single_inline_html
   field_end_date:
     -
       value: '2024-06-20T19:00:00'
@@ -90,7 +90,7 @@ default:
   field_summary:
     -
       value: 'nulla iaculis ligula fames proin in <b>erat</b>'
-      format: html
+      format: single_inline_html
   field_topics:
     -
       entity: 95077128-6d33-4445-a48a-4ad8ebb7d9b3

@@ -42,11 +42,11 @@ default:
   field_deck:
     -
       value: 'Have a story to share? Here is what we’re looking for.'
-      format: html
+      format: single_inline_html
   field_page_weight:
     -
       value: 1
   field_summary:
     -
       value: 'Have a story to share? Here is what we’re looking for.'
-      format: html
+      format: single_inline_html

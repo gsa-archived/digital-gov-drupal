@@ -40,7 +40,7 @@ default:
   field_summary:
     -
       value: 'nulla iaculis ligula fames proin in <b>erat</b>'
-      format: html
+      format: single_inline_html
   field_venue:
     -
       entity:

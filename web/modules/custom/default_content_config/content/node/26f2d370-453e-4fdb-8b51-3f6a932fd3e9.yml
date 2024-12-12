@@ -45,7 +45,7 @@ default:
   field_deck:
     -
       value: 'nulla iaculis ligula fames proin in <b>erat</b>'
-      format: html
+      format: single_inline_html
   field_featured_communities:
     -
       entity: 623a2982-602b-4762-a59e-9a7c30c64f36
@@ -95,7 +95,7 @@ default:
                   field_summary:
                     -
                       value: 'The Paperwork Reduction Act (PRA) of 1995 requires that agencies obtain Office of Management and Budget (OMB) approval before requesting most types of information from the public.'
-                      format: html
+                      format: single_inline_html
           field_title:
             -
               value: 'Guide to the Paperwork Reduction Act'
@@ -126,7 +126,7 @@ default:
           field_summary:
             -
               value: 'The CDC Clear Communication Index is a research-based tool to help you develop and assess public communication materials.'
-              format: html
+              format: single_inline_html
   field_legislation:
     -
       uri: 'internal:/resources/delivering-digital-first-public-experience'
@@ -141,4 +141,4 @@ default:
   field_summary:
     -
       value: 'nulla iaculis ligula fames proin in <b>erat</b>'
-      format: html
+      format: single_inline_html

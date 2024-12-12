@@ -86,7 +86,7 @@ default:
                   field_summary:
                     -
                       value: 'Using plain language is required on all government websites and also creates a better user experience.'
-                      format: html
+                      format: single_inline_html
             -
               entity:
                 _meta:
@@ -134,7 +134,7 @@ default:
                   field_summary:
                     -
                       value: 'What we learned from examples of web content that received both high and low scores.'
-                      format: html
+                      format: single_inline_html
             -
               entity:
                 _meta:
@@ -161,7 +161,7 @@ default:
                   field_summary:
                     -
                       value: 'This memorandum provides final guidance on implementing the Act and is designed to promote the goals of the President’s Open Government Initiative.'
-                      format: html
+                      format: single_inline_html
           field_title:
             -
               value: 'Plain language: Essential knowledge'
@@ -192,7 +192,7 @@ default:
           field_summary:
             -
               value: 'A resource to help federal employees write in plain language and comply   with the Plain Writing Act of 2010.'
-              format: html
+              format: single_inline_html
   field_legislation:
     -
       uri: 'https://www.govinfo.gov/app/details/PLAW-111publ274'
@@ -204,4 +204,4 @@ default:
   field_summary:
     -
       value: 'Plain language is communication that is clear and easy to understand for your target audience, regardless of the medium used to deliver it. It is communication your audience can understand the first time they encounter it. Using plain language on governme'
-      format: html
+      format: single_inline_html

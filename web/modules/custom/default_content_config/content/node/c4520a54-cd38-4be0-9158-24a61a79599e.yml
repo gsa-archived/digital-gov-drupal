@@ -46,7 +46,7 @@ default:
   field_deck:
     -
       value: 'A free analytics tool for measuring digital services in the federal government'
-      format: html
+      format: single_inline_html
   field_guide_weight:
     -
       value: 5
@@ -59,7 +59,7 @@ default:
   field_summary:
     -
       value: 'he Digital Analytics Program (DAP) offers advanced, easy web analytics for federal agencies.'
-      format: html
+      format: single_inline_html
   field_summary_box:
     -
       value: false

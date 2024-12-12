@@ -27,7 +27,7 @@ Many users are created in default content, but if you're not in there:
 
 To set the value run the following command then paste in the value when asked. Make sure to respond with 'yes' to rebuilding the environment:
 
-`./robo.sh lando:set-env GSA_AUTH_CLIENT_SECRET`
+`./robo.sh lando:set-env GSA_AUTH_KEY` (GSA_AUTH_KEY is not the value, it's the name of the env variable).
 
 * Visit https://digitalgov.lndo.site/user and click the login button.
 

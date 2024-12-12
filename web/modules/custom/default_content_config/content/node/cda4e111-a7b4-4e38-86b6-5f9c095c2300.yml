@@ -37,4 +37,4 @@ default:
   field_summary:
     -
       value: 'Lorem ipsum odor amet, consectetuer <b>adipi</b>'
-      format: html
+      format: single_inline_html

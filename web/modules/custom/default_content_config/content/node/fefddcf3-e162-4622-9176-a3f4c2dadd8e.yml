@@ -37,4 +37,4 @@ default:
   field_summary:
     -
       value: "Don't know where to start with a federal requirement? Aren't sure how to adopt a new technology with your team? Start here! We have resources for every level. Our collections are organized by popular topics, and they will help you meet the requirements of"
-      format: html
+      format: single_inline_html
