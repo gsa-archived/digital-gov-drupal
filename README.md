@@ -8,6 +8,7 @@ See our [CONTRIBUTING.md](CONTRIBUTING.md) for Git configuration and working wit
 
 - [Software Requirements](#software-requirements)
 - [Getting Starting](#getting-started)
+- [Single Sign On](#single-sign-on)
 - [Common Development Tasks](#common-development-tasks)
 
 ## Software Requirements
@@ -27,22 +28,6 @@ There is some custom functionality apart from what's in the base Lando installat
 * Use `./composer.sh` instead of `composer` or `lando composer`. `./composer.sh` will cause entries `composer.log` to be made so we can replay composer commands on conflicts.
 * Sign in as admin: `./drush.sh uli`.
 * Export content as configuration `./robo.sh drupal-project:export-content`. See [Exporting Content as Configuration](#exporting-content-as-configuration).
-
-## Common Development Tasks
-
-### Exporting Content as Configuration
-
-The content for development is created via the [Default Content](https://www.drupal.org/project/default_content) module.
-
-How do I install the content?
-
-Content is created from the config stored at `web/modules/custom/default_content_config/content` when the site is installed (`lando si`).
-
-How do I create more content?
-
-Simply edit or add new content, then run `./robo.sh drupal-project:export-content`
-
-:exclamation: Make sure that only content you meant to edit or add is exported. The default content module is not perfect, it can get confused with things like files and users.
 
 ## Single Sign On
 
@@ -71,6 +56,21 @@ To set the value run the following command then paste in the value when asked. M
 
 * Visit https://digitalgov.lndo.site/user and click the login button.
 
+## Common Development Tasks
+
+### Exporting Content as Configuration
+
+The content for development is created via the [Default Content](https://www.drupal.org/project/default_content) module.
+
+How do I install the content?
+
+Content is created from the config stored at `web/modules/custom/default_content_config/content` when the site is installed (`lando si`).
+
+How do I create more content?
+
+Simply edit or add new content, then run `./robo.sh drupal-project:export-content`
+
+:exclamation: Make sure that only content you meant to edit or add is exported. The default content module is not perfect, it can get confused with things like files and users.
 
 ### Updating Dependencies
 
