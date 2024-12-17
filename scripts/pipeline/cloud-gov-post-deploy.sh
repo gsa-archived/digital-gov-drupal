@@ -23,9 +23,9 @@ fi
 
 # Determine if re-installing Drupal or just updating.
 if [[ ${CF_SPACE} = "prod" ]]; then
-  DRUPAL_UPDATE_OR_INSTALL=update
+  export DRUPAL_UPDATE_OR_INSTALL=update
 else
-  DRUPAL_UPDATE_OR_INSTALL=install
+  export DRUPAL_UPDATE_OR_INSTALL=install
 fi
 
 echo "Running post deploy steps..."
