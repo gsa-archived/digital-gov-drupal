@@ -39,7 +39,7 @@ default:
   field_deck:
     -
       value: 'Digital infrastructure means hardware and software. It Includes physical and virtual “cloud” storage spaces.'
-      format: html
+      format: single_inline_html
   field_featured_communities:
     -
       entity: 623a2982-602b-4762-a59e-9a7c30c64f36
@@ -89,7 +89,7 @@ default:
           field_summary:
             -
               value: 'A long-term, high-level strategy to drive cloud adoption in federal agencies. It offers a path forward for agencies to migrate to a safe and secure cloud infrastructure — supporting agencies to achieve additional savings, better security, and faster deliv'
-              format: html
+              format: single_inline_html
   field_legislation:
     -
       uri: 'https://www.cio.gov/policies-and-priorities/circular-a-130/'
@@ -101,4 +101,4 @@ default:
   field_summary:
     -
       value: 'Digital infrastructure includes hardware and software components that build the foundation of information technology systems. When you save a file online instead of on your own computer, you’re saving it virtually in “the cloud.” The cloud is a network of'
-      format: html
+      format: single_inline_html

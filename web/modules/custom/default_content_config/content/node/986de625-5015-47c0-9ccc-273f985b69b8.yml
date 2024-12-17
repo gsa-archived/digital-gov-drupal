@@ -37,4 +37,4 @@ default:
   field_summary:
     -
       value: 'Government teams are improving digital experiences every day. Gain insights from their stories, case studies, and innovations.'
-      format: html
+      format: single_inline_html
