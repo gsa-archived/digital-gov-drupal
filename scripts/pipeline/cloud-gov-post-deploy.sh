@@ -21,6 +21,13 @@ if [[ ${CF_SPACE} = "prod" ]]; then
 
 fi
 
+# Determine if re-installing Drupal or just updating.
+if [[ ${CF_SPACE} = "prod" ]]; then
+  DRUPAL_UPDATE_OR_INSTALL=update
+else
+  DRUPAL_UPDATE_OR_INSTALL=install
+fi
+
 echo "Running post deploy steps..."
 cf ssh "${PROJECT}-drupal-${CF_SPACE}" --command "PATH=/home/vcap/deps/1/bin:/home/vcap/deps/0/bin:/usr/local/bin:/usr/bin:/bin:/home/vcap/app/php/bin:/home/vcap/app/php/sbin:/home/vcap/app/php/bin:/home/vcap/app/vendor/drush/drush app/scripts/post-deploy && echo 'Successfully completed post deploy!' || echo 'Failed to complete post deploy!'"
 
