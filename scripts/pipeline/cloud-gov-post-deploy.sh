@@ -22,7 +22,7 @@ if [[ ${CF_SPACE} = "prod" ]]; then
 fi
 
 echo "Running post deploy steps..."
-cf ssh "${PROJECT}-drupal-${CF_SPACE}" --command "PATH=/home/vcap/deps/1/bin:/home/vcap/deps/0/bin:/usr/local/bin:/usr/bin:/bin:/home/vcap/app/php/bin:/home/vcap/app/php/sbin:/home/vcap/app/php/bin:/home/vcap/app/vendor/drush/drush app/scripts/post-deploy >/dev/null 2>&1 && echo 'Successfully completed post deploy!' || echo 'Failed to complete post deploy!'"
+cf ssh "${PROJECT}-drupal-${CF_SPACE}" --command "PATH=/home/vcap/deps/1/bin:/home/vcap/deps/0/bin:/usr/local/bin:/usr/bin:/bin:/home/vcap/app/php/bin:/home/vcap/app/php/sbin:/home/vcap/app/php/bin:/home/vcap/app/vendor/drush/drush app/scripts/post-deploy && echo 'Successfully completed post deploy!' || echo 'Failed to complete post deploy!'"
 
 ## Clean up.
 if [[ ${CF_SPACE} = "prod" ]]; then
