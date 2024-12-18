@@ -9,6 +9,7 @@ See our [CONTRIBUTING.md](CONTRIBUTING.md) for Git configuration and working wit
 - [Software Requirements](#software-requirements)
 - [Getting Starting](#getting-started)
 - [Single Sign On](#single-sign-on)
+- [Auto Logout](#auto-logout)
 - [Common Development Tasks](#common-development-tasks)
 
 ## Software Requirements
@@ -55,6 +56,20 @@ To set the value run the following command then paste in the value when asked. M
 `./robo.sh lando:set-env GSA_AUTH_KEY` (GSA_AUTH_KEY is not the value, it's the name of the env variable).
 
 * Visit https://digitalgov.lndo.site/user and click the login button.
+
+## Auto Logout
+
+The autologout module will log you out after 30 minutes of inactivity or after 12 hours regardless of activity. This can get annoying when developing locally and having multiple tabs open.
+
+To disable this, add the following to your `settings.local.php`:
+
+```
+/**
+ * Disable autologout from running.
+ */
+$config['autologout.settings']['enabled'] = FALSE;
+$config['dg_autologout.settings']['enabled'] = FALSE;
+```
 
 ## Common Development Tasks
 
