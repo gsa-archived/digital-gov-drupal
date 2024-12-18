@@ -68,9 +68,9 @@
 {% set date = node.created.value|format_date('digital_gov_short_date') %}
 {% set authors = content.field_authors|field_value %}
 {% set image_url %}{% apply spaceless %}
-  {% if content.field_primary_image|field_value  %}
-    {{ node.field_primary_image|file_uri|image_style('large')  }}
-  {% elseif content.field_featured_image|field_value  %}
+  {% if content.field_primary_image|field_value %}
+    {{ node.field_primary_image|file_uri|image_style('large') }}
+  {% elseif content.field_featured_image|field_value %}
     {{ node.field_featured_image|file_uri|image_style('large') }}
   {% endif %}
 {% endapply %}{% endset %}

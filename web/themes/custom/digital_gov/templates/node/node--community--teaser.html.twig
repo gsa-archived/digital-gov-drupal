@@ -66,7 +66,7 @@
 {% set summary = content.field_summary|field_value %}
 {% set member_count = content.field_members|field_value %}
 {% set logo_url %}{% apply spaceless %}
-  {% if content.field_dg_logo|field_value  %}
+  {% if content.field_dg_logo|field_value %}
     {{ node.field_dg_logo|file_uri }}
   {% endif %}
 {% endapply %}{% endset %}
@@ -83,7 +83,7 @@
     {% if logo_url %}
       <div class="usa-card__media usa-card__media--indent">
         <div class="usa-card__img">
-          {{ drupal_image(logo_url,'', {'alt': short_name|render ~ ' logo'}) }}
+          {{ drupal_image(logo_url, '', {alt: short_name|render ~ ' logo'}) }}
         </div>
       </div>
     {% endif %}

@@ -92,10 +92,10 @@
 
         {{ node.getCreatedTime|format_date('digital_gov_date') }}
         <span>{{ node.getCreatedTime|format_date('digital_gov_time') }}
-          {% if content.field_end_date | field_value %}
-            – {{ content.field_end_date | field_value }}
+          {% if content.field_end_date|field_value %}
+            – {{ content.field_end_date|field_value }}
           {% endif %}
-          {{ 'now' | date('T') }}
+          {{ 'now'|date('T') }}
       </span>
       </p>
       {% if (node.field_host.value) %}

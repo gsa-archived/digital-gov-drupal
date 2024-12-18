@@ -106,9 +106,9 @@
 
       {% if is_past_event and content.field_authors|field_value %}
         {{ include('@digital_gov/partials/authors-list.html.twig', {
-          'inline': true,
-          'authors': content.field_authors,
-        }, with_context = false) }}
+          inline: true,
+          authors: content.field_authors,
+        }, with_context=false) }}
       {% endif %}
 
     </div>
