@@ -1,17 +1,18 @@
-uuid: cbece63e-15bd-4241-bbb0-52e520144257
+uuid: e9b3d8ba-d742-4782-9e64-a4f31747be78
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
-    - node.type.event
+    - core.entity_view_mode.node.collection_item
+    - node.type.short_post
   module:
     - node
+    - options
     - user
-id: events
-label: Events
+id: external_communities
+label: 'External Communities'
 module: views
-description: 'All events, past and upcoming'
+description: ''
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -22,7 +23,6 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Events
       fields:
         title:
           id: title
@@ -72,10 +72,24 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: some
+        type: mini
         options:
           offset: 0
-          items_per_page: 5
+          pagination_heading_level: h4
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
       exposed_form:
         type: basic
         options:
@@ -93,35 +107,23 @@ display:
       cache:
         type: tag
         options: {  }
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text_custom
-          empty: true
-          content: "<div class=\"upcoming-events__placeholder card card--placeholder\">\r\n        <h3>Upcoming events will be added soon.</h3>\r\n        To be notified of new events,\r\n        <a href=\"/subscribe\">subscribe to our newsletter</a\r\n        >!\r\n      </div>"
-          tokenize: false
+      empty: {  }
       sorts:
-        created:
-          id: created
+        title:
+          id: title
           table: node_field_data
-          field: created
+          field: title
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: node
-          entity_field: created
-          plugin_id: date
-          order: DESC
+          entity_field: title
+          plugin_id: standard
+          order: ASC
           expose:
             label: ''
             field_identifier: ''
           exposed: false
-          granularity: second
       arguments: {  }
       filters:
         status:
@@ -143,24 +145,18 @@ display:
           entity_field: type
           plugin_id: bundle
           value:
-            event: event
-          group: 1
-        created:
-          id: created
-          table: node_field_data
-          field: created
+            short_post: short_post
+        field_short_post_type_value:
+          id: field_short_post_type_value
+          table: node__field_short_post_type
+          field: field_short_post_type_value
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: created
-          plugin_id: date
-          operator: '>'
+          plugin_id: list_field
+          operator: or
           value:
-            min: ''
-            max: ''
-            value: '+0 seconds'
-            type: offset
+            community: community
           group: 1
           exposed: false
           expose:
@@ -177,9 +173,7 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            min_placeholder: ''
-            max_placeholder: ''
-            placeholder: ''
+            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -192,16 +186,21 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
+          reduce_duplicates: false
       style:
-        type: default
+        type: html_list
+        options:
+          row_class: usa-collection__item
+          default_row_class: false
+          uses_fields: false
+          type: ul
+          wrapper_class: ''
+          class: 'communities-of-practice--list usa-collection'
       row:
         type: 'entity:node'
         options:
-          view_mode: teaser
+          relationship: none
+          view_mode: collection_item
       query:
         type: views_query
         options:
@@ -219,21 +218,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'user.node_grants:view'
-        - user.permissions
-      tags: {  }
-  block_1:
-    id: block_1
-    display_title: Block
-    display_plugin: block
-    position: 1
-    display_options:
-      display_extenders: {  }
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
