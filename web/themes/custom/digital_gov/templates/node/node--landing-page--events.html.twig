@@ -67,17 +67,17 @@
   <header class="page-head page-head-events">
     <div class="grid-container grid-container-desktop">
       {# Page Title #}
-      <h1>{{ node.title.value }}</h1>
+      <h1>{{ label|field_value }}</h1>
 
       {# Deck #}
-      {% if content.field_deck %}
+      {% if content.field_deck|field_value %}
         <div class="deck">{{ content.field_deck|field_value }}</div>
       {% endif %}
 
       {% if content.field_buttons %}
-      <div class="join-buttons">
-        {{ content.field_buttons|field_value }}
-      </div>
+        <div class="join-buttons">
+          {{ content.field_buttons|field_value }}
+        </div>
       {% endif %}
     </div>
   </header>
@@ -85,15 +85,7 @@
   <section class="upcoming-events article-list">
     <div class="grid-container grid-container-desktop">
       <h2>Upcoming Events</h2>
-{{ drupal_view('events', 'block_1') }}
-{# todo: this is set when there are no upcoming events renders a placeholder text #}
-      {# <div class="upcoming-events__placeholder card card--placeholder">
-        <h3>Upcoming events will be added soon.</h3>
-        To be notified of new events,
-        <a href="{{ "subscribe" | relURL }}">subscribe to our newsletter</a
-        >!
-      </div> #}
-
+      {{ drupal_view('events', 'block_1') }}
     </div>
   </section>
 

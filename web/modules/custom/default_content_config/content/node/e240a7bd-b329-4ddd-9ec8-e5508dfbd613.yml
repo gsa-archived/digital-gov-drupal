@@ -84,9 +84,6 @@ default:
       uri: 'https://lorem.com'
       title: ''
       options: {  }
-  field_start_date:
-    -
-      value: '2024-06-20T18:00:00'
   field_summary:
     -
       value: 'nulla iaculis ligula fames proin in <b>erat</b>'

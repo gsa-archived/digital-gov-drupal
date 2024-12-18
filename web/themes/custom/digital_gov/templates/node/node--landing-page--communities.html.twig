@@ -73,7 +73,9 @@
   </div>
 
   [placeholder Featured Communities]
-  {{ drupal_view('communities', 'block_1') }}
+  <div class="dg-featured-communities dg-featured-communities--has-image">
+    {{ drupal_view('featured_communities', 'default') }}
+  </div>
 
   {# Other Communities of Practice #}
   <div class="page-head">
@@ -84,6 +86,6 @@
       <a class="usa-link" href="/about">our mission</a>.
     </div>
   </div>
-  {{ drupal_view('communities', 'block_1') }}
+  {{ drupal_view('external_communities', 'default') }}
 
 </main>
