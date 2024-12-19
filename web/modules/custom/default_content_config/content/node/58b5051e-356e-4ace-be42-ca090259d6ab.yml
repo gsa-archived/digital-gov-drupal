@@ -41,7 +41,7 @@ default:
   field_deck:
     -
       value: 'As agencies carry out their diverse missions, they must also respect and protect personally identifiable information (PII)'
-      format: html
+      format: single_inline_html
   field_featured_communities:
     -
       entity: 623a2982-602b-4762-a59e-9a7c30c64f36
@@ -81,4 +81,4 @@ default:
   field_summary:
     -
       value: 'For the public to have trust in government institutions, they need to know that their personal information is secure, and will be used only for legitimate purposes. Privacy violations can put people at risk for identity theft, financial fraud, discriminat'
-      format: html
+      format: single_inline_html

@@ -59,7 +59,7 @@ default:
   field_summary:
     -
       value: 'Improve customer experience by turning your website analytics upside down to track the numbers for pages you DON’T want visitors to see. '
-      format: html
+      format: single_inline_html
   field_topics:
     -
       entity: bfc21cc0-5de7-4b9f-8dcd-4b1da264ace5

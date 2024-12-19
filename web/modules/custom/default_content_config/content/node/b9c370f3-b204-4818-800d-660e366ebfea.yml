@@ -45,7 +45,7 @@ default:
   field_deck:
     -
       value: 'A set of daily scans of the federal web presence.'
-      format: html
+      format: single_inline_html
   field_guide_weight:
     -
       value: 3
@@ -58,7 +58,7 @@ default:
   field_summary:
     -
       value: 'This program is available to automatically generate data about the health and best practices of federal websites.'
-      format: html
+      format: single_inline_html
   field_summary_box:
     -
       value: true
