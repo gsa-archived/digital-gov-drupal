@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Template\Attribute;
-use Drupal\config_pages\Entity\ConfigPages;
 
 /**
  * @file
