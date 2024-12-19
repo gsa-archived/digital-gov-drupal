@@ -52,3 +52,4 @@ a8e36d32c49aca75de1d6f5efc57a38e|Matt Poole|feature/DIGITAL-195-sso-configuratio
 b4d1a71ae39798e387fe895acb3c924c|Oscar Merida|feature/DIGITAL-140-security-kit|Thu Dec 12 10:06:04 EST 2024|./composer.sh require drupal/seckit
 142970354860260a21a9a93d4c5b2fe0|christian medders|feature/DIGITAL-150-limit-menu-access|Thu Dec 19 12:39:17 EST 2024|./composer.sh require drupal/menu_admin_per_menu:^1.6
 bd7840ebd67d69715dbd07eef9ceb742|cathybaptista|feature/DIGITAL-114-implement-identifier-block|Thu Dec 19 12:41:31 EST 2024|./composer.sh require drupal/config_pages
+72cca00bd0b4403e0db152c489a8e0a1|Matt Poole|feature/DIGITAL-114-implement-identifier-block|Thu Dec 19 15:32:32 EST 2024|./composer.sh require drupal/link_class

@@ -11,7 +11,7 @@ id: config_pages.identifier.field_visit_link
 field_name: field_visit_link
 entity_type: config_pages
 bundle: identifier
-label: 'visit link'
+label: Link
 description: ''
 required: false
 translatable: false

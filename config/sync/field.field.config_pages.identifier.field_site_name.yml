@@ -9,7 +9,7 @@ id: config_pages.identifier.field_site_name
 field_name: field_site_name
 entity_type: config_pages
 bundle: identifier
-label: 'site name'
+label: "This site's domain"
 description: 'Enter the sites name that will appear in the identifier'
 required: false
 translatable: false

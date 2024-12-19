@@ -12,6 +12,6 @@ context:
   fallback:
     language: ''
 menu:
-  path: /admin/config/system/identifier
+  path: /admin/content/identifier
   weight: 0
   description: 'Configure Identifier'

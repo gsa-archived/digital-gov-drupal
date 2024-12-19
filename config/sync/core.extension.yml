@@ -38,6 +38,7 @@ module:
   js_cookie: 0
   layout_discovery: 0
   link: 0
+  link_class: 0
   linkit: 0
   maillog: 0
   mailsystem: 0
