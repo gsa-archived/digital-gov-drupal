@@ -5,7 +5,7 @@ timeout: 43200
 max_timeout: 43200
 padding: null
 logout_regardless_of_activity: true
-no_individual_logout_threshold: false
+no_individual_logout_threshold: true
 role_logout: false
 role_logout_max: false
 redirect_url: /user/login
