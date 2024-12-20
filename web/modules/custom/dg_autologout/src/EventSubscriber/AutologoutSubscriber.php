@@ -88,7 +88,7 @@ class AutologoutSubscriber implements EventSubscriberInterface {
    *   The language manager.
    */
   public function __construct(DgAutologoutManagerInterface $dg_autologout, AccountInterface $account, ConfigFactory $config, ThemeManager $theme, TimeInterface $time, RequestStack $requestStack, LanguageManagerInterface $language_manager) {
-    $this->AutologoutManager = $dg_autologout;
+    $this->autologoutManager = $dg_autologout;
     $this->currentUser = $account;
     $this->config = $config;
     $this->theme = $theme;
@@ -104,7 +104,7 @@ class AutologoutSubscriber implements EventSubscriberInterface {
    *   The request event.
    */
   public function onRequest(RequestEvent $event) {
-    $dg_autologout_manager = $this->AutologoutManager;
+    $dg_autologout_manager = $this->autologoutManager;
 
     $uid = $this->currentUser->id();
 
@@ -138,7 +138,7 @@ class AutologoutSubscriber implements EventSubscriberInterface {
       }
     }
 
-    if ($this->AutologoutManager->preventJs()) {
+    if ($this->autologoutManager->preventJs()) {
       return;
     }
 
