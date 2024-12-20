@@ -43,8 +43,6 @@ default:
   field_first_name:
     -
       value: Drew
-      format: html
   field_last_name:
     -
       value: Zachary
-      format: html

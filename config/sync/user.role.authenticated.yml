@@ -8,11 +8,13 @@ dependencies:
     - filter.format.single_inline_html
   module:
     - admin_toolbar_search
+    - config_pages
     - content_moderation
     - filter
     - media
     - system
     - toolbar
+    - userprotect
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
@@ -27,6 +29,8 @@ permissions:
   - 'use text format html'
   - 'use text format multiline_inline_html'
   - 'use text format single_inline_html'
+  - userprotect.account.edit
+  - 'view identifier config page entity'
   - 'view latest version'
   - 'view media'
   - 'view the administration theme'

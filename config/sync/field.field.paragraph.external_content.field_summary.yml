@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_summary
-    - filter.format.html
+    - filter.format.single_inline_html
     - paragraphs.paragraphs_type.external_content
   module:
     - text
@@ -20,5 +20,5 @@ default_value: {  }
 default_value_callback: ''
 settings:
   allowed_formats:
-    - html
-field_type: text
+    - single_inline_html
+field_type: text_long

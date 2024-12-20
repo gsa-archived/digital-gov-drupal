@@ -43,7 +43,7 @@ default:
   field_bio:
     -
       value: 'Dan Williams is the program lead for the U.S. Web Design System (USWDS).'
-      format: html
+      format: single_inline_html
   field_bio_url:
     -
       uri: 'https://designsystem.digital.gov/'
@@ -55,18 +55,16 @@ default:
   field_first_name:
     -
       value: Dan
-      format: html
   field_github:
     -
       value: thisisdano
   field_last_name:
     -
       value: Williams
-      format: html
   field_location:
     -
       value: 'Portland, OR'
   field_summary:
     -
       value: 'The people who have contributed their stories and guidance over the years.'
-      format: html
+      format: single_inline_html

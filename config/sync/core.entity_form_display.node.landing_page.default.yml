@@ -14,6 +14,7 @@ dependencies:
   module:
     - content_moderation
     - link
+    - maxlength
     - media_library
     - path
     - text
@@ -47,13 +48,17 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   field_deck:
-    type: text_textfield
+    type: text_textarea
     weight: 1
     region: content
     settings:
-      size: 60
+      rows: 1
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 255
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
   field_landing_page_type:
     type: options_select
     weight: 2
@@ -68,13 +73,17 @@ content:
       media_types: {  }
     third_party_settings: {  }
   field_summary:
-    type: text_textfield
+    type: text_textarea
     weight: 1
     region: content
     settings:
-      size: 60
+      rows: 1
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 255
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
   moderation_state:
     type: moderation_state_default
     weight: 7
