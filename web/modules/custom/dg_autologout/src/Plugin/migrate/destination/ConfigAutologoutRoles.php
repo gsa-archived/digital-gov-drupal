@@ -2,9 +2,9 @@
 
 namespace Drupal\dg_autologout\Plugin\migrate\destination;
 
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\migrate\Plugin\migrate\destination\Config;
 use Drupal\migrate\Row;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -62,6 +62,7 @@ class ConfigAutologoutRoles extends Config {
     $entity_ids[0] = $dg_autologout_role;
 
     return $entity_ids;
-  }
-}
 
+  }
+
+}
