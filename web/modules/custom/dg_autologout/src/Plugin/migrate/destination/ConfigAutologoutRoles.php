@@ -36,8 +36,8 @@ class ConfigAutologoutRoles extends Config {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition, $migration) {
+    return new self(
       $container->get('entity_type.manager')
     );
   }
