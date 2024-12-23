@@ -53,7 +53,7 @@
       localSettings = jQuery.extend(true, {}, settings.dg_autologout);
 
       // Add timer element to prevent detach of all behaviours.
-      let timerMarkup = $('<div id="timer"></div>').hide();
+      let timerMarkup = $('<div id="dg-timer"></div>').hide();
       $('body').append(timerMarkup);
 
       if (localSettings.refresh_only) {
@@ -120,7 +120,7 @@
           // While the countdown timer is going, lookup the remaining time. If
           // there is more time remaining (i.e. a user is navigating in another
           // tab), then reset the timer for opening the dialog.
-          Drupal.Ajax['dg_autologout.getTimeLeft'].dg_autologoutGetTimeLeft(function (time) {
+          Drupal.Ajax['dg_autologout.getTimeLeft'].dgAutologoutGetTimeLeft(function (time) {
             if (time > 0) {
               clearTimeout(paddingTimer);
               t = setTimeout(init, time);
@@ -157,7 +157,7 @@
           };
         }
 
-        return $('<div id="autologout-confirm">' + localSettings.message + '</div>').dialog({
+        return $('<div id="dg-autologout-confirm">' + localSettings.message + '</div>').dialog({
           modal: true,
           closeOnEscape: false,
           width: localSettings.modal_width,
@@ -175,7 +175,7 @@
       function confirmLogout() {
         $(theDialog).dialog('destroy');
 
-        Drupal.Ajax['dg_autologout.getTimeLeft'].autologoutGetTimeLeft(function (time) {
+        Drupal.Ajax['dg_autologout.getTimeLeft'].dgAutologoutGetTimeLeft(function (time) {
           if (time > 0) {
             t = setTimeout(init, time);
           }
@@ -238,7 +238,7 @@
        *   The function to run when ajax is successful. The time parameter
        *   is the time remaining for the current user in ms.
        */
-      Drupal.Ajax.prototype.dg_autologoutGetTimeLeft = function (callback) {
+      Drupal.Ajax.prototype.dgAutologoutGetTimeLeft = function (callback) {
         let ajax = this;
 
         // Store the original success temporary to be called later.
@@ -261,7 +261,7 @@
               callback(response[key].settings.time);
             }
             if (response[key].command === "insert" && response[key].selector === '#timer' && typeof response[key].data !== 'undefined') {
-              response[key].data = '<div id="timer" style="display: none;">' + response[key].data + '</div>';
+              response[key].data = '<div id="dg-timer" style="display: none;">' + response[key].data + '</div>';
             }
           }
 
@@ -299,7 +299,7 @@
        * @param function timerFunction
        *   The function to tell the timer to run after its been restarted.
        */
-      Drupal.Ajax.prototype.dg_autologoutRefresh = function (timerfunction) {
+      Drupal.Ajax.prototype.dgAutologoutRefresh = function (timerfunction) {
         let ajax = this;
 
         if (ajax.ajaxing) {
@@ -320,7 +320,7 @@
           t = setTimeout(timerfunction, localSettings.timeout);
 
           // Wrap response data in timer markup to prevent detach of all behaviors.
-          response[0].data = '<div id="timer" style="display: none;">' + response[0].data + '</div>';
+          response[0].data = '<div id="dg-timer" style="display: none;">' + response[0].data + '</div>';
 
           // Let Drupal.ajax handle the JSON response.
           return originalSuccess.call(ajax, response, status, xmlhttprequest);
@@ -346,14 +346,14 @@
 
       function keepAlive() {
         if (!document.hidden) {
-          Drupal.Ajax['dg_autologout.refresh'].autologoutRefresh(keepAlive);
+          Drupal.Ajax['dg_autologout.refresh'].dgAutologoutRefresh(keepAlive);
         } else {
           t = setTimeout(keepAlive, localSettings.timeout);
         }
       }
 
       function refresh() {
-        Drupal.Ajax['dg_autologout.refresh'].autologoutRefresh(init);
+        Drupal.Ajax['dg_autologout.refresh'].dgAutologoutRefresh(init);
       }
 
       // Check if the page was loaded via a back button click.
