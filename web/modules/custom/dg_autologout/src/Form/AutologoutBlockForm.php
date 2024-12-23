@@ -33,14 +33,14 @@ class AutologoutBlockForm extends FormBase {
    *   The autologout manager service.
    */
   public function __construct(DgAutologoutManagerInterface $dg_autologout) {
-    $this->AutologoutManager = $dg_autologout;
+    $this->autologoutManager = $dg_autologout;
   }
 
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static(
+    return new self(
       $container->get('dg_autologout.manager')
     );
   }

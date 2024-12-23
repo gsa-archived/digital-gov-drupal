@@ -60,7 +60,7 @@ class AutologoutController extends ControllerBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static(
+    return new self(
       $container->get('dg_autologout.manager'),
       $container->get('datetime.time'),
       $container->get('request_stack')
