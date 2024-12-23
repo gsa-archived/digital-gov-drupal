@@ -2,9 +2,9 @@
 
 namespace Drupal\dg_autologout\Plugin\migrate\destination;
 
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\migrate\Plugin\migrate\destination\Config;
 use Drupal\migrate\Row;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -17,7 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class ConfigAutologoutRoles extends Config {
 
   /**
-   * The entity type manager.
+   * The entity type manager service.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
@@ -26,17 +26,10 @@ class ConfigAutologoutRoles extends Config {
   /**
    * Constructs a new ConfigAutologoutRoles object.
    *
-   * @param array $configuration
-   *   A configuration array containing information about the plugin instance.
-   * @param string $plugin_id
-   *   The plugin_id for the plugin instance.
-   * @param mixed $plugin_definition
-   *   The plugin implementation definition.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity type manager.
+   *   The entity type manager service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
     $this->entityTypeManager = $entity_type_manager;
   }
 
@@ -45,9 +38,6 @@ class ConfigAutologoutRoles extends Config {
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
       $container->get('entity_type.manager')
     );
   }
@@ -58,9 +48,10 @@ class ConfigAutologoutRoles extends Config {
   public function import(Row $row, array $old_destination_id_values = []) {
     $dg_autologout_role = 'dg_autologout.role.';
     $roles = $this->entityTypeManager->getStorage('user_role')->loadMultiple();
+
     foreach ($roles as $role) {
       if (strtolower($row->getSourceProperty('role')) === strtolower($role->label())) {
-        $dg_autologout_role = 'dg_autologout.role.'. $role->id();
+        $dg_autologout_role = 'dg_autologout.role.' . $role->id();
         $this->config->setName($dg_autologout_role);
         $this->config->save();
         break;
@@ -72,5 +63,5 @@ class ConfigAutologoutRoles extends Config {
 
     return $entity_ids;
   }
-
 }
+
