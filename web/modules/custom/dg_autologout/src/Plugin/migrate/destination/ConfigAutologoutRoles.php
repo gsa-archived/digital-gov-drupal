@@ -4,6 +4,7 @@ namespace Drupal\dg_autologout\Plugin\migrate\destination;
 
 use Drupal\migrate\Plugin\migrate\destination\Config;
 use Drupal\migrate\Row;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * Autologout Configuration Migration.
