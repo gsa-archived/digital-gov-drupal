@@ -20,7 +20,7 @@ class ConfigAutologoutRoles extends Config {
    */
   public function import(Row $row, array $old_destination_id_values = []) {
     $dg_autologout_role = 'dg_autologout.role.';
-    $roles = \Drupal::entityTypeManager()->getStorage('user_role')->loadMultiple();
+    $roles = entityTypeManager()->getStorage('user_role')->loadMultiple();
     foreach ($roles as $role) {
       if (strtolower($row->getSourceProperty('role')) === strtolower($role->label())) {
         $dg_autologout_role = 'dg_autologout.role.' . $role->id();
