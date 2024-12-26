@@ -13,8 +13,8 @@
      <div class="dg-sidebar grid-col-12 tablet:grid-col-3">
        <div class="dg-guide__content-body usa-prose">
         {% if node.field_hcd_glossary.value %}
-          {% set entity = drupal_entity('block', 'digital_gov_views_block__hcd_glossary_block_1', check_access=false) %}
-          {{ entity }}
+          {% set view_result = drupal_view('hcd_glossary', 'default') %}
+          {{ view_result }}
         {% endif %}
       </div>
      </div>
