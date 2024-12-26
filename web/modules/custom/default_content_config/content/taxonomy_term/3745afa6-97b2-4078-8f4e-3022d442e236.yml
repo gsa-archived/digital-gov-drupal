@@ -26,3 +26,7 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
+  field_description:
+    -
+      value: '<p>The extent to which content is available, understandable, and usable by all audiences, regardless of sensory, physical, cognitive, intellectual, or situational disabilities or impairments</p>'
+      format: single_inline_html

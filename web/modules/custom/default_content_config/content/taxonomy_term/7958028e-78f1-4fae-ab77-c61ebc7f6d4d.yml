@@ -26,3 +26,7 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
+  field_description:
+    -
+      value: '<p>The people for and with whom design teams work, because they participate in the use of the products, services, and systems we design.</p>'
+      format: single_inline_html

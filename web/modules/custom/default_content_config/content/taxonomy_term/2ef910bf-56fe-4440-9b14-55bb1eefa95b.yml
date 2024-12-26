@@ -26,3 +26,7 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
+  field_description:
+    -
+      value: '<p>In design thinking, the logical opposition to the statement, “No, But...” Meant to set up acceptance and integration, this form of reply to statements can allow for expansive conversation instead of a negation of opinions and options.</p>'
+      format: single_inline_html

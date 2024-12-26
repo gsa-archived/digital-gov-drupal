@@ -26,3 +26,7 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
+  field_description:
+    -
+      value: '<p>A “How Might We” (HMW) question serves two purposes. First, it is the frame of inquiry, or the area of research. Second, it should spur and inspire the research team. A good HMW research question will focus but also leave room for exploration.</p>'
+      format: single_inline_html

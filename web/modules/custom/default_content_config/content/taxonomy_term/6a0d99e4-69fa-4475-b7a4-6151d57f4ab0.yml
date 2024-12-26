@@ -26,3 +26,7 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
+  field_description:
+    -
+      value: '<p>The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another through a shared experience</p>'
+      format: single_inline_html

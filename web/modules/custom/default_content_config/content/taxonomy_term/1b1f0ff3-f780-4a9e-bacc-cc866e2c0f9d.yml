@@ -26,3 +26,7 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
+  field_description:
+    -
+      value: '<p>Parts of a service that is visible to the user of that service are called front stage. Parts of a service with which the service provider interacts, but which are not visible to the user of the service, are called back stage.</p>'
+      format: single_inline_html

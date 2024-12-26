@@ -26,3 +26,7 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
+  field_description:
+    -
+      value: '<p>Acronym for &lt;em&gt;Return on Investment&lt;/em&gt;.</p>'
+      format: single_inline_html
