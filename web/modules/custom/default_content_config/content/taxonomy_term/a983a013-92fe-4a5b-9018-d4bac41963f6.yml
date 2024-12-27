@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>A way to connect and integrate useful knowledge from the arts and sciences alike that is suited to the problems and purposes of the present.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 8

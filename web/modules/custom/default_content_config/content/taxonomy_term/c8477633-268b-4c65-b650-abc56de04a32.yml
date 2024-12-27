@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>Ethnographic research tries to understand how people live their lives. Unlike traditional researchers, who ask specific, highly practical questions, ethnographers may visit homes or offices to observe and listen in a non-directed way. While this observational method may appear inefficient, it enlightens us about the context in which customers see their own environment.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 10

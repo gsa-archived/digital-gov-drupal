@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>In experience design, pain points are real or perceived problems experienced by customers within a system.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 22

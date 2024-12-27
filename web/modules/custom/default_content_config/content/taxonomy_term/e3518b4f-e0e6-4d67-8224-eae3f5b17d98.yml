@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>To make sense of; to understand</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 28

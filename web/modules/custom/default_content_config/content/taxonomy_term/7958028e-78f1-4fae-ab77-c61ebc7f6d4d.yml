@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>The people for and with whom design teams work, because they participate in the use of the products, services, and systems we design.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 23

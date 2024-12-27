@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>An approach that focuses on people, process and purpose, and the alignment between the three.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 20

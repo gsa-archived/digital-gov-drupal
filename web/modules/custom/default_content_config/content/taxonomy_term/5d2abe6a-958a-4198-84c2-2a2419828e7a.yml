@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>A research analysis method characterized by grouping of words or phrases with a single or set of commonalities. In design research, this is often enacted physically by the assembly of words or phrases written on single pieces of paper into a proximate group.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 4

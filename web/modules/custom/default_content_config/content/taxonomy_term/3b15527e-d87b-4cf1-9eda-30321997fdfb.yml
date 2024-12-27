@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>An ethnographic research process that tries to understand the environment in which the behavior under study takes place</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 5

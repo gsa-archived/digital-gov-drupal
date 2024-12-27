@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>To understand; to analyze in order to find meaning</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 7

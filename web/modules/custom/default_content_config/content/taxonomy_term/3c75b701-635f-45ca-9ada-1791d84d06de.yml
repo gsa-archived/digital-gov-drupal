@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>Procedures or approaches that are accepted or prescribed as being correct or most effective.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 3

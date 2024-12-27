@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>Effectiveness, Ease, and Emotion are three core qualities to measure customer experience; based on a Forrester Research Inc. pyramid model of customer experience.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 0
