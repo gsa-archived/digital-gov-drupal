@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>Procedures or approaches that are accepted or prescribed as being correct or most effective.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 3
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>Procedures or approaches that are accepted or prescribed as being correct or most effective.</p>'
-      format: single_inline_html

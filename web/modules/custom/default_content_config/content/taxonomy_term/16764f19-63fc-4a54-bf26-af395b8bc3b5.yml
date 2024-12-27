@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>In design thinking, the principle that, in order to forward innovative thinking, the group or individual performing the thinking session must accept and consider all ideas as possible solutions.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 21
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>In design thinking, the principle that, in order to forward innovative thinking, the group or individual performing the thinking session must accept and consider all ideas as possible solutions.</p>'
-      format: single_inline_html

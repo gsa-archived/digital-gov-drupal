@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>To understand; to analyze in order to find meaning</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 7
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>To understand; to analyze in order to find meaning.</p>'
-      format: single_inline_html

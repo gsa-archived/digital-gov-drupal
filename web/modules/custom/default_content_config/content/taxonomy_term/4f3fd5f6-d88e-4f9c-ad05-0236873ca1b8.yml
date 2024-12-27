@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>The area of research around a particular problem</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 24
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>The area of research around a particular problem.</p>'
-      format: single_inline_html

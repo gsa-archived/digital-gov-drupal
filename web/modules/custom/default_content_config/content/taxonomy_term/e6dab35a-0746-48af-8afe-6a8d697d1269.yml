@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>Persons, groups or organizations that have a direct or indirect stake in an organization because it can affect or be affected by the organization’s actions, objectives and policies</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 31
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>Persons, groups or organizations that have a direct or indirect stake in an organization because it can affect or be affected by the organization’s actions, objectives and policies.</p>'
-      format: single_inline_html

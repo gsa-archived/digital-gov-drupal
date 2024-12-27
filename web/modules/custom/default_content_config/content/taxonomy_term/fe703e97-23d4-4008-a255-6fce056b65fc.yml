@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>An approach that focuses on people, process and purpose, and the alignment between the three.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 20
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>An approach that focuses on people, process and purpose, and the alignment between the three.</p>'
-      format: single_inline_html

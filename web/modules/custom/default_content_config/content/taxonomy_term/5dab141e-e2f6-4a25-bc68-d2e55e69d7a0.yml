@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of thorough emotional and intellectual understanding of another’s experience. This contrasts with empathy in that it does not include a shared experience.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 32
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of thorough emotional and intellectual understanding of another’s experience. This contrasts with empathy in that it does not include a shared experience.</p>'
-      format: single_inline_html

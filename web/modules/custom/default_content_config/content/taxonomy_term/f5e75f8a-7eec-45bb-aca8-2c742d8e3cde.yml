@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>To form an idea of; imagine or conceive. In design thinking, this refers to imagining or conceiving of multiple ideas for solutions to problems, usually in succession and building off each idea.</p>'
-      format: single_inline_html

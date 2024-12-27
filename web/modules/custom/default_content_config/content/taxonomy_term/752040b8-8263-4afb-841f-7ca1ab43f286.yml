@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>A method by which an interviewer derives additional detail and undercurrents from an interviewee. Typically characterized by the interviewer repeatedly asking “why” about a qualified or abstract word or phrase used during an interview. A common metric is for the interviewer to do this five times in a line of questions.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 1
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>A method by which an interviewer derives additional detail and undercurrents from an interviewee. Typically characterized by the interviewer repeatedly asking “why” about a qualified or abstract word or phrase used during an interview. A common metric is for the interviewer to do this five times in a line of questions.</p>'
-      format: single_inline_html

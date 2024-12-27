@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>Intercept interviews are conducted on-site with customers, directly interacting with services at the research site.</p>'
-      format: single_inline_html

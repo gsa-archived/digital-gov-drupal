@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>To combine a number of things into a coherent whole. In design thinking, this refers to the collection and integration of pieces of research into a logical and meaningful collection.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 33
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>To combine a number of things into a coherent whole. In design thinking, this refers to the collection and integration of pieces of research into a logical and meaningful collection.</p>'
-      format: single_inline_html

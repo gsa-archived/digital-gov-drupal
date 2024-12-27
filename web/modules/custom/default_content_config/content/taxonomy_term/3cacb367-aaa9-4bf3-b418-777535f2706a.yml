@@ -14,7 +14,7 @@ default:
   description:
     -
       value: "<p>Customer experience (CX) is an individual's perception of all their interactions with an organization. While <em>customer service</em> focuses on improving a <em>single</em> interaction, CX is the sum of direct customer service, plus all the ways customers interact with an organization, including websites, buildings, and physical or digital products.</p>"
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 6
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: "<p>Customer experience (CX) is an individual's perception of all their interactions with an organization. While &lt;em&gt;customer service&lt;/em&gt; focuses on improving a &lt;em&gt;single&lt;/em&gt; interaction, CX is the sum of direct customer service, plus all the ways customers interact with an organization, including websites, buildings, and physical or digital products.</p>"
-      format: single_inline_html

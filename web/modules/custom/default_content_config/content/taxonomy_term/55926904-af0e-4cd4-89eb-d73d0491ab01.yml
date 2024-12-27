@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>Human-centered design is a design and management framework that develops solutions to problems by involving the human perspective in all steps of the problem-solving process. Human involvement typically takes place in observing the problem within context, brainstorming, conceptualizing, developing, and implementing the solution.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 15
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>Human-centered design is a design and management framework that develops solutions to problems by involving the human perspective in all steps of the problem-solving process. Human involvement typically takes place in observing the problem within context, brainstorming, conceptualizing, developing, and implementing the solution.</p>'
-      format: single_inline_html

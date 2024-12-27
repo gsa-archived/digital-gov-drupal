@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>Primarily exploratory research used to gain an understanding of underlying reasons, opinions, and motivations. It provides insights into the problem or helps to develop ideas or hypotheses for potential quantitative research.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 25
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>Primarily exploratory research used to gain an understanding of underlying reasons, opinions, and motivations. It provides insights into the problem or helps to develop ideas or hypotheses for potential quantitative research.</p>'
-      format: single_inline_html

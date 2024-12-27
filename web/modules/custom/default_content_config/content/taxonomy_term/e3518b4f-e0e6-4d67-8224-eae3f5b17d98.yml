@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>To make sense of; to understand</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 28
@@ -26,7 +26,3 @@ default:
       alias: ''
       langcode: en
       pathauto: 0
-  field_description:
-    -
-      value: '<p>To make sense of; to understand.</p>'
-      format: single_inline_html
