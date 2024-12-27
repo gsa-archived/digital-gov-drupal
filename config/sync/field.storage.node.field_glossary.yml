@@ -1,12 +1,12 @@
-uuid: 582cdc00-7855-441f-b6f4-6b0efe4f403d
+uuid: e96bf56f-19e6-4c58-aeaa-dd2348ac1f7c
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - taxonomy
-id: node.field_hcd_glossary
-field_name: field_hcd_glossary
+id: node.field_glossary
+field_name: field_glossary
 entity_type: node
 type: entity_reference
 settings:
