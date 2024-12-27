@@ -20,7 +20,7 @@
 #}
 
 {% if attributes -%}
-  {#TODO: This may not be the way we want to do this #}
+  {# TODO: This may not be the way we want to do this #}
   <section{{ attributes }}>
   {% endif %}
   <div class="dg-glossary__content" id="dg-glossary--result">
@@ -32,22 +32,20 @@
         </button>
         {% else %}
         <div class="dg-glossary__definition">
-          {{ field.last_render}}
+          {{ field.last_render }}
         </div>
         {% endif %}
       </li>
     </div>
   </div>
 
-  {#{ list.type }}{{ list.attributes }}
+  {# { list.type }}{{ list.attributes }}
 
     {% for row in rows %}
       <li{{ row.attributes }}>
         {{- row.content -}}
       </li>
-    {% endfor %}
-
-  
-  {% if attributes -%}
+    {% endfor %}  
+  {% if attributes %}
   </section>
 {% endif #}
