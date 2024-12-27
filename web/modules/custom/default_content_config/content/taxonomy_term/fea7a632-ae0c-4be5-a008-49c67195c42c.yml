@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>A new idea, method, or device. In design thinking, usually characterized by a break from traditional or institutionalized methods, production methods, or products.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 17

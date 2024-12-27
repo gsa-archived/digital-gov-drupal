@@ -14,7 +14,7 @@ default:
   description:
     -
       value: '<p>Intercept interviews are conducted on-site with customers, directly interacting with services at the research site.</p>'
-      format: html
+      format: single_inline_html
   weight:
     -
       value: 18
