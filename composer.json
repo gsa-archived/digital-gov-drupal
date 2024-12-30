@@ -25,7 +25,7 @@
         "drupal/core-composer-scaffold": "^10.2",
         "drupal/core-project-message": "^10.2",
         "drupal/core-recommended": "^10.2",
-        "drupal/default_content": "^2.0@alpha",
+        "drupal/default_content": "2.0.x-dev@dev",
         "drupal/disable_user_1_edit": "^1.6",
         "drupal/easy_breadcrumb": "^2.0",
         "drupal/embedded_content": "^2.0",
