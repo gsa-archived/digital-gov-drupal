@@ -62,7 +62,6 @@
  * @ingroup themeable
  */
 #}
-
 <main role="main" id="main-content">
   <div class="grid-container-desktop">
     <div class="grid-row">
@@ -82,7 +81,7 @@
 
   <section class="stream">
     <div class="grid-container-desktop">
-      [placeholder list job cards]
+      {{ dpm(job_board_administration) }}
       {# NOT-MIGRATED
       {{ range .Site.Data.job_board }}
       {{ if ge .close_date $now }}
