@@ -103,13 +103,9 @@ function digital_gov_preprocess_node_guides(&$variables): void {
 function digital_gov_get_guidenav_links(Node $node, string $current): array {
   // Anonymous helper for getting node links.
   $makeLink = function (Node $page): Link {
-    return Link::createFromRoute(
-      // Override the navigation title if set in the node.
-      $page->get('field_guide_nav_title')?->get(0)?->getValue()
-      ?? $page->getTitle(),
-      'entity.node.canonical',
-      ['node' => $page->id()]
-    );
+    // Override the navigation title if set in the node.
+    return $page->toLink($page->get('field_guide_nav_title')->getString()
+      ?: $page->label());
   };
 
   // The guide_nav is an array that holds items with the following keys
