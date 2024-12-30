@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "33f264f800eee7795f7ddd8ff0cdfecd",
+    "content-hash": "b1467b2cbbe6107729eb297cf1da7ca9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2220,11 +2220,17 @@
         },
         {
             "name": "drupal/default_content",
-            "version": "dev-2.0.x",
+            "version": "2.0.0-alpha3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/default_content.git",
-                "reference": "b85c0192af51841518bddd9ecfa5077b1d0f720a"
+                "reference": "2.0.0-alpha3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/default_content-2.0.0-alpha3.zip",
+                "reference": "2.0.0-alpha3",
+                "shasum": "fdd90c70bd91896835f6ba5ec42c260c1a144a2b"
             },
             "require": {
                 "drupal/core": "^9.1 || ^10 || ^11"
@@ -2235,15 +2241,12 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.0.x": "2.0.x-dev"
-                },
                 "drupal": {
-                    "version": "2.0.0-alpha3+1-dev",
-                    "datestamp": "1726239226",
+                    "version": "2.0.0-alpha3",
+                    "datestamp": "1724492420",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
+                        "message": "Alpha releases are not covered by Drupal security advisories."
                     }
                 },
                 "drush": {
@@ -16536,7 +16539,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "drupal/default_content": 20,
+        "drupal/default_content": 15,
         "drupal/inline_entity_form": 5,
         "drupal/maillog": 20,
         "drupal/multivalue_form_element": 10,
