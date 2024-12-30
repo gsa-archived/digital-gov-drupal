@@ -45,12 +45,12 @@ default:
     -
       value: '<p>Everything you need to know to get started with our human-centered design series</p>'
       format: single_inline_html
+  field_glossary:
+    -
+      target_id: hcd_glossary
   field_guide_weight:
     -
       value: 5
-  field_hcd_glossary:
-    -
-      target_id: hcd_glossary
   field_page_weight:
     -
       value: 0
