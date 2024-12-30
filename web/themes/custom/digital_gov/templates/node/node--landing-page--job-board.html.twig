@@ -82,6 +82,41 @@
   <section class="stream">
     <div class="grid-container-desktop">
       {{ dpm(job_board_administration) }}
+
+  {% for item in job_board_administration %}
+   <article class="card card-job" aria-labelledby="{{ item.title }}">
+      <div class="card-job__content-header">
+         <a href="{{ item.apply_link }}" target="__blank">
+             <h3 id="{{ item.title }}">{{ item.title }}</h3>
+         </a>
+      </div>
+      <div class="card-job__content-summary">
+        <div class="card-job__department">
+          {{ item.department }}
+        </div>
+        <div class="card-job__location">
+          {{ item.location }}
+        </div>
+        <p class="card-job__description">
+          {{ item.description }}
+        </p>
+      </div>
+      <div
+          class="card-job__apply"
+          aria-labelledby="Apply for {{ item.title }}"
+        >
+          <a class="usa-button" href="{{ item.apply_link }}" target="__blank">
+            Apply
+          </a>
+        </div>
+        <div class="card-job__meta-date">
+          Open {{ item.open_date }} to
+          {{ item.close_date }}
+        </div>
+    </article>
+
+  {% endfor %}
+      
       {# NOT-MIGRATED
       {{ range .Site.Data.job_board }}
       {{ if ge .close_date $now }}
