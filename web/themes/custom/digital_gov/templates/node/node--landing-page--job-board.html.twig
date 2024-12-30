@@ -113,6 +113,13 @@
           Open {{ item.open_date }} to
           {{ item.close_date }}
         </div>
+        <div class="card-job__meta-topics">
+        {% for topic in item['cop_topics'] %} 
+        {# todo: these are color coded. #}
+          <div class="cop-topic--{{ 'FCN' }}">{{ topic }}</div>
+          {{ end }}
+        {% endfor %}
+         </div>
     </article>
 
   {% endfor %}

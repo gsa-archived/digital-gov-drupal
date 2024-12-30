@@ -352,6 +352,7 @@ function digital_gov_theme_suggestions_node_alter(array &$suggestions, array $va
  */
 use Drupal\Component\Serialization\Yaml;
 
+
 function digital_gov_preprocess_node__landing_page__job_board(&$variables, $hook) {
   $entity_type_manager = \Drupal::entityTypeManager();
   $config_pages = $entity_type_manager->getStorage('config_pages')->load('job_board_administration');
@@ -359,8 +360,8 @@ function digital_gov_preprocess_node__landing_page__job_board(&$variables, $hook
   $decoded_array = Yaml::decode($yml_string);
   // Loop through the array and format the dates
   foreach ($decoded_array as &$item) {
-    $item['open_date'] = date('Y-m-d', $item['open_date']);
-    $item['close_date'] = date('Y-m-d', $item['close_date']);
+    $item['open_date'] = date('F j, Y', $item['open_date']);
+    $item['close_date'] = date('F j, Y', $item['close_date']);
   }
 
   $variables['job_board_administration'] = $decoded_array;
