@@ -43,8 +43,11 @@ default:
       summary: ''
   field_deck:
     -
-      value: 'Use web analytics to reach your strategic website goals'
+      value: '<p>Use web analytics to reach your strategic website goals</p>'
       format: single_inline_html
+  field_glossary:
+    -
+      target_id: hcd_glossary
   field_guide_weight:
     -
       value: 1
@@ -56,7 +59,7 @@ default:
       entity: cdc07606-1563-4772-9b45-11fa5d99c31a
   field_summary:
     -
-      value: 'This guide provides actionable strategies for effectively using web analytics to improve federal websites and digital services.'
+      value: '<p>This guide provides actionable strategies for effectively using web analytics to improve federal websites and digital services.</p>'
       format: single_inline_html
   field_summary_box:
     -

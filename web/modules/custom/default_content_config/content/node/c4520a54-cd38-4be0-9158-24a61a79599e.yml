@@ -45,8 +45,11 @@ default:
       summary: ''
   field_deck:
     -
-      value: 'A free analytics tool for measuring digital services in the federal government'
+      value: '<p>A free analytics tool for measuring digital services in the federal government</p>'
       format: single_inline_html
+  field_glossary:
+    -
+      target_id: hcd_glossary
   field_guide_weight:
     -
       value: 5
@@ -58,7 +61,7 @@ default:
       entity: b2f35ae8-423f-428b-865d-e420313e7a81
   field_summary:
     -
-      value: 'he Digital Analytics Program (DAP) offers advanced, easy web analytics for federal agencies.'
+      value: '<p>he Digital Analytics Program (DAP) offers advanced, easy web analytics for federal agencies.</p>'
       format: single_inline_html
   field_summary_box:
     -
