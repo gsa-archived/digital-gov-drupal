@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.guides.body
     - field.field.node.guides.field_deck
     - field.field.node.guides.field_featured_image
+    - field.field.node.guides.field_glossary
     - field.field.node.guides.field_guide_nav_ref
     - field.field.node.guides.field_guide_nav_title
     - field.field.node.guides.field_guide_weight
@@ -51,6 +52,22 @@ content:
       link: false
     third_party_settings: {  }
     weight: 8
+    region: content
+  field_glossary:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 129
+    region: content
+  field_guide_weight:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 127
     region: content
   field_kicker:
     type: string
