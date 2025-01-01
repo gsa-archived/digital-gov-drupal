@@ -128,7 +128,7 @@ function digital_gov_get_guidenav_links(Node $node, string $current): array {
     $links['guide_nav'][] = ['link' => $links['guide_start_link']];
   }
 
-  if ($parent_guide = $node->get('field_parent_guide')->first()->get('entity')->getValue()) {
+  if ($parent_guide = $node->get('field_parent_guide')->first()?->get('entity')->getValue()) {
     $links['guide_parent_link'] = $makeLink($parent_guide);
   }
 

@@ -7,9 +7,9 @@ dependencies:
     - field.field.node.guides.body
     - field.field.node.guides.field_deck
     - field.field.node.guides.field_featured_image
+    - field.field.node.guides.field_glossary
     - field.field.node.guides.field_guide_nav_ref
     - field.field.node.guides.field_guide_nav_title
-    - field.field.node.guides.field_glossary
     - field.field.node.guides.field_guide_weight
     - field.field.node.guides.field_kicker
     - field.field.node.guides.field_page_weight
