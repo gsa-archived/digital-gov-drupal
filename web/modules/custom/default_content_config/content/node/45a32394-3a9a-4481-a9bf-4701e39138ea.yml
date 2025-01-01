@@ -45,7 +45,7 @@ default:
       summary: ''
   field_deck:
     -
-      value: 'A ‘quick-start’ guide for embedding accessibility and inclusive design practices into your team’s workflow'
+      value: '<p>A ‘quick-start’ guide for embedding accessibility and inclusive design practices into your team’s workflow</p>'
       format: single_inline_html
   field_featured_image:
     -
@@ -53,6 +53,9 @@ default:
   field_guide_nav_ref:
     -
       entity: 258cf431-4a0c-4489-807e-c87087c87cf9
+  field_guide_nav_title:
+    -
+      value: 'GUIDE-all fields (Overriden)'
   field_guide_weight:
     -
       value: 5
@@ -64,7 +67,7 @@ default:
       entity: 1e945b0b-bcf5-4df7-9105-6c222eb70c13
   field_summary:
     -
-      value: 'A ‘quick-start’ guide for embedding accessibility and inclusive design practices into your team’s workflow'
+      value: '<p>A ‘quick-start’ guide for embedding accessibility and inclusive design practices into your team’s workflow</p>'
       format: single_inline_html
   field_summary_box:
     -
