@@ -10,7 +10,7 @@ field_name: field_show_in_page_nav
 entity_type: node
 bundle: guide_navigation
 label: 'Show In-page Nav'
-description: ''
+description: 'If selected, this will show the left hand navigation that has links to all headers of the current page as well as links to the subnav links for the current guide.'
 required: false
 translatable: false
 default_value: {  }

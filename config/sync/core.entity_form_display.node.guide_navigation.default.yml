@@ -18,6 +18,7 @@ third_party_settings:
   field_group:
     group_settings:
       children:
+        - field_guide_start_page
         - field_show_next_previous
         - field_show_read_time
         - field_show_in_page_nav
@@ -25,7 +26,7 @@ third_party_settings:
       label: Settings
       region: content
       parent_name: ''
-      weight: 3
+      weight: 2
       format_type: fieldset
       format_settings:
         classes: ''
@@ -47,7 +48,7 @@ content:
     third_party_settings: {  }
   field_guide_navigation:
     type: paragraphs
-    weight: 2
+    weight: 3
     region: content
     settings:
       title: Paragraph
@@ -71,27 +72,27 @@ content:
     third_party_settings: {  }
   field_parent_guide:
     type: options_select
-    weight: 26
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   field_show_in_page_nav:
     type: boolean_checkbox
-    weight: 13
+    weight: 4
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_show_next_previous:
     type: boolean_checkbox
-    weight: 10
+    weight: 2
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_show_read_time:
     type: boolean_checkbox
-    weight: 12
+    weight: 3
     region: content
     settings:
       display_label: true

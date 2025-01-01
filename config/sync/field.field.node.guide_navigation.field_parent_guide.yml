@@ -10,7 +10,7 @@ field_name: field_parent_guide
 entity_type: node
 bundle: guide_navigation
 label: 'Parent Guide'
-description: ''
+description: 'A guide that will be linked to in the header of all guides that use this guide navigation.'
 required: false
 translatable: false
 default_value: {  }

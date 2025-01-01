@@ -10,7 +10,7 @@ field_name: field_guide_start_page
 entity_type: node
 bundle: guide_navigation
 label: 'Start Page'
-description: 'The page to use as the overview of the guide.'
+description: "The guide that will be as the 'Header' for all guides that use this guide navigation."
 required: true
 translatable: false
 default_value: {  }
