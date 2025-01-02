@@ -81,7 +81,6 @@
 
   <section class="stream">
     <div class="grid-container-desktop">
-      {{ dpm(job_board_administration) }}
 
   {% for item in job_board_administration %}
    <article class="card card-job" aria-labelledby="{{ item.title }}">
@@ -114,14 +113,26 @@
           {{ item.close_date }}
         </div>
         <div class="card-job__meta-topics">
-        {% for topic in item['cop_topics'] %} 
-        {# todo: these are color coded. #}
-          <div class="cop-topic--{{ 'FCN' }}">{{ topic }}</div>
-          {{ end }}
+        {#todo: this may not be best here?#}
+        {% set topic_acronym = {
+          "FCN": "Communicators",
+          "ML": "Multilingual",
+          "PL": "Plain Language",
+          "SM": "Social Media",
+          "UX": "User Experience",
+          "WAO": "Web Analytics",
+          "WCM": "Web Managers",
+          "CC": "Contact Center"
+      } %}
+      {% for topic in item['cop_topics'] %}
+        {% for key, value in topic_acronym %}
+          {% if topic == value %}
+             <div class="cop-topic--{{ key }}">{{ topic }}</div>
+          {% endif %}
         {% endfor %}
-         </div>
+      {% endfor %}
+      </div>
     </article>
-
   {% endfor %}
       
       {# NOT-MIGRATED
