@@ -74,39 +74,35 @@
             <h1 class="resources-featured__title">
               {{ node.title.value }}
             </h1>
-            <a class="btn btn-home" href="{{ events }}" title="View events page">
-              <span>View Events</span>
-              <svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="/{{ active_theme_path() }}/static/uswds/img/sprite.svg#arrow_forward"></use>
-              </svg>
-            </a>
-            <a class="btn btn-home" href="{{ 'communities' }}" title="View communities page">
-              <span>Join Communities</span>
-              <svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="/{{ active_theme_path() }}/static/uswds/img/sprite.svg#arrow_forward"></use>
-              </svg>
-            </a>
+            {% set links = content.field_buttons|field_value %}
+            {% for link in links %}
+              <a class="btn btn-home" href="{{ link['#url'] }}" title="{{ link['#title'] }}">
+                <span>{{ link['#title'] }}</span>
+                <svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false" role="img">
+                  <use xlink:href="/{{ active_theme_path() }}/static/uswds/img/sprite.svg#arrow_forward"></use>
+                </svg>
+              </a>
+            {% endfor %}
           </div>
         </div>
-
         <div class="grid-col-12 tablet-lg:grid-col-8">
           <div class="resources-content">
             [Place holder for resources list]
-                        {# NOT-MIGRATED
-                          {{/* Get all of the resources */}}
-                          {{- $resources := (where .Site.Pages.ByTitle "Section" "resources") -}}
-                          {{- $guides := (where .Site.Pages.ByTitle "Section" "guides") -}}
+            {# NOT-MIGRATED
+            {{/* Get all of the resources */}}
+            {{- $resources := (where .Site.Pages.ByTitle "Section" "resources") -}}
+            {{- $guides := (where .Site.Pages.ByTitle "Section" "guides") -}}
 
-                        {{/* Get only the pages that are greater than or equal to 3 */}}
-                        {{- $resourcesfeatured := (where $resources ".Params.weight" "ge" 3 ) -}}
-                        {{- $guidesfeatured := (where $guides ".Params.weight" "ge" 6 ) -}}
+            {{/* Get only the pages that are greater than or equal to 3 */}}
+            {{- $resourcesfeatured := (where $resources ".Params.weight" "ge" 3 ) -}}
+            {{- $guidesfeatured := (where $guides ".Params.weight" "ge" 6 ) -}}
 
-                        {{- $allFeatured := union $resourcesfeatured $guidesfeatured -}}
+            {{- $allFeatured := union $resourcesfeatured $guidesfeatured -}}
 
-                      {{/* Sort all of the resources by weight */}}
-                      {{- $resourcesfeatured := (sort $allFeatured "Weight" "desc" ) -}}
+            {{/* Sort all of the resources by weight */}}
+            {{- $resourcesfeatured := (sort $allFeatured "Weight" "desc" ) -}}
 
-                      {{- partialCached "core/featured-collection.html" (dict "list" $resourcesfeatured "heading" "How to implement 21st Century IDEA") -}} #}
+            {{- partialCached "core/featured-collection.html" (dict "list" $resourcesfeatured "heading" "How to implement 21st Century IDEA") -}} #}
             <footer>
               <div class="grid-row tablet-lg:grid-gap-2">
                 <div class="grid-col-12">

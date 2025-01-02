@@ -31,9 +31,18 @@ default:
       value: published
   path:
     -
-      alias: /better-websites-better-government-0
+      alias: /better-websites-better-government
       langcode: en
       pathauto: 1
+  field_buttons:
+    -
+      uri: 'internal:/events'
+      title: 'View Events'
+      options: {  }
+    -
+      uri: 'internal:/communities'
+      title: 'Join Communities'
+      options: {  }
   field_landing_page_type:
     -
       value: homepage
