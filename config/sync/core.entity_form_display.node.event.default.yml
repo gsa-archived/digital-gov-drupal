@@ -24,6 +24,7 @@ dependencies:
     - node.type.event
     - workflows.workflow.editorial
   module:
+    - autocomplete_deluxe
     - content_moderation
     - datetime
     - inline_entity_form
@@ -172,14 +173,21 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: true
   field_topics:
-    type: entity_reference_autocomplete
+    type: autocomplete_deluxe
     weight: 19
     region: content
     settings:
       match_operator: CONTAINS
-      match_limit: 10
+      autocomplete_route_name: autocomplete_deluxe.autocomplete
       size: 60
-      placeholder: ''
+      selection_handler: default
+      match_limit: 0
+      min_length: 0
+      delimiter: ''
+      not_found_message_allow: false
+      not_found_message: "The term '@term' will be added"
+      new_terms: false
+      no_empty_message: 'No terms could be found. Please type in order to add a new term.'
     third_party_settings: {  }
   field_venue:
     type: paragraphs
