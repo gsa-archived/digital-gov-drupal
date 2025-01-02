@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a3abc6c44918cda4b1d65678b4dba1f",
+    "content-hash": "b1467b2cbbe6107729eb297cf1da7ca9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1595,6 +1595,67 @@
             }
         },
         {
+            "name": "drupal/config_pages",
+            "version": "2.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/config_pages.git",
+                "reference": "8.x-2.16"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_pages-8.x-2.16.zip",
+                "reference": "8.x-2.16",
+                "shasum": "7896a698c6b85ea0babc4676f0af82e2f2c885b3"
+            },
+            "require": {
+                "drupal/core": "^8.5 | ^9 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.16",
+                    "datestamp": "1723641125",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "m.krestnicov",
+                    "homepage": "https://www.drupal.org/user/3193903"
+                },
+                {
+                    "name": "Qwaygon",
+                    "homepage": "https://www.drupal.org/user/636624"
+                },
+                {
+                    "name": "shumer",
+                    "homepage": "https://www.drupal.org/user/2297432"
+                }
+            ],
+            "description": "ConfigPages module",
+            "homepage": "http://drupal.org/project/config_pages",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/config_pages",
+                "issues": "http://drupal.org/project/issues/config_pages"
+            }
+        },
+        {
             "name": "drupal/config_split",
             "version": "2.0.1",
             "source": {
@@ -2678,6 +2739,78 @@
             }
         },
         {
+            "name": "drupal/google_tag",
+            "version": "2.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/google_tag.git",
+                "reference": "2.0.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/google_tag-2.0.7.zip",
+                "reference": "2.0.7",
+                "shasum": "01e190248c86c592d8d96ea79c918883c0385a76"
+            },
+            "require": {
+                "drupal/core": "^9.5 || ^10 || ^11"
+            },
+            "require-dev": {
+                "drupal/commerce": "^2.0",
+                "drupal/commerce_wishlist": "^3.0@beta",
+                "drupal/csp": "^1.0",
+                "drupal/google_analytics": "^4.0",
+                "drupal/search_api": "^1.28.0",
+                "drupal/token": "^1.11.0",
+                "drupal/webform": "^6.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.7",
+                    "datestamp": "1733177458",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "acquia",
+                    "homepage": "https://www.drupal.org/user/1231722"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "kaynen",
+                    "homepage": "https://www.drupal.org/user/733308"
+                },
+                {
+                    "name": "mglaman",
+                    "homepage": "https://www.drupal.org/user/2416470"
+                },
+                {
+                    "name": "solotandem",
+                    "homepage": "https://www.drupal.org/user/240748"
+                }
+            ],
+            "description": "Provides support for Google Tag and Google Tag Manager in Drupal.",
+            "homepage": "https://www.drupal.org/project/google_tag",
+            "support": {
+                "source": "https://git.drupalcode.org/project/google_tag"
+            }
+        },
+        {
             "name": "drupal/inline_entity_form",
             "version": "3.0.0-rc20",
             "source": {
@@ -2812,6 +2945,50 @@
             "homepage": "https://www.drupal.org/project/js_cookie",
             "support": {
                 "source": "https://git.drupalcode.org/project/js_cookie"
+            }
+        },
+        {
+            "name": "drupal/link_class",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/link_class.git",
+                "reference": "2.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/link_class-2.1.0.zip",
+                "reference": "2.1.0",
+                "shasum": "8e152220a4dc6ec61b8b4c2ec88ebdc4319ed7e0"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.1.0",
+                    "datestamp": "1682892078",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "flocondetoile",
+                    "homepage": "https://www.drupal.org/user/2006064"
+                }
+            ],
+            "description": "Provide a widget to Link field type for adding class to link.",
+            "homepage": "https://www.drupal.org/project/link_class",
+            "support": {
+                "source": "https://git.drupalcode.org/project/link_class"
             }
         },
         {
@@ -16376,7 +16553,7 @@
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
