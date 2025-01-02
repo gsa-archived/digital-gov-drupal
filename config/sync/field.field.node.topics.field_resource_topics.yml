@@ -11,7 +11,7 @@ field_name: field_resource_topics
 entity_type: node
 bundle: topics
 label: 'Resource Topics'
-description: ''
+description: 'Promote the current resource on the resources landing page under the selected resource topics heading(s) in the "Browse by topic" section.'
 required: false
 translatable: false
 default_value: {  }
