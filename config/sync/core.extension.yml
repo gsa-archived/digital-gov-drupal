@@ -68,9 +68,11 @@ module:
   paragraphs_type_permissions: 0
   path: 0
   path_alias: 0
+  rabbit_hole: 0
   redirect: 0
   remove_username: 0
   require_revision_log_message: 0
+  rh_node: 0
   role_delegation: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
