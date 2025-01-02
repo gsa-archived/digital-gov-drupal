@@ -6,6 +6,7 @@ _meta:
   default_langcode: en
   depends:
     bd7fedff-9767-49b3-8a71-8bab51265a86: node
+    3c8c1a7b-5b5b-4196-b435-1fa57ff0230b: node
     c4520a54-cd38-4be0-9158-24a61a79599e: node
     6bd8641f-84c6-4ddb-b8b2-9c076b017198: media
     f8550cd7-fdea-4a8e-b1cf-6a3e2b4fa3aa: taxonomy_term
@@ -71,7 +72,7 @@ default:
                 _meta:
                   version: '1.0'
                   entity_type: paragraph
-                  uuid: 4ced8e17-8b6b-4b67-9b11-6f2fd606134a
+                  uuid: ac0f33dc-8cdb-4c72-a5aa-55a3e39f1081
                   bundle: internal_content
                   default_langcode: en
                 default:
@@ -80,19 +81,46 @@ default:
                       value: true
                   created:
                     -
-                      value: 1729705485
+                      value: 1735830132
                   behavior_settings:
                     -
                       value: {  }
                   field_content:
                     -
                       entity: 3c8c1a7b-5b5b-4196-b435-1fa57ff0230b
-
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: f359f8d1-afec-4480-91be-98a9d3e9d096
+                  bundle: external_content
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1735830173
+                  behavior_settings:
+                    -
+                      value: {  }
+                  field_link:
+                    -
+                      uri: 'https://www.youtube.com/watch?v=8zkHN3rxXHw'
+                      title: 'Video: Continuously improve your website by using customer feedback and web analytics: An IRS case study (length: 31:27)'
+                      options: {  }
+                  field_summary:
+                    -
+                      value: '<p>Learn how you can use web analytics to make improvements to user experience.</p>'
+                      format: single_inline_html
           field_title:
             -
               value: 'Analytics: Essential knowledge'
   field_featured_resources:
-    - entity:
+    -
+      entity:
         _meta:
           version: '1.0'
           entity_type: paragraph
@@ -101,13 +129,17 @@ default:
           default_langcode: en
         default:
           status:
-            - value: true
+            -
+              value: true
           created:
-            - value: 1735586114
+            -
+              value: 1735586114
           behavior_settings:
-            - value: { }
+            -
+              value: {  }
           field_content:
-            - entity: c4520a54-cd38-4be0-9158-24a61a79599e
+            -
+              entity: c4520a54-cd38-4be0-9158-24a61a79599e
   field_legislation:
     -
       uri: 'https://www.whitehouse.gov/wp-content/uploads/legacy_drupal_files/omb/memoranda/2010/m10-23.pdf'
