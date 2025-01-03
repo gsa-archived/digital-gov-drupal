@@ -60,3 +60,4 @@ cfff5655249d219415af160348b125c3|christian medders|feature/DIGITAL-143-topics-fi
 24a55f780e267a896fddfcfa70ca8d55|christian medders|feature/DIGITAL-46-config-ignore|Mon Jan  6 14:17:36 EST 2025|./composer.sh require drupal/config_ignore:^3.3
 39cf95da3c743d865cba327138ef9da2|Matt Poole|feature/DIGITAL-307-update-deps|Fri Jan 10 12:35:14 EST 2025|./composer.sh update
 d9b88c3355f947a0ad6b677dfb2bd984|Matt Poole|feature/DIGITAL-307-update-deps|Fri Jan 10 15:17:43 EST 2025|./composer.sh require drupal/scheduler_content_moderation_integration:^3.0
+f5f559ecad3217a6dfc5db9f3157e5ca|Ray Estrada|feature/DIGITAL-283-security-modules|Mon Jan 13 12:13:10 EST 2025|./composer.sh require drupal/role_watchdog
