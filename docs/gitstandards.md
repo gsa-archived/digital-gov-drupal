@@ -5,8 +5,6 @@ All branch names should follow the guidelines below. The branch names should be 
 | **Type of task** | **Example**                        |
 |------------------|------------------------------------|
 | Standard task    | feature/DIGITAL-000-short-description |
-| Bug task         | bug/DIGITAL-000-short-description     |
-| Hotfix task      | hotfix/DIGITAL-000-short-description  |
 **Note:** try to make the short description 4 words or less
 
 ## Commit standards
@@ -43,7 +41,5 @@ Please ensure you have addressed all concerns below before marking a PR "ready f
 - Check for insufficiently commented code.
 
 ## Merge strategy guidance
-- PRs merged into `dev` branch should use the "Squash and merge" method, ensuring that every commit starts with a ticket number followed by a brief description of changes.
-  - **Special case**: A merge from the `stage` branch to the `dev` branch needs to maintain history and should use the "Create a merge commit" method instead.
-- PRs merged into `stage` branch should use the "Create a merge commit" method, this is critical for maintaining commit history and ids in all environment branches.
+- PRs merged into `develop` branch should use the "Create a merge commit" method.
 - PRs merged into `prod` branch should also use the "Create a merge commit" method.
