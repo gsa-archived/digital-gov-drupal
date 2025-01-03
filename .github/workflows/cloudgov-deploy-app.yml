@@ -28,7 +28,7 @@ jobs:
               DRUPAL_INSTANCES=${{ vars.MAIN_INSTANCES }}
               GSA_AUTH_KEY=${{ secrets.GSA_AUTH_PRODUCTION_KEY }}
               ;;
-            stage)
+            stage | release/* | hotfix/*)
               CF_SPACE="staging"
               DRUPAL_MEMORY=${{ vars.STAGE_CMS_MEMORY }}
               DRUPAL_INSTANCES=${{ vars.STAGE_INSTANCES }}
