@@ -113,16 +113,16 @@
           {{ item.close_date }}
         </div>
         <div class="card-job__meta-topics">
-        {#todo: this may not be best here?#}
+        {# todo: this may not be best here? #}
         {% set topic_acronym = {
-          "FCN": "Communicators",
-          "ML": "Multilingual",
-          "PL": "Plain Language",
-          "SM": "Social Media",
-          "UX": "User Experience",
-          "WAO": "Web Analytics",
-          "WCM": "Web Managers",
-          "CC": "Contact Center"
+          FCN: 'Communicators',
+          ML: 'Multilingual',
+          PL: 'Plain Language',
+          SM: 'Social Media',
+          UX: 'User Experience',
+          WAO: 'Web Analytics',
+          WCM: 'Web Managers',
+          CC: 'Contact Center'
       } %}
       {% for topic in item['cop_topics'] %}
         {% for key, value in topic_acronym %}
