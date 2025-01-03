@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb57666ba5304cbba5ad5eed4a8c204c",
+    "content-hash": "ce92bed5df5d2a11871f71ac88fc16a2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2390,6 +2390,54 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/ctools",
                 "issues": "https://www.drupal.org/project/issues/ctools"
+            }
+        },
+        {
+            "name": "drupal/database_ssl_check",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/database_ssl_check.git",
+                "reference": "2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/database_ssl_check-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "83e0bc2fda8a809694324f399b89223b7bd0fda6"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.1",
+                    "datestamp": "1721831709",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "john franklin",
+                    "homepage": "https://www.drupal.org/user/683430"
+                },
+                {
+                    "name": "johnshortess",
+                    "homepage": "https://www.drupal.org/user/1022888"
+                }
+            ],
+            "description": "Displays the SSL connection parameters to your database.",
+            "homepage": "https://www.drupal.org/project/database_ssl_check",
+            "support": {
+                "source": "https://git.drupalcode.org/project/database_ssl_check"
             }
         },
         {
