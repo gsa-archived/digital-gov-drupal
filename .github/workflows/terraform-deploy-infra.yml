@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Set env.BRANCH
         run: |
-          BRANCH=$(echo $GITHUB_REF | cut -d'/' -f 3)
+          BRANCH=$(echo $GITHUB_REF | cut -d'/' -f 3-)
           case ${BRANCH} in
             develop | *deploydev)
               CF_SPACE="dev"
