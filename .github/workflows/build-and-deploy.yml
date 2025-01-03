@@ -6,7 +6,7 @@ on:
       - develop
       - main
       - stage
-      - feature/DIGITAL-158-log-stdout
+      - feature/DIGITAL-*-deploydev
 
 permissions:
   contents: read

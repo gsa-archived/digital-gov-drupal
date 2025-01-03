@@ -13,11 +13,13 @@ jobs:
       - name: Set enviornment
         run: |
           BRANCH=$(echo $GITHUB_REF | cut -d'/' -f 3)
-          BRANCH=develop
+          if [[ $BRANCH == *deploydev ]]; then
+            BRANCH="deploydev"
+          fi
           COMPOSER_DEV=1
           GSA_AUTH_KEY=${{ secrets.GSA_AUTH_DEVELOPMENT_KEY }}
           case ${BRANCH} in
-            develop)
+            develop | deploydev)
               CF_SPACE="dev"
               DRUPAL_MEMORY=${{ vars.DEVELOP_CMS_MEMORY }}
               DRUPAL_INSTANCES=${{ vars.DEVELOP_INSTANCES }}

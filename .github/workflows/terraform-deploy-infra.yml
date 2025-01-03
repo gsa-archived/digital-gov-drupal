@@ -13,9 +13,11 @@ jobs:
       - name: Set env.BRANCH
         run: |
           BRANCH=$(echo $GITHUB_REF | cut -d'/' -f 3)
-          BRANCH=develop
+          if [[ $BRANCH == *deploydev ]]; then
+            BRANCH="deploydev"
+          fi
           case ${BRANCH} in
-            develop)
+            develop | deploydev)
               CF_SPACE="dev"
               ;;
             main)
