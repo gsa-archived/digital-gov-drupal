@@ -30,7 +30,6 @@ jobs:
               ;;
             stage)
               CF_SPACE="staging"
-              COMPOSER_DEV=0
               DRUPAL_MEMORY=${{ vars.STAGE_CMS_MEMORY }}
               DRUPAL_INSTANCES=${{ vars.STAGE_INSTANCES }}
               ;;
