@@ -122,7 +122,7 @@
           UX: 'User Experience',
           WAO: 'Web Analytics',
           WCM: 'Web Managers',
-          CC: 'Contact Center'
+          CC: 'Contact Center',
       } %}
       {% for topic in item['cop_topics'] %}
         {% for key, value in topic_acronym %}
@@ -134,7 +134,6 @@
       </div>
     </article>
   {% endfor %}
-      
       {# NOT-MIGRATED
       {{ range .Site.Data.job_board }}
       {{ if ge .close_date $now }}
