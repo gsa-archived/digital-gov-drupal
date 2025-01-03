@@ -20,7 +20,7 @@ jobs:
             main)
               CF_SPACE="prod"
               ;;
-            stage)
+            stage | release/* | hotfix/*)
               CF_SPACE="staging"
               ;;
           esac
