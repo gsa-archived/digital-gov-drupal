@@ -1,0 +1,11 @@
+uuid: 3b858961-70bf-4a00-bd16-6480ad749b3d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.usa_card
+label: 'USA Card'
+description: 'Render the node in a USWDS Card widget'
+targetEntityType: node
+cache: true

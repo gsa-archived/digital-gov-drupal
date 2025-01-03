@@ -1,0 +1,75 @@
+uuid: 59b0f51c-ce38-4688-b25a-e5ca282ad1ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.usa_card
+    - field.field.node.guides.body
+    - field.field.node.guides.field_deck
+    - field.field.node.guides.field_featured_image
+    - field.field.node.guides.field_glossary
+    - field.field.node.guides.field_guide_nav_ref
+    - field.field.node.guides.field_guide_nav_title
+    - field.field.node.guides.field_guide_weight
+    - field.field.node.guides.field_kicker
+    - field.field.node.guides.field_page_weight
+    - field.field.node.guides.field_primary_image
+    - field.field.node.guides.field_summary
+    - field.field.node.guides.field_summary_box
+    - field.field.node.guides.field_topics
+    - image.style.large
+    - node.type.guides
+  module:
+    - media
+    - text
+    - user
+id: node.guides.usa_card
+targetEntityType: node
+bundle: guides
+mode: usa_card
+content:
+  field_deck:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_kicker:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_primary_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  body: true
+  content_moderation_control: true
+  field_featured_image: true
+  field_glossary: true
+  field_guide_nav_ref: true
+  field_guide_nav_title: true
+  field_guide_weight: true
+  field_page_weight: true
+  field_summary_box: true
+  field_topics: true
+  links: true
