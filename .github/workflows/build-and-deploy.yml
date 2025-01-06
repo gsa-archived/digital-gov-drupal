@@ -6,6 +6,7 @@ on:
       - develop
       - main
       - stage
+      - feature/DIGITAL-*-deploydev
 
 permissions:
   contents: read
