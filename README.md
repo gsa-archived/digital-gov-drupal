@@ -83,15 +83,16 @@ Instead of using `lando composer` we use `./composer.sh` which generate entries 
 
 ### Custom Lando commands
 
-| **Command**        | **Use case**                                                                |
-|--------------------|-----------------------------------------------------------------------------|
-| `lando si`         | Install a fresh Drupal site from configuration                              |
-| `lando su`         | Run updates, import configuration, run cron, etc (Install if not installed) |
-| `lando xdebug-on`  | Enable Xdebug                                                               |
-| `lando xdebug-off` | Disable Xdebug                                                              |
-| `lando patch`      | Apply composer patches or regenerate lock hash                              |
-| `lando be`         | Builds backend (composer) dependencies                                      |
-| `lando fe`         | Builds front end site (dependencies & compilation)                          |
+| **Command**            | **Use case**                                                                |
+|------------------------|-----------------------------------------------------------------------------|
+| `lando si`             | Install a fresh Drupal site from configuration                              |
+| `lando su`             | Run updates, import configuration, run cron, etc (Install if not installed) |
+| `lando xdebug-on`      | Enable Xdebug                                                               |
+| `lando xdebug-off`     | Disable Xdebug                                                              |
+| `lando patch`          | Apply composer patches or regenerate lock hash                              |
+| `lando be`             | Builds backend (composer) dependencies                                      |
+| `lando fe`             | Builds front end site (dependencies & compilation)                          |
+| `lando export-content` | Export content as configuration                                             |
 
 For additional details of custom lando commands review the tooling settings within the [Lando base file](.lando.dist.yml).
 
