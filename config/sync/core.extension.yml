@@ -73,6 +73,8 @@ module:
   remove_username: 0
   require_revision_log_message: 0
   rh_node: 0
+  rh_taxonomy: 0
+  rh_user: 0
   role_delegation: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
