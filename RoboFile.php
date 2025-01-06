@@ -75,6 +75,8 @@ class RoboFile extends Tasks
      *
      * @command drupal-project:export-content
      *
+     * @aliases export-content
+     *
      * @return \Robo\ResultData
      *
      * @throws \Exception
