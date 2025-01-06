@@ -4,6 +4,7 @@ module:
   admin_toolbar: 0
   admin_toolbar_search: 0
   admin_toolbar_tools: 0
+  autocomplete_deluxe: 0
   autologout: 0
   block: 0
   breakpoint: 0
@@ -42,6 +43,7 @@ module:
   link: 0
   link_class: 0
   linkit: 0
+  log_stdout: 0
   maillog: 0
   mailsystem: 0
   maxlength: 0
@@ -66,9 +68,13 @@ module:
   paragraphs_type_permissions: 0
   path: 0
   path_alias: 0
+  rabbit_hole: 0
   redirect: 0
   remove_username: 0
   require_revision_log_message: 0
+  rh_node: 0
+  rh_taxonomy: 0
+  rh_user: 0
   role_delegation: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
