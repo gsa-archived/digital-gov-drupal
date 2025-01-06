@@ -223,6 +223,9 @@ function initializeEventListeners() {
 
 async function initializeGlossary() {
   initializeElements();
+  // This was modified for Drupal. Instead of retrieve the markup from a JSON
+  // file, the markup is placed directly into the page.
+  // generateListMarkup(terms);
   initializeList();
   initializeEventListeners();
 }
