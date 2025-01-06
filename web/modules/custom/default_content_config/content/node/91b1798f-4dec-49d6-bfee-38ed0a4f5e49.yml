@@ -46,12 +46,12 @@ default:
     -
       value: '<p>Use web analytics to reach your strategic website goals</p>'
       format: single_inline_html
-  field_glossary:
-    -
-      target_id: hcd_glossary
   field_featured_image:
     -
       entity: cdc07606-1563-4772-9b45-11fa5d99c31a
+  field_glossary:
+    -
+      target_id: hcd_glossary
   field_guide_nav_ref:
     -
       entity: 258cf431-4a0c-4489-807e-c87087c87cf9

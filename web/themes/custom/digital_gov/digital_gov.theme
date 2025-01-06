@@ -346,3 +346,20 @@ function digital_gov_theme_suggestions_node_alter(array &$suggestions, array $va
       break;
   }
 }
+
+/**
+ * Implements hook_theme_suggestions_user_alter().
+ */
+function digital_gov_theme_suggestions_container_alter(array &$suggestions, array $variables) {
+  if (!isset($variables['element']['#name'])) {
+    return $suggestions;
+  }
+  // A list of view names in which to exclude the container markup.
+  $exclude_views = [
+    'resource_topics_list',
+  ];
+
+  if (in_array($variables['element']['#name'], $exclude_views)) {
+    $suggestions[] = 'container__no_wrapper';
+  }
+}

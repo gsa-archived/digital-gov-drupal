@@ -6,8 +6,10 @@ _meta:
   default_langcode: en
   depends:
     bd7fedff-9767-49b3-8a71-8bab51265a86: node
+    3c8c1a7b-5b5b-4196-b435-1fa57ff0230b: node
     c4520a54-cd38-4be0-9158-24a61a79599e: node
     6bd8641f-84c6-4ddb-b8b2-9c076b017198: media
+    f8550cd7-fdea-4a8e-b1cf-6a3e2b4fa3aa: taxonomy_term
 default:
   revision_uid:
     -
@@ -70,7 +72,28 @@ default:
                 _meta:
                   version: '1.0'
                   entity_type: paragraph
-                  uuid: 1f3c5667-4d8c-4a29-806f-c13ed471e3d5
+                  uuid: ac0f33dc-8cdb-4c72-a5aa-55a3e39f1081
+                  bundle: internal_content
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1735830132
+                  behavior_settings:
+                    -
+                      value: {  }
+                  field_content:
+                    -
+                      entity: 3c8c1a7b-5b5b-4196-b435-1fa57ff0230b
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: f359f8d1-afec-4480-91be-98a9d3e9d096
                   bundle: external_content
                   default_langcode: en
                 default:
@@ -79,7 +102,7 @@ default:
                       value: true
                   created:
                     -
-                      value: 1735586215
+                      value: 1735830173
                   behavior_settings:
                     -
                       value: {  }
@@ -128,6 +151,9 @@ default:
   field_primary_image:
     -
       entity: 6bd8641f-84c6-4ddb-b8b2-9c076b017198
+  field_resource_topics:
+    -
+      entity: f8550cd7-fdea-4a8e-b1cf-6a3e2b4fa3aa
   field_summary:
     -
       value: '<p>Web analytics provide valuable insights into how users interact with a website. Use the data gained from web analytics to identify areas for improvement and make data-driven decisions. This can lead to a more user-friendly and engaging website, which can</p>'
