@@ -220,15 +220,11 @@ display:
             sort_order: asc
             number_of_records: 0
             format: default_summary
-          specify_validation: true
+          specify_validation: false
           validate:
-            type: 'entity:taxonomy_vocabulary'
+            type: none
             fail: 'not found'
-          validate_options:
-            bundles: {  }
-            access: true
-            operation: view
-            multiple: 0
+          validate_options: {  }
           break_phrase: false
           not: false
       filters:
