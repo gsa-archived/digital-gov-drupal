@@ -88,9 +88,9 @@
     {% else %}
       {{ include('@digital_gov/partials/guides/guide-content.html.twig') }}
     {% endif %}
-    {# NOT-MIGRATED #}
-    {# if .Parent.Params.glossary #}
-    {# partial "core/glossary.html" . #}
-    {# endif #}
+
+    {% if node.field_glossary.target_id %}
+      {{ drupal_view('glossary_sidebar', 'accordion', node.field_glossary.target_id) }}
+    {% endif %}
   </article>
 </main>

@@ -32,9 +32,50 @@ class RoboFile extends Tasks
     }
 
     /**
+     * Generate a static site from Drupal with Tome.
+     *
+     * @command drupal-project:static
+     *
+     * @aliases static
+     *
+     * @param bool $incremental
+     *   (Default false) If only content changes have happened, you can set this to 1 to make
+     *   this command faster.
+     * @param bool $start_server
+     *   (Default true) Start an HTTP server with node.
+     *
+     * @return \Robo\ResultData
+     */
+    public function static(
+        InputInterface $input,
+        OutputInterface $output,
+        bool $incremental = FALSE,
+        bool $start_server = TRUE,
+    ): ResultData
+    {
+        $io = new SymfonyStyle($input, $output);
+        if (!$incremental && is_dir("html")) {
+            $io->info('Removing pre-existing static site.');
+            $this->_cleanDir("html");
+        } else {
+            $io->info('Doing an incremental update');
+        }
+
+        $this->_exec('./drush.sh tome:static');
+        if ($start_server) {
+            $this->_exec('npm install && npx http-server html');
+        }
+
+        return new ResultData();
+    }
+
+
+    /**
      * Export default content.
      *
      * @command drupal-project:export-content
+     *
+     * @aliases export-content
      *
      * @return \Robo\ResultData
      *
