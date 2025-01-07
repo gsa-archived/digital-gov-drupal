@@ -63,13 +63,10 @@
  */
 #}
 
-{# where does community list come from? #}
 {% set community_list = true %}
 <main role="main" id="main-content">
   <article class="grid-container-desktop">
-
     {{ drupal_entity('block', 'digital_gov_breadcrumbs') }}
-
     <header>
       {{ include('@digital_gov/partials/page-header.html.twig', {
         title: node.title.value,
@@ -78,25 +75,19 @@
       }, with_context: false) }}
     </header>
 
+    {{ dd(node.field_deck) }}
+
     <section class="usa-in-page-nav-container">
-      <aside
-        class="usa-in-page-nav"
-        data-title-heading-level="h3"
-        data-root-margin="-350px 0px -350px 0px"
-      ></aside>
+      <aside class="usa-in-page-nav" data-title-heading-level="h3" data-root-margin="-350px 0px -350px 0px"></aside>
       <div>
-        {# Summary controls if the community content is shown
-         but is not displayed on full page #}
         {% if node.field_summary.value %}
           {% set community_acronym = node.field_dg_acronym.value %}
           {% set subscribe_email_subject = node.field_subscribe_email_subject.value %}
           <div class="content usa-prose">
             {% if community_list %}
-              <section
-                class="join-community-form join-community-form--{{ community_acronym }}"
-              >
+              <section class="join-community-form join-community-form--{{ community_acronym }}">
                 <div class="join-community-form__header">
-                  {{ content.field_dg_logo|field_value }}
+                  <img src="{{ content.field_dg_logo.0['#entity']|file_uri|image_style('large') }}"/>
                   <h3>Connect with us</h3>
                 </div>
                 <div class="join-community-form__body">
@@ -109,11 +100,7 @@
                     for your name and email address. The form should take most
                     people a minute or less to complete.
                   </p>
-                  {# Get the form link #}
-                  <a
-                    class="usa-button"
-                    href="https://feedback.gsa.gov/jfe/form/SV_3dwvggn0tq8HIzk"
-                  >
+                  <a class="usa-button" href="https://feedback.gsa.gov/jfe/form/SV_3dwvggn0tq8HIzk">
                     {{ subscribe_email_subject }}
                   </a>
                 </div>
@@ -122,21 +109,14 @@
             <div class="content">
               {{ content|without('field_dg_logo') }}
             </div>
-
-            {# @TODO Community Events #}
-            [placeholder Upcoming events]
+{# TODO future comunity events not sure how this needs to be set up - ticket  DIGITAL-293 #}
+          {# [placeholder Upcoming events] #}
             {# NOT-MIGRATED
-          {{ partial '@digital_gov/partials/core/get-upcomingevents.html' }}
-            #}
-            <div class="community_conduct">
-              <h2 id="community-conduct">Community Conduct</h2>
-              {{ include(('@digital_gov/partials/community-pagefooter.html.twig')) }}
-            </div>
+            {{ partial '@digital_gov/partials/core/get-upcomingevents.html' }}
+          #}
           </div>
         {% endif %}
       </div>
-
     </section>
-
   </article>
 </main>
