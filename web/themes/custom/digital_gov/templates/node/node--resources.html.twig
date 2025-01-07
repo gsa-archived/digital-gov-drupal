@@ -62,6 +62,8 @@
  * @ingroup themeable
  */
 #}
+{# Caching the data in content object #}
+{% set savedCache = content|render %}
 
 <main role="main" id="main-content">
   <article class="grid-container-desktop">
@@ -78,7 +80,7 @@
     <section class="usa-in-page-nav-container">
       <div>
         <div class="content usa-prose">
-          {{ content }}
+          {{ content.body|field_value }}
         </div>
 
         {# Touchpoints Form #}
