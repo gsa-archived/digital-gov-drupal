@@ -9,22 +9,15 @@
         {{ content.field_summary }}
       {% endif %}
 
-      {% if show_reading_time %}
-      <p class="dig-read-time">
-        Reading time: {{ reading_time }}
-      </p>
-      {% endif %}
-
-      {% if show_summary_box %}
-        {{ include('@digital_gov/partials/usa-summary-box.html.twig', {
-          containerClass: 'dg-guide-summary',
-        }, with_context=false) }}
-      {% endif -%}
     </div>
 
-    <div class="dg-guide__content-body usa-prose">
-      {{ content.body }}
-    </div>
+    {% if show_summary_box %}
+      {{ include('@digital_gov/partials/usa-summary-box.html.twig', {
+        containerClass: 'dg-guide-summary',
+      }, with_context=false) }}
+    {% endif -%}
+
+    {{ content.body }}
   </div>
 </section>
 
@@ -68,8 +61,12 @@
     </div>
   {% endif %}
 
-  {# NOT-MIGRATED
-  {{ include("@digital_gov/partials/attribution.html.twig") }}
-  #}
+  {% if guide_overview_credit or guide_overview_caption %}
+  {{ include('@digital_gov/partials/attribution.html.twig', {
+       credit: guide_overview_credit,
+       caption: guide_overview_caption,
+     }, with_context=false) }}
+  {% endif %}
+
   {{ include('@digital_gov/partials/touchpoints-form.html.twig') }}
 </section>
