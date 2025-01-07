@@ -63,6 +63,9 @@
  */
 #}
 
+{# Caching the data in content object #}
+{% set savedCache = content | render %}
+
 <main role="main" id="main-content">
   <article class="grid-container-desktop">
     <header>
@@ -83,7 +86,7 @@
       ></aside>
 
       <div class="content usa-prose">
-        {{ content }}
+        {{ content.body | field_value }}
       </div>
 
     </section>
