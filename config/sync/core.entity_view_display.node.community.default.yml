@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.community.field_summary
     - node.type.community
   module:
-    - options
     - text
     - user
 id: node.community.default
@@ -30,75 +29,20 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 2
     region: content
-  field_deck:
-    type: text_default
-    label: above
+  content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: 108
-    region: content
-  field_dg_acronym:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 120
-    region: content
-  field_dg_highlight:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 121
+    weight: 0
     region: content
   field_dg_logo:
-    type: entity_reference_entity_view
+    type: entity_reference_label
     label: above
     settings:
-      view_mode: default
-      link: false
+      link: true
     third_party_settings: {  }
-    weight: 112
-    region: content
-  field_dg_shortname:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 118
-    region: content
-  field_members:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 119
-    region: content
-  field_page_weight:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 102
-    region: content
-  field_primary_image:
-    type: entity_reference_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 114
+    weight: 4
     region: content
   field_slug:
     type: string
@@ -106,26 +50,20 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 106
-    region: content
-  field_subscribe_email_subject:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 117
-    region: content
-  field_summary:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 104
+    weight: 3
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 1
     region: content
-hidden: {  }
+hidden:
+  field_deck: true
+  field_dg_acronym: true
+  field_dg_highlight: true
+  field_dg_shortname: true
+  field_members: true
+  field_page_weight: true
+  field_primary_image: true
+  field_subscribe_email_subject: true
+  field_summary: true
