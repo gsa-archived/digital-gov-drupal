@@ -14,9 +14,13 @@ Content is created from the config stored at `web/modules/custom/default_content
 
 How do I create more content?
 
-Simply edit or add new content, then run `./robo.sh drupal-project:export-content`
+Simply edit or add new content, then run `./robo.sh export-content`
 
 :exclamation: Make sure that only content you meant to edit or add is exported. The default content module is not perfect, it can get confused with things like files and users.
+
+### Exporting the Static Site
+
+To test the static site generation locally please run `./robo.sh static`.
 
 ### Auto Logout
 
