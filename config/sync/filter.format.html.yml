@@ -28,7 +28,7 @@ filters:
   filter_align:
     id: filter_align
     provider: filter
-    status: false
+    status: true
     weight: -42
     settings: {  }
   filter_autop:
