@@ -22,4 +22,6 @@ jobs:
           PROJECT: "${{ secrets.PROJECT }}"
         run: source ./scripts/pipeline/cloud-gov-login.sh
       - name: Run Tome
+        env:
+          PROJECT: "${{ secrets.PROJECT }}"
         run: cf run-task "${PROJECT}-drupal-${CF_SPACE}" "/home/vcap/app/scripts/upkeep"
