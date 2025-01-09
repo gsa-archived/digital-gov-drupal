@@ -24,4 +24,4 @@ jobs:
       - name: Run Tome
         env:
           PROJECT: "${{ secrets.PROJECT }}"
-        run: cf run-task "${PROJECT}-drupal-${CF_SPACE}" "/home/vcap/app/scripts/upkeep"
+        run: cf run-task "${PROJECT}-drupal-${CF_SPACE}" --command "/home/vcap/app/scripts/upkeep" --wait
