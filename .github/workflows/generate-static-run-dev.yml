@@ -17,8 +17,8 @@ on:
         required: true
       DATABASE_BACKUP_BASTION_NAME:
         required: true
-  schedule:
-    - cron: "15 * * * *"
+  #schedule:
+  #  - cron: "15 * * * *"
 
 permissions:
   contents: read
