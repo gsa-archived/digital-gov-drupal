@@ -6,6 +6,7 @@
     - authors: render array of author nodes
 
 #}
+
 <div class="authors-list {{ inline ? 'authors-list--inline' : '' }}">
   {% for author in authors|children %}
     <div class="author usa-media-block">
@@ -16,14 +17,14 @@
            title="Posts by {{ author['#title'] }}"
            rel="author"
            aria-label="Read more articles by {{ author['#title'] }}"
-        >{{ author }}</a
+        >{{ author['#title'] }}</a
         >
+        {% if not inline and author['#entity'].field_agency_acronym.value %}
+          <p class="author__details-agency">
+            {{ author['#entity'].field_agency_acronym.value }}
+          </p>
+        {% endif %}
       </div>
-      {% if not inline and author['#entity'].field_agency_acronym.value %}
-        <p class="author__details-agency">
-          {{ author['#entity'].field_agency_acronym.value }}
-        </p>
-      {% endif %}
     </div>
   {% endfor %}
 
