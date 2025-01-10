@@ -124,12 +124,13 @@ class RoboFile extends Tasks
      *    A semantic version number in the form x.y.z. Release must end in 0.
      *
      * @return array
-     *    An indexed array of [$tag_description, $new_branch_name].
+     *    An indexed array of [$tag_description, $new_branch_name, $source_branch].
      *
      * @throws \Exception
      */
 
-    protected function initializeGitEnvForRelease(string $hotfix_or_release, string $semantic_version) {
+    protected function getVariablesForRelease(string $hotfix_or_release, string $semantic_version): array
+    {
         if (!in_array($hotfix_or_release, ['hotfix', 'release'])) {
             throw new InvalidArgumentException("hotfix_or_release must be either 'hotfix' or 'release', '$hotfix_or_release' given.");
         }
@@ -155,20 +156,8 @@ class RoboFile extends Tasks
         }
 
         $new_branch_name = "$hotfix_or_release/$semantic_version";
-        `git fetch`;
-        $this->taskGitStack()
-            ->stopOnFail()
-            ->checkout($source_branch)
-            ->run();
 
-        // If you trying to test this function, you will need to temp change
-        // $source_branch to whatever branch you are working in, otherwise,
-        // your changes will get wiped out.
-        // You will also want to comment the following line out, since it will
-        // also wipe out your changes.
-        `git reset --hard origin/$source_branch`;
-
-        return [$tag_description, $new_branch_name];
+        return [$tag_description, $new_branch_name, $source_branch];
     }
 
     /**
@@ -194,7 +183,21 @@ class RoboFile extends Tasks
         string $semantic_version,
     ): ResultData
     {
-        [$tag_description, $new_branch_name] = $this->initializeGitEnvForRelease($hotfix_or_release, $semantic_version);
+        [$tag_description, $new_branch_name, $source_branch] = $this->getVariablesForRelease($hotfix_or_release, $semantic_version);
+
+        `git fetch`;
+        // Checkout the branch that the release will be created from.
+        $this->taskGitStack()
+            ->stopOnFail()
+            ->checkout($source_branch)
+            ->run();
+
+        // If you trying to test this function, you will need to temp change
+        // $source_branch to whatever branch you are working in, otherwise,
+        // your changes will get wiped out.
+        // You will also want to comment the following line out, since it will
+        // also wipe out your changes.
+        `git reset --hard origin/$source_branch`;
 
         // Create the new release branch.
         `git checkout -b $new_branch_name`;
@@ -238,8 +241,9 @@ class RoboFile extends Tasks
         string $semantic_version,
     ): ResultData
     {
-        [$tag_description, $new_branch_name] = $this->initializeGitEnvForRelease($hotfix_or_release, $semantic_version);
+        [$tag_description, $new_branch_name] = $this->getVariablesForRelease($hotfix_or_release, $semantic_version);
 
+        `git fetch`;
         // Check back out the release branch that has been updated by a feature
         // request and is ahead of the source branch.
         $this->taskGitStack()
