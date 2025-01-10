@@ -196,7 +196,10 @@ class RoboFile extends Tasks
     {
         [$tag_description, $new_branch_name] = $this->initializeGitEnvForRelease($hotfix_or_release, $semantic_version);
 
+        // Create the new release branch.
         `git checkout -b $new_branch_name`;
+
+        // Create a new release tag and push the release branch and tag.
         $this->taskGitStack()
             ->stopOnFail()
             ->push('origin', $new_branch_name)
