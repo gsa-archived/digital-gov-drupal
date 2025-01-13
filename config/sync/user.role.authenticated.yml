@@ -12,6 +12,7 @@ dependencies:
     - content_moderation
     - filter
     - media
+    - paragraphs_type_permissions
     - system
     - toolbar
     - userprotect
@@ -33,4 +34,7 @@ permissions:
   - 'view identifier config page entity'
   - 'view latest version'
   - 'view media'
+  - 'view paragraph content external_content'
+  - 'view paragraph content featured_links'
+  - 'view paragraph content internal_content'
   - 'view the administration theme'

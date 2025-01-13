@@ -73,17 +73,18 @@
     <h1
       class="{{ node.field_legislation.0 ? 'dg-topic__header-title--collection' : 'dg-topic__header-title' }}"
     >
-      {{ node.title.value }}
+      {{ label|field_value }}
     </h1>
 
     {# Deck #}
-    {% if content.field_deck %}
+    {% if content.field_deck|render %}
       <p class="dg-topic__deck margin-0">
         {{ content.field_deck|field_value }}
       </p>
     {% endif %}
   </header>
 
+  {% set is_first_page = true %}
   {# Collection — Summary & Legislation #}
   {% if node.field_summary or node.field_legislation %}
     {% if is_first_page %}
@@ -93,7 +94,7 @@
             {{ content.field_summary }}
           </div>
           <div class="desktop:grid-col">
-            {% if node.field_legislation.list %}
+            {% if content.field_legislation|render %}
               {{ include('@digital_gov/partials/card-legislation.html.twig', {
                 title: node.field_legislation.0.title,
                 url: node.field_legislation.0.uri,
@@ -112,15 +113,7 @@
     #}
     <div class="dg-topic__featured grid-container-desktop">
       {{ content.field_featured_resources|field_value }}
-
-      [placeholder featured communities]
       {{ content.field_featured_communities|field_value }}
-
-      {# range .Params.featured_communities #}
-      {# $community_page := (dict "link" (printf "communities/%s" .)) #}
-      {# NOT-MIGRATED #}
-      {# partial "core/featured-resource.html" (dict "Site" $.Site "resource_data" $community_page) #}
-      {# end #}
     </div>
 
   {% endif %}
