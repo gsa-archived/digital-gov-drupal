@@ -69,8 +69,10 @@ default:
       width: 0
       height: 0
   field_dg_shortname:
+    - value: 'Web Analytics'
+  field_kicker:
     -
-      value: 'Web Analytics'
+      value: 'Communities of practice'
   field_members:
     -
       value: 1294

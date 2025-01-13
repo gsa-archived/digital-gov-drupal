@@ -1,0 +1,31 @@
+_meta:
+  version: '1.0'
+  entity_type: redirect
+  uuid: c1863bee-b13e-4cce-90f8-e4692566575d
+  bundle: redirect
+  default_langcode: en
+default:
+  hash:
+    -
+      value: Za1HIhr3W-87LE08dnucLAznujrO6ED8nxJJ7LwoOAk
+  type:
+    -
+      value: redirect
+  uid:
+    -
+      target_id: 1
+  redirect_source:
+    -
+      path: communities/jon-user-experience
+      query: {  }
+  redirect_redirect:
+    -
+      uri: 'internal:/node/75'
+      title: ''
+      options: {  }
+  status_code:
+    -
+      value: 301
+  created:
+    -
+      value: 1736812244
