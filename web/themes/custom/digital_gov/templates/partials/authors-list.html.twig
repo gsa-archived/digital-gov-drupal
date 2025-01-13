@@ -19,6 +19,7 @@
            aria-label="Read more articles by {{ author['#title'] }}"
         >{{ author['#title'] }}</a
         >
+        
         {% if not inline and author['#entity'].field_agency_acronym.value %}
           <p class="author__details-agency">
             {{ author['#entity'].field_agency_acronym.value }}
