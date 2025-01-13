@@ -7,7 +7,7 @@ config:
   # Off by default, enabled with lando xdebug-on.
   xdebug: false
   config:
-    #database: config/my-custom.cnf
+    database: lando-config/my.cnf
     # Can be seen at /usr/local/etc/php/conf.d/zzz-lando-my-custom.ini.
     php: lando-config/php.ini
     #server: config/server.conf

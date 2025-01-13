@@ -11,11 +11,12 @@
 
     </div>
 
-    {% if show_summary_box %}
-      {{ include('@digital_gov/partials/usa-summary-box.html.twig', {
-        containerClass: 'dg-guide-summary',
-      }, with_context=false) }}
-    {% endif -%}
+      {% if show_summary_box %}
+        {{ include('@digital_gov/partials/usa-summary-box.html.twig', {
+          containerClass: 'dg-guide-summary',
+        }, with_context: false) }}
+      {% endif %}
+    </div>
 
     {{ content.body }}
   </div>
