@@ -134,7 +134,6 @@ function digital_gov_get_guidenav_links(Node $node, string $current): array {
 
   if ($node->field_guide_navigation) {
     // Generate the two-levels of nav links for this guide.
-    ;
     foreach ($node->field_guide_navigation as $ref) {
       // This field points at a paragraph entity.
       $para = Paragraph::load($ref->target_revision_id);

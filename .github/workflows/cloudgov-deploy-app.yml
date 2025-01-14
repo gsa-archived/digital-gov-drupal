@@ -75,3 +75,13 @@ jobs:
         env:
           PROJECT: "${{ secrets.PROJECT }}"
         run: source ./scripts/pipeline/cloud-gov-post-deploy.sh
+      - name: Build Static Site
+        env:
+          PROJECT: "${{ secrets.PROJECT }}"
+        run: |
+          if [[ "${CF_SPACE}" = "dev" || "${CF_SPACE}" = "staging" ]]; then
+            echo "${CF_SPACE} is building the static site now..."
+            cf run-task "${PROJECT}-drupal-${CF_SPACE}" --command "/home/vcap/app/scripts/upkeep" --wait -m 1G
+          else
+            echo "${CF_SPACE} does not need to build static site on deployment"
+          fi
