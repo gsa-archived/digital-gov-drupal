@@ -76,7 +76,7 @@ jobs:
           PROJECT: "${{ secrets.PROJECT }}"
         run: |
           source ./scripts/pipeline/cloud-gov-login.sh
-      - name: Stop Bastion
+      - name: Start Bastion
         env:
           PROJECT: "${{ secrets.PROJECT }}"
           DATABASE_BACKUP_BASTION_NAME: "${{ secrets.DATABASE_BACKUP_BASTION_NAME }}"
