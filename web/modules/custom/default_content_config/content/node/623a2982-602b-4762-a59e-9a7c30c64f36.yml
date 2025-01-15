@@ -5,7 +5,6 @@ _meta:
   bundle: community
   default_langcode: en
   depends:
-    df325658-effa-4ff9-9e6b-abfbaf437ff9: media
     f53fc4bd-54e8-49b3-b419-73525681c8a1: media
 default:
   revision_uid:
@@ -48,9 +47,6 @@ default:
   field_dg_highlight:
     -
       value: true
-  field_dg_logo:
-    -
-      entity: df325658-effa-4ff9-9e6b-abfbaf437ff9
   field_dg_shortname:
     -
       value: 'Web Managers'

@@ -63,6 +63,7 @@
         "drupal/scheduler": "^2.0",
         "drupal/scheduler_content_moderation_integration": "^3.0",
         "drupal/seckit": "^2.0",
+        "drupal/svg_image": "^3.2",
         "drupal/tome": "^1.12",
         "drupal/twig_field_value": "^2.0",
         "drupal/twig_tweak": "^3.3",
