@@ -1,29 +1,23 @@
-uuid: bee51f02-fd5b-419f-b822-1adac3900b61
+uuid: 4df7fe65-cb3d-4019-98f7-b53f9964d1e2
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_profile_source
-    - media.type.image
     - node.type.authors
+  module:
+    - options
 id: node.authors.field_profile_source
 field_name: field_profile_source
 entity_type: node
 bundle: authors
 label: 'Profile Source'
-description: "Options include:\r\n\r\n  - github\r\n  - digit-dark\r\n  - digit-light\r\n  - digit-pride\r\n\r\nIf set to github, then you should provide a github username for the github field to pull user profile avatar from github.com/user_profile.\r\nIf github username is not set, then it will randomly select a locally hosted image.\r\nThe other 3 options will set an image.\r\nIf not set, then a random light or dark image will display."
+description: "Select an light or dark digital.gov branded avatar for your author profile if you don't have a github account setup."
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: digit-light
 default_value_callback: ''
-settings:
-  handler: 'default:media'
-  handler_settings:
-    target_bundles:
-      image: image
-    sort:
-      field: _none
-      direction: ASC
-    auto_create: false
-    auto_create_bundle: ''
-field_type: entity_reference
+settings: {  }
+field_type: list_string

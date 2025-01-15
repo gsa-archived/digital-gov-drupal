@@ -1,17 +1,24 @@
-uuid: 41a10216-692d-40a2-8470-9d23299d6dc4
+uuid: 2ca98c18-dcfb-46c5-b1bb-4af442c61983
 langcode: en
 status: true
 dependencies:
   module:
-    - media
     - node
+    - options
 id: node.field_profile_source
 field_name: field_profile_source
 entity_type: node
-type: entity_reference
+type: list_string
 settings:
-  target_type: media
-module: core
+  allowed_values:
+    -
+      value: digit-light
+      label: 'Digital Light'
+    -
+      value: digit-dark
+      label: 'Digital Dark'
+  allowed_values_function: ''
+module: options
 locked: false
 cardinality: 1
 translatable: true

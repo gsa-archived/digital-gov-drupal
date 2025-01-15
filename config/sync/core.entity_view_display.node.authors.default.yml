@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.authors.field_slug
     - node.type.authors
   module:
+    - options
     - text
     - user
 id: node.authors.default
@@ -62,11 +63,9 @@ content:
     weight: 104
     region: content
   field_profile_source:
-    type: entity_reference_entity_view
+    type: list_default
     label: above
-    settings:
-      view_mode: default
-      link: false
+    settings: {  }
     third_party_settings: {  }
     weight: 120
     region: content

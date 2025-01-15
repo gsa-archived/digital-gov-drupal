@@ -77,7 +77,7 @@
         {% else %}
         <img
           class="profile"
-          src="{{ active_theme_path() }}/static/digitalgov/img/digit-light.png"
+          src="/{{ active_theme_path() }}/static/digitalgov/img/{{ node.field_profile_source.value }}.png"
           alt="Profile image for {{ node.title.value }}"
           />
         {% endif %}
@@ -86,10 +86,6 @@
           <h1>{{ node.title.value }}</h1>
 
           <div class="bio">
-            {% if node.field_pronouns.value %}
-            <p class="pronouns">{{ node.field_pronouns.value }}</p>
-            {% endif %}
-
             {% if node.field_agency_full_name.value %}
             <p>
               {{ node.field_agency_full_name.value }}
