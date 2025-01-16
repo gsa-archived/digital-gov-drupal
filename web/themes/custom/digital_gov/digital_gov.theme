@@ -370,17 +370,25 @@ function digital_gov_theme_suggestions_container_alter(array &$suggestions, arra
 function digital_gov_preprocess_node__landing_page__job_board(&$variables, $hook) {
   $entity_type_manager = \Drupal::entityTypeManager();
   $config_pages = $entity_type_manager->getStorage('config_pages')->load('job_board_administration');
-  $yml_string = $field_description = $config_pages->get('field_description')->getValue()[0]['value'];
-  $yml_array = Yaml::decode($yml_string);
-  $filtered_array = [];
-  foreach ($yml_array as $item) {
-    $close_date = date('Y-m-d', $item['close_date']);
-    $today = date('Y-m-d');
-    if ($close_date >= $today) {
-      $item['open_date'] = date('F j, Y', $item['open_date']);
-      $item['close_date'] = date('F j, Y', $item['close_date']);
-      $filtered_array[] = $item;
+  if (isset ($config_pages->get('field_description')->getValue()[0]['value'])) {
+    $yml_string = $field_description = $config_pages->get('field_description')->getValue()[0]['value'];
+    $yml_array = Yaml::decode($yml_string);
+    foreach ($yml_array as $item) {
+      $close_date = date('Y-m-d', $item['close_date']);
+      $today = date('Y-m-d');
+      if ($close_date >= $today) {
+        $item['open_date'] = date('F j, Y', $item['open_date']);
+        $item['close_date'] = date('F j, Y', $item['close_date']);
+        $filtered_array[] = $item;
+      }
     }
-  }
+  } else {
+    $filtered_array[] = [
+      'description' => 'No jobs found.',
+      'open_date' => '',
+      'close_date' => ''
+    ];
+  }  
   $variables['job_board_administration'] = $filtered_array;
 }
+
