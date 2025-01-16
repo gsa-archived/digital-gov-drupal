@@ -139,7 +139,7 @@
 
         {# Main Content #}
         <div class="content usa-prose">
-          {{ content.body }}
+          {{ content.body|field_value }}
         </div>
 
         {# Touchpoints Form #}
@@ -170,7 +170,7 @@
         {# partial "core/primary-communities.html" . #}
 
         {# Topics #}
-        {{ content.field_topics }}
+        {{ content.field_topics|field_value }}
 
         {# Share Tools #}
         {{ include('@digital_gov/partials/get-sharetools.html.twig', {
