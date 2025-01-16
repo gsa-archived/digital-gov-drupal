@@ -77,7 +77,7 @@
         {% else %}
         <img
           class="profile"
-          src="/{{ active_theme_path() }}/static/digitalgov/img/{{ node.field_profile_source.value }}.png"
+          src="/{{ active_theme_path() }}/static/digitalgov/img/{{ node.field_profile_source.value ?: 'digit-light' }}.png"
           alt="Profile image for {{ node.title.value }}"
           />
         {% endif %}
