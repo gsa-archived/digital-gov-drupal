@@ -1,0 +1,41 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: fd186b65-70b7-499a-a9be-050562561209
+  bundle: basic_page
+  default_langcode: en
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Short code test page'
+  created:
+    -
+      value: 1737043238
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: /short-code-test-page
+      langcode: en
+      pathauto: 1
+  body:
+    -
+      value: '<h2>Accordion:</h2><embedded-content data-plugin-config="{&quot;kicker&quot;:&quot;Day 3&quot;,&quot;title&quot;:&quot;Managing UX - July 30&quot;,&quot;icon&quot;:&quot;content_copy&quot;,&quot;text&quot;:{&quot;value&quot;:&quot;\u003Cp\u003EThe accordion body.\u003C\/p\u003E\u003Cp\u003EAnother line in the accordion body.\u003C\/p\u003E&quot;,&quot;format&quot;:&quot;multiline_inline_html&quot;}}" data-plugin-id="ec_shortcodes_accordion" data-button-id="default">&nbsp;</embedded-content><h2>Asset Image</h2><drupal-media data-entity-type="media" data-entity-uuid="130f0b28-b2de-409f-949d-288dabfa022d">&nbsp;</drupal-media><h2>Asset Static</h2><drupal-media data-entity-type="media" data-entity-uuid="64766033-021e-4394-b87c-cb8271911638">&nbsp;</drupal-media><h2>Author-bio</h2><p>[placeholder for author bio]</p><h2>Box</h2><div class="box"><p>Did you know? Digital.gov follows the Associated Press (AP) Stylebook and general plain language guidance. When we make edits, it’s to ensure the content reaches and engages our audience. View our full Digital.gov Style Guide.</p></div><h2>Button</h2><embedded-content data-plugin-config="{&quot;url&quot;:&quot;https:\/\/digitalgov.lndo.site\/about&quot;,&quot;text&quot;:&quot;View all videos&quot;}" data-plugin-id="ec_shortcodes_button" data-button-id="default">&nbsp;</embedded-content><h2>Card Policy</h2><p>[placeholder for card policy EC]</p><h2>Card Prompt</h2><p>[placeholder for card prompt EC]</p><h2>Check List</h2><p><style type="text/css"></style><span style="font-family:Arial;font-size:10pt;font-style:normal;" data-sheets-root="1">Not used in hugo/not migrated over</span></p><h2>Do/Don''t table</h2><p>[placeholder for do/do not EC]</p><h2>Featured Resource</h2><embedded-content data-plugin-config="{&quot;content_reference&quot;:&quot;9&quot;}" data-plugin-id="ec_shortcodes_featured_resource" data-button-id="default">&nbsp;</embedded-content><h2>Highlight</h2><p><span class="highlight-text"><strong style="-webkit-text-stroke-width:0px;box-sizing:inherit;color:rgb(27, 27, 27);font-family:&quot;Public Sans Web&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;;font-size:16.96px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:bolder;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">1. Accessible to People of Diverse Abilities</strong></span></p><h2>Image</h2><drupal-media data-entity-type="media" data-entity-uuid="8c66bd6c-e163-46cd-b915-2575b5686eec">&nbsp;</drupal-media><h2>Image Flexible</h2><p>[placeholder for image flexible style/view mode]</p><h2>Image Right</h2><p>[placeholder for image right style/view mode]</p><h2>Legacy File</h2><p>Supported by media</p><h2>Legacy Image</h2><p>Supported by media</p><h2>Legacy Image Right</h2><p>Supported by media</p><h2>Link</h2><p>HTML:</p><p>/preview/gsa/digitalgov.gov/shortcode-examples/resources/delivering-digital-first-public-experience/</p><h2>Note</h2><embedded-content data-plugin-config="{&quot;heading&quot;:&quot;Note&quot;,&quot;type&quot;:&quot;alert&quot;,&quot;text&quot;:{&quot;value&quot;:&quot;\u003Cp\u003EThe \u003Cstrong\u003EConsumer Action Handbook\u003C\/strong\u003E by the U.S. General Services Administration (GSA) is no longer in production. The last one was published in 2017 and there are no more hard copies available.\u003C\/p\u003E\u003Cp\u003ETo request other free U.S. government publications, visit the U.S. Government Publishing Office (GPO) \u003Ca href=\u0022https:\/\/pueblo.gpo.gov\/\u0022\u003EPueblo Distribution Center website.\u003C\/a\u003E\u003C\/p\u003E&quot;,&quot;format&quot;:&quot;multiline_inline_html&quot;}}" data-plugin-id="ec_shortcodes_note" data-button-id="default">&nbsp;</embedded-content><embedded-content data-plugin-config="{&quot;heading&quot;:&quot;Note&quot;,&quot;type&quot;:&quot;note&quot;,&quot;text&quot;:{&quot;value&quot;:&quot;\u003Cp\u003ELiteracy and Numeracy has a 5-point scale.\u003C\/p\u003E&quot;,&quot;format&quot;:&quot;multiline_inline_html&quot;}}" data-plugin-id="ec_shortcodes_note" data-button-id="default">&nbsp;</embedded-content><h2>Ring</h2><p>BUG: Truncates the content body</p><embedded-content data-plugin-config="{&quot;heading&quot;:&quot;Try it out&quot;,&quot;text&quot;:&quot;Create an interview\/conversation guide with a list of keywords or themes you want to cover with each participant. &quot;}" data-plugin-id="ec_shortcodes_ring" data-button-id="default">&nbsp;</embedded-content><h2>TOS Compatible</h2><p>[placeholder for tos compatible ec]</p><h2>Youtube</h2><drupal-media data-entity-type="media" data-entity-uuid="6140838f-080b-4bd1-86ad-3a0097857cb3">&nbsp;</drupal-media>'
+      format: html
+      summary: ''
