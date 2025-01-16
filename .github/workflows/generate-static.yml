@@ -1,0 +1,29 @@
+name: Generate Static Site
+
+on:
+  workflow_call:
+
+jobs:
+  generateStatic:
+    name: Generate Static Site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install basic dependancies
+        run: ./scripts/pipeline/deb-basic-deps.sh
+      - name: Install Cloudfoundry CLI
+        run: ./scripts/pipeline/deb-cf-install.sh
+      - name: Cloud.gov login
+        env:
+          CF_USER: "${{ secrets.CF_USER }}"
+          CF_PASSWORD: "${{ secrets.CF_PASSWORD }}"
+          CF_ORG: "${{ secrets.CF_ORG }}"
+          PROJECT: "${{ secrets.PROJECT }}"
+        run: |
+          source ./scripts/pipeline/cloud-gov-login.sh
+          cf target -s "${CF_SPACE}" >/dev/null 2>&1
+      - name: Run Tome
+        env:
+          PROJECT: "${{ secrets.PROJECT }}"
+        run: cf run-task "${PROJECT}-drupal-${CF_SPACE}" --command "/home/vcap/app/scripts/upkeep" --wait -m 1G

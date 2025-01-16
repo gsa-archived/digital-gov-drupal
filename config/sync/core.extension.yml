@@ -4,6 +4,7 @@ module:
   admin_toolbar: 0
   admin_toolbar_search: 0
   admin_toolbar_tools: 0
+  auto_heading_ids: 0
   autocomplete_deluxe: 0
   autologout: 0
   block: 0
@@ -15,6 +16,7 @@ module:
   content_moderation: 0
   content_moderation_notifications: 0
   convert_text: 0
+  database_ssl_check: 0
   datetime: 0
   dblog: 0
   default_content: 0
@@ -77,6 +79,7 @@ module:
   rh_taxonomy: 0
   rh_user: 0
   role_delegation: 0
+  role_watchdog: 0
   scheduler: 0
   scheduler_content_moderation_integration: 0
   seckit: 0
@@ -92,6 +95,7 @@ module:
   twig_field_value: 0
   twig_tweak: 0
   update: 0
+  upgrade_status: 0
   user: 0
   userprotect: 0
   uswds_templates: 0
