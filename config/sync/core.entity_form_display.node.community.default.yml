@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.community.field_slug
     - field.field.node.community.field_subscribe_email_subject
     - field.field.node.community.field_summary
+    - image.style.thumbnail
     - node.type.community
     - workflows.workflow.editorial
   module:
@@ -23,6 +24,7 @@ dependencies:
     - maxlength
     - media_library
     - path
+    - image
     - text
 third_party_settings:
   field_group:
@@ -94,11 +96,12 @@ content:
       display_label: true
     third_party_settings: {  }
   field_dg_logo:
-    type: media_library_widget
+    type: image_image
     weight: 34
     region: content
     settings:
-      media_types: {  }
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_dg_shortname:
     type: string_textfield
