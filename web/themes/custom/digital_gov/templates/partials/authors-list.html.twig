@@ -16,14 +16,8 @@
            title="Posts by {{ author['#title'] }}"
            rel="author"
            aria-label="Read more articles by {{ author['#title'] }}"
-        >{{ author }}</a
-        >
+        >{{ author }}</a>
       </div>
-      {% if not inline and author['#entity'].field_agency_acronym.value %}
-        <p class="author__details-agency">
-          {{ author['#entity'].field_agency_acronym.value }}
-        </p>
-      {% endif %}
     </div>
   {% endfor %}
 
