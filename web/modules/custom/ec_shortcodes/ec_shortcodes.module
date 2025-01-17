@@ -5,6 +5,8 @@
  * The module file with theming functions.
  */
 
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Implements hook_theme().
  */
@@ -28,7 +30,7 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
       'variables' => [
         'kicker' => NULL,
         'title' => NULL,
-        'src' => NULL,
+        'url' => NULL,
         'text' => NULL,
       ],
     ],
@@ -89,22 +91,11 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
         'heading' => NULL,
       ],
     ],
-    'ec_shortcodes_note_ring' => [
+    'ec_shortcodes_ring' => [
       'variables' => [
         'heading' => NULL,
         'text' => NULL,
       ],
     ],
   ];
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function ec_shortcodes_preprocess(&$variables, $hook) {
-  if (in_array($hook, ['ec_shortcodes_accordion', 'ec_shortcodes_card_policy', 'ec_shortcodes_card_prompt',
-    'ec_shortcodes_note', 'ec_shortcodes_do_dont_table', 'ec_shortcodes_note_join', 'ec_shortcodes_note_disclaimer',
-  ])) {
-    $variables['theme_path'] = \Drupal::theme()->getActiveTheme()->getPath();
-  }
 }

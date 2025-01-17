@@ -55,6 +55,7 @@ class ECShortcodesRing extends EmbeddedContentPluginBase implements EmbeddedCont
       '#type' => 'textfield',
       '#title' => $this->t('Ring Component Text'),
       '#default_value' => $this->configuration['text'],
+      '#maxlenght' => 512,
       '#required' => TRUE,
     ];
     return $form;

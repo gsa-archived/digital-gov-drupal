@@ -4,13 +4,13 @@
       {% if icon %}
         <span class="icon">
           <svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
-            <use href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#' ~ icon) }}"></use>
+            <use href="/{{ active_theme_path() }}/static/digitalgov/img/sprite.svg#{{ icon }}"></use>
           </svg>
         </span>
       {% else %}
         <span class="icon">
           <svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false" role="img">
-            <use href="{{ drupal_url(theme_path ~ '/static/digitalgov/img/sprite.svg#unfold_more') }}"></use>
+            <use href="/{{ active_theme_path() }}/static/digitalgov/img/sprite.svg#unfold_more"></use>
           </svg>
         </span>
       {% endif %}
