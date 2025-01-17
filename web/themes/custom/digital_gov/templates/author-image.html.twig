@@ -11,9 +11,11 @@ EXPECTED VARIABLES:
 
   icon_path is set in digital_gov_preprocess_author_image()
 #}
-
+{% if icon_path_internal %}
+  {% set icon_path = '/' ~ active_theme_path() ~ '/' ~ icon_path %}
+{% endif %}
 <img
   class="author__photo-img usa-media-block__img"
-  src="/{{ active_theme_path() }}/{{ icon_path }}"
+  src="{{ icon_path }}"
   alt=""
 />
