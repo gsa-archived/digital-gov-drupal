@@ -65,11 +65,12 @@
 #}
 <main role="main" id="main-content">
   <article class="dg-guide">
-    {% if (guide_start_node) %}
+    {% if (guide_overview_node) %}
     {{ include('@digital_gov/partials/guides/guide-header.html.twig', {
-        node: guide_start_node,
-        parent_link: guide_parent_link,
-        featured_image: guide_featured_image,
+        node: guide_overview_node,
+        kicker_title: guide_kicker_title,
+        kicker_url: guide_kicker_url,
+        overview_image: guide_overview_image,
       }, with_context: false)
     }}
     {% endif %}

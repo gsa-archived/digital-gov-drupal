@@ -1,0 +1,66 @@
+<main role="main" id="main-content">
+  <header class="dg-landing__hero">
+
+    {% if hero_image %}
+      {{ drupal_image(hero_image.target_id, '', {alt: hero_image.alt, class: 'dg-img-flexible'}) }}
+    {% endif %}
+
+    {# partial "core/img-flexible.html" (dict "Site" .Site "src" Params.image "small" "false") #}
+    <div class="dg-landing__hero-text">
+      <h1>{{ label }}</h1>
+      <a href="#content-start" class="usa-button usa-button--big"
+      >Get Started</a
+      >
+    </div>
+  </header>
+  <article class="dg-landing__body grid-container grid-container-desktop">
+    <div>
+      {{ content|without('field_guides', 'field_bottom_content') }}
+    </div>
+    <h2 class="dg-landing__body-featured-resources">Featured Resources</h2>
+
+    [placeholder card view of selected pages]
+    {{ content.field_guides }}
+
+    {# NOT-MIGRATED
+    <ul class="usa-card-group" id="content-start">
+      {{ range .Pages }}
+      <li class="usa-card tablet:grid-col-4">
+        {{ $image := .Params.image }}
+        {{ $layout := "no-image" }}
+        {% if $image %}
+        {{ $layout = "has-image" }}
+        {% endif %}
+        {{ $cardData := (dict
+        "header" .Title
+        "body" .Params.summary
+        "link" (.Permalink | absURL)
+        "link_title" (print "Explore " (.Title | markdownify | lower))
+        "layout" $layout
+        "site" .Site
+        "image" $image
+        )
+        }}
+        {{ partial "core/usa-card.html" (dict "card_data" $cardData) }}
+      </li>
+      {% endif %}
+    </ul>
+    #}
+
+    {% if (content.field_bottom_content) %}
+      {{ content.field_bottom_content }}
+    {% endif %}
+
+    {% if hero_credit or hero_caption %}
+      {{ include('@digital_gov/partials/attribution.html.twig', {
+        credit: hero_credit,
+        caption: hero_caption,
+      }, with_context: false) }}
+    {% endif %}
+
+  </article>
+
+  {% if node.field_glossary.target_id %}
+    {{ drupal_view('glossary_sidebar', 'accordion', node.field_glossary.target_id) }}
+  {% endif %}
+</main>

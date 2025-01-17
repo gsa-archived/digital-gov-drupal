@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.node.guides.body
     - field.field.node.guides.field_deck
-    - field.field.node.guides.field_featured_image
     - field.field.node.guides.field_glossary
     - field.field.node.guides.field_guide_nav_ref
     - field.field.node.guides.field_guide_nav_title
@@ -43,15 +42,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 5
-    region: content
-  field_featured_image:
-    type: entity_reference_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 119
     region: content
   field_glossary:
     type: entity_reference_entity_id
