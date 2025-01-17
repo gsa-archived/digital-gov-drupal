@@ -156,5 +156,5 @@ default:
       entity: f8550cd7-fdea-4a8e-b1cf-6a3e2b4fa3aa
   field_summary:
     -
-      value: '<p>Web analytics provide valuable insights into how users interact with a website. Use the data gained from web analytics to identify areas for improvement and make data-driven decisions. This can lead to a more user-friendly and engaging website, which can</p>'
+      value: '<p>Web analytics provide valuable insights into how users interact with a website. Use the data gained from web analytics to identify areas for improvement and make data-driven decisions. This can lead to a more user-friendly and engaging website, which can enhance trust and overall site performance.</p>'
       format: single_inline_html
