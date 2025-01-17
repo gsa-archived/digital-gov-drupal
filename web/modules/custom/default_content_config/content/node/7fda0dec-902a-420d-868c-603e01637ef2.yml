@@ -1,7 +1,7 @@
 _meta:
   version: '1.0'
   entity_type: node
-  uuid: 7acbb47b-73ed-4b5c-8dbb-5e21abccea00
+  uuid: 7fda0dec-902a-420d-868c-603e01637ef2
   bundle: authors
   default_langcode: en
 default:
@@ -16,10 +16,10 @@ default:
       target_id: 1
   title:
     -
-      value: 'Lorena Molina-Irizarry'
+      value: 'Julia Solórzano'
   created:
     -
-      value: 1732137677
+      value: 1737124172
   promote:
     -
       value: false
@@ -31,18 +31,21 @@ default:
       value: published
   path:
     -
-      alias: /authors/lorena-molinairizarry
+      alias: /authors/julia-solorzano
       langcode: en
-      pathauto: 0
+      pathauto: 1
   field_agency_full_name:
     -
-      value: 'U.S. Census Bureau'
+      value: 'U.S. General Services Administration'
   field_first_name:
     -
-      value: Lorena
+      value: Julia
+  field_github:
+    -
+      value: juliaelman
   field_last_name:
     -
-      value: Molina-Irizarry
-  field_profile_source:
+      value: Solórzano
+  field_slug:
     -
-      value: digit-light
+      value: julia-solorzano

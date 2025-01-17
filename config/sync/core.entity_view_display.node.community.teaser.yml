@@ -46,14 +46,6 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
-  field_dg_logo:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 6
-    region: content
   field_dg_shortname:
     type: string
     label: above
@@ -86,6 +78,7 @@ content:
 hidden:
   field_deck: true
   field_dg_highlight: true
+  field_dg_logo: true
   field_page_weight: true
   field_primary_image: true
   field_slug: true
