@@ -11,6 +11,10 @@ if [ -z "${bucket_name}" ]; then
   return
 fi
 
+if [ -n "$(cf orgs | grep FAILED)" ]; then
+  return
+fi
+
 echo "Deleting old credentials..."
 {
   service_key="${bucket_name}-${user}-key"
