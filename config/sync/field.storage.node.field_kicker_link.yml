@@ -1,15 +1,16 @@
-uuid: 9b0a6caa-e257-489e-9484-4b3ca7a71479
+uuid: 35d02eeb-4a70-47fe-9091-a6e34bafcc0b
 langcode: en
 status: true
 dependencies:
   module:
+    - link
     - node
-id: node.field_show_read_time
-field_name: field_show_read_time
+id: node.field_kicker_link
+field_name: field_kicker_link
 entity_type: node
-type: boolean
+type: link
 settings: {  }
-module: core
+module: link
 locked: false
 cardinality: 1
 translatable: true

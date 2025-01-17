@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.node.guides.body
     - field.field.node.guides.field_deck
-    - field.field.node.guides.field_featured_image
     - field.field.node.guides.field_glossary
     - field.field.node.guides.field_guide_nav_ref
     - field.field.node.guides.field_guide_nav_title
@@ -78,13 +77,6 @@ content:
         maxlength_js: 255
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: true
-  field_featured_image:
-    type: media_library_widget
-    weight: 13
-    region: content
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
   field_glossary:
     type: options_select
     weight: 52
