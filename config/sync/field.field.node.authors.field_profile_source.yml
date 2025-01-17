@@ -15,9 +15,7 @@ label: 'Profile Source'
 description: "Select an light or dark digital.gov branded avatar for your author profile if you don't have a github account setup."
 required: false
 translatable: false
-default_value:
-  -
-    value: digit-light
+default_value: {  }
 default_value_callback: ''
 settings: {  }
 field_type: list_string
