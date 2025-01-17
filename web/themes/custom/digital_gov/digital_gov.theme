@@ -239,34 +239,39 @@ function digital_gov_theme(): array {
  * Preprocessor for author_image theme function.
  */
 function digital_gov_preprocess_author_image(array &$vars): void {
-  $profile_source = $vars["author"]["#entity"]->field_profile_source->value ?? NULL;
-  $github = $vars["author"]["#entity"]->field_github->value ?? NULL;
+  $title = $vars["author"]["#node"]->getTitle();
+  $profile_source = $vars["author"]["#node"]->field_profile_source->value ?? NULL;
+  $github = $vars["author"]["#node"]->field_github->value ?? NULL;
+  $slug = $vars["author"]["#node"]->field_slug->value ?? $title;
 
-  $slug = $vars["author"]["#entity"]->field_slug->value;
   switch (TRUE) {
     case $profile_source === 'github' && $github:
       // Author has selected GitHub and specified a GitHub user ID.
       $vars['icon_path'] = sprintf('https://github.com/%s.png?size=50', $github);
+      $vars['icon_path_internal'] = FALSE;
       break;
 
     case $profile_source === 'digit-light':
     case $profile_source === 'digit-dark':
     case $profile_source === 'digit-pride':
-      $vars['icon_path'] = sprintf('img/%s.png', $profile_source);
+      $vars['icon_path'] = sprintf('static/digitalgov/img/%s.png', $profile_source);
+      $vars['icon_path_internal'] = TRUE;
       break;
 
     default:
       if ($github) {
         // Author did not select GitHub but use a GitHUB ID if they have one.
         $vars['icon_path'] = sprintf('https://github.com/%s.png?size=50', $github);
+        $vars['icon_path_internal'] = FALSE;
       }
       else {
         // No source selected OR they picked GitHub without a GitHub ID
         // choose between light and dark based on length of the slug.
         $vars['icon_path'] = sprintf(
-          'img/digit-%s.png',
-          strlen($slug ?? $vars['author']['#title']) % 2 ? 'dark' : 'light'
+          'static/digitalgov/img/digit-%s.png',
+          strlen($slug) % 2 ? 'dark' : 'light'
         );
+        $vars['icon_path_internal'] = TRUE;
       }
       break;
   }
