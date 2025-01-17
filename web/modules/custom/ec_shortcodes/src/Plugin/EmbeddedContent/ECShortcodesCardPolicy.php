@@ -23,7 +23,7 @@ class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements Embedd
   /**
    * {@inheritdoc}
    */
-  public function defaultConfiguration() {
+  public function defaultConfiguration(): array {
     return [
       'kicker' => NULL,
       'title' => NULL,
@@ -40,9 +40,8 @@ class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements Embedd
       '#theme' => 'ec_shortcodes_card_policy',
       '#kicker' => $this->configuration['kicker'],
       '#title' => $this->configuration['title'],
-      '#src' => $this->configuration['src'],
+      '#url' => $this->configuration['url'],
       '#text' => $this->configuration['text'],
-
     ];
   }
 
@@ -64,8 +63,9 @@ class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements Embedd
     ];
     $form['url'] = [
       '#type' => 'url',
-      '#title' => $this->t('Src'),
-      '#default_value' => $this->configuration['url'],
+      '#title' => $this->t('URL'),
+      '#description' => $this->t('Used in link at end of card.'),
+      '#default_value' => $this->configuration['url'] ?? '',
       '#required' => TRUE,
     ];
     $form['text'] = [
