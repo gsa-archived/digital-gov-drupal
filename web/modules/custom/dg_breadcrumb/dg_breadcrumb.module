@@ -23,8 +23,7 @@ function dg_breadcrumb_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMat
     case 'news':
       $eq = \Drupal::entityQuery('node');
       $eq->condition('type', 'landing_page');
-      // @todo When this field is in place, uncomment this out.
-      // $eq->condition('field_type', 'news');
+      $eq->condition('field_landing_page_type', 'news');
       $eq->accessCheck();
       $landing_page_nids = $eq->execute();
       if (empty($landing_page_nids)) {
