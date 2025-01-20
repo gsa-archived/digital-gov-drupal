@@ -403,5 +403,5 @@ function digital_gov_preprocess_node__landing_page__job_board(&$variables, $hook
       'close_date' => '',
     ];
   }
-  $variables['job_board_administration'] = $filtered_array;
+  $variables['job_board'] = $filtered_array;
 }
