@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.guides.body
     - field.field.node.guides.field_deck
-    - field.field.node.guides.field_featured_image
     - field.field.node.guides.field_glossary
     - field.field.node.guides.field_guide_nav_ref
     - field.field.node.guides.field_guide_nav_title
@@ -46,7 +45,6 @@ content:
     region: content
 hidden:
   field_deck: true
-  field_featured_image: true
   field_glossary: true
   field_guide_nav_ref: true
   field_guide_nav_title: true
