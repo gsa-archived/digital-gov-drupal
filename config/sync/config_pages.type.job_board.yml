@@ -1,9 +1,9 @@
-uuid: 745682ea-e8f2-4294-9a6c-8c6df413f0e5
+uuid: 29822c38-e891-485d-bf24-37a0c3c46bce
 langcode: en
 status: true
 dependencies: {  }
-id: job_board_administration
-label: 'Job Board Administration'
+id: job_board
+label: 'Job Board'
 token: false
 context:
   show_warning: true
@@ -14,4 +14,4 @@ context:
 menu:
   path: /admin/content/job-board
   weight: 0
-  description: ''
+  description: 'http://digitalgov.lndo.site/user/reset/1/1737400383/ZG-fXxU1mpZ3OZvIxiwWDwht1G5M77b01byjSCvNpHg/login'
