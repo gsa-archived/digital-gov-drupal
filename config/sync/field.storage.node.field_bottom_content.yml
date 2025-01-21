@@ -1,16 +1,16 @@
-uuid: 018b471d-d699-4ad6-adac-e5e404c49ba9
+uuid: 5ca9a89f-2b67-44d3-adc6-8ea622e1f923
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_guide_start_page
-field_name: field_guide_start_page
+    - text
+id: node.field_bottom_content
+field_name: field_bottom_content
 entity_type: node
-type: entity_reference
-settings:
-  target_type: node
-module: core
+type: text_long
+settings: {  }
+module: text
 locked: false
 cardinality: 1
 translatable: true
