@@ -126,11 +126,13 @@
     {% if is_first_page %}
       {# Default - Related resources, services, and communities #}
       <div class="grid-container-desktop usa-section">
+        <a href="https://cm-jira.usa.gov/browse/DIGITAL-356">[placeholder for Resources on & Join a Community of Practice]</a>
         {# NOT-MIGRATED #}
         {# $resource_settings := ( dict "header_title" (print "Resources on " .Title) "header_size" 2 "variant" "media" "list_header" 3) #}
         {# partial "partials/core/collection/collection.html" (dict "collection_data" $resources "settings" $resource_settings ) #}
 
-        {# NOT-MIGRATED #}
+        {# NOT-MIGRATED#}
+        {# WILL NOT MIGRATE THIS, SERVICES DO NOT EXIST ANY MORE #}
         {# $services_settings := ( dict "header_title" "Tools and Services" "header_size" 2 "variant" "media" "list_header" 3) #}
         {# partial "partials/core/collection/collection.html" (dict "collection_data" $services "settings" $services_settings) #}
 
@@ -141,6 +143,7 @@
     {% endif %}
   {% endif %}
 
+  <a href="https://cm-jira.usa.gov/browse/DIGITAL-357">[Placeholder for news & events]</a>
   {# Topic Collection will always have a legislation card, use this as flag to display first 5 events & news #}
   {% if Params.legislation %}
     {# Only show these sections when on page 1, otherwise hide to show only More News and Events #}
