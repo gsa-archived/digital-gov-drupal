@@ -44,25 +44,6 @@ default:
   field_featured_communities:
     -
       entity: 623a2982-602b-4762-a59e-9a7c30c64f36
-  field_featured_links:
-    -
-      entity:
-        _meta:
-          version: '1.0'
-          entity_type: paragraph
-          uuid: b3cc1ee0-0bd2-42f9-8581-1f8713953303
-          bundle: featured_links
-          default_langcode: en
-        default:
-          status:
-            -
-              value: true
-          created:
-            -
-              value: 1729707255
-          behavior_settings:
-            -
-              value: {  }
   field_featured_resources:
     -
       entity:
