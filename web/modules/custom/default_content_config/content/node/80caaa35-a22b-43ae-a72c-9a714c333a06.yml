@@ -43,15 +43,6 @@ default:
       alias: /topics/analytics
       langcode: en
       pathauto: 0
-  rh_action:
-    -
-      value: bundle_default
-  rh_redirect_response:
-    -
-      value: 301
-  rh_redirect_fallback_action:
-    -
-      value: bundle_default
   field_deck:
     -
       value: '<p>Measure and plan your site performance with analytics best practices and tools.</p>'

@@ -37,15 +37,6 @@ default:
       alias: /communities/web-analytics-and-optimization
       langcode: en
       pathauto: 0
-  rh_action:
-    -
-      value: bundle_default
-  rh_redirect_response:
-    -
-      value: 301
-  rh_redirect_fallback_action:
-    -
-      value: bundle_default
   body:
     -
       value: '<p>Government professionals from all levels come together in this community to make better decisions using web analytics and other optimization strategies.</p><p>Become a member to uncover best practices, tips, and tools for web analytics, search, and search engine optimization.</p><p>Digital.gov fosters this dynamic community by providing spaces to engage in collaborative discussion and share new technology and trends. Remember, when participating in this community, you must follow <a href="https://digital.gov/communities/community-guidelines/">Digital.gov community guidelines</a>.</p><embedded-content data-plugin-config="{&quot;content_reference&quot;:&quot;51&quot;}" data-plugin-id="ec_shortcodes_featured_resource" data-button-id="default">&nbsp;</embedded-content>'
