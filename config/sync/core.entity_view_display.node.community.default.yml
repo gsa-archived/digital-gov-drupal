@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.community.field_dg_highlight
     - field.field.node.community.field_dg_logo
     - field.field.node.community.field_dg_shortname
+    - field.field.node.community.field_kicker
     - field.field.node.community.field_members
     - field.field.node.community.field_page_weight
     - field.field.node.community.field_primary_image
@@ -66,6 +67,14 @@ content:
       svg_render_as_image: true
     third_party_settings: {  }
     weight: 8
+    region: content
+  field_kicker:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
     region: content
   field_slug:
     type: string
