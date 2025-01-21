@@ -1,15 +1,16 @@
-uuid: 71eab602-c462-4dec-95e7-2c7a234d9915
+uuid: c0ca1c67-5252-4add-8fbf-32a0c7c76d5b
 langcode: en
 status: true
 dependencies:
   module:
+    - media
     - node
-id: node.field_parent_guide
-field_name: field_parent_guide
+id: node.field_overview_image
+field_name: field_overview_image
 entity_type: node
 type: entity_reference
 settings:
-  target_type: node
+  target_type: media
 module: core
 locked: false
 cardinality: 1

@@ -24,7 +24,7 @@ third_party_settings:
     unpublish_revision: false
 name: 'Guide Navigation'
 type: guide_navigation
-description: null
+description: 'Configures navigation between all the pages in a single guide.'
 help: null
 new_revision: false
 preview_mode: 1
