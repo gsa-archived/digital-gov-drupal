@@ -6,6 +6,7 @@
     - authors: render array of author nodes
 
 #}
+
 <div class="authors-list {{ inline ? 'authors-list--inline' : '' }}">
   {% for author in authors|children %}
     <div class="author usa-media-block">
@@ -21,5 +22,4 @@
       </div>
     </div>
   {% endfor %}
-
 </div>

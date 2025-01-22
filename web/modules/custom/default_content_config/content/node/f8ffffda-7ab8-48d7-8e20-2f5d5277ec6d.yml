@@ -37,15 +37,6 @@ default:
       alias: /communities/plain-language
       langcode: en
       pathauto: 0
-  rh_action:
-    -
-      value: bundle_default
-  rh_redirect_response:
-    -
-      value: 301
-  rh_redirect_fallback_action:
-    -
-      value: bundle_default
   body:
     -
       value: '<p>Government professionals from all levels come together in this community to promote the use of plain language to provide better services to the public.</p><p>Become a member to collaborate with colleagues who are dedicated to the idea that the public deserves clear communications from government.</p><p>Digital.gov fosters this engaging community by providing spaces designed to empower members on their communication and plain language journeys. Remember, when participating in this community, you must follow <a href="https://digital.gov/communities/community-guidelines/">Digital.gov community guidelines</a>.</p><embedded-content data-plugin-config="{&quot;content_reference&quot;:&quot;62&quot;}" data-plugin-id="ec_shortcodes_featured_resource" data-button-id="default">&nbsp;</embedded-content>'
