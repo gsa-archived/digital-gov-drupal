@@ -5,6 +5,7 @@ _meta:
   bundle: guides
   default_langcode: en
   depends:
+    44a761c7-41e3-4657-99bc-7248846cd073: node
     b2f35ae8-423f-428b-865d-e420313e7a81: media
 default:
   revision_uid:
@@ -48,6 +49,9 @@ default:
   field_glossary:
     -
       target_id: hcd_glossary
+  field_guide_nav_ref:
+    -
+      entity: 44a761c7-41e3-4657-99bc-7248846cd073
   field_guide_weight:
     -
       value: 5

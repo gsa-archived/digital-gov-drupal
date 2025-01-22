@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.community.field_dg_highlight
     - field.field.node.community.field_dg_logo
     - field.field.node.community.field_dg_shortname
+    - field.field.node.community.field_kicker
     - field.field.node.community.field_members
     - field.field.node.community.field_page_weight
     - field.field.node.community.field_primary_image
@@ -46,14 +47,6 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
-  field_dg_logo:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 6
-    region: content
   field_dg_shortname:
     type: string
     label: above
@@ -61,6 +54,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 7
+    region: content
+  field_kicker:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_members:
     type: number_integer
@@ -86,6 +87,7 @@ content:
 hidden:
   field_deck: true
   field_dg_highlight: true
+  field_dg_logo: true
   field_page_weight: true
   field_primary_image: true
   field_slug: true
