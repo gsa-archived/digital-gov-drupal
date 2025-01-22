@@ -41,7 +41,8 @@ function digital_gov_preprocess_node(array &$variables): void {
   $created = DrupalDateTime::createFromTimestamp($variables['node']->getCreatedTime());
   $variables['created'] = $created->format('M j, Y');
 
-  // Check if current node page is designated an error page and set a variable for templates.
+  // Check if current node page is designated an error page
+  // And set a variable for templates.
   $system_errors = [
     404 => Drupal::config('system.site')->get('page.404'),
     403 => Drupal::config('system.site')->get('page.403'),
