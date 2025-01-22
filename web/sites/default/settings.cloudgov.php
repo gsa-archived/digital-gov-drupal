@@ -86,6 +86,10 @@ foreach ($cf_service_data as $service_list) {
         'driver' => 'mysql',
         'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
       ];
+      $rds_cert_path = "/home/vcap/app/govcloud-rds-ca.pem";
+      if (is_readable($rds_cert_path)) {
+        $databases['default']['default']['pdo'][PDO::MYSQL_ATTR_SSL_CA] = $rds_cert_path;
+      }
     }
     elseif (stristr($service['name'], 'secrets')) {
       if (!empty($service['credentials']['newrelic_key'])) {
