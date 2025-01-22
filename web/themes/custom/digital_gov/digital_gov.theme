@@ -109,6 +109,22 @@ function digital_gov_preprocess_node_guides(&$variables): void {
       $variables['is_guide_overview'] = ($variables['url'] === $links['guide_nav'][0]['link']?->getUrl()->toString());
     }
   }
+
+  if ($variables['view_mode'] === 'usa_card') {
+    $current_uri = \Drupal::request()->getRequestUri();
+    // The kicker shown in the cards varies depending on if we're on
+    // the guides landing page or the HCD guides landing page.
+    switch ($current_uri) {
+      case '/guides':
+        $variables['card_kicker'] = 'Digital.gov Guide';
+        break;
+
+      case '/guides/hcd':
+        // Documenting no kicker is shown.
+        $variables['card_kicker'] = '';
+        break;
+    }
+  }
 }
 
 /**
@@ -125,6 +141,22 @@ function digital_gov_preprocess_node_guide_landing(&$variables): void {
 
     if ($caption = $hero_image->get('field_caption')->first()) {
       $variables['hero_caption'] = $caption->view();
+    }
+  }
+
+  if ($variables['view_mode'] === 'usa_card') {
+    $current_uri = \Drupal::request()->getRequestUri();
+    // The kicker shown in the cards varies depending on if we're on
+    // the guides landing page or the HCD guides landing page.
+    switch ($current_uri) {
+      case '/guides':
+        $variables['card_kicker'] = 'Digital.gov Guide';
+        break;
+
+      case '/guides/hcd/':
+        // Documenting no kicker is shown.
+        $variables['card_kicker'] = '';
+        break;
     }
   }
 }
@@ -154,7 +186,7 @@ function digital_gov_get_guidenav_links(Node $node, string $current): array {
   // - 'subnav': an array of Link objects of links if the sidenav is shown.
   $links['guide_nav'] = [];
 
-  if ($kicker_link = $node->get('field_kicker_link')->first()) {
+  if ($kicker_link = $node->get('field_kicker_link')?->first()) {
     $links['guide_kicker_title'] = $kicker_link->getValue()['title'];
     $links['guide_kicker_url'] = Url::fromUri($kicker_link->getValue()['uri']);
   }
