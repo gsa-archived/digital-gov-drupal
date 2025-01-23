@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\convert_text;
 
+use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
 use League\CommonMark\CommonMarkConverter;
 
 /**
@@ -34,12 +36,86 @@ class ConvertText {
 
       case 'html':
         $converter = new CommonMarkConverter();
-        return $converter->convert($source_text)->getContent();
+        $content = $converter->convert($source_text)->getContent();
+        return self::addLinkItMarkup($content);
 
       default:
         throw new \Exception("Invalid \$field_type of $field_type given");
-
     }
+  }
+
+  /**
+   * Updates <a> tags with local or digital.gov hrefs and aliases with linkit data attributes.
+   */
+  protected static function addLinkItMarkup(string $source_text): string {
+    // Extract local and digital.gov links
+    $dom = new \DOMDocument();
+    $dom->loadHTML($source_text);
+
+    foreach ($dom->getElementsByTagName('a') as $link) {
+      $href = $link->getAttribute('href');
+      if (!$href) {
+        continue;
+      }
+
+      $host = parse_url($href, PHP_URL_HOST) ?? '';
+
+      if (in_array($host, ['', 'digital.gov', 'www.digital.gov'])) {
+        $alias = parse_url($href, PHP_URL_PATH);
+
+        $sysPath = \Drupal::service('path_alias.manager')->getPathByAlias($alias);
+
+        // If a link already has all the linkit attributes, leave it be.
+        if (
+          $link->hasAttribute('data-entity-type')
+          && $link->hasAttribute('data-entity-uuid')
+          && $link->hasAttribute('data-entity-substitution')
+        ) {
+          continue;
+        }
+
+        $url = \Drupal\Core\Url::fromUserInput($sysPath);
+        switch ($url->getRouteName()) {
+          case 'entity.node.canonical':
+            $params = $url->getRouteParameters();
+            $node = Node::load($params['node']);
+            if (!$node) {
+              continue 2;
+            }
+            $entityType = 'node';
+            $uuid = $node->uuid();
+            break;
+
+          case 'entity.taxonomy_term.canonical':
+            $entityType = 'term';
+            $params = $url->getRouteParameters();
+            $term = Term::load($params['taxonomy_term']);
+            if (!$term) {
+              continue 2;
+            }
+            $uuid = $term->uuid();
+            break;
+
+          case '<front>':
+            // If someone links to the home page, we don't need to modify the link.
+            continue 2;
+
+          default:
+            // do we want to log / warn here?
+            continue 2;
+        }
+
+        $link->setAttribute('href', $sysPath);
+        $link->setAttribute('data-entity-type', $entityType);
+        $link->setAttribute('data-entity-uuid', $uuid);
+        $link->setAttribute('data-entity-substitution', 'canonical');
+      }
+    }
+
+    $body = $dom->getElementsByTagName('body')->item(0);
+    $html = $dom->saveHTML($body);
+    // There's no good way to keep white space AND omit the body tag automatically
+    return preg_replace(['/^<body>/', '/<\/body>$/'], '', $html);
   }
 
   /**
