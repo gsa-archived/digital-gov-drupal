@@ -16,8 +16,10 @@ dependencies:
     - field.field.node.guides.field_summary
     - field.field.node.guides.field_summary_box
     - field.field.node.guides.field_topics
+    - image.style.large
     - node.type.guides
   module:
+    - media
     - text
     - user
 id: node.guides.usa_card_dg_guide
@@ -27,25 +29,27 @@ mode: usa_card_dg_guide
 content:
   field_deck:
     type: text_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
   field_kicker:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
     region: content
   field_primary_image:
-    type: entity_reference_entity_view
-    label: above
+    type: media_thumbnail
+    label: hidden
     settings:
-      view_mode: default
-      link: false
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 2
     region: content

@@ -16,8 +16,10 @@ dependencies:
     - field.field.node.guides.field_summary
     - field.field.node.guides.field_summary_box
     - field.field.node.guides.field_topics
+    - image.style.large
     - node.type.guides
   module:
+    - media
     - text
     - user
 id: node.guides.usa_card_explore
@@ -41,11 +43,13 @@ content:
     weight: 1
     region: content
   field_primary_image:
-    type: entity_reference_entity_view
+    type: media_thumbnail
     label: above
     settings:
-      view_mode: default
-      link: false
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 2
     region: content
