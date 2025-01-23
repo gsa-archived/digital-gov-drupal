@@ -143,22 +143,6 @@ function digital_gov_preprocess_node_guide_landing(&$variables): void {
       $variables['hero_caption'] = $caption->view();
     }
   }
-
-  if ($variables['view_mode'] === 'usa_card') {
-    $current_uri = \Drupal::request()->getRequestUri();
-    // The kicker shown in the cards varies depending on if we're on
-    // the guides landing page or the HCD guides landing page.
-    switch ($current_uri) {
-      case '/guides':
-        $variables['card_kicker'] = 'Digital.gov Guide';
-        break;
-
-      case '/guides/hcd/':
-        // Documenting no kicker is shown.
-        $variables['card_kicker'] = '';
-        break;
-    }
-  }
 }
 
 /**

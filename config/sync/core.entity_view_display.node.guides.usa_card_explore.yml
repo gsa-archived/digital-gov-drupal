@@ -1,9 +1,9 @@
-uuid: 59b0f51c-ce38-4688-b25a-e5ca282ad1ee
+uuid: 965fd4b2-31e1-48fc-bcdf-99e171ccd027
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.usa_card
+    - core.entity_view_mode.node.usa_card_explore
     - field.field.node.guides.body
     - field.field.node.guides.field_deck
     - field.field.node.guides.field_glossary
@@ -16,46 +16,42 @@ dependencies:
     - field.field.node.guides.field_summary
     - field.field.node.guides.field_summary_box
     - field.field.node.guides.field_topics
-    - image.style.large
     - node.type.guides
   module:
-    - media
     - text
     - user
-id: node.guides.usa_card
+id: node.guides.usa_card_explore
 targetEntityType: node
 bundle: guides
-mode: usa_card
+mode: usa_card_explore
 content:
   field_deck:
     type: text_default
-    label: hidden
+    label: above
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
   field_kicker:
     type: string
-    label: hidden
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
     region: content
   field_primary_image:
-    type: media_thumbnail
-    label: hidden
+    type: entity_reference_entity_view
+    label: above
     settings:
-      image_link: ''
-      image_style: large
-      image_loading:
-        attribute: lazy
+      view_mode: default
+      link: false
     third_party_settings: {  }
     weight: 2
     region: content
   field_summary:
     type: text_default
-    label: hidden
+    label: above
     settings: {  }
     third_party_settings: {  }
     weight: 3

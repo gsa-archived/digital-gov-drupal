@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.usa_card
+    - core.entity_view_mode.node.usa_card_dg_guide
     - field.storage.node.field_featured_image
     - image.style.large
     - node.type.guide_landing
@@ -306,7 +306,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: usa_card
+          view_mode: usa_card_dg_guide
       query:
         type: views_query
         options:
