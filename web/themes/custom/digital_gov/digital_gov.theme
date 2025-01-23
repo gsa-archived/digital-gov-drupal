@@ -154,7 +154,7 @@ function digital_gov_get_guidenav_links(Node $node, string $current): array {
   // - 'subnav': an array of Link objects of links if the sidenav is shown.
   $links['guide_nav'] = [];
 
-  if ($kicker_link = $node->get('field_kicker_link')->first()) {
+  if ($kicker_link = $node->get('field_kicker_link')?->first()) {
     $links['guide_kicker_title'] = $kicker_link->getValue()['title'];
     $links['guide_kicker_url'] = Url::fromUri($kicker_link->getValue()['uri']);
   }
@@ -397,6 +397,7 @@ function digital_gov_theme_suggestions_container_alter(array &$suggestions, arra
   // A list of view names in which to exclude the container markup.
   $exclude_views = [
     'resource_topics_list',
+    'guide_cards',
   ];
 
   if (in_array($variables['element']['#name'], $exclude_views)) {
