@@ -253,8 +253,11 @@ function digital_gov_theme(): array {
 function digital_gov_preprocess_author_image(array &$vars): void {
   if (isset($vars["author"]["#entity"])) {
     $node = '#entity';
-  } else {
+  } else if  (isset($vars["author"]["#node"])) {
     $node = '#node';
+  } else {
+    error_log("Attempt to get the author value in digital_gov.theme failed.");
+    return;
   }
   $title = $vars["author"][$node]->getTitle();
   $profile_source = $vars["author"][$node]->field_profile_source->value ?? NULL;
