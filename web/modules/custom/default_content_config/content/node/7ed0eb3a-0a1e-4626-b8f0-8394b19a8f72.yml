@@ -52,6 +52,9 @@ default:
       entity: 62fdaf72-5449-4312-a82e-b87b9b406f36
     -
       entity: baa67bf4-6fa9-40b4-bee3-a51ae80d6269
+  field_guide_weight:
+    -
+      value: 2
   field_primary_image:
     -
       entity: d54f480c-f28b-49c0-a1ef-7d0adf594af6
