@@ -124,9 +124,18 @@
   </section>
 
   {# Digital.gov Communities of Practice #}
-  <section class="grid-container-desktop usa-section">
-    {{ drupal_view('featured_communities', 'default') }}
-  </section>
+  {% set featured_communities = drupal_view_result('featured_communities', 'default') %}
+  {% if featured_communities|length %}
+    <section class="grid-container-desktop usa-section">
+      {{ include('@digital_gov/partials/featured-communities.html.twig', {
+        heading: 'Digital.gov Communities of Practice'|t,
+        deck: 'Collaborate and share resources with other communities across government who are focused on building better digital experience in government.'|t,
+        communities: featured_communities,
+        display: 'teaser',
+      }) }}
+    </section>
+  {% endif %}
+
 
   [Place holder for news list]
 
