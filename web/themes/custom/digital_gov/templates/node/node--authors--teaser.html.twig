@@ -61,82 +61,16 @@
  *
  * @ingroup themeable
  */
+
 #}
-{% set is_past_event = not is_future_event %}
-{% set title = node.label %}
-{% set summary = content.field_summary|field_value %}
-{% set kicker = content.field_kicker|field_value %}
-{% set youtube_id = content.field_youtube_id|field_value %}
-{% set month = node.getCreatedTime|date('M') %}
-{% set day = node.getCreatedTime|date('d') %}
-{% set year = node.getCreatedTime|date('Y') %}
-{% set unique_id = title|clean_unique_id %}
-
-<article class="card card-event {% if is_past_event %} card-event--past
-    {% endif %}card-linked" aria-labelledby="{{ unique_id }}">
-  <div class="card-event__main">
-    <div class="card-event__header">
-      {% if kicker %}
-        <div class="flex-align-end card-event__kicker">
-          <span>{{ kicker }}</span>
-        </div>
-      {% endif %}
-      <h2 class="card-event__title" id="{{ unique_id }}">
-        <a href="{{ url }}" title="{{ title }}" rel="bookmark">{{ title }}</a>
-      </h2>
-    </div>
-
-    <div class="card-event__body">
-      {% if summary %}
-        <div class="card-event__summary">
-          {{ summary }}
-        </div>
-      {% else %}
-        <div class="card-event__deck">{{ deck }}</div>
-      {% endif %}
-
-      {% if youtube_id %}
-        <div class="card-event__watch-label">
-          <svg class="usa-icon dg-icon dg-icon--large margin-bottom-05" aria-hidden="true" focusable="false">
-            <use xlink:href="/{{ active_theme_path() }}/static/uswds/img/sprite.svg#youtube"></use>
-          </svg>
-          {{ 'Watch Video'|t }}
-        </div>
-      {% endif %}
-
-      {% if is_past_event and content.field_authors|field_value %}
-        {{ include('@digital_gov/partials/authors-list.html.twig', {
-          inline: true,
-          authors: content.field_authors|field_value,
-        }, with_context: false) }}
-      {% endif %}
-
-    </div>
+<div class="author usa-media-block">
+  {{ drupal_entity('node', node.id, 'image') }}
+  <div class="usa-media-block__body">
+    <a class="author__name"
+       href="{{ url }}"
+       title="Posts by {{ label|field_value }}"
+       rel="author"
+       aria-label="Read more articles by {{ label|field_value }}"
+    >{{ label|field_value }}</a>
   </div>
-
-  <div class="card-event__aside">
-    <div class="card-event__date">
-      <time class="card-event__datetime" datetime="{{ start_date }}">
-        <span class="card-event__datetime-month">{{ month }}</span>
-        <span class="card-event__datetime-day">{{ day }}
-          <span class="card-event__datetime-comma">,</span>
-        </span>
-        <span class="card-event__datetime-year--mobile">{{ year }}</span>
-      </time>
-
-      {% if is_past_event %}
-        <span class="card-event__date-label">
-          <span class="card-event__datetime-year">{{ year }}</span>
-        </span>
-      {% else %}
-        <a aria-label="Register for {{ title }}" class="card-event__cta" href="{{ content.field_registration_url|field_value }}">{{ 'Register'|t }}
-          <time class="card-event__datetime--mobile" datetime="{{ start_date }}">
-            <span>{{ 'for'|t }}</span>
-            <span class="card-event__datetime-month">{{ month }}</span>
-            <span class="card-event__datetime-day">{{ day }}</span>
-          </time>
-        </a>
-      {% endif %}
-    </div>
-  </div>
-</article>
+</div>
