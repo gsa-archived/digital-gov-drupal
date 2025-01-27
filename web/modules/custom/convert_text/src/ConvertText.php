@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\convert_text;
 
+use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use League\CommonMark\CommonMarkConverter;
@@ -16,9 +17,9 @@ class ConvertText {
   /**
    * Converts text for the given $field_type.
    *
-   * @var string $source_text
+   * @param string $source_text
    *   The original source value.
-   * @var string $field_type
+   * @param string $field_type
    *   Either plain or html.
    *
    * @return string
@@ -45,10 +46,9 @@ class ConvertText {
   }
 
   /**
-   * Updates <a> tags with local or digital.gov hrefs and aliases with linkit data attributes.
+   * Update local link tags with linkit data attributes.
    */
   protected static function addLinkItMarkup(string $source_text): string {
-    // Extract local and digital.gov links
     $dom = new \DOMDocument();
     $dom->loadHTML($source_text);
 
@@ -74,7 +74,7 @@ class ConvertText {
           continue;
         }
 
-        $url = \Drupal\Core\Url::fromUserInput($sysPath);
+        $url = Url::fromUserInput($sysPath);
         switch ($url->getRouteName()) {
           case 'entity.node.canonical':
             $params = $url->getRouteParameters();
@@ -97,11 +97,12 @@ class ConvertText {
             break;
 
           case '<front>':
-            // If someone links to the home page, we don't need to modify the link.
+            // If someone links to the home page,
+            // we don't need to modify the link.
             continue 2;
 
           default:
-            // do we want to log / warn here?
+            // Do we want to log / warn here?
             continue 2;
         }
 
@@ -114,14 +115,14 @@ class ConvertText {
 
     $body = $dom->getElementsByTagName('body')->item(0);
     $html = $dom->saveHTML($body);
-    // There's no good way to keep white space AND omit the body tag automatically
+    // No good way to keep white space AND omit the body tag automatically.
     return preg_replace(['/^<body>/', '/<\/body>$/'], '', $html);
   }
 
   /**
    * Gets text ready to be stored in plain text fields.
    *
-   * @var string $source_text
+   * @param string $source_text
    *   The original source value.
    *
    * @return string
@@ -134,7 +135,7 @@ class ConvertText {
   /**
    * Gets text ready to be stored in html text fields.
    *
-   * @var string $source_text
+   * @param string $source_text
    *   The original source value.
    *
    * @return string

@@ -1,24 +1,6 @@
 <?php
 
-
-
 /**
  * @file
  * Primary module hooks for Convert Text module.
  */
-function convert_text_preprocess_html(array &$variables): void {
-  if (!isset($_GET['oam'])) {
-    return;
-  }
-  $example = '<p>This goes to the <a href="/about">About page</a> and to the <a href="https://digital.gov/resources">Resources</a> page.'
-    . ' Read about <a href="http://digital.gov/topics/accessibility">Accessibility</a>. This is another <a href="https://nasa.gov/">External LINK</a></p>';
-  $example .= PHP_EOL . PHP_EOL . '<p>Another paragraph with a taxonomy <a href="/taxonomy/term/20">link</a> without an alias. '
-    . 'This is an unaliased <a href="/node/20">Node link</a> for the <a href="/news">News Blogs"</p>';
-  $example .= PHP_EOL . PHP_EOL . '<p>Do not disturb<a href="/node/20" data-entity-type="node" '
-    . 'data-entity-uuid="986de625-5015-47c0-9ccc-273f985b69b8" data-entity-substitution="canonical">No need to change</a></p>';
-  echo '<pre>';
-  echo wordwrap(htmlentities($example), 200) . PHP_EOL . PHP_EOL;
-  echo wordwrap(convert_dg_links($example), 200);
-  die('oam - convert_text.module 34');
-
-}
