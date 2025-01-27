@@ -1,33 +1,44 @@
 _meta:
   version: '1.0'
   entity_type: user
-  uuid: b7e79ea2-5aea-4fe8-9499-238f7d76ba30
+  uuid: 280a2f72-f105-4dcb-b81f-fae216ed62de
   default_langcode: en
 default:
   preferred_langcode:
     -
       value: en
+  preferred_admin_langcode:
+    -
+      value: en
   name:
     -
-      value: christian.medders@gsa.gov
+      value: ray.estrada@bixal.com
+  pass:
+    -
+      value: $2y$10$I6KM/OQbPASsF0FAb8GbU.AyJBhtiMVY3oT380Nk3cDQ4ei2Hjtqm
+      existing: ''
+      pre_hashed: true
   mail:
     -
-      value: christian.medders@gsa.gov
+      value: ray.estrada@bixal.com
   timezone:
     -
-      value: America/New_York
+      value: America/Vancouver
   status:
     -
       value: true
   created:
     -
-      value: 1733422324
+      value: 1737647495
   access:
     -
       value: 0
   login:
     -
       value: 0
+  init:
+    -
+      value: ray.estrada@bixal.com
   roles:
     -
       target_id: admin
@@ -38,4 +49,4 @@ default:
     -
       alias: ''
       langcode: en
-      pathauto: 1
+      pathauto: 0
