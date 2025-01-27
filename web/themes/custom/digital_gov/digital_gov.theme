@@ -7,6 +7,8 @@
 
 declare(strict_types=1);
 
+use Drupal\Component\Serialization\Yaml;
+use Drupal\convert_text\ConvertText;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Link;
 use Drupal\Core\Template\Attribute;
@@ -392,4 +394,38 @@ function digital_gov_theme_suggestions_container_alter(array &$suggestions, arra
   if (in_array($variables['element']['#name'], $exclude_views)) {
     $suggestions[] = 'container__no_wrapper';
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function digital_gov_preprocess_node__landing_page__job_board(&$variables, $hook) {
+  $filtered_array = [];
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $config_pages = $entity_type_manager->getStorage('config_pages')->load('job_board');
+  $yml_string = $config_pages->get('field_job_board_yml_contents')->getString();
+  try {
+    $yml_array = Yaml::decode($yml_string);
+  }
+  catch (\Exception $exception) {
+    $yml_array = [];
+    \Drupal::logger('job_board')->emergency('The valued stored for job board at /admin/content/job-board is not valid YAML. ' . $exception->getMessage());
+  }
+  if (!empty($yml_array)) {
+    foreach ($yml_array as $item) {
+      $close_date = date('Y-m-d', $item['close_date']);
+      $today = date('Y-m-d');
+      if ($close_date >= $today) {
+        $item['open_date'] = date('F j, Y', $item['open_date']);
+        $item['close_date'] = date('F j, Y', $item['close_date']);
+        // These fields may have markdown still.
+        $item['title'] = ConvertText::htmlText($item['title']);
+        $item['department'] = ConvertText::htmlText($item['department']);
+        $item['description'] = ConvertText::htmlText($item['description']);
+
+        $filtered_array[] = $item;
+      }
+    }
+  }
+  $variables['job_board'] = $filtered_array;
 }

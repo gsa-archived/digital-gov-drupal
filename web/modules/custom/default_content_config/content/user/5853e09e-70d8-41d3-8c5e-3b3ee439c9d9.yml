@@ -1,18 +1,26 @@
 _meta:
   version: '1.0'
   entity_type: user
-  uuid: 085be1fc-95dd-45ba-b06b-97e51b1e4b78
+  uuid: 5853e09e-70d8-41d3-8c5e-3b3ee439c9d9
   default_langcode: en
 default:
   preferred_langcode:
     -
       value: en
+  preferred_admin_langcode:
+    -
+      value: en
   name:
     -
-      value: ammie.farrajfeijoo@gsa.gov
+      value: jobboard@example.com
+  pass:
+    -
+      value: $2y$10$Jkd.Xqz/RT3jm47wtcbwFe5U.t94dqq.jp8GRxqf4KLBOjdYqjfMa
+      existing: ''
+      pre_hashed: true
   mail:
     -
-      value: ammie.farrajfeijoo@gsa.gov
+      value: jobboard@example.com
   timezone:
     -
       value: America/New_York
@@ -21,16 +29,19 @@ default:
       value: true
   created:
     -
-      value: 1733422399
+      value: 1737405103
   access:
     -
       value: 0
   login:
     -
       value: 0
+  init:
+    -
+      value: jobboard@example.com
   roles:
     -
-      target_id: admin
+      target_id: job_board_manager
   role_change:
     -
       target_id: __role_delegation_empty_field_value__
@@ -38,4 +49,4 @@ default:
     -
       alias: ''
       langcode: en
-      pathauto: 1
+      pathauto: 0
