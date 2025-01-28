@@ -1,8 +1,9 @@
-uuid: d1c6acd1-5490-4397-9997-80ce87ae2a2c
+uuid: 67326451-c765-4010-a14d-a0db882838eb
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.image
     - field.field.node.authors.body
     - field.field.node.authors.field_agency_full_name
     - field.field.node.authors.field_first_name
@@ -15,10 +16,10 @@ dependencies:
     - options
     - text
     - user
-id: node.authors.default
+id: node.authors.image
 targetEntityType: node
 bundle: authors
-mode: default
+mode: image
 content:
   body:
     type: text_default
@@ -41,10 +42,9 @@ content:
     weight: 106
     region: content
   field_first_name:
-    type: string
+    type: text_default
     label: above
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
     weight: 119
     region: content
@@ -57,10 +57,9 @@ content:
     weight: 113
     region: content
   field_last_name:
-    type: string
+    type: text_default
     label: above
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
     weight: 104
     region: content
