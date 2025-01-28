@@ -62,8 +62,8 @@ content:
     type: number_integer
     label: above
     settings:
-      thousand_separator: ''
-      prefix_suffix: true
+      thousand_separator: ','
+      prefix_suffix: false
     third_party_settings: {  }
     weight: 2
     region: content
