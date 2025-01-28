@@ -63,9 +63,7 @@
  */
 #}
 
-<main
-  role="main" id="main-content">
-  {# <div class="grid-container-desktop margin-bottom-5"> #}
+<main role="main" id="main-content" aria-label="{{ 'Content'|t }}">
   <section class="usa-section" id="resources_featured">
     <div class="tablet-lg:grid-container tablet-lg:grid-container-desktop">
       <div class="grid-row tablet-lg:grid-gap-4">
@@ -128,11 +126,61 @@
     {{ drupal_view('featured_communities', 'default') }}
   </section>
 
-  [Place holder for news list]
+  {# Digital.gov News & Events #}
+  {# Get news posts, recent events and future events. #}
+  {% set homepage_news = drupal_view_result('news_and_events', 'homepage_news') %}
+  {% set homepage_past_events = drupal_view_result('news_and_events', 'homepage_past_events') %}
+  {% set homepage_future_events = drupal_view_result('news_and_events', 'homepage_future_events') %}
 
-{# NOT-MIGRATED
-{{/* News */}}
-{{- partialCached "core/home/news_featured.html" . -}} #}
+  {# Create new combined arrays. #}
+  {% set news_and_events = [] %}
+  {% set sorted_news_and_events = [] %}
 
-  {# </div> #}
+  {# Add processed news posts to the combined array. #}
+  {% for post in homepage_news %}
+    {% set news_and_events = news_and_events|merge([{
+      date: post.node_field_data_created,
+      nid: post.nid,
+    }]) %}
+  {% endfor %}
+
+  {# Add processed past events to the combined array. #}
+  {% for p_event in homepage_past_events %}
+    {% set news_and_events = news_and_events|merge([{
+      date: p_event.node__field_end_date_field_end_date_value|date('U'),
+      nid: p_event.nid,
+    }]) %}
+  {% endfor %}
+
+  {# Sort combined array and insert future events into rendered listing. #}
+  {% for item in news_and_events|sort((a, b) => a.date <=> b.date)|reverse %}
+    {# Insert 1st future event at the 3rd position. #}
+    {% if loop.index == 3 and homepage_future_events.0 %}
+      {% set sorted_news_and_events = sorted_news_and_events|merge([
+        drupal_entity('node', homepage_future_events.0.nid, 'teaser'),
+      ]) %}
+    {% endif %}
+
+    {# Insert 2nd future event at the 9th position. #}
+    {% if loop.index == 8 and homepage_future_events.1 %}
+      {% set sorted_news_and_events = sorted_news_and_events|merge([
+        drupal_entity('node', homepage_future_events.1.nid, 'teaser'),
+      ]) %}
+    {% endif %}
+
+    {% if loop.index <= 10 - homepage_future_events|length %}
+      {% set sorted_news_and_events = sorted_news_and_events|merge([
+        drupal_entity('node', item.nid, 'teaser'),
+      ]) %}
+    {% endif %}
+  {% endfor %}
+
+  {{ include('@digital_gov/partials/home/news-featured.html.twig', {
+    heading: 'News and Events'|t,
+    deck: 'Innovative work, news, and ideas from people and teams in government'|t,
+    list: sorted_news_and_events,
+    link: '/join',
+    link_text: 'Write for us'|t,
+    aria_label: 'Featured news and events'|t,
+  }) }}
 </main>
