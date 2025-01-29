@@ -240,15 +240,7 @@ display:
       style:
         type: html_list
         options:
-          grouping:
-            -
-              field: status
-              rendered: false
-              rendered_strip: false
-            -
-              field: status
-              rendered: false
-              rendered_strip: false
+          grouping: {  }
           row_class: 'promo dg-promos__list-item'
           default_row_class: false
           type: ul
