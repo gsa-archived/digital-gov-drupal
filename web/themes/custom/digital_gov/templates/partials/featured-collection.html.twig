@@ -7,7 +7,6 @@ EXPECTED VARIABLES:
     - link: string url
     - title: string or renderable markup
     - summary: string or renderable markup
-    - deck: string or renderable markup
 #}
 
 {% if list|length %}
@@ -31,10 +30,7 @@ EXPECTED VARIABLES:
             <p>
               <a href="{{ item.link }}" title="{{ item.title }}">
                 <span>{{ item.title }}</span>
-              </a>
-              {% if item.summary or item.deck %}
-                — {{ item.summary|default(item.deck) }}
-              {% endif %}
+              </a>{% if item.summary %}—{{ item.summary|trim|truncate(140, true, '&hellip;') }}{% endif %}
             </p>
           </div>
         </li>

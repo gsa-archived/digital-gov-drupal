@@ -94,11 +94,11 @@
             {% set resource_list = [] %}
             {% for resource in featured_resources %}
               {% set item = resource._entity %}
+              {% set summary = item.field_summary.value|default(item.field_deck.value) %}
               {% set resource_list = resource_list|merge([{
                 link: path('entity.node.canonical', {node: item.id()}),
                 title: item.label,
-                summary: item.field_summary.value ? item.field_summary.value|check_markup('single_inline_html'),
-                deck: item.field_deck.value ? item.field_deck.value|check_markup('single_inline_html'),
+                summary: summary ? summary|check_markup('single_inline_html'),
               }]) %}
             {% endfor %}
 
