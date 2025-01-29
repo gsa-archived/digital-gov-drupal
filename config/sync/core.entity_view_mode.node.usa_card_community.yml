@@ -5,7 +5,7 @@ dependencies:
   module:
     - node
 id: node.usa_card_community
-label: 'USA Card - Community'
+label: 'USA Card - Community with icon'
 description: ''
 targetEntityType: node
 cache: true
