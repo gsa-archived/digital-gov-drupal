@@ -7,8 +7,14 @@
 
 declare(strict_types=1);
 
+use Drupal\Component\Serialization\Yaml;
+use Drupal\convert_text\ConvertText;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Link;
 use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * @file
@@ -37,6 +43,21 @@ function digital_gov_preprocess_node(array &$variables): void {
   $created = DrupalDateTime::createFromTimestamp($variables['node']->getCreatedTime());
   $variables['created'] = $created->format('M j, Y');
 
+  // Check if current node page is designated an error page
+  // And set a variable for templates.
+  $system_errors = [
+    404 => Drupal::config('system.site')->get('page.404'),
+    403 => Drupal::config('system.site')->get('page.403'),
+  ];
+  foreach ($system_errors as $system_error) {
+    if ($system_error == '/node/' . $variables['node']->id()) {
+      $variables['error_page'] = TRUE;
+    }
+  }
+
+  $site_config = \Drupal::config('system.site');
+  $variables['site_name'] = $site_config->get('name');
+
   switch ($variables['node']->bundle()) {
     case 'news':
       $before_date = new DrupalDateTime('5 years ago');
@@ -44,18 +65,211 @@ function digital_gov_preprocess_node(array &$variables): void {
       break;
 
     case 'event':
-      $now = new DrupalDateTime();
-      $startDate = $variables['node']->field_start_date->date;
-      $variables['start_date'] = $startDate->format('l, F j, Y', ['timezone' => date_default_timezone_get()]);
-      $variables['start_time'] = $startDate->format('g:i A', ['timezone' => date_default_timezone_get()]);
-      $variables['is_future_event'] = $startDate->getPhpDateTime() > $now->getPhpDateTime();
+      $variables['is_future_event'] = $variables['node']->getCreatedTime() > \Drupal::time()->getRequestTime();
+      break;
 
-      if ($variables["node"]->field_end_date->value) {
-        $endDate = $variables["node"]->field_end_date->date;
-        $variables['end_time'] = $endDate->format('g:i A T', ['timezone' => date_default_timezone_get()]);
+    case 'guides':
+      digital_gov_preprocess_node_guides($variables);
+      break;
+
+    case 'guide_landing':
+      digital_gov_preprocess_node_guide_landing($variables);
+      break;
+
+    case 'authors':
+      if ($variables['view_mode'] !== 'image') {
+        break;
+      }
+      $profile_source = $variables['node']->get('field_profile_source')->getString();
+      $github = $variables['node']->get('field_github')->getString();
+      if (empty($profile_source) && $github) {
+        $profile_source = 'github';
+      }
+
+      switch ($profile_source) {
+        case 'github':
+          // Author has selected GitHub and specified a GitHub user ID.
+          $variables['icon_path'] = sprintf('https://github.com/%s.png?size=50', $github);
+          $variables['icon_path_internal'] = FALSE;
+          break;
+
+        case 'digit-light':
+        case 'digit-dark':
+        case 'digit-pride':
+          $variables['icon_path'] = sprintf('static/digitalgov/img/%s.png', $profile_source);
+          $variables['icon_path_internal'] = TRUE;
+          break;
+
+        default:
+          // No source selected OR they picked GitHub without a GitHub ID
+          // choose between light and dark based on length of the slug.
+          $variables['icon_path'] = sprintf(
+            'static/digitalgov/img/digit-%s.png',
+            strlen($variables['node']->get('field_slug')->getString() ?: $variables['node']->label()) % 2 ? 'dark' : 'light'
+          );
+          $variables['icon_path_internal'] = TRUE;
+          break;
       }
       break;
   }
+}
+
+/**
+ * Preprocess function for guide nodes.
+ */
+function digital_gov_preprocess_node_guides(&$variables): void {
+  $guide = $variables['node'];
+  // Set defaults.
+  $variables['show_next_previous'] = FALSE;
+  $variables['show_in_page_nav'] = FALSE;
+  $variables['is_guide_overview'] = FALSE;
+  $variables['show_summary_box'] = $guide->get('field_summary_box')[0]->get('value')->getCastedValue();
+
+  if ($nav_node = $guide->get('field_guide_nav_ref')->first()?->get('entity')->getTarget()->getValue()) {
+    $links = digital_gov_get_guidenav_links($nav_node, $variables['url']);
+    $variables = array_merge($variables, $links);
+
+    if ($overview_image = $nav_node->get('field_overview_image')->first()?->get('entity')->getTarget()->getValue()) {
+      $media = $overview_image->get('field_media_image')->first();
+      $variables['guide_overview_image'] = $media;
+
+      if ($credit = $overview_image->get('field_credit')->first()) {
+        $variables['guide_overview_credit'] = $credit->view();
+      }
+
+      if ($caption = $overview_image->get('field_caption')->first()) {
+        $variables['guide_overview_caption'] = $caption->view();
+      }
+    }
+    $variables['show_next_previous'] = $nav_node->field_show_next_previous?->value === "1";
+    $variables['show_in_page_nav'] = $nav_node->field_show_in_page_nav?->value === "1";
+    if ($links['guide_nav']) {
+      $variables['is_guide_overview'] = ($variables['url'] === $links['guide_nav'][0]['link']?->getUrl()->toString());
+    }
+  }
+}
+
+/**
+ * Preprocess function for guide landing nodes.
+ */
+function digital_gov_preprocess_node_guide_landing(&$variables): void {
+  if ($hero_image = $variables['node']->get('field_primary_image')->first()->get('entity')->getTarget()->getValue()) {
+    $media = $hero_image->get('field_media_image')->first();
+    $variables['hero_image'] = $media;
+
+    if ($credit = $hero_image->get('field_credit')->first()) {
+      $variables['hero_credit'] = $credit->view();
+    }
+
+    if ($caption = $hero_image->get('field_caption')->first()) {
+      $variables['hero_caption'] = $caption->view();
+    }
+  }
+}
+
+/**
+ * Builds an array we can add to $variables with guide navigation info.
+ */
+function digital_gov_get_guidenav_links(Node $node, string $current): array {
+  // Anonymous helper for getting node links.
+  $makeLink = function (Node $page, ?string $override = NULL): Link {
+    $label = $page->label();
+
+    // Allow caller to specify the title to use, unless it's been set in the CMS
+    // Mainly to label the starting page as the Overview page.
+    if ($node_nav_title = $page->get('field_guide_nav_title')->getString()) {
+      $label = $node_nav_title;
+    }
+    elseif ($override) {
+      $label = $override;
+    }
+
+    return $page->toLink($label);
+  };
+
+  // The guide_nav is an array that holds items with the following keys
+  // - 'link': A Link object the main link used the menu bar
+  // - 'subnav': an array of Link objects of links if the sidenav is shown.
+  $links['guide_nav'] = [];
+
+  if ($kicker_link = $node->get('field_kicker_link')?->first()) {
+    $links['guide_kicker_title'] = $kicker_link->getValue()['title'];
+    $links['guide_kicker_url'] = Url::fromUri($kicker_link->getValue()['uri']);
+  }
+
+  if ($node->field_guide_navigation) {
+    // Track the count separately in case the first item is not published.
+    $count = 0;
+    // Generate the two-levels of nav links for this guide.
+    foreach ($node->field_guide_navigation as $ref) {
+      // This field points at a paragraph entity.
+      $para = Paragraph::load($ref->target_revision_id);
+
+      if ($para->field_guide_link->target_id) {
+        $guidePage = $para->get('field_guide_link')->referencedEntities()[0];
+        if (!$guidePage->isPublished()) {
+          continue;
+        }
+
+        if ($count === 0) {
+          $links['guide_overview_node'] = $guidePage;
+        }
+        // Add the link to the navigation.
+        $link = $makeLink($guidePage, $count === 0 ? 'Overview' : NULL);
+        $item['link'] = $link;
+
+        $count++;
+
+        if ($para->field_guide_subnav) {
+          $subNavNodes = $para->get('field_guide_subnav')->referencedEntities();
+          $subNavNodes = array_filter($subNavNodes, fn(Node $node) => $node->isPublished());
+          if ($subNavNodes) {
+            $item['subnav'] = array_map($makeLink, $subNavNodes);
+            // If the current page is in the subnav, mark the parent as current.
+            $current_in_subnav = array_filter($item['subnav'], function (Link $subItem) use ($current) {
+              return $subItem->getUrl()->toString() === $current;
+            });
+            if ($current_in_subnav) {
+              // We haven't added our item to the guidenav, add 1 to the index.
+              $links['guide_current_index'] = isset($links['guide_nav']) ? array_key_last($links['guide_nav']) + 1 : 0;
+            }
+          }
+        }
+        $links['guide_nav'][] = $item;
+        if ($item['link']->getUrl()->toString() === $current) {
+          // Mark which top-level page is open.
+          $links['guide_current_index'] = array_key_last($links['guide_nav']);
+        }
+      }
+    }
+  }
+
+  // Here, figure out the next/previous links.
+  // We need a flat list of all the URLs in the guide nav keyed by URL.
+  $allTheUrls = [];
+
+  array_walk_recursive(
+    $links['guide_nav'],
+    function ($link) use (&$allTheUrls) {
+      $allTheUrls[$link->getUrl()->toString()] = $link;
+    }
+  );
+
+  // $keyMap tells us what numeric slot each URL is found in.
+  $keyMap = array_keys($allTheUrls);
+  if ($allTheUrls && FALSE !== ($currentKey = array_search($current, $keyMap))) {
+    if (isset($keyMap[$currentKey - 1])) {
+      $prevKey = $keyMap[$currentKey - 1];
+      $links['guide_prev'] = $allTheUrls[$prevKey];
+    }
+
+    if (isset($keyMap[$currentKey + 1])) {
+      $nextKey = $keyMap[$currentKey + 1];
+      $links['guide_next'] = $allTheUrls[$nextKey];
+    }
+  }
+
+  return $links;
 }
 
 /**
@@ -69,43 +283,6 @@ function digital_gov_theme(): array {
       ],
     ],
   ];
-}
-
-/**
- * Preprocessor for author_image theme function.
- */
-function digital_gov_preprocess_author_image(array &$vars): void {
-  $profile_source = $vars["author"]["#entity"]->field_profile_source->value ?? NULL;
-  $github = $vars["author"]["#entity"]->field_github->value ?? NULL;
-
-  $slug = $vars["author"]["#entity"]->field_slug->value;
-  switch (TRUE) {
-    case $profile_source === 'github' && $github:
-      // Author has selected GitHub and specified a GitHub user ID.
-      $vars['icon_path'] = sprintf('https://github.com/%s.png?size=50', $github);
-      break;
-
-    case $profile_source === 'digit-light':
-    case $profile_source === 'digit-dark':
-    case $profile_source === 'digit-pride':
-      $vars['icon_path'] = sprintf('img/%s.png', $profile_source);
-      break;
-
-    default:
-      if ($github) {
-        // Author did not select GitHub but use a GitHUB ID if they have one.
-        $vars['icon_path'] = sprintf('https://github.com/%s.png?size=50', $github);
-      }
-      else {
-        // No source selected OR they picked GitHub without a GitHub ID
-        // choose between light and dark based on length of the slug.
-        $vars['icon_path'] = sprintf(
-          'img/digit-%s.png',
-          strlen($slug ?? $vars['author']['#title']) % 2 ? 'dark' : 'light'
-        );
-      }
-      break;
-  }
 }
 
 /**
@@ -199,4 +376,56 @@ function digital_gov_theme_suggestions_node_alter(array &$suggestions, array $va
       }
       break;
   }
+}
+
+/**
+ * Implements hook_theme_suggestions_user_alter().
+ */
+function digital_gov_theme_suggestions_container_alter(array &$suggestions, array $variables) {
+  if (!isset($variables['element']['#name'])) {
+    return $suggestions;
+  }
+  // A list of view names in which to exclude the container markup.
+  $exclude_views = [
+    'resource_topics_list',
+    'guide_cards',
+  ];
+
+  if (in_array($variables['element']['#name'], $exclude_views)) {
+    $suggestions[] = 'container__no_wrapper';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function digital_gov_preprocess_node__landing_page__job_board(&$variables, $hook) {
+  $filtered_array = [];
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $config_pages = $entity_type_manager->getStorage('config_pages')->load('job_board');
+  $yml_string = $config_pages->get('field_job_board_yml_contents')->getString();
+  try {
+    $yml_array = Yaml::decode($yml_string);
+  }
+  catch (\Exception $exception) {
+    $yml_array = [];
+    \Drupal::logger('job_board')->emergency('The valued stored for job board at /admin/content/job-board is not valid YAML. ' . $exception->getMessage());
+  }
+  if (!empty($yml_array)) {
+    foreach ($yml_array as $item) {
+      $close_date = date('Y-m-d', $item['close_date']);
+      $today = date('Y-m-d');
+      if ($close_date >= $today) {
+        $item['open_date'] = date('F j, Y', $item['open_date']);
+        $item['close_date'] = date('F j, Y', $item['close_date']);
+        // These fields may have markdown still.
+        $item['title'] = ConvertText::htmlText($item['title']);
+        $item['department'] = ConvertText::htmlText($item['department']);
+        $item['description'] = ConvertText::htmlText($item['description']);
+
+        $filtered_array[] = $item;
+      }
+    }
+  }
+  $variables['job_board'] = $filtered_array;
 }

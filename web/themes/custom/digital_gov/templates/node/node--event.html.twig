@@ -77,7 +77,7 @@
         title: node.title.value,
         kicker: node.field_kicker.value,
         deck: node.field_deck.value,
-      }, with_context=false) }}
+      }, with_context: false) }}
 
       <p class="datetime">
         <svg
@@ -90,11 +90,12 @@
           ></use>
         </svg>
 
-        {{ start_date }}
-        <span>{{ start_time }}
-          {% if (end_time) %}
-            – {{ end_time }}
+        {{ node.getCreatedTime|format_date('digital_gov_date') }}
+        <span>{{ node.getCreatedTime|format_date('digital_gov_time') }}
+          {% if content.field_end_date|field_value %}
+            – {{ content.field_end_date|field_value }}
           {% endif %}
+          {{ 'now'|date('T') }}
       </span>
       </p>
       {% if (node.field_host.value) %}
@@ -103,9 +104,9 @@
 
     </header>
     {# EVENT Actions — REGISTER and Add to Calendar #}
-    {% if is_future_event and node.field_registration_url %}
+    {% if is_future_event and content.field_registration_url|field_value %}
       <div class="dg-register">
-        {{ _self.registration_link(node) }}
+        {{ _self.registration_link(content) }}
       </div>
     {% endif %}
 
@@ -115,14 +116,14 @@
         youtube_id: node.field_youtube_id.value,
         youtube_title: node.label,
         captions: node.field_captions.0.uri,
-      }, with_context=false) }}
+      }, with_context: false) }}
     {% endif %}
 
     {% if not is_future_event and node.field_youtube_id.value %}
       {{ include('@digital_gov/partials/events/stage-youtube.html.twig', {
         youtube_id: node.field_youtube_id.value,
         youtube_title: node.label,
-      }, with_context=false) }}
+      }, with_context: false) }}
     {% endif %}
 
     <section class="grid-row tablet-lg:grid-gap-4">
@@ -133,12 +134,12 @@
             youtube_id: node.field_youtube_id.value,
             youtube_title: node.label,
             captions: node.field_captions.0.uri,
-          }, with_context=false) }}
+          }, with_context: false) }}
         {% endif %}
 
         {# Main Content #}
         <div class="content usa-prose">
-          {{ content }}
+          {{ content.body|field_value }}
         </div>
 
         {# Touchpoints Form #}
@@ -147,21 +148,19 @@
 
       <div class="dg-sidebar grid-col-12 tablet:grid-col-3">
         {# Authors #}
-        {% if content.field_authors %}
+        {% if content.field_authors|field_value %}
           <h4>In this talk</h4>
           {{ include('@digital_gov/partials/authors-list.html.twig', {
             inline: false,
-            authors: content.field_authors,
-          }, with_context=false) }}
+            authors: content.field_authors|field_value,
+          }, with_context: false) }}
         {% endif %}
 
-        {% if node.field_event_platform.value == 'youtube_live' %}
-          {% if is_future_event %}
-            <div class="actions actions-stacked">
-              {# Register #}
-              {{ _self.registration_link(node) }}
-            </div>
-          {% endif %}
+        {% if node.field_event_platform.value == 'youtube_live' and is_future_event and content.field_registration_url|field_value %}
+          <div class="actions actions-stacked">
+            {# Register #}
+            {{ _self.registration_link(content) }}
+          </div>
         {% endif %}
 
         {# Display Primary Communities #}
@@ -170,25 +169,25 @@
         {# partial "core/primary-communities.html" . #}
 
         {# Topics #}
-        {{ content.field_topics }}
+        {{ content.field_topics|field_value }}
 
         {# Share Tools #}
         {{ include('@digital_gov/partials/get-sharetools.html.twig', {
           share_path: url,
           mailto_subject: node.label,
-        }, with_context=false) }}
+        }, with_context: false) }}
 
       </div>
     </section>
   </article>
 
 </main>
-{% macro registration_link(node) %}
+{% macro registration_link(content) %}
   <a
-    aria-label="Register for {{ node.getTitle() }}"
+    aria-label="Register for {{ content.label }}"
     class="btn btn-register"
-    href="{{ node.field_registration_url.value[0].uri }}"
-    onclick="__gaTracker('send', 'event', 'outbound-article', '{{ node.field_registration_url.value[0].uri }}', 'REGISTER NOW');"
-  >Register</a
+    href="{{ content.field_registration_url|field_value }}"
+    onclick="__gaTracker('send', 'event', 'outbound-article', '{{ content.field_registration_url|field_value }}', '{{ 'REGISTER NOW'|t }}');"
+  >{{ 'Register'|t }}</a
   >
 {% endmacro %}

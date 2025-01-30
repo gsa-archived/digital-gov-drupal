@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.event.field_primary_image
     - field.field.node.event.field_registration_url
     - field.field.node.event.field_slug
-    - field.field.node.event.field_start_date
     - field.field.node.event.field_summary
     - field.field.node.event.field_topics
     - field.field.node.event.field_venue
@@ -25,6 +24,7 @@ dependencies:
     - node.type.event
     - workflows.workflow.editorial
   module:
+    - autocomplete_deluxe
     - content_moderation
     - datetime
     - inline_entity_form
@@ -57,7 +57,7 @@ content:
     third_party_settings: {  }
   field_authors:
     type: inline_entity_form_complex
-    weight: 21
+    weight: 20
     region: content
     settings:
       form_mode: default
@@ -75,7 +75,7 @@ content:
     third_party_settings: {  }
   field_captions:
     type: link_default
-    weight: 19
+    weight: 18
     region: content
     settings:
       placeholder_url: ''
@@ -95,13 +95,13 @@ content:
         maxlength_js_enforce: true
   field_end_date:
     type: datetime_default
-    weight: 13
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   field_event_organizer:
     type: string_textfield
-    weight: 16
+    weight: 15
     region: content
     settings:
       size: 60
@@ -109,7 +109,7 @@ content:
     third_party_settings: {  }
   field_event_platform:
     type: string_textfield
-    weight: 14
+    weight: 13
     region: content
     settings:
       size: 60
@@ -117,7 +117,7 @@ content:
     third_party_settings: {  }
   field_featured_image:
     type: media_library_widget
-    weight: 17
+    weight: 16
     region: content
     settings:
       media_types: {  }
@@ -150,7 +150,7 @@ content:
     third_party_settings: {  }
   field_primary_image:
     type: media_library_widget
-    weight: 15
+    weight: 14
     region: content
     settings:
       media_types: {  }
@@ -162,12 +162,6 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
-  field_start_date:
-    type: datetime_default
-    weight: 12
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_summary:
     type: text_textarea
@@ -182,26 +176,25 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: true
   field_topics:
-    type: inline_entity_form_complex
-    weight: 20
+    type: autocomplete_deluxe
+    weight: 19
     region: content
     settings:
-      form_mode: default
-      override_labels: false
-      label_singular: ''
-      label_plural: ''
-      allow_new: true
-      allow_existing: true
       match_operator: CONTAINS
-      allow_duplicate: false
-      collapsible: true
-      collapsed: true
-      revision: false
-      removed_reference: optional
+      autocomplete_route_name: autocomplete_deluxe.autocomplete
+      size: 60
+      selection_handler: default
+      match_limit: 0
+      min_length: 0
+      delimiter: ''
+      not_found_message_allow: false
+      not_found_message: "The term '@term' will be added"
+      new_terms: false
+      no_empty_message: 'No terms could be found. Please type in order to add a new term.'
     third_party_settings: {  }
   field_venue:
     type: paragraphs
-    weight: 27
+    weight: 21
     region: content
     settings:
       title: Paragraph
@@ -221,7 +214,7 @@ content:
     third_party_settings: {  }
   field_youtube_id:
     type: string_textfield
-    weight: 18
+    weight: 17
     region: content
     settings:
       size: 60
@@ -235,7 +228,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 22
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -265,7 +258,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 23
     region: content
     settings: {  }
     third_party_settings: {  }

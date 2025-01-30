@@ -6,7 +6,7 @@ _meta:
   default_langcode: en
   depends:
     623a2982-602b-4762-a59e-9a7c30c64f36: node
-    cbcd65ff-8274-46c7-89bc-9f8c2bdaddd3: node
+    6d6fe15a-3790-4abf-bbf6-3d4c7babf9bd: taxonomy_term
 default:
   revision_uid:
     -
@@ -37,9 +37,14 @@ default:
       alias: /topics/accessibility
       langcode: en
       pathauto: 0
+  body:
+    -
+      value: '<p><a href="/node/19" data-entity-type="node" data-entity-uuid="7086f5d5-7c6f-41ef-8a60-70cd267a9860" data-entity-substitution="canonical">RESOURCES</a>&nbsp;</p>'
+      format: html
+      summary: ''
   field_deck:
     -
-      value: 'The design of products, devices, services, or environments for people with disabilities'
+      value: '<p>The design of products, devices, services, or environments for people with disabilities</p>'
       format: single_inline_html
   field_featured_communities:
     -
@@ -248,9 +253,6 @@ default:
           behavior_settings:
             -
               value: {  }
-          field_content:
-            -
-              entity: cbcd65ff-8274-46c7-89bc-9f8c2bdaddd3
   field_legislation:
     -
       uri: 'https://www.section508.gov/manage/laws-and-policies/'
@@ -259,10 +261,13 @@ default:
   field_page_weight:
     -
       value: 2
+  field_resource_topics:
+    -
+      entity: 6d6fe15a-3790-4abf-bbf6-3d4c7babf9bd
   field_slug:
     -
       value: accessibility
   field_summary:
     -
-      value: "Accessibility isn't just the right thing to do; it’s the law. The guidance, resources, and community you find here will help you deliver accessible digital products and services in the federal government."
+      value: "<p>Accessibility isn't just the right thing to do; it’s the law. The guidance, resources, and community you find here will help you deliver accessible digital products and services in the federal government.</p>"
       format: single_inline_html
