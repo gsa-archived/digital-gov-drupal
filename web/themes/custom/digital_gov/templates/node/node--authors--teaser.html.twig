@@ -61,52 +61,16 @@
  *
  * @ingroup themeable
  */
+
 #}
-{% set title = node.label %}
-{% set summary = content.field_summary|field_value %}
-{% set deck = content.field_deck|field_value %}
-{% set date = node.created.value|format_date('digital_gov_short_date') %}
-{% set image_url %}{% apply spaceless %}
-  {% if content.field_primary_image|field_value %}
-    {{ node.field_primary_image|file_uri|image_style('large') }}
-  {% elseif content.field_featured_image|field_value %}
-    {{ node.field_featured_image|file_uri|image_style('large') }}
-  {% endif %}
-{% endapply %}{% endset %}
-{% set unique_id = title|clean_unique_id %}
-
-<article class="card card-news--internal card-linked" aria-labelledby="{{ unique_id }}">
-  <div class="card__content">
-    <h3 id="{{ unique_id }}">
-      <a href="{{ url }}">{{ title }}</a>
-    </h3>
-    {% if summary %}
-      <div class="summary">
-        <p>{{ summary }}</p>
-      </div>
-    {% else %}
-      <div class="deck">
-        <p>{{ deck }}</p>
-      </div>
-    {% endif %}
-
-    {% if content.field_authors|field_value %}
-      {{ include('@digital_gov/partials/authors-list.html.twig', {
-                  inline: true,
-                  authors: content.field_authors|field_value,
-                  }, with_context: false) }}
-    {% endif %}
+<div class="author usa-media-block">
+  {{ drupal_entity('node', node.id, 'image') }}
+  <div class="usa-media-block__body">
+    <a class="author__name"
+       href="{{ url }}"
+       title="Posts by {{ label|field_value }}"
+       rel="author"
+       aria-label="Read more articles by {{ label|field_value }}"
+    >{{ label|field_value }}</a>
   </div>
-
-  <div class="card__media">
-    <div class="media-featured">
-      <a href="{{ url }}" title="{{ title }}">
-        <img src="{{ image_url }}" aria-hidden="true" alt=""/>
-      </a>
-    </div>
-  </div>
-  <div class="card__meta">
-    <div class="date">{{ date }}
-    </div>
-  </div>
-</article>
+</div>
