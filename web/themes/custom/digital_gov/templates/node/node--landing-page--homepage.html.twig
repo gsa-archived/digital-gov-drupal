@@ -122,9 +122,19 @@
   </section>
 
   {# Digital.gov Communities of Practice #}
-  <section class="grid-container-desktop usa-section">
-    {{ drupal_view('featured_communities', 'default') }}
-  </section>
+  {% set featured_communities = drupal_view_result('featured_communities', 'default') %}
+  {% set communities_landing = drupal_view_result('landing_page', 'default', 'communities') %}
+  {% if communities_landing|length and featured_communities|length %}
+    {% set landing = communities_landing.0._entity %}
+    <section class="grid-container-desktop usa-section">
+      {{ include('@digital_gov/partials/featured-communities.html.twig', {
+        heading: landing.title.value,
+        deck: landing.field_deck.value ? landing.field_deck.value|check_markup('single_inline_html'),
+        communities: featured_communities,
+        display: 'usa_card_community_no_icon',
+      }) }}
+    </section>
+  {% endif %}
 
   {# Digital.gov News & Events #}
   {# Get news posts, recent events and future events. #}
