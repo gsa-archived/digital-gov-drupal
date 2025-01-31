@@ -4,21 +4,21 @@
 
 digital_gov.small:
   label: Small Screens
-  mediaQuery: 'all and (max-width: 800px)'
+  mediaQuery: 'max-width: 799px'
   weight: 0
   multipliers: 
     - 1x
 
 digital_gov.medium:
   label: Medium Screens
-  mediaQuery: 'all and (min-width: 800px)'
-  weight: 0
+  mediaQuery: '(min-width: 800px) and (max-width: 1199px)'
+  weight: 1
   multipliers: 
     - 1x
 
 digital_gov.large:
   label: Large Screens
-  mediaQuery: 'all and (min-width: 1200px)'
+  mediaQuery: '(min-width: 1200px)'
   weight: 2
   multipliers: 
     - 1x
