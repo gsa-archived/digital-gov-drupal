@@ -1,0 +1,11 @@
+uuid: c60d8b4f-f6b7-472c-92de-ce9ea5df6a63
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.digital_gov
+label: Digital.gov
+description: 'digital.gov view mode'
+targetEntityType: media
+cache: true

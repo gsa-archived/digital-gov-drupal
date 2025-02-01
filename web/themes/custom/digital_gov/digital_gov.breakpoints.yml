@@ -6,7 +6,7 @@ digital_gov.small:
   label: Small Screens
   mediaQuery: 'max-width: 799px'
   weight: 0
-  multipliers: 
+  multipliers:
     - 1x
 
 digital_gov.medium:

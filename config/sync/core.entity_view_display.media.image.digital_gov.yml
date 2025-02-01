@@ -1,20 +1,21 @@
-uuid: 5fa19904-04a9-4513-8bb5-10867585ae57
+uuid: 01f473ba-f2ca-45d2-86f0-d2bfe5deb2d2
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.digital_gov
     - field.field.media.image.field_caption
     - field.field.media.image.field_credit
     - field.field.media.image.field_media_image
+    - image.style.thumbnail
     - media.type.image
-    - responsive_image.styles.digital_gov_responsive_images
   module:
-    - responsive_image
+    - svg_image
     - user
-id: media.image.default
+id: media.image.digital_gov
 targetEntityType: media
 bundle: image
-mode: default
+mode: digital_gov
 content:
   created:
     type: timestamp
@@ -33,18 +34,22 @@ content:
         granularity: 2
         refresh: 60
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
-  field_media_image:
-    type: responsive_image
-    label: above
+  thumbnail:
+    type: image
+    label: hidden
     settings:
-      responsive_image_style: digital_gov_responsive_images
       image_link: ''
+      image_style: thumbnail
       image_loading:
         attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
     third_party_settings: {  }
-    weight: 2
+    weight: 5
     region: content
   uid:
     type: author
@@ -56,5 +61,5 @@ content:
 hidden:
   field_caption: true
   field_credit: true
+  field_media_image: true
   name: true
-  thumbnail: true
