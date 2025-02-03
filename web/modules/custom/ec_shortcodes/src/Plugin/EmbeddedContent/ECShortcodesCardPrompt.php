@@ -60,9 +60,9 @@ class ECShortcodesCardPrompt extends EmbeddedContentPluginBase implements Embedd
     $form['prompt'] = [
       '#type' => 'text_format',
       '#title' => $this->t('Prompt'),
-      '#format' => 'multiline_inline_html',
-      '#allowed_formats' => ['multiline_inline_html'],
-      '#default_value' => $this->configuration['text']['value'] ?? '',
+      '#format' => 'html_embedded_content',
+      '#allowed_formats' => ['html_embedded_content'],
+      '#default_value' => $this->configuration['prompt']['value'] ?? '',
       '#required' => TRUE,
     ];
     $form['text'] = [
