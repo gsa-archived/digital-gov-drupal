@@ -33,8 +33,13 @@ class ConvertText {
         return html_entity_decode($source_text, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401, 'UTF-8');
 
       case 'html':
+      case 'html_no_breaks':
         $converter = new CommonMarkConverter();
-        return $converter->convert($source_text)->getContent();
+        $converted_text = $converter->convert($source_text)->getContent();
+        if ($field_type === 'html_no_breaks') {
+          return str_replace(['<p>', '</p>', '<br>', '<br />', '<br/>'], '', $converted_text);
+        }
+        return $converted_text;
 
       default:
         throw new \Exception("Invalid \$field_type of $field_type given");
@@ -66,6 +71,19 @@ class ConvertText {
    */
   public static function htmlText(string $source_text): string {
     return self::convert($source_text, 'html');
+  }
+
+  /**
+   * Gets text ready to be stored in html text fields without breaks.
+   *
+   * @var string $source_text
+   *   The original source value.
+   *
+   * @return string
+   *   The converted text.
+   */
+  public static function htmlNoBreaksText(string $source_text): string {
+    return self::convert($source_text, 'html_no_breaks');
   }
 
 }
