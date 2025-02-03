@@ -76,6 +76,7 @@
         "drupal/views_bulk_operations": "^4.3",
         "drupal/xmlsitemap": "^1.5",
         "drush/drush": "^12.5",
+        "elvanto/litemoji": "^5.1",
         "league/commonmark": "^2.5",
         "mattsqd/drupal-env": "dev-main",
         "mattsqd/drupal-env-lando": "dev-main",
