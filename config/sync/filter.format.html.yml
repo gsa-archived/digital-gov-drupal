@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.full
+    - core.entity_view_mode.media.media_library
   module:
     - auto_heading_ids
     - editor
@@ -103,6 +104,9 @@ filters:
     status: true
     weight: -45
     settings:
-      default_view_mode: full
-      allowed_view_modes: {  }
+      default_view_mode: default
+      allowed_view_modes:
+        default: default
+        full: full
+        media_library: media_library
       allowed_media_types: {  }

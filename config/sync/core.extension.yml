@@ -10,6 +10,7 @@ module:
   block: 0
   breakpoint: 0
   ckeditor5: 0
+  ckeditor_emoji: 0
   config_ignore: 0
   config_pages: 0
   config_split: 0

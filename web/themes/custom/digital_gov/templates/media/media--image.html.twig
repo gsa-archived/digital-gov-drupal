@@ -15,5 +15,6 @@
 ] %}
 
 <div{{ attributes.addClass(classes) }}>
+  {{ content.thumbnail|field_value }}
   {{ content.field_media_image|field_value }}
 </div>
