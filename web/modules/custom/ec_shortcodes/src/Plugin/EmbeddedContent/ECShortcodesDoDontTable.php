@@ -35,6 +35,7 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
    * {@inheritdoc}
    */
   public function build(): array {
+    unset($this->configuration['rows']['add_more']);
     return [
       '#theme' => 'ec_shortcodes_do_dont_table',
       '#caption' => $this->configuration['caption'],
@@ -71,7 +72,7 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
       '#cardinality' => MultiValue::CARDINALITY_UNLIMITED,
       '#default_value' => $this->configuration['rows'] ?? [],
       'do' => [
-        '#type' => 'textarea',
+        '#type' => 'text_format',
         '#title' => $this->t('Do'),
         '#format' => 'multiline_inline_html',
         '#allowed_formats' => ['multiline_inline_html'],
@@ -79,7 +80,7 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
         '#rows' => 3,
       ],
       'dont' => [
-        '#type' => 'textarea',
+        '#type' => 'text_format',
         '#title' => $this->t("Don't"),
         '#description' => $this->t("This will add text for the Don't Colum"),
         '#format' => 'multiline_inline_html',
@@ -96,6 +97,23 @@ class ECShortcodesDoDontTable extends EmbeddedContentPluginBase implements Embed
    */
   public function isInline(): bool {
     return FALSE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function massageFormValues(array &$values, array $form, FormStateInterface $form_state) {
+    foreach ($values['rows'] as $key => $row) {
+      // Skip over the 'add more'.
+      if (!is_numeric($key)) {
+        continue;
+      }
+      // Drop any row that has no value.
+      if (isset($row['do']['value']) && isset($row['dont']['value']) && !strlen($row['do']['value']) && !strlen($row['dont']['value'])) {
+        unset($values['rows'][$key]);
+      }
+    }
+    parent::massageFormValues($values, $form, $form_state);
   }
 
 }

@@ -21,10 +21,10 @@
     {% for row in rows %}
       <tr>
         <td data-label="Do">
-          {{ row.do }}
+          {{ row.do.value|default('') | check_markup(row.do.format) }}
         </td>
         <td data-label="Don't">
-          {{ row.dont }}
+          {{ row.dont.value|default('') | check_markup(row.dont.format) }}
         </td>
       </tr>
     {% endfor %}
