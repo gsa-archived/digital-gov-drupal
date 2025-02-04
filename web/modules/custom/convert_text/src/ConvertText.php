@@ -8,6 +8,7 @@ use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use League\CommonMark\CommonMarkConverter;
+use LitEmoji\LitEmoji;
 
 /**
  * Provides methods to convert migrated text for fields.
@@ -36,9 +37,11 @@ class ConvertText {
         return html_entity_decode($source_text, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401, 'UTF-8');
 
       case 'html':
+
         $converter = new CommonMarkConverter();
-        $content = $converter->convert($source_text)->getContent();
-        return self::addLinkItMarkup($content);
+        $html = $converter->convert($source_text)->getContent();
+        $html = LitEmoji::encodeUnicode($html);
+        return self::addLinkItMarkup($html);
 
       default:
         throw new \Exception("Invalid \$field_type of $field_type given");

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "98c45ed6bb91513f8a5ca7076ee03893",
+    "content-hash": "9dc25621f14af24877d03309f22812bc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1769,6 +1769,53 @@
             }
         },
         {
+            "name": "drupal/ckeditor_emoji",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/ckeditor_emoji.git",
+                "reference": "2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/ckeditor_emoji-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "e85c1dc8a037e7a684f1434f660e4e1d2c4aba05"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.1",
+                    "datestamp": "1731728742",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                },
+                "branch-alias": {
+                    "dev-2.0.x": "2.0.x-dev"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "ashrafomar",
+                    "homepage": "https://www.drupal.org/user/3520049"
+                }
+            ],
+            "description": "CKEditor Emoji Plugin is designed to enhance the content editing experience in Drupal by enabling the insertion of emojis directly into your text.",
+            "homepage": "https://www.drupal.org/project/ckeditor_emoji",
+            "support": {
+                "source": "https://git.drupalcode.org/project/ckeditor_emoji"
+            }
+        },
+        {
             "name": "drupal/config_ignore",
             "version": "3.3.0",
             "source": {
@@ -3275,20 +3322,20 @@
         },
         {
             "name": "drupal/linkit",
-            "version": "7.0.2",
+            "version": "6.1.6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/linkit.git",
-                "reference": "7.0.2"
+                "reference": "6.1.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/linkit-7.0.2.zip",
-                "reference": "7.0.2",
-                "shasum": "939ead6e7feeb11c78596b470deaf9facad4c9e9"
+                "url": "https://ftp.drupal.org/files/projects/linkit-6.1.6.zip",
+                "reference": "6.1.6",
+                "shasum": "113d8e569cfb92f8d7feb0a2f7713953c0715e92"
             },
             "require": {
-                "drupal/core": "^10.1 || ^11"
+                "drupal/core": "^10.1"
             },
             "require-dev": {
                 "drupal/ckeditor": "*",
@@ -3297,8 +3344,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "7.0.2",
-                    "datestamp": "1734967499",
+                    "version": "6.1.6",
+                    "datestamp": "1729189029",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6006,6 +6053,49 @@
                 }
             ],
             "time": "2024-12-27T00:36:43+00:00"
+        },
+        {
+            "name": "elvanto/litemoji",
+            "version": "5.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/elvanto/litemoji.git",
+                "reference": "42a3e73f5b17ef93980c484e3630b0eb1ed0a9cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/elvanto/litemoji/zipball/42a3e73f5b17ef93980c484e3630b0eb1ed0a9cf",
+                "reference": "42a3e73f5b17ef93980c484e3630b0eb1ed0a9cf",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "milesj/emojibase": "15.3.*",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LitEmoji\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A PHP library simplifying the conversion of unicode, HTML and shortcode emoji.",
+            "keywords": [
+                "emoji",
+                "php-emoji"
+            ],
+            "support": {
+                "issues": "https://github.com/elvanto/litemoji/issues",
+                "source": "https://github.com/elvanto/litemoji/tree/5.1.0"
+            },
+            "time": "2024-09-11T21:55:58+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",
