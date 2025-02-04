@@ -8,6 +8,7 @@
 declare(strict_types=1);
 
 use Drupal\Component\Serialization\Yaml;
+use Drupal\Component\Utility\Html;
 use Drupal\convert_text\ConvertText;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Link;
@@ -46,14 +47,14 @@ function digital_gov_preprocess_html(array &$variables): void {
 function dg_get_specific_body_class(NodeInterface $node): string {
   if ($node->getType() === 'landing_page') {
     // The landing page type value is the css class used by hugo.
-    return $node->get('field_landing_page_type')->getString();
+    return Html::getClass($node->get('field_landing_page_type')->getString());
   }
 
   return match ($node->getType()) {
     'event' => 'events',
     'community' => 'communities',
     'guide_landing' => 'landings',
-    default => $node->getType(),
+    default => Html::getClass($node->getType()),
   };
 }
 
