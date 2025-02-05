@@ -61,7 +61,7 @@ class ConvertText {
 
     foreach ($dom->getElementsByTagName('a') as $link) {
       $href = $link->getAttribute('href');
-      if (!$href || str_starts_with($href, 'mailto:')) {
+      if (!$href || str_starts_with($href, 'mailto:') || str_starts_with($href, '#')) {
         continue;
       }
 
