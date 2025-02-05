@@ -22,6 +22,7 @@ settings:
       - drupalMedia
       - sourceEditing
       - embeddedContent__default
+      - Emoji
       - style
   plugins:
     ckeditor5_heading:
@@ -53,6 +54,6 @@ settings:
       linkit_enabled: true
       linkit_profile: default
     media_media:
-      allow_view_mode_override: false
+      allow_view_mode_override: true
 image_upload:
   status: false
