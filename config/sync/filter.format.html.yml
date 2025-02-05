@@ -51,7 +51,7 @@ filters:
     status: false
     weight: -48
     settings:
-      allowed_html: '<span class="highlight-text"> <div class="box"> <a class="usa-button usa-button--outline"> <ul class="dg-checklist">'
+      allowed_html: '<span class="highlight-text"> <div class="box"> <a class="usa-button usa-button--outline"> <ul class="dg-checklist dg-checklist--no-border">'
       filter_html_help: true
       filter_html_nofollow: false
   filter_html_escape:
