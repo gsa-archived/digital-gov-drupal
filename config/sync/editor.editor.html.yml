@@ -50,6 +50,9 @@ settings:
         -
           label: 'USA button link (outlined)'
           element: '<a class="usa-button usa-button--outline">'
+        -
+          label: Checklist
+          element: '<ul class="dg-checklist">'
     linkit_extension:
       linkit_enabled: true
       linkit_profile: default
