@@ -11,12 +11,11 @@ Displays a vertical list of primary CoP's on the sidebar on event pages.
   </article>
 {% endif %}
 
-{#this code was not migrated}
-{#% if mainCommunities %}
+{% if mainCommunities %}
   <article class="dg-promos dg-related-communities">
     <h3 class="dg-promos__heading">Join a Community</h3>
     <ul class="dg-promos__list">
-      {# range . }
+      {# range . #}
         <li class="promo dg-promos__list-item">
           <a
             href="{{ Permalink }}?promo"
@@ -26,10 +25,10 @@ Displays a vertical list of primary CoP's on the sidebar on event pages.
             {{ title }}
           </a>
         </li>
-      {# endrange }
+      {# endrange #}
     </ul>
     <footer class="dg-promos__footer">
-      {# $communityCount := len (where $.Site.RegularPages "Section" "communities") }
+      {# $communityCount := len (where $.Site.RegularPages "Section" "communities") #}
       <a
         href="{{ 'communities' }}"
         class="dg-promos__more-link dg-more-link"
