@@ -65,12 +65,24 @@ class ConvertText {
         continue;
       }
 
+      $anchor = '';
+      if (preg_match('/\#(.*)$/', $href, $matches)) {
+        $anchor = $matches[0];
+      }
+
       // Add a trailing slash for links with just the domain w/o trailing slash.
       if (preg_match('/^https?:\/\/(' . implode('|', $base_domains) . ')$/', $href, $matches)) {
         $href = $matches[0] . '/';
       }
       // Now, strip the local domains from links that include them.
-      $href = preg_replace('/^https?:\/\/(' . implode('|', $base_domains) . ')/', '', $href);
+      $href = preg_replace(
+        '/^https?:\/\/(' . implode('|', $base_domains) . ')/',
+        '',
+        $href, count: $replaced);
+      if ($replaced > 0) {
+        // HREF here includes any anchor.
+        $link->setAttribute('href', $href);
+      }
 
       $host = parse_url($href, PHP_URL_HOST) ?? '';
       if ($host === '') {
@@ -112,7 +124,7 @@ class ConvertText {
               $redirHost = parse_url($finalURI, PHP_URL_HOST);
               if (!str_ends_with($host, $redirHost)) {
                 // We were redirected off site. Let's fix the link and move on.
-                $link->setAttribute('href', $finalURI);
+                $link->setAttribute('href', $finalURI . $anchor);
                 continue;
               }
               $redirPath = parse_url($finalURI, PHP_URL_PATH) ?? '/';
@@ -154,17 +166,16 @@ class ConvertText {
 
           case '<front>':
             // Ensure the link to the homepage doesn't have a domain name.
-            // Don't need to add any other attributes.
+            // Don't need to add any other attributes or anchor.
             $link->setAttribute('href', $href);
             continue 2;
 
           default:
-            // Do we want to log / warn here?
             continue 2;
         }
 
         // Linkit saves the internal path and renders the alias.
-        $link->setAttribute('href', $sysPath);
+        $link->setAttribute('href', $sysPath . $anchor);
         $link->setAttribute('data-entity-type', $entityType);
         $link->setAttribute('data-entity-uuid', $uuid);
         $link->setAttribute('data-entity-substitution', 'canonical');
