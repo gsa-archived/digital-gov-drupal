@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.html
+    - filter.format.html_embedded_content
     - filter.format.multiline_inline_html
     - filter.format.single_inline_html
   module:
@@ -28,6 +29,7 @@ permissions:
   - 'access toolbar'
   - 'use admin toolbar search'
   - 'use text format html'
+  - 'use text format html_embedded_content'
   - 'use text format multiline_inline_html'
   - 'use text format single_inline_html'
   - userprotect.account.edit
