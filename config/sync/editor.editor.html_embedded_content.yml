@@ -14,6 +14,7 @@ settings:
       - bold
       - italic
       - code
+      - link
       - heading
       - blockQuote
       - bulletedList
@@ -46,5 +47,7 @@ settings:
         -
           label: 'USA button link (outlined)'
           element: '<a class="usa-button usa-button--outline">'
+    linkit_extension:
+      linkit_enabled: false
 image_upload:
   status: false
