@@ -68,4 +68,6 @@ c4f5d0dc96584bd1dc808fd112b6e516|Ray Estrada|feature/DIGITAL-252-community-revie
 ce36fc2d9e87105d1ab7eda27ea9d434|Oscar Merida|develop|Mon Feb  3 14:30:03 EST 2025|./composer.sh require drupal/ckeditor_emoji
 b2b17cbb32ac57e73928af9f52acb537|Oscar Merida|feature/DIGITAL-96-ckeditor-emoji|Mon Feb  3 15:14:17 EST 2025|./composer.sh require elvanto/litemoji
 c73ec25d5b68a3e0e1bdfc83c24312ba|Matt Poole|feature/DIGITAL-396-update-deps-8-0|Wed Feb  5 15:32:16 EST 2025|./composer.sh update
+d0ca998c567e8cc218ee57bb5c9b6679|cathybaptista|feature/DIGITAL-119-configure-images|Thu Feb  6 11:06:05 EST 2025|./composer.sh require drupal/media_library_edit
+6b5963bf3c6740285c129be6d6273aed|cathybaptista|feature/DIGITAL-119-configure-images|Thu Feb  6 11:06:14 EST 2025|./composer.sh require drupal/edit_media_modal
 caeb4cc7f30e1f80c7425f9c3fcf8a98|Oscar Merida|feature/DIGITAL-89-linkit|Wed Feb  5 16:40:40 EST 2025|./composer.sh require drupal/linkit:^7.0
