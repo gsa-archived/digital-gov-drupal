@@ -1,5 +1,5 @@
-#Use the w800 image style for screens up to 800 pixels wide.
-#Use the w1200 image style for screens up to 1200 pixels wide.
+#Use the w400 max image style for screens up to 800 pixels wide.
+#Use the w800 max image style for screens between 800 & 1199 pixels wide.
 #Use the w1200 image style for screens wider than 1200 pixels.
 
 digital_gov.small:
