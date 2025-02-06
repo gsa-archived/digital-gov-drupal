@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Digital.gov Fields module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for node_form.
+ */
+function dg_fields_form_node_form_alter(array &$form, FormStateInterface $form_state, string $id): void {
+  if ($id === 'node_guides_edit_form') {
+    // Only allow vocabularies with a machine name ending in '_glossary'
+    // in glossary ref field.
+    $form['field_glossary']['widget']['#options'] = array_filter(
+      $form['field_glossary']['widget']['#options'],
+      function (string $value, string $key): bool {
+        return $key === '_none' || str_ends_with($key, '_glossary');
+      },
+      ARRAY_FILTER_USE_BOTH
+    );
+  }
+}

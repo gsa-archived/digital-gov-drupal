@@ -8,12 +8,12 @@ drush cr
 # drush locale-check
 # drush locale-update
 
+cd /home/vcap/app/ || exit
+./orch/deploy.sh
+
 echo "Uploading public files to S3 ..."
 drush s3fs-rc
 drush s3fs-cl -y --scheme=public --condition=newer
-
-cd /home/vcap/app/ || exit
-./orch/deploy.sh
 
 drush cr
 drush state:set system.maintenance_mode 0 -y
