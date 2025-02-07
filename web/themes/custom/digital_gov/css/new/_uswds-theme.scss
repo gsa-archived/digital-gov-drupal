@@ -21,6 +21,7 @@ i.e.
 */
 
 @use "uswds-core" with (
+  $digital-image-path: "/themes/custom/digital_gov/static/digitalgov/img",
   $theme-image-path: "/themes/custom/digital_gov/static/uswds/img",
   $theme-font-path: "/themes/custom/digital_gov/static/uswds/fonts",
   $theme-show-compile-warnings: false,
