@@ -12,7 +12,7 @@ use Drupal\embedded_content\EmbeddedContentPluginBase;
  *
  * @EmbeddedContent(
  *   id = "ec_shortcodes_card_quote",
- *   label = @Translation("Card Quote"),
+ *   label = @Translation("Quote"),
  *   description = @Translation("Renders an card styled quote."),
  * )
  */
@@ -25,6 +25,7 @@ class ECShortcodesCardQuote extends EmbeddedContentPluginBase implements Embedde
    */
   public function defaultConfiguration() {
     return [
+      'dark' => NULL,
       'text' => NULL,
       'cite' => NULL,
     ];
@@ -36,6 +37,7 @@ class ECShortcodesCardQuote extends EmbeddedContentPluginBase implements Embedde
   public function build(): array {
     return [
       '#theme' => 'ec_shortcodes_card_quote',
+      '#dark' => $this->configuration['dark'],
       '#text' => $this->configuration['text'],
       '#cite' => $this->configuration['cite'],
     ];
@@ -45,6 +47,11 @@ class ECShortcodesCardQuote extends EmbeddedContentPluginBase implements Embedde
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form['dark'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Display quote with alternative dark background.'),
+      '#default_value' => $this->configuration['dark'],
+    ];
     $form['text'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Text'),
@@ -55,7 +62,6 @@ class ECShortcodesCardQuote extends EmbeddedContentPluginBase implements Embedde
       '#type' => 'textfield',
       '#title' => $this->t('Cite'),
       '#default_value' => $this->configuration['cite'],
-      '#required' => TRUE,
     ];
 
     return $form;

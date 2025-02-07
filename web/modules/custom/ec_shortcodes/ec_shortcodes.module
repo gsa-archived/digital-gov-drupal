@@ -42,6 +42,7 @@ function ec_shortcodes_theme($existing, $type, $theme, $path) {
     ],
     'ec_shortcodes_card_quote' => [
       'variables' => [
+        'dark' => NULL,
         'text' => NULL,
         'cite' => NULL,
       ],
