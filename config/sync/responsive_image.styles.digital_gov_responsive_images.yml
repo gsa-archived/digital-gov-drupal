@@ -6,25 +6,18 @@ dependencies:
     - image.style.dg_large_scale_to_1200_convert_to_webp
     - image.style.dg_medium_800_max_convert_to_webp
     - image.style.dg_small
-  theme:
-    - digital_gov
 id: digital_gov_responsive_images
-label: 'Digital.gov Responsive Images'
+label: 'Digital.gov Responsive Image: Default'
 image_style_mappings:
   -
-    image_mapping_type: image_style
-    image_mapping: dg_large_scale_to_1200_convert_to_webp
-    breakpoint_id: digital_gov.large
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: '(max-width: 600px) 40vw, 100vw'
+      sizes_image_styles:
+        - dg_large_scale_to_1200_convert_to_webp
+        - dg_medium_800_max_convert_to_webp
+        - dg_small
+    breakpoint_id: responsive_image.viewport_sizing
     multiplier: 1x
-  -
-    image_mapping_type: image_style
-    image_mapping: dg_medium_800_max_convert_to_webp
-    breakpoint_id: digital_gov.medium
-    multiplier: 1x
-  -
-    image_mapping_type: image_style
-    image_mapping: dg_small
-    breakpoint_id: digital_gov.small
-    multiplier: 1x
-breakpoint_group: digital_gov
+breakpoint_group: responsive_image
 fallback_image_style: dg_small

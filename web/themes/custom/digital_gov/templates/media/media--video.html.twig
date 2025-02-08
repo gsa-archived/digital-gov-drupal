@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Theme override to display a media item: remote video.
+ */
+#}
+
+{# Caching the data in content object #}
+{% set savedCache = content|render %}
+
+<div class="video youtube-player">
+  {{ content.field_media_oembed_video|field_value }}
+</div>
