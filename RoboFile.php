@@ -273,4 +273,57 @@ class RoboFile extends Tasks
         return new ResultData();
     }
 
+    /**
+     * Run PHPStan validation.
+     *
+     * @command validate:phpstan
+     */
+    public function validatePhpstan(): ResultData
+    {
+        if (!$this->taskExec('vendor/bin/phpstan')
+            ->option('memory-limit', '-1', '=')
+            ->run()->wasSuccessful()) {
+            $this->printError('PHPStan errors found');
+            return new ResultData(ResultData::EXITCODE_ERROR);
+        }
+        $this->sayWithWrapper('SUCCESS: No PHPStan errors found.');
+        return new ResultData();
+    }
+
+    /**
+     * Run Twig validation.
+     *
+     * @command validate:twig
+     */
+    public function validateTwig(): ResultData
+    {
+        if (!$this->taskExec('vendor/bin/twig-cs-fixer')
+            ->arg('lint')
+            ->run()->wasSuccessful()) {
+            $this->printError('Twig errors found. Use vendor/bin/twig-cs-fixer lint --fix to automatically fix.');
+            return new ResultData(ResultData::EXITCODE_ERROR);
+        }
+        $this->sayWithWrapper('SUCCESS: No PHPStan errors found.');
+        return new ResultData();
+    }
+
+    /**
+     * Say a message but with a '---' wrapper around it.
+     */
+    protected function sayWithWrapper($message)
+    {
+        $this->say('');
+        $this->say(str_repeat('-', strlen($message)));
+        $this->say($message);
+        $this->say(str_repeat('-', strlen($message)));
+        $this->say('');
+    }
+
+    /**
+     * Print an error message.
+     */
+    protected function printError($message)
+    {
+        $this->yell($message, 40, 'red');
+    }
 }
