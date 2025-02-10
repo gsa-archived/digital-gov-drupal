@@ -36,12 +36,18 @@ class ECShortcodesCardPrompt extends EmbeddedContentPluginBase implements Embedd
    * {@inheritdoc}
    */
   public function build(): array {
+    $url = $this->configuration['url'];
+    // A URL starting with two slashes is a protocol relative external link.
+    if (str_starts_with($url, '/') && !str_starts_with($url, '//')) {
+      $url = \Drupal::service('path_alias.manager')->getAliasByPath($url);
+    }
+
     return [
       '#theme' => 'ec_shortcodes_card_prompt',
       '#intro' => $this->configuration['intro'],
       '#prompt' => $this->configuration['prompt'],
       '#text' => $this->configuration['text'],
-      '#url' => $this->configuration['url'],
+      '#url' => $url,
     ];
   }
 
@@ -72,10 +78,15 @@ class ECShortcodesCardPrompt extends EmbeddedContentPluginBase implements Embedd
       '#required' => TRUE,
     ];
     $form['url'] = [
-      '#type' => 'url',
-      '#title' => $this->t('Button Url'),
+      '#title' => $this->t('Button URL'),
       '#default_value' => $this->configuration['url'],
       '#required' => TRUE,
+      '#description' => $this->t('Enter a title to find an internal page or enter an external URL.'),
+      '#type' => 'linkit',
+      '#autocomplete_route_name' => 'linkit.autocomplete',
+      '#autocomplete_route_parameters' => [
+        'linkit_profile_id' => 'default',
+      ],
     ];
 
     return $form;

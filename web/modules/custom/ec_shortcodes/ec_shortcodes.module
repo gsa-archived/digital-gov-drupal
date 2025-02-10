@@ -5,13 +5,13 @@
  * The module file with theming functions.
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Implements hook_form_alter().
  */
-function ec_shortcodes_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id): void
-{
+function ec_shortcodes_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
   if ($form_id === 'embedded_content_dialog_form' &&  isset($form['config']['plugin_id'])) {
     // Alphabetically sort the options for embedded content.
     uasort(
@@ -22,6 +22,7 @@ function ec_shortcodes_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
     );
   }
 }
+
 /**
  * Implements hook_theme().
  */

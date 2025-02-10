@@ -34,9 +34,15 @@ class ECShortcodesButton extends EmbeddedContentPluginBase implements EmbeddedCo
    * {@inheritdoc}
    */
   public function build(): array {
+    $url = $this->configuration['url'];
+    // A URL starting with two slashes is a protocol relative external link.
+    if (str_starts_with($url, '/') && !str_starts_with($url, '//')) {
+      $url = \Drupal::service('path_alias.manager')->getAliasByPath($url);
+    }
+
     return [
       '#theme' => 'ec_shortcodes_button',
-      '#url' => $this->configuration['url'],
+      '#url' => $url,
       '#text' => $this->configuration['text'],
     ];
   }
@@ -46,15 +52,21 @@ class ECShortcodesButton extends EmbeddedContentPluginBase implements EmbeddedCo
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['url'] = [
-      '#type' => 'url',
-      '#title' => $this->t('Url'),
+      '#title' => $this->t('Button URL'),
       '#default_value' => $this->configuration['url'],
       '#required' => TRUE,
+      '#description' => $this->t('Enter a title to find an internal page or enter an external URL.'),
+      '#type' => 'linkit',
+      '#autocomplete_route_name' => 'linkit.autocomplete',
+      '#autocomplete_route_parameters' => [
+        'linkit_profile_id' => 'default',
+      ],
     ];
     $form['text'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Text'),
       '#default_value' => $this->configuration['text'],
+      '#description' => $this->t('Text for the button label.'),
       '#required' => TRUE,
     ];
     return $form;
