@@ -1,13 +1,7 @@
-{#
-/**
- * @file
- * Theme override to display a media item: remote video.
- */
-#}
-
-{# Caching the data in content object #}
-{% set savedCache = content|render %}
-
-<div class="video youtube-player">
-  {{ content.field_media_oembed_video|field_value }}
+{# See dg_fields_entity_view_alter() for setting attributes on youtube iframes. #}
+<div
+  class="video"
+  style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;"
+>
+  {{ elements }}
 </div>
