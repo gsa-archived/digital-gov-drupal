@@ -10,13 +10,23 @@
   dark ? 'quote-block--dark',
 ] %}
 
-{% if text %}
+{% if text.value %}
   <div{{ create_attribute().addClass(classes) }}>
     <blockquote>
       <span class="quote-block__quotation-mark">&ldquo;</span>
+      {% set text = {
+        '#type': 'processed_text',
+        '#text': text.value,
+        '#format': text.format,
+      } %}
       {{ text }}
       <span class="quote-block__quotation-mark">&rdquo;</span>
-      {% if cite %}
+      {% if cite.value %}
+        {% set cite = {
+          '#type': 'processed_text',
+          '#text': cite.value,
+          '#format': cite.format,
+        } %}
         <cite>— {{ cite }}</cite>
       {% endif %}
     </blockquote>

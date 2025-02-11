@@ -53,15 +53,21 @@ class ECShortcodesCardQuote extends EmbeddedContentPluginBase implements Embedde
       '#default_value' => $this->configuration['dark'],
     ];
     $form['text'] = [
-      '#type' => 'textfield',
+      '#type' => 'text_format',
       '#title' => $this->t('Text'),
-      '#default_value' => $this->configuration['text'],
+      '#default_value' => $this->configuration['text']['value'] ?? '',
+      '#format' => 'single_inline_html',
+      '#allowed_formats' => ['single_inline_html'],
       '#required' => TRUE,
+      '#rows' => 1,
     ];
     $form['cite'] = [
-      '#type' => 'textfield',
+      '#type' => 'text_format',
       '#title' => $this->t('Cite'),
-      '#default_value' => $this->configuration['cite'],
+      '#default_value' => $this->configuration['cite']['value'] ?? '',
+      '#format' => 'single_inline_html',
+      '#allowed_formats' => ['single_inline_html'],
+      '#rows' => 1,
     ];
 
     return $form;
