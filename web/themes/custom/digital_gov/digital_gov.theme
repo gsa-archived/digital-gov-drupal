@@ -120,8 +120,11 @@ function digital_gov_preprocess_node(array &$variables): void {
 
   switch ($variables['node']->bundle()) {
     case 'news':
-      $before_date = new DrupalDateTime('5 years ago');
-      $variables['show_archive_warning'] = $created->getPhpDateTime() <= $before_date->getPhpDateTime();
+      // $before_date = new DrupalDateTime('5 years ago');
+      // $variables['show_archive_warning'] = $created->getPhpDateTime() <=
+      // $before_date->getPhpDateTime();
+      // Disable this archive warning, see DIGITAL-336.
+      $variables['show_archive_warning'] = FALSE;
       break;
 
     case 'event':

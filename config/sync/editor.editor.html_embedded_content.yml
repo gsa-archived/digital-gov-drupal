@@ -16,7 +16,6 @@ settings:
       - code
       - link
       - heading
-      - blockQuote
       - bulletedList
       - numberedList
       - sourceEditing
