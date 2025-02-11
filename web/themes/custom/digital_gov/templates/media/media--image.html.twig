@@ -7,6 +7,7 @@
 
 {# Caching the data in content object #}
 {% set savedCache = content|render %}
+{# This depends on the align filter to follow the media embed filter in text format settings. #}
 {% set data_align = attributes['data-align']|render %}
 
 {% set classes = [
