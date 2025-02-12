@@ -19,6 +19,7 @@ module:
   convert_text: 0
   database_ssl_check: 0
   datetime: 0
+  datetime_range: 0
   dblog: 0
   default_content: 0
   default_content_config: 0
@@ -89,6 +90,8 @@ module:
   seckit: 0
   serialization: 0
   site_wrapper: 0
+  sitewide_alert: 0
+  sitewide_alert_block: 0
   svg_image: 0
   system: 0
   taxonomy: 0
