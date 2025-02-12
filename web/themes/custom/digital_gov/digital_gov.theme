@@ -8,12 +8,14 @@
 declare(strict_types=1);
 
 use Drupal\Component\Serialization\Yaml;
+use Drupal\Component\Utility\Html;
 use Drupal\convert_text\ConvertText;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Link;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 use Drupal\paragraphs\Entity\Paragraph;
 
 /**
@@ -25,7 +27,65 @@ use Drupal\paragraphs\Entity\Paragraph;
  * Implements hook_preprocess_HOOK() for html.html.twig.
  */
 function digital_gov_preprocess_html(array &$variables): void {
+  $is_front = \Drupal::service('path.matcher')->isFrontPage();
+  // @todo Authors landing page? authors + term.
+  if ($is_front) {
+    $variables['attributes']['class'][] = 'home';
+    $variables['attributes']['class'][] = 'page';
+  }
+  elseif ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $variables['attributes']['class'][] = dg_get_specific_body_class($node);
+    $variables['attributes']['class'][] = dg_get_broad_body_class($node);
+  }
+}
 
+/**
+ * Helper to lookup node type to body class.
+ *
+ * For cases where the Drupal content type doesn't match the Hugo content type.
+ */
+function dg_get_specific_body_class(NodeInterface $node): string {
+  if ($node->getType() === 'landing_page') {
+    // The landing page type value is the css class used by hugo.
+    return Html::getClass($node->get('field_landing_page_type')->getString());
+  }
+
+  return match ($node->getType()) {
+    'event' => 'events',
+    'community' => 'communities',
+    'guide_landing' => 'landings',
+    default => Html::getClass($node->getType()),
+  };
+}
+
+/**
+ * Helper to lookup node type to broad body class.
+ */
+function dg_get_broad_body_class(NodeInterface $node): string {
+
+  if ($node->getType() === 'guides') {
+    // Need to check if this is the Overview page.
+    if ($navNode = $node->get('field_guide_nav_ref')->referencedEntities()[0]) {
+      // This field points at a paragraph entity.
+      if ($ref = $navNode->get('field_guide_navigation')->referencedEntities()[0]) {
+        // Is the first node in the guide navigation this node?
+        $overview = $ref->get('field_guide_link')->referencedEntities()[0];
+        if ($overview->id() === $node->id()) {
+          return 'section';
+        }
+      }
+    }
+
+  }
+
+  return match ($node->getType()) {
+    'landing_page',
+    'guide_landing' => 'section',
+    'authors',
+    'topics' => 'term',
+    // All other nodes are pages.
+    default => 'page',
+  };
 }
 
 /**
@@ -60,8 +120,11 @@ function digital_gov_preprocess_node(array &$variables): void {
 
   switch ($variables['node']->bundle()) {
     case 'news':
-      $before_date = new DrupalDateTime('5 years ago');
-      $variables['show_archive_warning'] = $created->getPhpDateTime() <= $before_date->getPhpDateTime();
+      // $before_date = new DrupalDateTime('5 years ago');
+      // $variables['show_archive_warning'] = $created->getPhpDateTime() <=
+      // $before_date->getPhpDateTime();
+      // Disable this archive warning, see DIGITAL-336.
+      $variables['show_archive_warning'] = FALSE;
       break;
 
     case 'event':
@@ -231,7 +294,7 @@ function digital_gov_get_guidenav_links(Node $node, string $current): array {
             });
             if ($current_in_subnav) {
               // We haven't added our item to the guidenav, add 1 to the index.
-              $links['guide_current_index'] = isset($links['guide_nav']) ? array_key_last($links['guide_nav']) + 1 : 0;
+              $links['guide_current_index'] = $links['guide_nav'] ? array_key_last($links['guide_nav']) + 1 : 0;
             }
           }
         }
