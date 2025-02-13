@@ -32,8 +32,6 @@ class ConvertText {
     $source_text = trim($source_text);
     // Remove extra spaces before new lines.
     $source_text = preg_replace('/\n\s+n/', "\n", $source_text);
-    // Remove cr lf.
-    $source_text = str_replace(["\r\n", "\n", "\r"], "\n", $source_text);
 
     if (!strlen($source_text)) {
       return '';
