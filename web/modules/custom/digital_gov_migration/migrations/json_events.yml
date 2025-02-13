@@ -1,0 +1,142 @@
+id: json_events
+label: 'Import events from Digital.gov Hugo'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls:
+    #- https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/events/index.json
+    # First value from wsl.exe hostname -I
+    - http://172.20.60.7:1313/events/index.json
+  # This is the path to where the data are in the JSON.
+  item_selector: items
+  # Under 'fields', we list the data items to be imported. The first level keys
+  # are the source field names we want to populate (the names to be used as
+  # sources in the process configuration below). For each field we're importing,
+  # we provide a label (optional - this is for display in migration tools) and
+  # an xpath for retrieving that value. It's important to note that this xpath
+  # is relative to the elements retrieved by item_selector.
+  fields:
+    - name: src_unique_id
+      label: 'Unique ID'
+      selector: uid
+    - name: title
+      label: 'Title'
+      selector: field_title
+    - name: field_kicker
+      label: 'Kicker'
+      selector: field_kicker
+    - name: field_authors
+      label: 'Authors'
+      selector: field_authors
+    - name: created
+      label: 'Created Time'
+      selector: field_date
+    - name: changed
+      label: 'Modified Time'
+      selector: date_modified
+    - name: alias
+      label: 'URL Alias'
+      selector: url
+    - name: field_slug
+      label: 'Slug'
+      selector: slug
+    - name: field_captions
+      label: 'Caption URL'
+      selector: field_captions
+    - name: field_deck
+      label: 'Deck'
+      selector: field_deck
+    - name: field_end_date
+      label: 'End Date'
+      selector: field_end_date
+    - name: field_event_organizer
+      label: 'Event Organizer'
+      selector: field_event_organizer
+    - name: field_featured_image
+      label: 'Featured Image'
+      selector: field_featured_image
+    - name: field_host
+      label: 'Host'
+      selector: field_host
+    - name: field_page_weight
+      label: 'Weight'
+      selector: field_page_weight
+    - name: field_primary_image
+      label: 'Primary Image'
+      selector: field_primary_image
+    - name: field_registration_url
+      label: 'Registration URL'
+      selector: field_registration_url
+    - name: field_summary
+      label: 'Summary'
+      selector: field_summary
+    - name: field_topics
+      label: 'Topics'
+      selector: field_topics
+    - name: field_venue
+      label: 'Venue'
+      selector: field_venue
+    - name: field_youtube_id
+      label: 'Youtube ID'
+      selector: youtube_id
+  ids:
+    src_unique_id:
+      type: string
+  constants:
+    ALIAS_SEARCH: '/preview/gsa/digitalgov.gov/nl-json-endpoints'
+    ALIAS_REPLACE: ''
+process:
+  skip_empty_required_fields:
+    plugin: skip_on_condition
+    condition:
+      plugin: empty
+    source: title
+    method: row
+    message: 'Missing field_title which sets title field'
+  title: title
+  #field_authors: field_authors
+  field_captions: field_captions
+  field_deck: field_deck
+  field_end_date:
+    plugin: callback
+    callable: digital_gov_migration_convert_to_utc
+    source: field_end_date
+  field_event_organizer: field_event_organizer
+  field_event_platform: field_event_platform
+  #field_featured_image: field_featured_image
+  field_host: field_host
+  field_kicker: field_kicker
+  field_page_weight: field_page_weight
+  #field_primary_image: field_primary_image
+  field_registration_url: field_registration_url
+  field_slug: field_slug
+  field_summary: field_summary
+  #field_topics: field_topics
+  #field_venue: field_venue
+  field_youtube_id: field_youtube_id
+  created:
+    plugin: callback
+    callable: strtotime
+    source: created
+  changed:
+    plugin: callback
+    callable: strtotime
+    source: created
+  # Setting the moderation state to published will automatically set status=1.
+  moderation_state:
+    plugin: default_value
+    default_value: published
+  path/alias:
+    plugin: callback
+    callable: str_replace
+    # The federalist build puts a relative path that is too much.
+    source: [constants/ALIAS_SEARCH, constants/ALIAS_REPLACE, alias]
+    unpack_source: true
+  # Must disable auto-creating path auto in order to set alias explicitly.
+  path/pathauto:
+    plugin: default_value
+    default_value: false
+destination:
+  plugin: entity:node
+  default_bundle: event

@@ -39,3 +39,23 @@ function digital_gov_migration_entity_insert(EntityInterface $entity) {
   }
 
 }
+
+/**
+ * Takes a timestamp and returns it in UTC time.
+ *
+ * @param string $timestamp
+ *   A timestamp, in our case ISO 8601.
+ *
+ * @return string|null
+ *   The UTC time.
+ */
+function digital_gov_migration_convert_to_utc(string $timestamp): ?string {
+  if (empty($timestamp)) {
+    return NULL;
+  }
+
+  $date = new DateTime($timestamp);
+  $date->setTimezone(new DateTimeZone("UTC"));
+
+  return $date->format("Y-m-d\TH:i:s");
+}
