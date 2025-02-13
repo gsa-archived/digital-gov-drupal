@@ -55,7 +55,20 @@
 
   {{ page.help }}
 
-  {{ page.content }}
+  {% if node is not defined %}
+    {# This is not a node page #}
+    <main role="main" id="main-content">
+      <div class="grid-container-desktop margin-bottom-5">
+        <header>
+          <h1>{{ page['#title'] }}</h1>
+        </header>
+        {{ page.content }}
+      </div>
+    </main>
+  {% else %}
+    {# This is a node page #}
+    {{ page.content }}
+  {% endif %}
 
   {{ page.footer }}
 
