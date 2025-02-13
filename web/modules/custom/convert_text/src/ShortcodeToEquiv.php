@@ -133,9 +133,6 @@ class ShortcodeToEquiv {
       'img' => ['body' => FALSE],
       'img-flexible' => ['body' => FALSE],
       'img-right' => ['body' => FALSE],
-      'legacy-file' => ['body' => FALSE],
-      'legacy-img' => ['body' => FALSE],
-      'legacy-img-right' => ['body' => FALSE],
       'link' => ['body' => FALSE],
       'quote-block' => ['body' => FALSE],
       'ref' => ['body' => FALSE],
@@ -207,7 +204,9 @@ class ShortcodeToEquiv {
    */
   protected function getAttributes(string $string): array {
     $attributes = [];
-    $regex = '/(\w+)\s*=\s*["\']([^"\']+)["\']|["\']([^"\']+)["\']/';
+    // Matches attributes surrounded by quotes, attributes with no key that are
+    // quoted, and single word attributes that are not surrounded by quotes.
+    $regex = '/([a-zA-Z0-9_-]+)\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s>]+))|["\']([^"\']+)["\']/';
 
     preg_match_all($regex, $string, $matches, PREG_SET_ORDER);
 
@@ -217,7 +216,7 @@ class ShortcodeToEquiv {
       }
       else {
         // Unnamed attribute only.
-        $attributes[] = $match[3];
+        $attributes[] = $match[5];
       }
     }
 
@@ -264,40 +263,37 @@ class ShortcodeToEquiv {
         return $this->embeddedContent($config, 'ec_shortcodes_card_policy');
 
       case 'card-prompt':
+        if (empty($attributes['intro']) || empty($attributes['button-text']) || empty($attributes['button-url']) || empty($body)) {
+          return $this->error($shortcode, 'intro, button-text, button-url, and some body text is required.');
+        }
         $config = [
-          'intro' => $attributes['intro'] ?? '',
-          'text' => $attributes['button-text'] ?? '',
-          'url' => $attributes['button-url'] ?? '',
+          'intro' => $this->formattedFieldValue($attributes['intro']),
+          'text' => $attributes['button-text'],
+          'url' => $attributes['button-url'],
         ];
-        $config['prompt'] = $this->formattedFieldValue($body);
+        $config['prompt'] = $this->formattedFieldValue($body, 'html_embedded_content');
         return $this->embeddedContent($config, 'ec_shortcodes_card_prompt');
 
       case 'checklist':
-        foreach ($building_array as &$item) {
-          // Remove the trailing new lines from sublists.
-          $item['sublist'] = trim($item['sublist']);
+        $classes = ['dg-checklist'];
+        // The border attribute is only used to turn off the border. It's never
+        // set to 'true' or something, only 'false'.
+        if (isset($attributes['border'])) {
+          $classes[] = 'dg-checklist--no-border';
         }
-        $config = [
-          'checklist' => $building_array,
-        ];
-        $config['checklist']['add_more'] = 'Add another item';
-        // Now that this is built, zero out the children.
-        $building_array = [];
-        return $this->embeddedContent($config, 'ec_shortcodes_checklist');
+        $classes = implode(' ', $classes);
+        return sprintf('<ul class="%s">%s</ul>', $classes, $body);
 
       case 'checkbox':
-        $index = count($building_array);
-        $building_array[] = ['checkbox' => ConvertText::htmlNoBreaksText($body), 'sublist' => '', '_weight' => $index];
-        return $body;
+        return '<li>' . ConvertText::htmlNoBreaksText($body) . '</li>';
 
       // This only contains other short tags, nothing to do.
       case 'checklist-sublist':
-        return $body;
+        return "<ul>$body</ul>";
 
       case 'checkbox-sublist-item':
         $index_last = count($building_array) - 1;
-        $building_array[$index_last]['sublist'] .= ConvertText::htmlNoBreaksText($body) . "\r\n";
-        return $body;
+        return '<li>' . ConvertText::htmlNoBreaksText($body) . '</li>';
 
       case 'do-dont-table':
         $config = [
@@ -333,14 +329,14 @@ class ShortcodeToEquiv {
             break;
 
         }
-        $config['text'] = $this->formattedFieldValue($body);
+        $config['text'] = $this->formattedFieldValue($body, 'html_embedded_content');
         return $this->embeddedContent($config, $plugin_id);
 
       case 'ring':
         $config = [
           'heading' => $attributes['title'],
         ];
-        $config['text'] = $body;
+        $config['text'] = $this->formattedFieldValue($body, 'html_embedded_content');
         return $this->embeddedContent($config, 'ec_shortcodes_ring');
 
       case 'youtube':
@@ -377,11 +373,14 @@ class ShortcodeToEquiv {
         return 'Place holder till migrations are created';
 
       case 'button':
-        $config = [
-          'url' => $attributes['href'] ?? '',
-          'text' => $attributes['text'] ?? '',
-        ];
-        return $this->embeddedContent($config, 'ec_shortcodes_button');
+        if (empty($attributes['href'])) {
+          return $this->error($shortcode, 'Href is required.');
+        }
+        return sprintf(
+          '<a href="%s" class="usa-button usa-button--outline">%s</a>',
+          $attributes['href'],
+          $attributes['text'] ?? $attributes['href']
+        );
 
       case 'featured-resource':
         // $nid = $this->migrateLookup->lookup('resource_migration_id',
@@ -390,63 +389,48 @@ class ShortcodeToEquiv {
           return '';
         }
         $link = $attributes['link'];
-        // Ensure link starts with "/".
-        if (!str_starts_with($link, '/')) {
-          $link = '/' . $link;
+        if (!str_starts_with($link, 'http')) {
+          // Ensure link starts with "/".
+          if (!str_starts_with($link, '/')) {
+            $link = '/' . $link;
+          }
+          // Ensure it does not end with "/".
+          $link = rtrim($link, '/');
+          // This should return a node/XYZ path, if not the path does not exist
+          // yet.
+          $system_path = $this->aliasManager->getPathByAlias($link);
+          if ($system_path === $link) {
+            return $this->error($shortcode, 'Could not find a node with path: ' . $attributes['link']);
+          }
+          $nid = str_replace('/node/', '', $system_path);
+          $config = [
+            'content_reference' => $nid,
+            // @todo Kicker is being added in https://cm-jira.usa.gov/browse/DIGITAL-384.
+            'kicker' => ConvertText::htmlNoBreaksText($attributes['kicker'] ?? ''),
+          ];
+          return $this->embeddedContent($config, 'ec_shortcodes_featured_resource');
         }
-        // Ensure it does not end with "/".
-        $link = rtrim($link, '/');
-        // This should return a node/XYZ path, if not the path does not exist
-        // yet.
-        $system_path = $this->aliasManager->getPathByAlias($link);
-        if ($system_path === $link) {
-          return $this->error($shortcode, 'Could not find a node with path: ' . $attributes['link']);
-        }
-        $nid = str_replace('/node/', '', $system_path);
         $config = [
-          'content_reference' => $nid,
-          // @todo Kicker is being added in https://cm-jira.usa.gov/browse/DIGITAL-384.
-          'kicker' => ConvertText::htmlNoBreaksText($attributes['kicker'] ?? ''),
+          'kicker' => $attributes['kicker'] ?? '',
+          'link' => $link,
+          'summary' => $attributes['summary'] ?? '',
+          'title' => $attributes['title'] ?? '',
         ];
-        return $this->embeddedContent($config, 'ec_shortcodes_featured_resource');
+        return $this->embeddedContent($config, 'ec_shortcodes_featured_resource_ext');
 
       case 'img':
       case 'img-flexible':
       case 'img-right':
+        // @todo img flexible does not have an equivalent yet.
         // @todo Do a migration lookup by image UID.
         // $uuid = $this->migrateLookup->lookup('file_migration_id',
         // [$attributes['src']]);
+        // $attributes = [];
+        // if ($shortcode === 'img-right') {
+        // $attributes['data-align'] = 'right';
+        // }
         // $uuid = '';
-        // return $this->media($uuid);
-        return 'Place holder till migrations are created';
-
-      case 'legacy-file':
-      case 'legacy-img':
-      case 'legacy-img-right':
-        // Commenting this out until migration lookup is put in place.
-        // @codingStandardsIgnoreStart
-        /*
-        if ($shortcode === 'legacy-file') {
-          $type = 'file';
-          $file = $attributes[0] ?? '';
-        }
-        else {
-          $type = 'image';
-          $file = $attributes['src'] ?? '';
-        }
-        if (!strlen($file)) {
-          return $this->error($shortcode, 'Missing the file path.');
-        }
-        if (!str_starts_with($file, '/')) {
-          $file = '/' . $file;
-        }
-        $url = "https://s3.amazonaws.com/digitalgov/_legacy-img$file";
-        */
-        // @codingStandardsIgnoreEnd
-        // @todo Do a migration lookup by image UID.
-        // $uuid = $this->migrateLookup->lookup('file_migration_id', [$url]);
-        // $uuid = '';
-        // return $this->media($uuid);
+        // return $this->media($uuid, $attributes);
         return 'Place holder till migrations are created';
 
       // Link is used in combination with markdown url syntax, so it is
@@ -462,7 +446,7 @@ class ShortcodeToEquiv {
         // This is a reference to a piece of content in Hugo, use migration
         // lookup to find it.
         // @codingStandardsIgnoreStart
-        if (str_ends_with($url, '.md')) {
+        if (str_ends_with($url, '.md') || ($shortcode === 'ref' && !str_starts_with($url, '/') && !str_starts_with($url, 'http'))) {
           // Must look through every node migration.
           // @codingStandardsIgnoreStart
           /*foreach (['resource_migration_id', 'topics_migration_id', 'etc...'] as $migration_id) {
@@ -487,16 +471,16 @@ class ShortcodeToEquiv {
         return $url;
 
       case 'quote-block':
-        // @codingStandardsIgnoreStart
-        /*
+        if (empty($attributes['text'])) {
+          return $this->error($shortcode, 'Text attribute is required.');
+        }
+        $dark = !empty($attributes['bg']) && $attributes['bg'] === 'dark';
         $config = [
-          'cite' => $this->formattedFieldValue($attributes['cite'] ?? 'multiline_inline_html'),
-          'text' => $this->formattedFieldValue($attributes['text'] ?? 'html_embedded_content'),
+          'cite' => $this->formattedFieldValue($attributes['cite'], 'single_inline_html'),
+          'text' => $this->formattedFieldValue($attributes['text'], 'single_inline_html'),
+          'dark' => $dark ? 1 : 0,
         ];
-        return $this->embeddedContent($config, 'ec_shortcodes_quote_block');*/
-        // @codingStandardsIgnoreEnd
-        // @todo To be created in https://cm-jira.usa.gov/browse/DIGITAL-386.
-        return 'place holder for quote block';
+        return $this->embeddedContent($config, 'ec_shortcodes_card_quote');
 
       case 'row':
         // Nothing to do for a row, as the row is just made of other shortcodes.
@@ -538,12 +522,22 @@ class ShortcodeToEquiv {
    *
    * @param string $uuid
    *   The media UUID.
+   * @param array $attributes
+   *   An additional array of attributes to give to the media tag.
    *
    * @return string
    *   A media embed string.
    */
-  protected function media(string $uuid): string {
-    return sprintf('<drupal-media data-entity-type="media" data-entity-uuid="%s">&nbsp;</drupal-media>', $uuid);
+  protected function media(string $uuid, array $attributes = []): string {
+    $attributes['data-entity-type'] = 'media';
+    $attributes['data-entity-uuid'] = $uuid;
+    $pairs = [];
+    foreach ($attributes as $key => $value) {
+      $escaped_value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+      $pairs[] = "{$key}=\"{$escaped_value}\"";
+    }
+    $attributes = implode(' ', $pairs);
+    return sprintf('<drupal-media %s>&nbsp;</drupal-media>', $attributes);
   }
 
   /**
