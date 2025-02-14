@@ -14,6 +14,7 @@ dependencies:
     - filter
     - media
     - paragraphs_type_permissions
+    - sitewide_alert
     - system
     - toolbar
     - userprotect
@@ -39,4 +40,5 @@ permissions:
   - 'view paragraph content external_content'
   - 'view paragraph content featured_links'
   - 'view paragraph content internal_content'
+  - 'view published sitewide alert entities'
   - 'view the administration theme'
