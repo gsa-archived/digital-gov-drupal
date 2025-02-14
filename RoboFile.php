@@ -98,6 +98,7 @@ class RoboFile extends Tasks
                 'user',
                 'config_pages',
                 'taxonomy_term',
+                'sitewide_alert'
             ],
         ]
     ): ResultData
