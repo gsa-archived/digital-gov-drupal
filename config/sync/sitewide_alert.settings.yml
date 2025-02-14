@@ -1,7 +1,7 @@
 _core:
   default_config_hash: AyELxEG97dAomQRbU2DigRH1T9VfgfK1cnN39oENTaw
 show_on_admin: false
-alert_styles: "primary|Default\r\nemergency|Emergency"
+alert_styles: "info|Default\r\nemergency|Emergency"
 display_order: ascending
 automatic_refresh: true
 refresh_interval: 15
