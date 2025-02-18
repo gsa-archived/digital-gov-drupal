@@ -15,9 +15,9 @@ source:
     # not WSL2, where Hugo is. This shouldn't matter if this is a remote host.
     # Another host to try is host.docker.internal or find your local machine's
     # IP address.
-    #- http://172.20.60.7:1313/images/v1/json/
-    #- http://localhost:1313/images/v1/json/
-    - https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/images/v1/json/
+    #- http://172.20.60.7:1313/images/index.json
+    #- http://localhost:1313/images/index.json
+    - https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/images/index.json
 
 
   # XPath-like selector. The slash (/) at the beginning is optional.
