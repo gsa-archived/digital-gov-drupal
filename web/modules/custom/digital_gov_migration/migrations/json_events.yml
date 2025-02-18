@@ -68,6 +68,9 @@ source:
     - name: field_registration_url
       label: 'Registration URL'
       selector: field_registration_url
+    - name: field_event_platform
+      label: 'Event Platform'
+      selector: field_event_platform
     - name: field_summary
       label: 'Summary'
       selector: field_summary
@@ -80,6 +83,13 @@ source:
     - name: field_youtube_id
       label: 'Youtube ID'
       selector: youtube_id
+    - name: body
+      label: 'Body'
+      selector: field_body
+    - name: redirects
+      label: 'Redirects'
+      selector: redirects
+
   ids:
     src_unique_id:
       type: string
@@ -95,7 +105,11 @@ process:
     method: row
     message: 'Missing field_title which sets title field'
   title: title
-  #field_authors: field_authors
+  field_authors:
+    plugin: migration_lookup
+    source: field_authors
+    source_ids: src_unique_id
+    migration: json_authors
   field_captions: field_captions
   field_deck: field_deck
   field_end_date:
@@ -104,17 +118,30 @@ process:
     source: field_end_date
   field_event_organizer: field_event_organizer
   field_event_platform: field_event_platform
-  #field_featured_image: field_featured_image
+  field_featured_image:
+    plugin: migration_lookup
+    source: field_featured_image
+    source_ids: src_unique_id
+    migration: json_images_to_media
   field_host: field_host
   field_kicker: field_kicker
   field_page_weight: field_page_weight
-  #field_primary_image: field_primary_image
+  field_primary_image:
+    plugin: migration_lookup
+    source: field_primary_image
+    source_ids: src_unique_id
+    migration: json_images_to_media
   field_registration_url: field_registration_url
   field_slug: field_slug
   field_summary: field_summary
   #field_topics: field_topics
-  #field_venue: field_venue
+  #field_venue/field_venue_name: venue_name
+  # See digital_gov_migration_entity_presave().
+  # Instead of doing a separate migration, these are inline so had to do it
+  # manually.
+  venue: field_venue
   field_youtube_id: field_youtube_id
+  body/value: body
   created:
     plugin: callback
     callable: strtotime
@@ -137,6 +164,21 @@ process:
   path/pathauto:
     plugin: default_value
     default_value: false
+  # See digital_gov_migration_entity_insert().
+  redirects:
+    plugin: sub_process
+    source: redirects
+    process:
+      redirect_source/path: from
+      status_code:
+        plugin: default_value
+        default_value: 301
 destination:
   plugin: entity:node
   default_bundle: event
+
+migration_dependencies:
+  required:
+    - json_authors
+    - json_images_to_media
+  optional: { }
