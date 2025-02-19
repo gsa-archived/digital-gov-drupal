@@ -556,7 +556,7 @@ class ShortcodeToEquiv {
     // paragraph tags. Otherwise, the content entity embed module will complain
     // about br and p not being ended. This is fine because the WYSIWYG will
     // never make brs.
-    $value = str_replace(['<br>', '<br />'], "\n", $value);
+    $value = str_replace(['<br>', '<br />', '<br/>'], "\n", $value);
     return ['value' => ConvertText::htmlText($value), 'format' => $type];
   }
 
