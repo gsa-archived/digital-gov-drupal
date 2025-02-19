@@ -77,13 +77,19 @@ function digital_gov_migration_entity_presave(EntityInterface $entity) {
 function digital_gov_migration_entity_delete(EntityInterface $entity) {
   // Clean up paragraphs that cannot be rolled back because they were not part
   // of a migration.
+  $is_event_with_venue_data = $entity->getEntityTypeId() === 'node' && $entity->bundle() === 'event' && !$entity->get('field_venue')
+    ->isEmpty();
+  if (!$is_event_with_venue_data) {
+    return;
+  }
+  // Only cleanup venue paragraphs if doing a migration rollback.
   $is_a_rollback = FALSE;
   foreach (debug_backtrace() as $item) {
-    if ($item['function'] ?? '' === 'rollback') {
+    if (($item['function']) ?? '' === 'rollback') {
       $is_a_rollback = TRUE;
     }
   }
-  if (!$is_a_rollback || !$entity->hasField('field_venue') || $entity->get('field_venue')->isEmpty()) {
+  if (!$is_a_rollback) {
     return;
   }
   foreach ($entity->get('field_venue')->getValue() as $value) {
