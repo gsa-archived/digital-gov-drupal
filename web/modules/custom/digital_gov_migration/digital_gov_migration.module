@@ -116,3 +116,20 @@ function digital_gov_migration_convert_to_utc(string $timestamp): ?string {
 
   return $date->format("Y-m-d\TH:i:s");
 }
+
+/**
+ * Takes JSON string value and returns bool equivalent.
+ *
+ * Converts "true", "yes", "y", and "1" to TRUE, all else is FALSE.
+ */
+function digital_gov_migration_convert_to_boolean(string $raw): bool {
+  $raw = strtolower(trim($raw));
+
+  return $raw === 'true' || $raw === 'yes' || $raw === 'y' || $raw === "1";
+}
+
+function digital_gov_migration_clean_html_links(string $search, string $replace, string $input): string {
+  $searches = ['<a href="https://digital.gov/', '<a href="' . $search];
+  $replacements = ['<a href="/', '<a href="' . $replace];
+  return str_replace($searches, $replacements, $input);
+}
