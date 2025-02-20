@@ -7,8 +7,8 @@ on:
       - main
       - stage
       - feature/DIGITAL-*-deploydev
-      #- release/*
-      #- hotfix/*
+      - release/*
+      - hotfix/*
 
 permissions:
   contents: read
