@@ -31,7 +31,7 @@ default:
   message:
     -
       value: '<ul><li><a href="https://digital.gov/california-wildfires">digital.gov/california-wildfires</a></li><li><a href="https://digital.gov/hurricane-helene">digital.gov/hurricane-helene</a></li></ul>'
-      format: html
+      format: multiline_html_limited
   scheduled_alert:
     -
       value: false
