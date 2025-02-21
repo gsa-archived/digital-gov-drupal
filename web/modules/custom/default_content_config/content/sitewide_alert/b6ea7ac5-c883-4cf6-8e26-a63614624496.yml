@@ -1,0 +1,46 @@
+_meta:
+  version: '1.0'
+  entity_type: sitewide_alert
+  uuid: b6ea7ac5-c883-4cf6-8e26-a63614624496
+  default_langcode: en
+default:
+  revision_user:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  user_id:
+    -
+      target_id: 1
+  name:
+    -
+      value: Emergency
+  style:
+    -
+      value: emergency
+  dismissible:
+    -
+      value: false
+  dismissible_ignore_before_time:
+    -
+      value: 0
+  limit_to_pages_negate:
+    -
+      value: false
+  message:
+    -
+      value: '<p class="p1"><strong>Unexpected Narwhal Migration! </strong>Our team is investigating reports of narwhals unexpectedly navigating local waterways. While unlikely to impact <a href="/">daily operations</a>, please remain vigilant and avoid attempting to ride them. More updates soon.</p>'
+      format: html
+  scheduled_alert:
+    -
+      value: false
+  created:
+    -
+      value: 1740068492
+  field_show_icon:
+    -
+      value: true
+  field_slim:
+    -
+      value: false
