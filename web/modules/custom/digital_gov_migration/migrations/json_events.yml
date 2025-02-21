@@ -96,11 +96,11 @@ source:
   constants:
     ALIAS_SEARCH: '/preview/gsa/digitalgov.gov/nl-json-endpoints'
     ALIAS_REPLACE: ''
-    FORMAT_HTML: html
-    FORMAT_EMBEDDED: html_embedded_content
-    FORMAT_MULTI: multiline_inline_html
-    FORMAT_SINGLE: single_inline_html
-    FORMAT_PLAIN: plain_text
+    FORMAT_HTML: 'html'
+    FORMAT_EMBEDDED: 'html_embedded_content'
+    FORMAT_MULTI: 'multiline_inline_html'
+    FORMAT_SINGLE: 'single_inline_html'
+    FORMAT_PLAIN: 'plain_text'
 process:
   skip_empty_required_fields:
     plugin: skip_on_condition
@@ -117,10 +117,8 @@ process:
     migration: json_authors
   field_captions: field_captions
 
-  field_deck: field_deck
-  field_deck/format:
-    plugin: default_value
-    default_value: constants/FORMAT_SINGLE
+  field_deck/value: field_deck
+  field_deck/format: constants/FORMAT_SINGLE
 
   field_end_date:
     plugin: callback
@@ -136,9 +134,6 @@ process:
   field_host: field_host
 
   field_kicker: field_kicker
-  field_kicker/format:
-    plugin: default_value
-    default_value: constants/FORMAT_PLAIN
 
   field_page_weight: field_page_weight
   field_primary_image:
@@ -149,11 +144,14 @@ process:
   field_registration_url: field_registration_url
   field_slug: field_slug
 
-  field_summary: field_summary
-  field_summary/format:
-    plugin: default_value
-    default_value: constants/FORMAT_SINGLE
-  #field_topics: field_topics
+  field_summary/value: field_summary
+  field_summary/format: constants/FORMAT_SINGLE
+
+  field_topics:
+    plugin: migration_lookup
+    source: field_topics
+    source_ids: src_unique_id
+    migration: json_topics
   #field_venue/field_venue_name: venue_name
   # See digital_gov_migration_entity_presave().
   # Instead of doing a separate migration, these are inline so had to do it
@@ -162,9 +160,7 @@ process:
   field_youtube_id: field_youtube_id
 
   body/value: body
-  body/format:
-    plugin: default_value
-    default_value: constants/FORMAT_HTML
+  body/format: constants/FORMAT_HTML
 
   created:
     plugin: callback

@@ -1,4 +1,4 @@
-id: json_communities
+id: json_topics
 label: 'Import communities from Digital.gov Hugo'
 source:
   plugin: url
@@ -27,6 +27,18 @@ source:
     - name: field_page_weight
       label: 'Weight'
       selector: field_page_weight
+    - name: field_legislation
+      label: 'Legislation URL'
+      selector: field_legislation
+    - name: legislation_title
+      label: 'Legislation title'
+      selector: legislation_title
+    - name: legislation_link
+      label: 'Legislation link'
+      selector: legislation_link
+    - name: field_featured_communities
+      label: 'Featured Communities'
+      selector: field_featured_communities
     - name: field_slug
       label: 'Slug'
       selector: slug
@@ -44,6 +56,10 @@ source:
   constants:
     ALIAS_SEARCH: '/preview/gsa/digitalgov.gov/nl-json-endpoints'
     ALIAS_REPLACE: ''
+    FORMAT_EMBEDDED: 'html_embedded_content'
+    FORMAT_MULTI: 'multiline_inline_html'
+    FORMAT_SINGLE: 'single_inline_html'
+    FORMAT_PLAIN: 'plain_text'
 process:
   skip_empty_required_fields:
     plugin: skip_on_condition
@@ -53,13 +69,28 @@ process:
     method: row
     message: 'Missing field_title which sets title field'
   title: title
-  field_deck: field_deck
-  field_summary: field_summary
+
+  field_deck/value : field_deck
+  field_deck/format: constants/FORMAT_SINGLE
+
+  field_summary/value: field_summary
+  field_summary/format: constants/FORMAT_SINGLE
   changed:
     plugin: callback
     callable: strtotime
     source: created
   field_page_weight: field_page_weight
+  field_legislation/uri: field_legislation
+  field_legislation/title: legislation_title
+  field_featured_communities:
+    plugin: migration_lookup
+    # source is where we are getting values to lookup
+    source: field_featured_communities
+    # the migration to look ids up in
+    migration: json_communities
+    # the migration to make any stub entities
+    stub_id: json_communities
+    no_stub: true
   field_slug: field_slug
   # Setting the moderation state to published will automatically set status=1.
   moderation_state:

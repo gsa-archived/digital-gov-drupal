@@ -65,10 +65,6 @@ source:
     - name: field_subscribe_email_subject
       label: 'Subscribe Email Subject'
       selector: field_subscribe_email_subject
-    - name:
-      label:
-      selector:
-    # field topics
     - name: field_slug
       label: 'Slug'
       selector: slug
@@ -84,14 +80,11 @@ source:
   constants:
     ALIAS_SEARCH: '/preview/gsa/digitalgov.gov/nl-json-endpoints'
     ALIAS_REPLACE: ''
-    # keep the trailing slash
-    DG_IMG_URL: 'https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/img/'
-    DG_LOGO_DIR: 'public://dg-logo/'
-    FORMAT_HTML: html
-    FORMAT_EMBEDDED: html_embedded_content
-    FORMAT_MULTI: multiline_inline_html
-    FORMAT_SINGLE: single_inline_html
-    FORMAT_PLAIN: plain_text
+    FORMAT_HTML: 'html'
+    FORMAT_EMBEDDED: 'html_embedded_content'
+    FORMAT_MULTI: 'multiline_inline_html'
+    FORMAT_SINGLE: 'single_inline_html'
+    FORMAT_PLAIN: 'plain_text'
 process:
   skip_empty_required_fields:
     plugin: skip_on_condition
@@ -103,19 +96,12 @@ process:
   title: title
 
   field_kicker: field_kicker
-  field_kicker/format:
-    plugin: default_value
-    default_value: constants/FORMAT_PLAIN
 
-  field_deck: field_deck
-  field_deck/format:
-    plugin: default_value
-    default_value: constants/FORMAT_SINGLE
+  field_deck/value: field_deck
+  field_deck/format: constants/FORMAT_SINGLE
 
-  field_summary: field_summary
-  field_summary/format:
-    plugin: default_value
-    default_value: constants/FORMAT_SINGLE
+  field_summary/value: field_summary
+  field_summary/format: constants/FORMAT_SINGLE
 
   field_page_weight: field_page_weight
 
@@ -124,9 +110,7 @@ process:
     callable: digital_gov_migration_clean_html_links
     source: [ constants/ALIAS_SEARCH, constants/ALIAS_REPLACE, body ]
     unpack_source: true
-  body/format:
-    plugin: default_value
-    default_value: constants/FORMAT_HTML
+  body/format: constants/FORMAT_HTML
 
   field_primary_image:
     plugin: migration_lookup

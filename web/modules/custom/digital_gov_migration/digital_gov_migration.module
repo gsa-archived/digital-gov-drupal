@@ -36,7 +36,11 @@ function digital_gov_migration_entity_insert(EntityInterface $entity) {
       ]);
 
       // Save the redirect.
-      $redirect->save();
+      try {
+        $redirect->save();
+      } catch (\Exception $ex) {
+        trigger_error($ex->getMessage(), E_USER_WARNING);
+      }
     }
   }
 
