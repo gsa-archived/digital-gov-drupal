@@ -60,6 +60,7 @@
       margin-bottom: units(2);
     }
   }
+
   // For notes within list items
   li .note {
     @include u-padding-y("05");
