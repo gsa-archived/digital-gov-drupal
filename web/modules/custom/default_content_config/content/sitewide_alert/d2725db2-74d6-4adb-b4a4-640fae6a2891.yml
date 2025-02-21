@@ -24,7 +24,7 @@ default:
       value: false
   dismissible_ignore_before_time:
     -
-      value: 0
+      value: 1740124894
   limit_to_pages_negate:
     -
       value: false
