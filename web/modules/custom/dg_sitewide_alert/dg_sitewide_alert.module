@@ -23,5 +23,9 @@ function dg_sitewide_alert_form_alter(&$form, FormStateInterface $form_state, $f
     unset($form['scheduling_options']);
     unset($form['scheduled_alert']);
     unset($form['scheduled_date']);
+
+    // restrict the format to multiline_html_limited.
+    $form['message']['widget'][0]['#format'] = 'multiline_html_limited';
+    $form['message']['widget'][0]['#allowed_formats'] = ['multiline_html_limited'];
   }
 }
