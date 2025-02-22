@@ -3,7 +3,7 @@ label: 'Import communities from Digital.gov Hugo'
 source:
   plugin: url
   data_fetcher_plugin: http
-  data_parser_plugin: json
+  data_parser_plugin: json_topics
   urls:
     - https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/topics/index.json
   # This is the path to where the data are in the JSON.
@@ -39,6 +39,9 @@ source:
     - name: field_featured_communities
       label: 'Featured Communities'
       selector: field_featured_communities
+    - name: field_featured_resources
+      label: 'Featured Resources'
+      selector: field_featured_resources
     - name: field_slug
       label: 'Slug'
       selector: slug
@@ -49,7 +52,7 @@ source:
       label: 'Redirects'
       selector: redirects
     #TODO
-    #- name: field_legislation, legistlation_link, field_featured_communities,field_legislation_title, field_featured_resources, field_featured_lihnk_ttitle, field_featured_links,
+    #- name: field_featured_resources, field_featured_link_title, field_featured_links,
   ids:
     src_unique_id:
       type: string
@@ -82,6 +85,7 @@ process:
   field_page_weight: field_page_weight
   field_legislation/uri: field_legislation
   field_legislation/title: legislation_title
+  field_slug: field_slug
   field_featured_communities:
     plugin: migration_lookup
     # source is where we are getting values to lookup
@@ -91,7 +95,48 @@ process:
     # the migration to make any stub entities
     stub_id: json_communities
     no_stub: true
-  field_slug: field_slug
+#  dump_sourcevar:
+#    plugin: callback
+#    callable: var_dump
+#    source: field_featured_resources
+  field_featured_resources:
+    - plugin: sub_process
+      source: field_featured_resources
+      include_source: true
+      source_key: root
+      process:
+        target_id:
+          - plugin: extract
+            source: root/field_featured_resources
+            index:
+              - 0
+              - uid
+          - plugin: migration_lookup
+            migration: json_topic_resource_paragraphs
+            stub_id: json_topic_resource_paragraphs
+            source: uid
+          - plugin: extract
+            index:
+              - 0
+          - plugin: callback
+            callable: var_dump
+
+        target_revision_id:
+          - plugin: extract
+            source: root/field_featured_resources
+            index:
+              - 0
+              - uid
+          - plugin: migration_lookup
+            migration: json_topic_resource_paragraphs
+            stub_id: json_topic_resource_paragraphs
+            source: uid
+          - plugin: extract
+            index:
+              - 1
+
+
+
   # Setting the moderation state to published will automatically set status=1.
   moderation_state:
     plugin: default_value
@@ -115,7 +160,12 @@ process:
       status_code:
         plugin: default_value
         default_value: 301
+
 destination:
   plugin: entity:node
   default_bundle: topics
 
+#migration_dependencies:
+#  required:
+#    - json_topic_resource_paragraphs
+#  optional: { }
