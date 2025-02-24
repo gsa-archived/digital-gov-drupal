@@ -7,4 +7,5 @@ repos:
 packages:
   #- awscli
   - bsdmainutils
+  - mariadb-client
   #- newrelic-php5
