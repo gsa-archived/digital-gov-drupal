@@ -7,5 +7,5 @@ repos:
 packages:
   #- awscli
   - bsdmainutils
-  - mysql-client-core-8.0
+  - mariadb-client-core
   #- newrelic-php5
