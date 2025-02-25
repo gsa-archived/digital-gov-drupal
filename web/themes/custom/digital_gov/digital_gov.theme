@@ -180,7 +180,7 @@ function digital_gov_preprocess_node(array &$variables): void {
   $page_param = $request->query->get('page');
 
   // Ensure it's a string and sanitize it.
-  $variables['page_param'] = (is_string($page_param)) ? Html::escape($page_param) : NULL;
+  $variables['page_param'] = (is_numeric($page_param)) ? Html::escape($page_param) : NULL;
   $variables['is_first_page'] = $variables['page_param'] === '0' || $variables['page_param'] === NULL;
 }
 
