@@ -67,6 +67,7 @@ final class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase imple
   public function defaultConfiguration() {
     return [
       'content_reference' => NULL,
+      'kicker' => NULL,
     ];
   }
 
@@ -77,6 +78,7 @@ final class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase imple
     return [
       '#theme' => 'ec_shortcodes_featured_resource',
       '#content_reference' => $this->configuration['content_reference'],
+      '#kicker' => $this->configuration['kicker']['value'],
     ];
   }
 
@@ -106,6 +108,16 @@ final class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase imple
         ],
       ],
     ];
+
+    $form['kicker'] = [
+      '#type' => 'text_format',
+      '#title' => $this->t('Kicker'),
+      '#default_value' => $this->configuration['kicker']['value'] ?? '',
+      '#format' => 'single_inline_html',
+      '#allowed_formats' => ['single_inline_html'],
+      '#rows' => 1,
+    ];
+
     return $form;
   }
 
