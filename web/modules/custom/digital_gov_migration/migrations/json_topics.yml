@@ -170,6 +170,7 @@ destination:
   plugin: entity:node
   default_bundle: topics
 
-#migration_dependencies:
-#  required:
-#    - json_topics__resource_paragraphs
+migration_dependencies:
+  required:
+    - json_topics__resource_paragraphs
+    - json_topics__featured_links

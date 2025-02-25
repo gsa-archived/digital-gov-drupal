@@ -38,7 +38,6 @@ class JSON_topic_featured_links extends JSON_tamperer {
       $paragraph['field_featured_links_title'] = $item['field_featured_links_title'];
       $paragraph['field_featured_links'] = [];
       foreach ($item['field_featured_links'] as $link) {
-//        $link_para = ['parent_uid' => $item['uid']];
 
         // UID with unchanged inputs
         $link_para['link_uid'] = hash('sha256', $item['uid'] . '::' . $link['href']);

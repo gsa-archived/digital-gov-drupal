@@ -51,13 +51,10 @@ process:
           - plugin: extract
             index: [ 1 ]
 
-
 destination:
   # It's a paragraph entity
   plugin: 'entity_reference_revisions:paragraph'
   default_bundle: featured_links
-
-
 
 migration_dependencies:
   required:

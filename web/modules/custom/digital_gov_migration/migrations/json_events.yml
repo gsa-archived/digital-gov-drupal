@@ -132,9 +132,7 @@ process:
     source_ids: src_unique_id
     migration: json_images_to_media
   field_host: field_host
-
   field_kicker: field_kicker
-
   field_page_weight: field_page_weight
   field_primary_image:
     plugin: migration_lookup
@@ -143,10 +141,8 @@ process:
     migration: json_images_to_media
   field_registration_url: field_registration_url
   field_slug: field_slug
-
   field_summary/value: field_summary
   field_summary/format: constants/FORMAT_SINGLE
-
   field_topics:
     plugin: migration_lookup
     source: field_topics

@@ -33,18 +33,6 @@ source:
       label: 'Featured Link Summary'
       selector: link_summary
 process:
-  dump_array:
-    plugin: callback
-    callable: var_dump
-    source: link_url
-  dump_link:
-    plugin: callback
-    callable: var_dump
-    source: link_title
-  dump_summary:
-    plugin: callback
-    callable: var_dump
-    source: link_summary
   field_link/uri: link_url
   field_link/title: link_title
   field_summary/value: link_summary
