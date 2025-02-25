@@ -8,5 +8,7 @@ packages:
   #- awscli
   - bsdmainutils
   - firefox
+  - nodejs
+  - python3
   - mysql-client-core-8.0
   #- newrelic-php5
