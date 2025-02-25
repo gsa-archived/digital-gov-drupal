@@ -48,7 +48,7 @@ class JSON_topic_resources extends Json {
           $paragraph = ['parent_uid' => $item['uid']];
 
           // UID with unchanged inputs
-          $paragraph['uid'] = hash('sha256', $item['uid'] . '::' . $resource['field_featured_resource_link']);
+          $paragraph['resource_uid'] = hash('sha256', $item['uid'] . '::' . $resource['field_featured_resource_link']);
           $paragraph['url'] = trim($resource['field_featured_resource_link']);
 
 

@@ -54,8 +54,6 @@ source:
     - name: redirects
       label: 'Redirects'
       selector: redirects
-    #TODO
-    #- name: field_featured_resources, field_featured_link_title, field_featured_links,
   ids:
     src_unique_id:
       type: string
@@ -99,41 +97,30 @@ process:
     # the migration to make any stub entities
     stub_id: json_communities
     no_stub: true
-  #  psf_debug:
-  #    plugin: callback
-  #    callable: var_dump
-  #    source: psf_featured_resource_uids
 
-#  field_featured_resources:
-#  - plugin: skip_on_condition
-#    condition: empty
-#    source: field_featured_resources
-#  - plugin: sub_process
-#    source: field_featured_resources
-#    include_source: true
-#    source_key: root
-#    process:
-#      target_id:
-#        - plugin: extract
-#          source: root/field_featured_resources
-#          index: [0, uid]
-#        - plugin: migration_lookup
-#          migration: json_topic_resource_paragraphs
-#        - plugin: extract
-#          index: [0]
-#      target_revision_id:
-#        - plugin: extract
-#          source: root/field_featured_resources
-#          index: [0, uid]
-#        - plugin: migration_lookup
-#          migration: json_topic_resource_paragraphs
-#        - plugin: extract
-#          index: [1]
+  field_featured_resources:
+  - plugin: skip_on_condition
+    condition: empty
+    source: field_featured_resources
+    method: process
+  - plugin: sub_process
+    source: field_featured_resources
+    include_source: true
+    source_key: root
+    process:
+      target_id:
+        - plugin: migration_lookup
+          migration: json_topics__resource_paragraphs
+          source: resource_uid
+        - plugin: extract
+          index: [0]
+      target_revision_id:
+        - plugin: migration_lookup
+          migration: json_topics__resource_paragraphs
+          source: resource_uid
+        - plugin: extract
+          index: [1]
 
-#  psf_debug:
-#    plugin: callback
-#    callable: var_dump
-#    source: field_featured_links
   field_featured_links/target_id:
       - plugin: skip_on_condition
         condition: empty

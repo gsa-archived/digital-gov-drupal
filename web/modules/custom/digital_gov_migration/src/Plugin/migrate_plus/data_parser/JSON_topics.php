@@ -24,7 +24,7 @@ class JSON_topics extends JSON_tamperer {
           $resource['parent_uid'] = $item['uid'];
 
           // UID with unchanged inputs to match in migrations
-          $resource['uid'] = hash('sha256', $item['uid'] . '::' . $resource['field_featured_resource_link']);
+          $resource['resource_uid'] = hash('sha256', $item['uid'] . '::' . $resource['field_featured_resource_link']);
         }
       }
       else {
