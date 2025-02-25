@@ -19,7 +19,9 @@ $settings['tome_static_directory'] = dirname(DRUPAL_ROOT) . '/html';
 $settings['config_sync_directory'] = dirname(DRUPAL_ROOT) . '/config/sync';
 $settings['file_private_path'] = dirname(DRUPAL_ROOT) . '/private';
 
-$settings['hash_salt'] = getenv("HASH_SALT");
+if (!empty(getenv("HASH_SALT"))) {
+  $settings['hash_salt'] = hash('sha256', getenv("HASH_SALT"));
+}
 
 $settings['tome_static_path_exclude'] = [
   '/saml', '/saml/acs', '/saml/login', '/saml/logout', '/saml/metadata', '/saml/sls',
@@ -101,7 +103,15 @@ foreach ($cf_service_data as $service_list) {
       if (!empty($service['credentials']['gsa_auth_key'])) {
          $config['openid_connect.client.gsa_auth']['settings']['client_secret'] = $service['credentials']['gsa_auth_key'];
       }
-      $settings['cron_key'] = hash('sha256', $service['credentials']['cron_key']);
+
+      if (!empty($service['credentials']['cron_key'])) {
+        $settings['cron_key'] = hash('sha256', $service['credentials']['cron_key']);
+      }
+
+      if (!empty($service['credentials']['hash_salt']) && empty($settings['hash_salt'])) {
+        $settings['hash_salt'] = hash('sha256', $service['credentials']['hash_salt']);
+      }
+
     }
     elseif (stristr($service['name'], 'storage')) {
       $settings['s3fs.access_key'] = $service['credentials']['access_key_id'];

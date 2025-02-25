@@ -240,6 +240,8 @@ locals {
 
         ## Credentials that should be added to the json blob.
         credentials = [
+          "cron_key",
+          "hash_salt",
           "gsa_auth_key",
           "newrelic_key",
         ]
