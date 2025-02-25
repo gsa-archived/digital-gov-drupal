@@ -14,7 +14,7 @@ dependencies:
 id: topic_news_and_events
 label: 'Topic - News and Events'
 module: views
-description: 'Combine News Posts and Events'
+description: 'Combine News and Events related to a topic'
 tag: ''
 base_table: node_field_data
 base_field: nid
