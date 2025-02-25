@@ -20,6 +20,7 @@ jobs:
     secrets: inherit
   deploy-infra:
     uses: ./.github/workflows/terraform-deploy-infra.yml
+    needs: validate
     secrets: inherit
   deploy-app:
     uses: ./.github/workflows/cloudgov-deploy-app.yml
