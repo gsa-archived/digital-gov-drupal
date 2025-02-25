@@ -81,7 +81,7 @@ jobs:
         run: |
           if [[ "${CF_SPACE}" = "dev" || "${CF_SPACE}" = "staging" ]]; then
             echo "${CF_SPACE} is building the static site now..."
-            cf run-task "${PROJECT}-drupal-${CF_SPACE}" --command "/home/vcap/app/scripts/upkeep" --wait -m 1G
+            cf run-task "${PROJECT}-drupal-${CF_SPACE}" --command "/home/vcap/app/scripts/upkeep" --wait -m 1G -k 4GF
           else
             echo "${CF_SPACE} does not need to build static site on deployment"
           fi
