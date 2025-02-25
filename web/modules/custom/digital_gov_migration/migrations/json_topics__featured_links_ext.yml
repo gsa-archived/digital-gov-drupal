@@ -1,11 +1,11 @@
-id: json_topic_resource_paragraphs
-label: 'Import featured resource paragraphs for topics from Digital.gov Hugo'
+id: json_topics__featured_links_ext
+label: 'Import featured links as external paragraphs for topics from Digital.gov Hugo'
 migration_tags:
-  - 'Topics Featured Resources'
+  - 'Topics Featured Links Ext'
 source:
   plugin: url
   data_fetcher_plugin: http
-  data_parser_plugin: json_topic_resources
+  data_parser_plugin: json_topic_featured_links_ext
   urls:
     - https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/topics/index.json
   # This is the path to where the data are in the JSON.
@@ -23,31 +23,31 @@ source:
     - name: uid
       label: 'UID'
       selector: uid
-    - name: resource_url
-      label: 'Featured Resources'
-      selector: url
-    - name: resource_title
-      label: 'Resource URL'
-      selector: title
-    - name: resource_summary
-      label: 'Resource Summary'
-      selector: summary
+    - name: link_url
+      label: 'Featured Link URL'
+      selector: link_url
+    - name: link_title
+      label: 'Featured Link Title'
+      selector: link_title
+    - name: link_summary
+      label: 'Featured Link Summary'
+      selector: link_summary
 process:
   dump_array:
     plugin: callback
     callable: var_dump
-    source: resource_url
+    source: link_url
   dump_link:
     plugin: callback
     callable: var_dump
-    source: resource_title
+    source: link_title
   dump_summary:
     plugin: callback
     callable: var_dump
-    source: resource_summary
-  field_link/uri: resource_url
-  field_link/title: resource_title
-  field_summary/value: resource_summary
+    source: link_summary
+  field_link/uri: link_url
+  field_link/title: link_title
+  field_summary/value: link_summary
   field_summary/format: constants/FORMAT_SINGLE
 
 destination:
