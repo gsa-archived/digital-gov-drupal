@@ -375,7 +375,7 @@ display:
           admin_label: ''
           plugin_id: result
           empty: false
-          content: '<p>@total posts</p>'
+          content: "<div class=\"margin-bottom-2\"><p>@total posts</p></div>\r\n"
       footer: {  }
       display_extenders: {  }
     cache_metadata:
