@@ -6,6 +6,10 @@ on:
   push:
     branches:
       - 'feature/**'
+    # This branch runs the 'build-and-deploy' action which also validates, no
+    # need to validate here.
+    branches-ignore:
+      - 'feature/DIGITAL-*-deploydev'
 
 jobs:
   validate:
