@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\digital_gov_migration\Plugin\migrate_plus\data_parser;
 
@@ -20,17 +20,18 @@ namespace Drupal\digital_gov_migration\Plugin\migrate_plus\data_parser;
  *   title = @Translation("JSON Fetcher for Digital.gov Featured External Links Resources for Topics")
  * )
  */
-class JSON_topic_featured_links_ext extends JSON_tamperer {
+class JsonTopicFeaturedExtLinks extends JsonTamperer {
 
-  protected function alterFeed(&$feed): void
-  {
+  /**
+   * Alter the main topic feed to import featured links.
+   */
+  protected function alterFeed(&$feed): void {
     // Get the topics that have featured resources and get them
-    // into a format we can use to import as paragraphs
+    // into a format we can use to import as paragraphs.
     $items = array_filter($this->sourceData['items'], static function ($item) {
       return isset($item['field_featured_links'])
         && !empty($item['field_featured_links']);
     });
-
 
     $paragraphs = [];
     // Get each featured link as an item in the feed, even when
@@ -39,7 +40,7 @@ class JSON_topic_featured_links_ext extends JSON_tamperer {
       foreach ($item['field_featured_links'] as $link) {
         $paragraph = ['parent_uid' => $item['uid']];
 
-        // UID with unchanged inputs
+        // UID with unchanged inputs.
         $paragraph['uid'] = hash('sha256', $item['uid'] . '::' . $link['href']);
         $paragraph['link_url'] = trim($link['href']);
 
@@ -51,9 +52,10 @@ class JSON_topic_featured_links_ext extends JSON_tamperer {
       }
     }
 
-    // Replace the original json with our paragraph imports
+    // Replace the original json with our paragraph imports.
     $feed['items'] = $paragraphs;
     $feed['count'] = count($paragraphs);
     $feed['content'] = 'topics__featured_links';
   }
+
 }

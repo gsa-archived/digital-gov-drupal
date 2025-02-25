@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\digital_gov_migration\Plugin\migrate_plus\data_parser;
 
@@ -15,15 +15,18 @@ namespace Drupal\digital_gov_migration\Plugin\migrate_plus\data_parser;
  *   title = @Translation("JSON Fetcher and munger for Digital.gov for Topics")
  * )
  */
-class JSON_topics extends JSON_tamperer {
-  protected function alterFeed(&$feed): void
-  {
+class JsonTopics extends JsonTamperer {
+
+  /**
+   * Prepare a feed so we can match related paragraphs.
+   */
+  protected function alterFeed(&$feed): void {
     foreach ($this->sourceData['items'] as &$item) {
       if (isset($item['field_featured_resources'])) {
         foreach ($item['field_featured_resources'] as &$resource) {
           $resource['parent_uid'] = $item['uid'];
 
-          // UID with unchanged inputs to match in migrations
+          // Resource UID with unchanged inputs to match in migrations.
           $resource['resource_uid'] = hash('sha256', $item['uid'] . '::' . $resource['field_featured_resource_link']);
         }
       }
@@ -42,4 +45,5 @@ class JSON_topics extends JSON_tamperer {
       }
     }
   }
+
 }

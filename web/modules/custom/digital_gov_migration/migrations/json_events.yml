@@ -154,10 +154,11 @@ process:
   # manually.
   venue: field_venue
   field_youtube_id: field_youtube_id
-
-  body/value: body
+  body/value:
+    plugin: dg_convert_text
+    source: body
+    field_type: 'html'
   body/format: constants/FORMAT_HTML
-
   created:
     plugin: callback
     callable: strtotime

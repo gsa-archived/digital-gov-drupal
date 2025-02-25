@@ -46,7 +46,7 @@ class ConvertText {
         $converter = new CommonMarkConverter();
         $html = $converter->convert($source_text)->getContent();
         $html = LitEmoji::encodeUnicode($html);
-        $html = self::addLinkItMarkup($html);
+
         if ($field_type === 'html_no_breaks') {
           $html = str_replace(['<p>', '</p>', '<br>', '<br />', '<br/>'], '', $html);
         }
@@ -58,7 +58,25 @@ class ConvertText {
   }
 
   /**
-   * Update local link tags with linkit data attributes.
+   * Runs conversions that must happen after all content is migrated.
+   */
+  protected static function afterMigrate(string $source_text, string $field_type): string {
+    switch ($field_type) {
+      case 'plain_text':
+        // Doesn't do anything yet, stubbed here in case we need it later.
+        return $source_text;
+
+      case 'html':
+      case 'html_no_breaks':
+        return self::addLinkItMarkup($source_text);
+
+      default:
+        throw new \Exception("Invalid \$field_type of $field_type given");
+    }
+  }
+
+  /**
+   * Update local link tags with LinkIt data attributes.
    */
   protected static function addLinkItMarkup(string $source_text): string {
 
@@ -207,6 +225,13 @@ class ConvertText {
   }
 
   /**
+   * Runs post-migration cleanup for plain text fields.
+   */
+  public static function plainTextAfterMigrate(string $source_text): string {
+    return self::afterMigrate($source_text, 'plain_text');
+  }
+
+  /**
    * Gets text ready to be stored in html text fields.
    *
    * @param string $source_text
@@ -220,6 +245,13 @@ class ConvertText {
   }
 
   /**
+   * Runs post-migration cleanup for HTML fields.
+   */
+  public static function htmlTextAfterMigrate(string $source_text): string {
+    return self::afterMigrate($source_text, 'html');
+  }
+
+  /**
    * Gets text ready to be stored in html text fields without breaks.
    *
    * @var string $source_text
@@ -230,6 +262,13 @@ class ConvertText {
    */
   public static function htmlNoBreaksText(string $source_text): string {
     return self::convert($source_text, 'html_no_breaks');
+  }
+
+  /**
+   * Runs post-migration cleanup for HTML-no-breaks fields.
+   */
+  public static function htmlNoBreaksAfterMigrate(string $source_text): string {
+    return self::afterMigrate($source_text, 'html_no_breaks');
   }
 
 }

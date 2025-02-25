@@ -38,7 +38,8 @@ function digital_gov_migration_entity_insert(EntityInterface $entity) {
       // Save the redirect.
       try {
         $redirect->save();
-      } catch (\Exception $ex) {
+      }
+      catch (\Exception $ex) {
         trigger_error($ex->getMessage(), E_USER_WARNING);
       }
     }
@@ -132,6 +133,12 @@ function digital_gov_migration_convert_to_boolean(string $raw): bool {
   return $raw === 'true' || $raw === 'yes' || $raw === 'y' || $raw === "1";
 }
 
+/**
+ * Cleans up internal links.
+ *
+ * Helper to turn links hard-coded to digital.gov domains into local links
+ * in migrated content.
+ */
 function digital_gov_migration_clean_html_links(string $search, string $replace, string $input): string {
   $searches = ['<a href="https://digital.gov/', '<a href="' . $search];
   $replacements = ['<a href="/', '<a href="' . $replace];

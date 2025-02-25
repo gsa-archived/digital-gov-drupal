@@ -74,10 +74,8 @@ process:
     method: row
     message: 'Missing field_title which sets title field'
   title: title
-
   field_deck/value : field_deck
   field_deck/format: constants/FORMAT_SINGLE
-
   field_summary/value: field_summary
   field_summary/format: constants/FORMAT_SINGLE
   changed:

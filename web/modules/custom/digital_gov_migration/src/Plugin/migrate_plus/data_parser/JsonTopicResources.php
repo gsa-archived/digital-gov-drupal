@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\digital_gov_migration\Plugin\migrate_plus\data_parser;
 
@@ -9,7 +9,7 @@ use Drupal\migrate_plus\Plugin\migrate_plus\data_parser\Json;
 /**
  * Obtain JSON data for migration.
  *
- * Prepareas the topics data so that we can import featured resources
+ * Prepares the topics data so that we can import featured resources
  * as paragraph entities with these fields:
  *
  *  - parent_uid: uid of the parent node
@@ -22,10 +22,12 @@ use Drupal\migrate_plus\Plugin\migrate_plus\data_parser\Json;
  *   title = @Translation("JSON Fetcher for Digital.gov Resources for Topics")
  * )
  */
-abstract class JSON_tamperer extends Json {
+class JsonTopicResources extends Json {
 
-  protected function getSourceData(string $url, int|string $item_selector = '')
-  {
+  /**
+   * {@inheritdoc}
+   */
+  protected function getSourceData(string $url, int|string $item_selector = '') {
     // Use cached source data if this is the first request or URL is same as the
     // last time we made the request.
     if ($this->currentUrl != $url || !$this->sourceData) {
@@ -34,14 +36,51 @@ abstract class JSON_tamperer extends Json {
       // Convert objects to associative arrays.
       $this->sourceData = json_decode($response, TRUE);
 
+      // Get the topics that have featured resources and get them
+      // into a format we can use to import as paragraphs.
+      $items = array_filter($this->sourceData['items'], static function ($item) {
+        return isset($item['field_featured_resources'])
+          && !empty($item['field_featured_resources']);
+      });
+
+      $paragraphs = [];
+
+      foreach ($items as $item) {
+        foreach ($item['field_featured_resources'] as $resource) {
+          $paragraph = ['parent_uid' => $item['uid']];
+
+          // UID with unchanged inputs.
+          $paragraph['resource_uid'] = hash('sha256', $item['uid'] . '::' . $resource['field_featured_resource_link']);
+          $paragraph['url'] = trim($resource['field_featured_resource_link']);
+
+          if (isset($resource['field_featured_resource_title'])) {
+            $paragraph['title'] = trim($resource['field_featured_resource_title']);
+          }
+
+          if (isset($resource['field_featured_resource_summary'])) {
+            $paragraph['summary'] = $resource['field_featured_resource_summary'];
+          }
+
+          // Internal resources don't have summaries.
+          if (!str_starts_with($paragraph['url'], 'http')) {
+            $paragraph['url'] = preg_replace(
+              '/^([a-z]+)([\/-])/', '/$1$2', $paragraph['url']
+            );
+          }
+
+          $paragraphs[] = $paragraph;
+        }
+
+      }
+
+      // Replace the original json with our paragraph imports.
+      $this->sourceData['items'] = $paragraphs;
+
       // If json_decode() has returned NULL, it might be that the data isn't
-      // valid utf8 - see http://php.net/manual/en/function.json-decode.php#86997.
+      // valid utf8, http://php.net/manual/en/function.json-decode.php#86997.
       if (!$this->sourceData) {
         $utf8response = mb_convert_encoding($response, 'UTF-8');
         $this->sourceData = json_decode($utf8response, TRUE);
-      }
-      else {
-        $this->alterFeed($this->sourceData);
       }
       $this->currentUrl = $url;
     }
@@ -69,5 +108,4 @@ abstract class JSON_tamperer extends Json {
     return $return;
   }
 
-  abstract protected function alterFeed(&$feed): void;
 }

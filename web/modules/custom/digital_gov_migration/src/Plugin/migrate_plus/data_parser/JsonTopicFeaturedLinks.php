@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\digital_gov_migration\Plugin\migrate_plus\data_parser;
 
@@ -18,17 +18,18 @@ namespace Drupal\digital_gov_migration\Plugin\migrate_plus\data_parser;
  *   title = @Translation("JSON Fetcher for Digital.gov Featured Featured Links for Topics")
  * )
  */
-class JSON_topic_featured_links extends JSON_tamperer {
+class JsonTopicFeaturedLinks extends JsonTamperer {
 
-  protected function alterFeed(&$feed): void
-  {
-    // Get the topics that have featured resources and get them
-    // into a format we can use to import as paragraphs
+  /**
+   * Alter topic feed to import featured links.
+   */
+  protected function alterFeed(&$feed): void {
+    // Get the topics that have featured links and get them
+    // into a format we can use to import as paragraphs.
     $items = array_filter($this->sourceData['items'], static function ($item) {
       return isset($item['field_featured_links'])
         && !empty($item['field_featured_links']);
     });
-
 
     $paragraphs = [];
     // Get each featured link as an item in the feed, even when
@@ -39,7 +40,7 @@ class JSON_topic_featured_links extends JSON_tamperer {
       $paragraph['field_featured_links'] = [];
       foreach ($item['field_featured_links'] as $link) {
 
-        // UID with unchanged inputs
+        // UID with unchanged inputs.
         $link_para['link_uid'] = hash('sha256', $item['uid'] . '::' . $link['href']);
         $link_para['link_url'] = trim($link['href']);
 
@@ -48,15 +49,16 @@ class JSON_topic_featured_links extends JSON_tamperer {
         $link_para['link_summary'] = trim($link['summary']) ?? '';
 
         // So we can use this with subprocess, this
-        // must be an array of associative arrays...
+        // must be an array of associative arrays.
         $paragraph['field_featured_links'][] = $link_para;
       }
       $paragraphs[] = $paragraph;
     }
 
-    // Replace the original json with our paragraph imports
+    // Replace the original json with our paragraph imports.
     $feed['items'] = $paragraphs;
     $feed['count'] = count($paragraphs);
     $feed['content'] = 'topics__featured_links';
   }
+
 }

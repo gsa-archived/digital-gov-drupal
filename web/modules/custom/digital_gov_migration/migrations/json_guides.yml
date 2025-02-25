@@ -96,7 +96,14 @@ process:
     migration: json_images_to_media
   # field_guide
   field_page_weight: field_page_weight
-  body/value: body
+  body/value:
+    - plugin: callback
+      callable: digital_gov_migration_clean_html_links
+      source: [ constants/ALIAS_SEARCH, constants/ALIAS_REPLACE, body ]
+      unpack_source: true
+    - plugin: dg_convert_text
+      source: body
+      field_type: 'html'
   body/format: constants/FORMAT_HTML
   field_guide_nav_title: field_guide_nav_title
   field_guide_weight: field_guide_weight
@@ -150,4 +157,5 @@ destination:
 migration_dependencies:
   required:
     - json_images_to_media
+    - json_topics
   optional: { }
