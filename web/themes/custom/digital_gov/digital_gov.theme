@@ -175,6 +175,13 @@ function digital_gov_preprocess_node(array &$variables): void {
       }
       break;
   }
+
+  $request = \Drupal::service('request_stack')->getCurrentRequest();
+  $page_param = $request->query->get('page');
+
+  // Ensure it's a number and sanitize it.
+  $variables['page_param'] = (is_numeric($page_param)) ? Html::escape($page_param) : NULL;
+  $variables['is_first_page'] = $variables['page_param'] === '0' || $variables['page_param'] === NULL;
 }
 
 /**

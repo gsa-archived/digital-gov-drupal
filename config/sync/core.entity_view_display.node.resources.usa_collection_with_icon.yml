@@ -29,6 +29,7 @@ content:
 hidden:
   body: true
   content_moderation_control: true
+  field_authors: true
   field_deck: true
   field_page_weight: true
   field_slug: true
