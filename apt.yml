@@ -8,4 +8,4 @@ packages:
   #- awscli
   - bsdmainutils
   - mysql-client-core-8.0
-  #- newrelic-php5
+  - newrelic-php5
