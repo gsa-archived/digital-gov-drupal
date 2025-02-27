@@ -90,9 +90,13 @@ process:
   field_summary/value: field_summary
   field_summary/format: constants/FORMAT_SINGLE
   body/value:
-    plugin: dg_convert_text
-    source: body
-    field_type: 'html'
+    - plugin: callback
+      callable: digital_gov_migration_clean_html_links
+      source: [ constants/ALIAS_SEARCH, constants/ALIAS_REPLACE, body ]
+      unpack_source: true
+    - plugin: dg_convert_text
+      source: body
+      field_type: 'html'
   body/format: constants/FORMAT_HTML
   field_authors:
     plugin: migration_lookup

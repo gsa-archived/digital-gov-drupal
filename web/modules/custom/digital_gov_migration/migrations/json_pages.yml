@@ -1,13 +1,11 @@
-id: json_resources
-label: 'Import resources from Digital.gov Hugo'
-migration_tags:
-  - 'digitalgov'
+id: json_pages
+label: 'Import about pages from Digital.gov Hugo'
 source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/resources/index.json
+    - https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/about/index.json
     # First value from wsl.exe hostname -I
     #- http://172.20.60.7:1313/events/index.json
   # This is the path to where the data are in the JSON.
@@ -21,7 +19,7 @@ source:
   fields:
     - name: src_unique_id
       label: 'Unique ID'
-      selector: uid
+      selector: url
     - name: title
       label: 'Title'
       selector: field_title
@@ -43,18 +41,9 @@ source:
     - name: body
       label: 'Body'
       selector: field_body
-    - name: field_authors
-      label: 'Authors'
-      selector: field_authors
-    - name: field_topics
-      label: 'Topics'
-      selector: field_topics
     - name: field_primary_image
       label: 'Primary Image'
       selector: field_primary_image
-    - name: field_slug
-      label: 'Slug'
-      selector: slug
     - name: alias
       label: 'URL Alias'
       selector: url
@@ -93,21 +82,11 @@ process:
     - plugin: dg_convert_text
       field_type: 'html'
   body/format: constants/FORMAT_HTML
-  field_authors:
+  field_primary_image:
     plugin: migration_lookup
-    source: field_authors
+    source: field_primary_image
     source_ids: src_unique_id
-    migration: json_authors
-  field_topics:
-    plugin: migration_lookup
-    source: field_topics
-    source_ids: src_unique_id
-    migration: json_topics
-#  field_primary_image:
-#    plugin: migration_lookup
-#    source: field_primary_image
-#    source_ids: src_unique_id
-#    migration: json_images_to_media
+    migration: json_images_to_media
   created:
     plugin: callback
     callable: strtotime
@@ -117,7 +96,6 @@ process:
     callable: strtotime
     source: changed
   field_page_weight: field_page_weight
-  field_slug: field_slug
   # Setting the moderation state to published will automatically set status=1.
   moderation_state:
     plugin: default_value
@@ -143,11 +121,9 @@ process:
         default_value: 301
 destination:
   plugin: entity:node
-  default_bundle: resources
+  default_bundle: basic_page
 
 migration_dependencies:
   required:
-    - json_authors
-    - json_topics
     - json_images_to_media
   optional: { }
