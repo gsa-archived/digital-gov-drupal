@@ -1,5 +1,5 @@
 id: json_resources
-label: 'Import events from Digital.gov Hugo'
+label: 'Import resources from Digital.gov Hugo'
 source:
   plugin: url
   data_fetcher_plugin: http
