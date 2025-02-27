@@ -5,7 +5,7 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls:
-    - https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/news/index.json
+    - https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/resources/index.json
     # First value from wsl.exe hostname -I
     #- http://172.20.60.7:1313/events/index.json
   # This is the path to where the data are in the JSON.
