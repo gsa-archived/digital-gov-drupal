@@ -43,7 +43,77 @@ class JsonTopics extends JsonTamperer {
       else {
         $item['field_featured_links'] = [];
       }
+
+      if (empty($item['slug'])) {
+        // Good-enough slugify
+        $item['slug'] = str_replace(' ', '-', strtolower($item['field_title']));
+      }
+
+      $item['resource_topic'] = $this->lookupResourceTopic($item['slug']);
     }
+  }
+
+  /**
+   * Map slugs to resource topic term names.
+   */
+  private function lookupResourceTopic(string $slug): string {
+    $map = [
+      'communication' => 'Content & communication',
+      'content-strategy' => 'Content & communication',
+      'multilingual' => 'Content & communication',
+      'multimedia' => 'Content & communication',
+      'plain-language' => 'Content & communication',
+      'podcast' => 'Content & communication',
+      'social-media' => 'Content & communication',
+      'trust' => 'Content & communication',
+
+      'analytics' => 'Data & analysis',
+      'crowdsourcing-and-citizen-science' => 'Data & analysis',
+      'data-visualization' => 'Data & analysis',
+      'information-collection' => 'Data & analysis',
+      'open-data' => 'Data & analysis',
+      'open-government' => 'Data & analysis',
+      'research' => 'Data & analysis',
+      'search' => 'Data & analysis',
+      'search-engine-optimization' => 'Data & analysis',
+
+      'accessibility' => 'Design',
+      'customer-experience' => 'Design',
+      'Design' => 'Design',
+      'digital-service-delivery' => 'Design',
+      'human-centered-design' => 'Design',
+      'information-architecture' => 'Design',
+      'usability' => 'Design',
+      'user-experience' => 'Design',
+
+      'acquisition' => 'Operations',
+      'budgeting-and-performance' => 'Operations',
+      'contact-centers' => 'Operations',
+      'product-and-project-management' => 'Operations',
+      'privacy' => 'Operations',
+      'records-management' => 'Operations',
+      'terms-of-service' => 'Operations',
+
+      'best-practices' => 'Strategic development',
+      'challenges-and-prize-competitions' => 'Strategic development',
+      'governance' => 'Strategic development',
+      'innovation' => 'Strategic development',
+      'public-policy' => 'Strategic development',
+      'professional-development' => 'Strategic development',
+
+      'application-programming-interface' => 'Technology',
+      'artificial-intelligence' => 'Technology',
+      'cloud-and-infrastructure' => 'Technology',
+      'domain-management' => 'Technology',
+      'emerging-tech' => 'Technology',
+      'mobile' => 'Technology',
+      'open-source' => 'Technology',
+      'robotic-process-automation' => 'Technology',
+      'security' => 'Technology',
+      'software-engineering' => 'Technology',
+    ];
+
+    return $map[$slug] ?? '';
   }
 
 }

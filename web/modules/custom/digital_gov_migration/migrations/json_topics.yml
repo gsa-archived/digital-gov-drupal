@@ -48,6 +48,9 @@ source:
     - name: field_slug
       label: 'Slug'
       selector: slug
+    - name: resource_topic
+      label: "Resource Topic"
+      selector: resource_topic
     - name: alias
       label: 'URL Alias'
       selector: url
@@ -139,7 +142,13 @@ process:
         source: field_featured_links
       - plugin: extract
         index: [1]
-
+  field_resource_topics:
+    - plugin: entity_lookup
+      entity_type: taxonomy_term
+      value_key: name
+      source: resource_topic
+      bundle_key: vid
+      bundle: resource_topics
   # Setting the moderation state to published will automatically set status=1.
   moderation_state:
     plugin: default_value
