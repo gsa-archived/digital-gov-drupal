@@ -1,5 +1,7 @@
 id: json_sources__media
 label: 'Import source logo images to media from Digital.gov Hugo'
+migration_tags:
+  - 'digitalgov'
 source:
   constants:
     SOURCE_URL: 'https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/'

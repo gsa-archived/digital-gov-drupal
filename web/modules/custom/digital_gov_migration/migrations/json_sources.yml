@@ -1,5 +1,7 @@
 id: json_sources
 label: 'Import sources from Digital.gov Hugo'
+migration_tags:
+  - 'digitalgov'
 source:
   plugin: url
   data_fetcher_plugin: http
