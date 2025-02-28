@@ -45,7 +45,7 @@ class JsonTopics extends JsonTamperer {
       }
 
       if (empty($item['slug'])) {
-        // Good-enough slugify
+        // Good-enough slugify.
         $item['slug'] = str_replace(' ', '-', strtolower($item['field_title']));
       }
 
