@@ -22,6 +22,12 @@ class JsonGuides extends JsonTamperer {
    */
   protected function alterFeed(&$feed): void {
     foreach ($this->sourceData['items'] as &$item) {
+      if ($item['filepath'] == "/content/guides/_index.md") {
+        // don't import this index page
+        $item = null;
+        continue;
+      }
+
       if (isset($item['field_glossary'])) {
         // Generate the machine name for the term ID.
         $name = str_replace(['-', '.json'], ['_', ''], $item['field_glossary']);
