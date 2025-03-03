@@ -1,5 +1,7 @@
 id: json_communities
 label: 'Import communities from Digital.gov Hugo'
+migration_tags:
+  - 'digitalgov'
 source:
   plugin: url
   data_fetcher_plugin: http
@@ -101,10 +103,6 @@ process:
   field_summary/format: constants/FORMAT_SINGLE
   field_page_weight: field_page_weight
   body/value:
-    - plugin: callback
-      callable: digital_gov_migration_clean_html_links
-      source: [ constants/ALIAS_SEARCH, constants/ALIAS_REPLACE, body ]
-      unpack_source: true
     - plugin: dg_convert_text
       source: body
       field_type: 'html'

@@ -1,5 +1,7 @@
 id: json_topics__featured_links
 label: 'Import communities from Digital.gov Hugo'
+migration_tags:
+  - 'digitalgov'
 source:
   plugin: url
   data_fetcher_plugin: http

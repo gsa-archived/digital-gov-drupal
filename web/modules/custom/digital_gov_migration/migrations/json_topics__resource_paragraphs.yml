@@ -2,6 +2,7 @@ id: json_topics__resource_paragraphs
 label: 'Import featured resource paragraphs for topics from Digital.gov Hugo'
 migration_tags:
   - 'Topics Featured Resources'
+  - 'digitalgov'
 source:
   plugin: url
   data_fetcher_plugin: http
@@ -33,19 +34,10 @@ source:
       label: 'Resource Summary'
       selector: summary
 process:
-#  dump_array:
-#    plugin: callback
-#    callable: var_dump
-#    source: resource_url
-#  dump_link:
-#    plugin: callback
-#    callable: var_dump
-#    source: resource_title
-#  dump_summary:
-#    plugin: callback
-#    callable: var_dump
-#    source: resource_summary
-  field_link/uri: resource_url
+  field_link/uri:
+    - plugin: callback
+      callable: digital_gov_migration_make_url_local
+      source: resource_url
   field_link/title: resource_title
   field_summary/value: resource_summary
   field_summary/format: constants/FORMAT_SINGLE

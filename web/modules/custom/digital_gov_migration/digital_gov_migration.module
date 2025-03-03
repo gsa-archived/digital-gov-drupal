@@ -136,11 +136,12 @@ function digital_gov_migration_convert_to_boolean(string $raw): bool {
 /**
  * Cleans up internal links.
  *
- * Helper to turn links hard-coded to digital.gov domains into local links
- * in migrated content.
+ * Helper to turn links hard-coded to digital.gov domains into URLs with the
+ * local domain.
  */
-function digital_gov_migration_clean_html_links(string $search, string $replace, string $input): string {
-  $searches = ['<a href="https://digital.gov/', '<a href="' . $search];
-  $replacements = ['<a href="/', '<a href="' . $replace];
-  return str_replace($searches, $replacements, $input);
+function digital_gov_migration_make_url_local(string $url): string {
+  // CLI thinks local uses http:// but those don't load in browser.
+  $current = 'https://' . \Drupal::request()->getHttpHost() . '/';
+  $url = preg_replace('/^https?:\/\/digital.gov\//i', $current, $url);
+  return $url;
 }

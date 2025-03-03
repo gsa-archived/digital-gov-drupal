@@ -47,6 +47,9 @@ class ConvertText {
         $html = $converter->convert($source_text)->getContent();
         $html = LitEmoji::encodeUnicode($html);
 
+        // Rewrite links to prod domain to current one for internal links.
+        $html = str_replace('<a href="https://digital.gov/', '<a href="/', $html);
+
         if ($field_type === 'html_no_breaks') {
           $html = str_replace(['<p>', '</p>', '<br>', '<br />', '<br/>'], '', $html);
         }

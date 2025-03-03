@@ -49,9 +49,21 @@ class JsonTopicResources extends Json {
         foreach ($item['field_featured_resources'] as $resource) {
           $paragraph = ['parent_uid' => $item['uid']];
 
+          if (!$resource['field_featured_resource_href']) {
+            trigger_error("Missing resource link", E_USER_WARNING);
+            continue;
+          }
           // UID with unchanged inputs.
-          $paragraph['resource_uid'] = hash('sha256', $item['uid'] . '::' . $resource['field_featured_resource_link']);
-          $paragraph['url'] = trim($resource['field_featured_resource_link']);
+          $paragraph['resource_uid'] = hash('sha256', $item['uid'] . '::' . $resource['field_featured_resource_href']);
+
+          // HREF in the paragraph has to be a full URI with the local domain.
+          $url = str_replace(
+              'https://digital.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/',
+              'https://digital.gov/',
+              $resource['field_featured_resource_href']
+          );
+
+          $paragraph['url'] = trim($url);
 
           if (isset($resource['field_featured_resource_title'])) {
             $paragraph['title'] = trim($resource['field_featured_resource_title']);
@@ -59,13 +71,6 @@ class JsonTopicResources extends Json {
 
           if (isset($resource['field_featured_resource_summary'])) {
             $paragraph['summary'] = $resource['field_featured_resource_summary'];
-          }
-
-          // Internal resources don't have summaries.
-          if (!str_starts_with($paragraph['url'], 'http')) {
-            $paragraph['url'] = preg_replace(
-              '/^([a-z]+)([\/-])/', '/$1$2', $paragraph['url']
-            );
           }
 
           $paragraphs[] = $paragraph;

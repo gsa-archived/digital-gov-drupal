@@ -1,5 +1,7 @@
 id: json_topics
 label: 'Import Topics from Digital.gov Hugo'
+migration_tags:
+  - 'digitalgov'
 source:
   plugin: url
   data_fetcher_plugin: http
@@ -86,7 +88,10 @@ process:
     callable: strtotime
     source: created
   field_page_weight: field_page_weight
-  field_legislation/uri: field_legislation
+  field_legislation/uri:
+   - plugin: callback
+     callable: digital_gov_migration_make_url_local
+     source: field_legislation
   field_legislation/title: legislation_title
   field_slug: field_slug
   field_featured_communities:

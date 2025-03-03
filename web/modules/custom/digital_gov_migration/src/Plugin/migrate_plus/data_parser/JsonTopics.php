@@ -27,7 +27,7 @@ class JsonTopics extends JsonTamperer {
           $resource['parent_uid'] = $item['uid'];
 
           // Resource UID with unchanged inputs to match in migrations.
-          $resource['resource_uid'] = hash('sha256', $item['uid'] . '::' . $resource['field_featured_resource_link']);
+          $resource['resource_uid'] = hash('sha256', $item['uid'] . '::' . $resource['field_featured_resource_href']);
         }
       }
       else {

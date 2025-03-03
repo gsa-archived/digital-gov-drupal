@@ -2,6 +2,7 @@ id: json_topics__featured_links_ext
 label: 'Import featured links as external paragraphs for topics from Digital.gov Hugo'
 migration_tags:
   - 'Topics Featured Links Ext'
+  - 'digitalgov'
 source:
   plugin: url
   data_fetcher_plugin: http
@@ -33,7 +34,10 @@ source:
       label: 'Featured Link Summary'
       selector: link_summary
 process:
-  field_link/uri: link_url
+  field_link/uri:
+    - plugin: callback
+      callable: digital_gov_migration_make_url_local
+      source: link_url
   field_link/title: link_title
   field_summary/value: link_summary
   field_summary/format: constants/FORMAT_SINGLE
