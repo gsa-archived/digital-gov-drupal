@@ -23,7 +23,7 @@ class JsonGuides extends JsonTamperer {
   protected function alterFeed(&$feed): void {
     foreach ($this->sourceData['items'] as &$item) {
       if ($item['filepath'] == "/content/guides/_index.md") {
-        // don't import this index page
+        // Don't import this index page.
         $item = null;
         continue;
       }
