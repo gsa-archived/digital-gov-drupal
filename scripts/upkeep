@@ -2,9 +2,6 @@
 
 set -e
 
-# Temporarily print out commands as they run for debugging.
-set -x
-
 home="/home/vcap"
 app_path="${home}/app"
 html_path="${app_path}/html"
@@ -45,6 +42,9 @@ export ssg_endpoint
 
 ssg_sitemap_endpoint="${ssg_endpoint}"
 export ssg_sitemap_endpoint
+
+# Temporarily print out commands as they run for debugging.
+set -x
 
 cd "${app_path}"
 echo "**************************************************"
