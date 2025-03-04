@@ -73,7 +73,7 @@
 
       {{ include('@digital_gov/partials/page-header.html.twig', {
         title: node.title.value,
-        deck: node.field_deck.value,
+        deck: content.field_deck|field_value,
       }, with_context: false) }}
     </header>
 
