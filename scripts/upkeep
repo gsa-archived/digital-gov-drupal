@@ -104,6 +104,13 @@ echo "Adding digital.gov custom theme assets...completed!"
 echo ""
 
 echo "**************************************************"
+echo "Copying robots.txt to static site path..."
+echo "**************************************************"
+cp "${app_path}/web/robots.txt"  "${html_path}/robots.txt"
+echo "robots.txt copy...completed!"
+echo ""
+
+echo "**************************************************"
 echo "Deleting 'node' redirect files..."
 echo "**************************************************"
 find "${html_path}" -type d -name "node" -print0 | while IFS= read -r -d '' node_dir; do
