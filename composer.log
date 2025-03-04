@@ -80,3 +80,4 @@ e85fe7addd55a02c6c3cd5ad9de215eb|afemath|feature/DIGITAL-377-sitewide-alerts|Fri
 1ba6c265cc7f91fb185e3563577e8e50|Ray Estrada|feature/DIGITAL-359-implement-new-relic-deploydev|Wed Feb 26 09:31:54 EST 2025|./composer.sh require drupal/new_relic_rpm
 fedf9be65fccaed95cf850edf1e86380|cathybaptista|feature/DIGITAL-311-install-path-redirect|Wed Feb 26 12:12:21 EST 2025|./composer.sh require drupal/path_redirect_import
 eecf22bebff444a178dfc909ef6628e7|afemath|feature/DIGITAL-457-update-dependencies|Wed Feb 26 17:26:56 EST 2025|./composer.sh update
+adf1e162003468d7feadf689a8a80fe1|afemath|feature/DIGITAL-447-replace-inline-entity|Tue Mar  4 10:36:59 EST 2025|./composer.sh remove drupal/inline_entity_form
