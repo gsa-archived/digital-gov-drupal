@@ -26,7 +26,7 @@
       "/project/openid_connect/issues/3266205#comment-15642526": "patches/openid_connect-support_pkce-3266205-37.patch"
     },
     "drupal/tome": {
-      "Debug why not all paths are processed": "patches/tome_static-debug_paths.patch"
+      "/project/tome/issues/3511001: Stdout from drush commands stops additional HTML assets from being created": "https://www.drupal.org/files/issues/2025-03-04/tome-3511001-stdout-from-drush-commands-stops-additional-htmlassets-from-being-created-3.patch"
     }
   }
 }
