@@ -24,7 +24,7 @@ class JsonGuides extends JsonTamperer {
     foreach ($this->sourceData['items'] as &$item) {
       if ($item['filepath'] == "/content/guides/_index.md") {
         // Don't import this index page.
-        $item = null;
+        $item = NULL;
         continue;
       }
 

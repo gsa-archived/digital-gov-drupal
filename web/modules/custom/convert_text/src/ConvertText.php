@@ -43,6 +43,8 @@ class ConvertText {
 
       case 'html':
       case 'html_no_breaks':
+        $source_text = static::prepareMarkdown($source_text);
+
         $converter = new CommonMarkConverter();
         $html = $converter->convert($source_text)->getContent();
         $html = LitEmoji::encodeUnicode($html);
@@ -53,11 +55,11 @@ class ConvertText {
         $html = str_replace([
           '<a href="https://digital.gov/',
           '<a href="/preview/gsa/digitalgov.gov/nl-json-endpoints/',
-          'xlink:href="/preview/gsa/digitalgov.gov/nl-json-endpoints/uswds/img/'
+          'xlink:href="/preview/gsa/digitalgov.gov/nl-json-endpoints/uswds/img/',
         ], [
           '<a href="/',
           '<a href="/',
-          'xlink:href="/themes/custom/digital_gov/static/uswds/img/'
+          'xlink:href="/themes/custom/digital_gov/static/uswds/img/',
         ], $html);
 
         if ($field_type === 'html_no_breaks') {
@@ -86,6 +88,19 @@ class ConvertText {
       default:
         throw new \Exception("Invalid \$field_type of $field_type given");
     }
+  }
+
+  /**
+   * Cleans up the markdown to prevent conversion bugs.
+   */
+  protected static function prepareMarkdown(string $source_text): string {
+    // When the source text has raw HTML, leading spaces are mistaken for
+    // code blocks.
+    $lines = array_map(function (string $line): string {
+      return preg_replace('/^(\s+)</', "<", $line);
+    }, explode("\n", $source_text));
+
+    return implode("\n", $lines);
   }
 
   /**
