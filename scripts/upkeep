@@ -82,7 +82,7 @@ echo "**************************************************"
 find "${html_path}/sites/default/files" -type f -exec grep -l "${ssg_endpoint}/" {} \; -exec sed -i "s#${ssg_endpoint}/#/#g" {} +
 echo "Performing find and replace tasks...completed!"
 echo ""
-
+find "${html_path}/sites/default/files"
 echo "**************************************************"
 echo "Adding missing Core assets vendor directory..."
 echo "**************************************************"
