@@ -88,7 +88,7 @@ jobs:
             APP="${PROJECT}-drupal-${CF_SPACE}"
             TASK_NAME="${APP}-upkeep"
 
-            cf run-task "${APP}" --command "/home/vcap/app/scripts/upkeep" --wait -m 1G -k 4G --name "${TASK_NAME}" &
+            cf run-task "${APP}" --command "SKIP_NEW_RELIC=1 /home/vcap/app/scripts/upkeep" --wait -m 1G -k 4G --name "${TASK_NAME}" &
             RUN_TASK_PID=$!
 
             cf logs "${APP}" | grep "${TASK_NAME}" &

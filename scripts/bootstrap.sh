@@ -23,30 +23,32 @@ export deps_path="${home}/deps/0"
 export apt_path="${deps_path}/apt"
 export apt_bin_path="${deps_path}/bin"
 
-php_api_version=$(php -i | grep "PHP API" | cut -d' ' -f4)
+if [ ! -v SKIP_NEW_RELIC ]; then
+  php_api_version=$(php -i | grep "PHP API" | cut -d' ' -f4)
 
-## NewRelic configuration
-application_name=$(echo "$VCAP_APPLICATION" | jq -r '.application_name')
-newrelic_key=$(echo "$VCAP_SERVICES" | jq -r '."user-provided"[] | select(.name | contains("secrets")) | .credentials | .newrelic_key')
-newrelic_ini=$(find ${home} -name "newrelic.ini*")
-newrelic_so=$(find ${home} -name "newrelic*${php_api_version}*.so")
-php_ini_d_path="${app_path}/php/etc/php.ini.d"
+  ## NewRelic configuration
+  application_name=$(echo "$VCAP_APPLICATION" | jq -r '.application_name')
+  newrelic_key=$(echo "$VCAP_SERVICES" | jq -r '."user-provided"[] | select(.name | contains("secrets")) | .credentials | .newrelic_key')
+  newrelic_ini=$(find ${home} -name "newrelic.ini*")
+  newrelic_so=$(find ${home} -name "newrelic*${php_api_version}*.so")
+  php_ini_d_path="${app_path}/php/etc/php.ini.d"
 
-## Create link to New Relic PHP module.
-ln -s "${newrelic_so}" "${app_path}/php/lib/newrelic.so"
+  ## Create link to New Relic PHP module.
+  ln -s "${newrelic_so}" "${app_path}/php/lib/newrelic.so"
 
-## Create link to New Relic PHP ini configuration file.
-ln -s "${newrelic_ini}" "${php_ini_d_path}/newrelic.ini"
+  ## Create link to New Relic PHP ini configuration file.
+  ln -s "${newrelic_ini}" "${php_ini_d_path}/newrelic.ini"
 
-## Edit New Relic PHP ini configuration file.
-sed -i "s|extension = \"newrelic.so\"|extension = \"${app_path}/php/lib/newrelic.so\"|" "${php_ini_d_path}/newrelic.ini"
-sed -i "s/newrelic.appname = \"PHP Application\"/newrelic.appname = \"${application_name}\"/" "${php_ini_d_path}/newrelic.ini"
-sed -i 's/;newrelic.daemon.collector_host = ""/newrelic.daemon.collector_host="gov-collector.newrelic.com"/' "${php_ini_d_path}/newrelic.ini"
-sed -i "s|;newrelic.daemon.location = \"/usr/bin/newrelic-daemon\"|newrelic.daemon.location = \"${apt_bin_path}/newrelic-daemon\"|" "${php_ini_d_path}/newrelic.ini"
-sed -i 's|newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"|newrelic.daemon.logfile = "/dev/stdout"|' "${php_ini_d_path}/newrelic.ini"
-sed -i "s|;newrelic.daemon.pidfile = \"\"|newrelic.daemon.pidfile = \"/${home}/newrelic_daemon.pid\"|" "${php_ini_d_path}/newrelic.ini"
-sed -i "s/newrelic.license = \"REPLACE_WITH_REAL_KEY\"/newrelic.license = \"${newrelic_key}\"/" "${php_ini_d_path}/newrelic.ini"
-sed -i 's|newrelic.logfile = "/var/log/newrelic/php_agent.log"|newrelic.logfile = "/dev/stdout"|' "${php_ini_d_path}/newrelic.ini"
+  ## Edit New Relic PHP ini configuration file.
+  sed -i "s|extension = \"newrelic.so\"|extension = \"${app_path}/php/lib/newrelic.so\"|" "${php_ini_d_path}/newrelic.ini"
+  sed -i "s/newrelic.appname = \"PHP Application\"/newrelic.appname = \"${application_name}\"/" "${php_ini_d_path}/newrelic.ini"
+  sed -i 's/;newrelic.daemon.collector_host = ""/newrelic.daemon.collector_host="gov-collector.newrelic.com"/' "${php_ini_d_path}/newrelic.ini"
+  sed -i "s|;newrelic.daemon.location = \"/usr/bin/newrelic-daemon\"|newrelic.daemon.location = \"${apt_bin_path}/newrelic-daemon\"|" "${php_ini_d_path}/newrelic.ini"
+  sed -i 's|newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"|newrelic.daemon.logfile = "/dev/stdout"|' "${php_ini_d_path}/newrelic.ini"
+  sed -i "s|;newrelic.daemon.pidfile = \"\"|newrelic.daemon.pidfile = \"/${home}/newrelic_daemon.pid\"|" "${php_ini_d_path}/newrelic.ini"
+  sed -i "s/newrelic.license = \"REPLACE_WITH_REAL_KEY\"/newrelic.license = \"${newrelic_key}\"/" "${php_ini_d_path}/newrelic.ini"
+  sed -i 's|newrelic.logfile = "/var/log/newrelic/php_agent.log"|newrelic.logfile = "/dev/stdout"|' "${php_ini_d_path}/newrelic.ini"
+fi
 
 source "${app_path}/scripts/bash_exports.sh"
 
