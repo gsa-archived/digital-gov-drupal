@@ -48,7 +48,17 @@ class ConvertText {
         $html = LitEmoji::encodeUnicode($html);
 
         // Rewrite links to prod domain to current one for internal links.
-        $html = str_replace('<a href="https://digital.gov/', '<a href="/', $html);
+        // Remove preview directories in link paths.
+        // Remove preview directories in path to uswds images.
+        $html = str_replace([
+          '<a href="https://digital.gov/',
+          '<a href="/preview/gsa/digitalgov.gov/nl-json-endpoints/',
+          'xlink:href="/preview/gsa/digitalgov.gov/nl-json-endpoints/uswds/img/'
+        ], [
+          '<a href="/',
+          '<a href="/',
+          'xlink:href="/themes/custom/digital_gov/static/uswds/img/'
+        ], $html);
 
         if ($field_type === 'html_no_breaks') {
           $html = str_replace(['<p>', '</p>', '<br>', '<br />', '<br/>'], '', $html);
