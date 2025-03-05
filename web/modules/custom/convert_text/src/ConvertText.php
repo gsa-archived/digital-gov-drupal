@@ -94,6 +94,11 @@ class ConvertText {
    * Cleans up the markdown to prevent conversion bugs.
    */
   protected static function prepareMarkdown(string $source_text): string {
+    // Targeted fixes to insure incoming HTML isn't mistaken for indented code.
+    $source_text = preg_replace('/\/svg>(\R|\s)+([A-Za-z0-9]+)/', '/svg>$2', $source_text);
+    // Remove any line breaks, whitespace before a closing heading.
+    $source_text = preg_replace('/(\R+|\s+)(<\/h[0-9]+>)/i', '$2', $source_text);
+
     // When the source text has raw HTML, leading spaces are mistaken for
     // code blocks.
     $lines = array_map(function (string $line): string {
