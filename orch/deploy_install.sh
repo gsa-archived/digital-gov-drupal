@@ -48,8 +48,12 @@ if [ -n "$(ls $(drush php:eval "echo realpath(Drupal\Core\Site\Settings::get('co
   drush si -y --account-pass='admin' --existing-config ${PROFILE}
   # Required if config splits is enabled.
   if drush pm-list --type=module --status=enabled --no-core | grep 'config_split'; then
-    drush cr
+    echo 'Config Split is installed, need to import config again'
+    (drush cr) || :
+    (drush cr) || :
     drush cim -y
+  else
+    echo 'Config Split is not installed, no need to import config again'
   fi
 else
   echo "Installing a fresh Drupal site without configuration"
