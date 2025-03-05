@@ -78,7 +78,7 @@
   {% endapply %}{% endset %}
   {% if drupal_field('field_logo', 'node', source.id)|field_value %}
     {% set source_logo_url %}{% apply spaceless %}
-      {{ source.field_logo|file_uri|image_style('thumbnail') }}
+      {{ source.field_logo|file_uri|image_style('logo_250_x_250_convert_to_webp') }}
     {% endapply %}{% endset %}
   {% endif %}
 {% endif %}
