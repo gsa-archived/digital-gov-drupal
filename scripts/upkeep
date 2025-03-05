@@ -43,6 +43,9 @@ export ssg_endpoint
 ssg_sitemap_endpoint="${ssg_endpoint}"
 export ssg_sitemap_endpoint
 
+# Temporarily print out commands as they run for debugging.
+set -x
+
 cd "${app_path}"
 echo "**************************************************"
 echo "Running 'drush cr' in '${environment}'..."
@@ -79,7 +82,6 @@ echo "**************************************************"
 find "${html_path}/sites/default/files" -type f -exec grep -l "${ssg_endpoint}/" {} \; -exec sed -i "s#${ssg_endpoint}/#/#g" {} +
 echo "Performing find and replace tasks...completed!"
 echo ""
-
 echo "**************************************************"
 echo "Adding missing Core assets vendor directory..."
 echo "**************************************************"
@@ -101,6 +103,13 @@ echo "**************************************************"
 mkdir -p "${html_path}/themes/custom/${theme_name}"
 cp -rfp "${app_path}/web/themes/custom/${theme_name}/static" "${html_path}/themes/custom/${theme_name}/"
 echo "Adding digital.gov custom theme assets...completed!"
+echo ""
+
+echo "**************************************************"
+echo "Copying robots.txt to static site path..."
+echo "**************************************************"
+cp "${app_path}/web/robots.txt"  "${html_path}/robots.txt"
+echo "robots.txt copy...completed!"
 echo ""
 
 echo "**************************************************"

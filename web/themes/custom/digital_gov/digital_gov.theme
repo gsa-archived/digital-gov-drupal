@@ -175,6 +175,13 @@ function digital_gov_preprocess_node(array &$variables): void {
       }
       break;
   }
+
+  $request = \Drupal::service('request_stack')->getCurrentRequest();
+  $page_param = $request->query->get('page');
+
+  // Ensure it's a number and sanitize it.
+  $variables['page_param'] = (is_numeric($page_param)) ? Html::escape($page_param) : NULL;
+  $variables['is_first_page'] = $variables['page_param'] === '0' || $variables['page_param'] === NULL;
 }
 
 /**
@@ -450,8 +457,10 @@ function digital_gov_theme_suggestions_container_alter(array &$suggestions, arra
   }
   // A list of view names in which to exclude the container markup.
   $exclude_views = [
-    'resource_topics_list',
+    'communities_for_topic',
     'guide_cards',
+    'resource_topics_list',
+    'resources_for_topic',
   ];
 
   if (in_array($variables['element']['#name'], $exclude_views)) {
