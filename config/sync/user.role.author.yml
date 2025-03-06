@@ -37,6 +37,7 @@ permissions:
   - 'create basic_page content'
   - 'create community content'
   - 'create event content'
+  - 'create guide_landing content'
   - 'create guides content'
   - 'create landing_page content'
   - 'create media'
