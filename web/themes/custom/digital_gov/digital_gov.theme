@@ -64,6 +64,10 @@ function dg_get_specific_body_class(NodeInterface $node): string {
 function dg_get_broad_body_class(NodeInterface $node): string {
 
   if ($node->getType() === 'guides') {
+
+    if (!$node->get('field_guide_nav_ref')->referencedEntities()) {
+      return '';
+    }
     // Need to check if this is the Overview page.
     if ($navNode = $node->get('field_guide_nav_ref')->referencedEntities()[0]) {
       // This field points at a paragraph entity.
@@ -193,7 +197,7 @@ function digital_gov_preprocess_node_guides(&$variables): void {
   $variables['show_next_previous'] = FALSE;
   $variables['show_in_page_nav'] = FALSE;
   $variables['is_guide_overview'] = FALSE;
-  $variables['show_summary_box'] = $guide->get('field_summary_box')[0]->get('value')->getCastedValue();
+  $variables['show_summary_box'] = $guide->get('field_summary_box')[0]?->get('value')->getCastedValue();
 
   if ($nav_node = $guide->get('field_guide_nav_ref')->first()?->get('entity')->getTarget()->getValue()) {
     $links = digital_gov_get_guidenav_links($nav_node, $variables['url']);
