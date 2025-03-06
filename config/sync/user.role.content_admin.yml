@@ -7,6 +7,7 @@ dependencies:
     - node.type.basic_page
     - node.type.community
     - node.type.event
+    - node.type.guide_landing
     - node.type.guide_navigation
     - node.type.guides
     - node.type.landing_page
@@ -49,6 +50,7 @@ permissions:
   - 'create basic_page content'
   - 'create community content'
   - 'create event content'
+  - 'create guide_landing content'
   - 'create guide_navigation content'
   - 'create guides content'
   - 'create landing_page content'
@@ -65,6 +67,7 @@ permissions:
   - 'edit any basic_page content'
   - 'edit any community content'
   - 'edit any event content'
+  - 'edit any guide_landing content'
   - 'edit any guide_navigation content'
   - 'edit any guides content'
   - 'edit any landing_page content'
