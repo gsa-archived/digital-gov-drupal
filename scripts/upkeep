@@ -36,7 +36,13 @@ export bucket
 bucket_endpoint=$(echo "${VCAP_SERVICES}" | jq -r '.s3[] | select(.name | strings | test("static")).credentials.endpoint')
 export bucket_endpoint
 
-ssg_endpoint="https://digital-gov-static-${environment}.app.cloud.gov"
+app=$(echo "${VCAP_APPLICATION}" | jq -r '.application_name')
+
+cms_endpoint="https://${app}.app.cloud.gov"
+export cms_endpoint
+# [ "${environment}" = "prod" ] && ssg_endpoint="https://cms.digital.gov"
+
+ssg_endpoint=$(echo "${cms_endpoint}" | sed 's/drupal/static')
 export ssg_endpoint
 # [ "${environment}" = "prod" ] && ssg_endpoint="https://digital.gov"
 
@@ -57,15 +63,24 @@ echo ""
 echo "**************************************************"
 echo "Running 'drush cron' in '${environment}'..."
 echo "**************************************************"
-drush --uri="${ssg_endpoint}" cron
+drush cron
 echo "'drush cron' task...completed!"
+echo ""
+
+echo "**************************************************"
+echo "Regenerate sitemap for '${environment}'..."
+echo "**************************************************"
+drush state:set xmlsitemap_base_url "${cms_endpoint}"
+drush xmlsitemap:regenerate
+echo "'drush xmlsitemap:regenerate' task...completed!"
 echo ""
 
 echo "**************************************************"
 echo "Running 'drush tome:static' in '${environment}'..."
 echo "**************************************************"
-drush tome:static --uri="${ssg_endpoint}" --path-count=1 --retry-count=3 -y
-drush tome:static-export-path '/sitemap.xml' --uri="${ssg_sitemap_endpoint}" --retry-count=3 -y
+drush tome:static --path-count=1 --retry-count=3 -y
+drush tome:static-export-path '/sitemap.xml' --retry-count=3 -y
+sed -i "s#${cms_endpoint}#${ssg_endpoint}#g" "${html_path}/sitemap.xml"
 drush cr
 echo "'drush tome:static' task...completed!"
 echo ""
@@ -88,13 +103,6 @@ echo "**************************************************"
 mkdir -p "${html_path}/core/assets"
 cp -rfp "${app_path}/web/core/assets/vendor" "${html_path}/core/assets/"
 echo "Missing Core assets files...completed!"
-echo ""
-
-echo "**************************************************"
-echo "Update URI for sitemap..."
-echo "**************************************************"
-sed -i "s#http[s]*://default#${ssg_endpoint}#g" "${html_path}/sitemap.xml"
-echo "Sitemap update complete..."
 echo ""
 
 echo "**************************************************"
