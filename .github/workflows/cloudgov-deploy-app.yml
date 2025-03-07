@@ -72,8 +72,8 @@ jobs:
         env:
           PROJECT: "${{ secrets.PROJECT }}"
         run: |
-          app_guid=$(cf app --guid ${PROJECT}-drupal-${CF_SPACE})
-          cf curl -X POST /v3/apps/${app_guid}/actions/clear_buildpack_cache
+          app_guid=$(cf app --guid ${PROJECT}-drupal-${CF_SPACE}) || true
+          cf curl -X POST /v3/apps/${app_guid}/actions/clear_buildpack_cache || true
           source ./scripts/pipeline/cloud-gov-deploy.sh
       - name: Post Deploy
         env:
