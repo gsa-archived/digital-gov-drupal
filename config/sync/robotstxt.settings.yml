@@ -20,8 +20,6 @@ content: |
   Crawl-delay: 10
 
   # Sitemaps
-  Sitemap: https://digital-gov-static-prod.app.cloud.gov/sitemap.xml
-  # Sitemap: https://digital.gov/sitemap.xml
 
   # CSS, JS, Images
   Allow: /*.css$
