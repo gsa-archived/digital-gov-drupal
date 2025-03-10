@@ -19,8 +19,6 @@ content: |
   User-agent: *
   Crawl-delay: 10
 
-  # Sitemaps
-
   # CSS, JS, Images
   Allow: /*.css$
   Allow: /*.js$
