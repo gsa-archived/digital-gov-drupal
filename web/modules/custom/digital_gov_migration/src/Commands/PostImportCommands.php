@@ -37,16 +37,16 @@ final class PostImportCommands extends DrushCommands {
    * Update HTML with references to internal content.
    *
    * @command digitalgov:update-nodes
-   * @option bundles Optional comma-separated list of bundles to update
+   * @option types Optional comma-separated list of types to update
    */
-  public function updateNodes(array $options = ['bundles' => []]): void {
+  public function updateNodes(array $options = ['types' => []]): void {
     $this->output()->writeln('<info>Starting HTML field update for nodes.</info>');
 
-    if ($options['bundles'][0] ?? FALSE) {
-      $options['bundles'] = explode(',', trim($options['bundles'][0]));
+    if ($options['types'][0] ?? FALSE) {
+      $options['types'] = explode(',', trim($options['types'][0]));
     }
 
-    $bundles = $this->getContentTypesAndFields($options['bundles'] ?? []);
+    $bundles = $this->getContentTypesAndFields($options['types'] ?? []);
 
     foreach ($bundles as $bundle => $fields) {
       $this->output()->writeln("\n" .'<info>Updating ' . $bundle . ' nodes.</info>');
@@ -173,16 +173,16 @@ final class PostImportCommands extends DrushCommands {
    * Update HTML with references to internal content.
    *
    * @command digitalgov:update-paragraphs
-   * @option bundles Optional comma-separated list of bundles to update
+   * @option types Optional comma-separated list of bundles to update
    */
-  public function updateParagraphs(array $options = ['bundles' => []]): void {
+  public function updateParagraphs(array $options = ['types' => []]): void {
     $this->output()->writeln('<info>Starting HTML field update for paragraphs.</info>');
 
-    if ($options['bundles'][0] ?? FALSE) {
-      $options['bundles'] = explode(',', trim($options['bundles'][0]));
+    if ($options['types'][0] ?? FALSE) {
+      $options['types'] = explode(',', trim($options['types'][0]));
     }
 
-    $types = $this->getParagraphTypesAndFields($options['bundles'] ?? []);
+    $types = $this->getParagraphTypesAndFields($options['types']);
 
     foreach ($types as $paragraph => $fields) {
       $this->output()->writeln("\n" .'<info>Updating ' . $paragraph . ' paragraphs.</info>');
