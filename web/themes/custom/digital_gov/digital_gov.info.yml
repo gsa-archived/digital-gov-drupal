@@ -15,4 +15,4 @@ regions:
   footer: 'Footer'
 
 ckeditor5-stylesheets:
-  - static/dist/ckeditor.css
+  - static/dist/ckeditor.min.css
