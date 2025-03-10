@@ -2,14 +2,16 @@
 
 namespace Drupal\digital_gov_migration\Commands;
 
+use Drupal\convert_text\ShortcodeToEquiv;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\paragraphs\Entity\ParagraphsType;
 use Drush\Commands\DrushCommands;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Drupal\convert_text\ConvertText;
+
 /**
- * A Drush commandfile for tasks to run after all content is migrated
+ * A Drush commandfile for tasks to run after all content is migrated.
  */
 final class PostImportCommands extends DrushCommands {
 
@@ -26,9 +28,11 @@ final class PostImportCommands extends DrushCommands {
     'multiline_inline_html',
     'single_inline_html',
   ];
+
   public function __construct(
     private EntityTypeManagerInterface $entityTypeManager,
     private EntityFieldManagerInterface $fieldManager,
+    private ShortcodeToEquiv $shorcodeToEquiv,
   ) {
     parent::__construct();
   }
@@ -37,19 +41,18 @@ final class PostImportCommands extends DrushCommands {
    * Update HTML with references to internal content.
    *
    * @command digitalgov:update-nodes
-   * @option bundles Optional comma-separated list of bundles to update
+   * @option types Optional comma-separated list of types to update
    */
-  public function updateNodes(array $options = ['bundles' => []]): void {
+  public function updateNodes(array $options = ['types' => []]): void {
     $this->output()->writeln('<info>Starting HTML field update for nodes.</info>');
 
-    if ($options['bundles'][0] ?? FALSE) {
-      $options['bundles'] = explode(',', trim($options['bundles'][0]));
+    if ($options['types'][0] ?? FALSE) {
+      $options['types'] = explode(',', trim($options['types'][0]));
     }
 
-    $bundles = $this->getContentTypesAndFields($options['bundles'] ?? []);
-
+    $bundles = $this->getContentTypesAndFields($options['types'] ?? []);
     foreach ($bundles as $bundle => $fields) {
-      $this->output()->writeln("\n" .'<info>Updating ' . $bundle . ' nodes.</info>');
+      $this->output()->writeln("\n<info>Updating " . $bundle . ' nodes.</info>');
       $this->updateBundle($bundle, $fields);
     }
 
@@ -57,6 +60,9 @@ final class PostImportCommands extends DrushCommands {
     $this->output()->writeln('<info>Done.</info>');
   }
 
+  /**
+   * Update all nodes of a single type.
+   */
   private function updateBundle(string $bundle, array $fields): void {
     $nodes = $this->entityTypeManager
       ->getStorage('node')
@@ -71,13 +77,19 @@ final class PostImportCommands extends DrushCommands {
       $changed = FALSE;
       foreach ($fields as $fieldName => $fieldConfig) {
         foreach ($node->get($fieldName) as &$item) {
-          // Need the actual format used by this field
+          // Need the actual format used by this field.
           $original = $item->get('value')->getValue();
           try {
+            // Logged by shortcode converter.
+            $alias = 'node::' . $node->id() . '::' . $fieldName;
+            // Need the actual format used by this field.
             switch ($item->get('format')->getValue()) {
               case 'single_inline_html':
-                $item->set('value', ConvertText::htmlNoBreaksText($original));
-                $changed = $changed || TRUE;
+                // Fixes LinkIt.
+                $updated = ConvertText::htmlNoBreaksAfterMigrate($original);
+                $updated = $this->shorcodeToEquiv->convert($alias, $updated);
+                $item->set('value', $updated);
+                $changed = $changed || ($updated !== $original);
 
                 break;
 
@@ -85,11 +97,15 @@ final class PostImportCommands extends DrushCommands {
               case 'multiline_html_limited':
               case 'multiline_inline_html':
               case 'html':
-                $item->set('value', ConvertText::htmlTextAfterMigrate($original));
-                $changed = $changed || TRUE;
+                // Fixes Linkit.
+                $updated = ConvertText::htmlTextAfterMigrate($original);
+                $updated = $this->shorcodeToEquiv->convert($alias, $updated);
+                $item->set('value', $updated);
+                $changed = $changed || ($updated !== $original);
                 break;
             }
-          } catch (\Exception $exception) {
+          }
+          catch (\Exception $exception) {
             $this->output()->writeln('');
             $this->output()->writeln('<error>Failed to update node ' . $node->id() . '</error>');
             trigger_error($exception->getMessage(), E_USER_WARNING);
@@ -99,7 +115,8 @@ final class PostImportCommands extends DrushCommands {
       }
 
       if ($changed) {
-        $node->setSyncing(TRUE); // don't change modified dates
+        // Don't change modified dates.
+        $node->setSyncing(TRUE);
         $node->save();
       }
 
@@ -109,18 +126,19 @@ final class PostImportCommands extends DrushCommands {
     $progressBar->finish();
   }
 
+  /**
+   * Determine what node types and fields to update.
+   */
   private function getContentTypesAndFields(array $bundles = []): array {
-    $entityTypeManager = \Drupal::service('entity_type.manager');
-
     $types = [];
-    $contentTypes = $entityTypeManager->getStorage('node_type')->loadMultiple();
+    $contentTypes = $this->entityTypeManager->getStorage('node_type')->loadMultiple();
     foreach ($contentTypes as $contentType) {
       if ($bundles && !in_array($contentType->id(), $bundles)) {
         continue;
       }
 
-      $fields  = $this->fieldManager->getFieldDefinitions('node', $contentType->id());
-      // Keep HTML fields that we need to update
+      $fields = $this->fieldManager->getFieldDefinitions('node', $contentType->id());
+      // Keep HTML fields that we need to update.
       $fields = array_filter($fields, [$this, 'filterField']);
 
       if ($fields) {
@@ -134,6 +152,9 @@ final class PostImportCommands extends DrushCommands {
     return $types;
   }
 
+  /**
+   * Determines what paragraph types and fields to update.
+   */
   private function getParagraphTypesAndFields(array $bundles = []): array {
     $paragraphTypes = ParagraphsType::loadMultiple();
     $types = [];
@@ -143,7 +164,7 @@ final class PostImportCommands extends DrushCommands {
         continue;
       }
 
-      $fields  = $this->fieldManager->getFieldDefinitions('paragraph', $paragraphType->id());
+      $fields = $this->fieldManager->getFieldDefinitions('paragraph', $paragraphType->id());
       // Keep HTML fields that we need to update.
       if ($fields = array_filter($fields, [$this, 'filterField'])) {
         $types[$paragraphType->id()] = $fields;
@@ -156,6 +177,9 @@ final class PostImportCommands extends DrushCommands {
     return $types;
   }
 
+  /**
+   * Checks if a field should be processed.
+   */
   private function filterField($field): bool {
     if (!in_array($field->getType(), self::HTML_FIELDS)) {
       return FALSE;
@@ -173,19 +197,19 @@ final class PostImportCommands extends DrushCommands {
    * Update HTML with references to internal content.
    *
    * @command digitalgov:update-paragraphs
-   * @option bundles Optional comma-separated list of bundles to update
+   * @option types Optional comma-separated list of bundles to update
    */
-  public function updateParagraphs(array $options = ['bundles' => []]): void {
+  public function updateParagraphs(array $options = ['types' => []]): void {
     $this->output()->writeln('<info>Starting HTML field update for paragraphs.</info>');
 
-    if ($options['bundles'][0] ?? FALSE) {
-      $options['bundles'] = explode(',', trim($options['bundles'][0]));
+    if ($options['types'][0] ?? FALSE) {
+      $options['types'] = explode(',', trim($options['types'][0]));
     }
 
-    $types = $this->getParagraphTypesAndFields($options['bundles'] ?? []);
+    $types = $this->getParagraphTypesAndFields($options['types']);
 
     foreach ($types as $paragraph => $fields) {
-      $this->output()->writeln("\n" .'<info>Updating ' . $paragraph . ' paragraphs.</info>');
+      $this->output()->writeln("\n<info>Updating {$paragraph} paragraphs.</info>");
       $this->updateParagraphType($paragraph, $fields);
     }
 
@@ -193,9 +217,11 @@ final class PostImportCommands extends DrushCommands {
     $this->output()->writeln('<info>Done.</info>');
   }
 
+  /**
+   * Updates all instances of a paragraph type.
+   */
   private function updateParagraphType(string $type, array $fields): void {
-    $entity_type_manager = \Drupal::entityTypeManager();
-    $storage = $entity_type_manager->getStorage('paragraph');
+    $storage = $this->entityTypeManager->getStorage('paragraph');
     $paragraphs = $storage->loadByProperties(['type' => $type]);
 
     $max = count($paragraphs);
@@ -207,24 +233,32 @@ final class PostImportCommands extends DrushCommands {
       $changed = FALSE;
       foreach ($fields as $fieldName => $fieldConfig) {
         foreach ($para->get($fieldName) as &$item) {
-          // Need the actual format used by this field
+          // Need the actual format used by this field.
           $original = $item->get('value')->getValue();
           try {
+            $alias = 'paragraph::' . $para->id() . '::' . $fieldName;
             switch ($item->get('format')->getValue()) {
               case 'single_inline_html':
-                $item->set('value', ConvertText::htmlNoBreaksText($original));
-                $changed = $changed || TRUE;
+                // Fixes LinkIt.
+                $updated = ConvertText::htmlNoBreaksAfterMigrate($original);
+                $updated = $this->shorcodeToEquiv->convert($alias, $updated);
+                $item->set('value', $updated);
+                $changed = $changed || ($updated !== $original);
                 break;
 
               case 'html_embedded_content':
               case 'multiline_html_limited':
               case 'multiline_inline_html':
               case 'html':
+                // Fixes Linkit.
+                $updated = ConvertText::htmlTextAfterMigrate($original);
+                $updated = $this->shorcodeToEquiv->convert($alias, $updated);
                 $item->set('value', ConvertText::htmlTextAfterMigrate($original));
-                $changed = $changed || TRUE;
+                $changed = $changed || ($updated !== $original);
                 break;
             }
-          } catch (\Exception $exception) {
+          }
+          catch (\Exception $exception) {
             $this->output()->writeln('');
             $this->output()->writeln('<error>Failed to update Paragraph ' . $para->id() . '</error>');
             trigger_error($exception->getMessage(), E_USER_WARNING);
@@ -234,7 +268,8 @@ final class PostImportCommands extends DrushCommands {
       }
 
       if ($changed) {
-        $para->setSyncing(TRUE); // don't change modified dates
+        // Don't change modified dates.
+        $para->setSyncing(TRUE);
         $para->save();
       }
 
@@ -243,4 +278,5 @@ final class PostImportCommands extends DrushCommands {
 
     $progressBar->finish();
   }
+
 }
