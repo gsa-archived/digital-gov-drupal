@@ -12,10 +12,19 @@ use Drupal\convert_text\ConvertText;
  */
 final class PostImportCommands extends DrushCommands {
 
-  // TODO expand to other WYSIWYG fields
-  const HTML_FIELDS = ['text_with_summary'];
-  // TODO expand to other Formats with links
-  const HTML_FORMATS = ['html'];
+  // Formatted text fields we might want to process
+  const HTML_FIELDS = [
+    'text_with_summary',
+    'text_long',
+  ];
+
+  const HTML_FORMATS = [
+    'html',
+    'html_embedded_content',
+    'multiline_html_limited',
+    'multiline_inline_html',
+    'single_inline_html',
+  ];
   public function __construct(
     private EntityTypeManagerInterface $entityTypeManager,
     private EntityFieldManagerInterface $fieldManager,
@@ -39,10 +48,11 @@ final class PostImportCommands extends DrushCommands {
     $bundles = $this->getContentTypesAndFields($options['bundles']);
 
     foreach ($bundles as $bundle => $fields) {
-      $this->output()->writeln("\n" .'<info>...Updating ' . $bundle . ' nodes.</info>');
+      $this->output()->writeln("\n" .'<info>Updating ' . $bundle . ' nodes.</info>');
       $this->updateBundle($bundle, $fields);
     }
 
+    $this->output()->writeln('');
     $this->output()->writeln('<info>Done.</info>');
   }
 
