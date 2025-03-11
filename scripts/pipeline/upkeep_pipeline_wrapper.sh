@@ -1,11 +1,11 @@
 #!/bin/bash
 
-if [ -n "${CF_SPACE}" ] || [ -n "${PROJECT}" ]; then
-  if [ -n "${CF_SPACE}" ]; then
+if [ -z "${CF_SPACE}" ] || [ -z "${PROJECT}" ]; then
+  if [ -z "${CF_SPACE}" ]; then
     echo "CF_SPACE must be set for " $(basename "$0")
   fi
 
-  if [ -n "${PROJECT}" ]; then
+  if [ -z "${PROJECT}" ]; then
     echo "PROJECT must be set for " $(basename "$0")
   fi
   exit 1
