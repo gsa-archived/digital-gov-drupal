@@ -78,29 +78,10 @@ jobs:
       - name: Post Deploy
         env:
           PROJECT: "${{ secrets.PROJECT }}"
+          INSTALL_DRUPAL_SPACES: "${{ vars.INSTALL_DRUPAL_SPACES }}"
         run: source ./scripts/pipeline/cloud-gov-post-deploy.sh
       - name: Build Static Site
         env:
           PROJECT: "${{ secrets.PROJECT }}"
-        run: |
-          if [[ "${CF_SPACE}" = "dev" || "${CF_SPACE}" = "staging" ]]; then
-            echo "${CF_SPACE} is building the static site now..."
-            APP="${PROJECT}-drupal-${CF_SPACE}"
-            TASK_NAME="${APP}-upkeep"
-
-            cf run-task "${APP}" --command "/home/vcap/app/scripts/upkeep" --wait -m 1G -k 4G --name "${TASK_NAME}" &
-            RUN_TASK_PID=$!
-
-            cf logs "${APP}" | grep "${TASK_NAME}" &
-            sleep 1
-            CF_LOGS_PID=$(pgrep -f "cf logs")
-
-            # Wait till the task is complete.
-            wait "${RUN_TASK_PID}"
-
-            # Now stop cf logs from running.
-            kill "${CF_LOGS_PID}"
-
-          else
-            echo "${CF_SPACE} does not need to build static site on deployment"
-          fi
+        if: contains(vars.GENERATE_STATIC_SITE_ON_DEPLOY_SPACES, env.CF_SPACE)
+        run: source ./scripts/pipeline/upkeep_pipeline_wrapper.sh
