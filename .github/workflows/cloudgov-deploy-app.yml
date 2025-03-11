@@ -84,4 +84,4 @@ jobs:
         env:
           PROJECT: "${{ secrets.PROJECT }}"
         if: contains(vars.GENERATE_STATIC_SITE_ON_DEPLOY_SPACES, env.CF_SPACE)
-        run: source ./scripts/upkeep_pipeline_wrapper.sh
+        run: source ./scripts/pipeline/upkeep_pipeline_wrapper.sh
