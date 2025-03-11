@@ -60,6 +60,13 @@ else
   drush si -y --account-pass='admin' $(drupal_profile)
 fi
 
+# Files added during installation, from saying default content, are not synced.
+if drush pm-list --type=module --status=enabled --no-core | grep 's3fs'; then
+  echo "Uploading public files to S3 ..."
+  drush s3fs-rc
+  drush s3fs-cl -y --scheme=public --condition=newer
+fi
+
 # Clear cache after installation
 drush cr
 
