@@ -64,6 +64,10 @@ function dg_get_specific_body_class(NodeInterface $node): string {
 function dg_get_broad_body_class(NodeInterface $node): string {
 
   if ($node->getType() === 'guides') {
+
+    if (!$node->get('field_guide_nav_ref')->referencedEntities()) {
+      return '';
+    }
     // Need to check if this is the Overview page.
     if ($navNode = $node->get('field_guide_nav_ref')->referencedEntities()[0]) {
       // This field points at a paragraph entity.
@@ -175,6 +179,13 @@ function digital_gov_preprocess_node(array &$variables): void {
       }
       break;
   }
+
+  $request = \Drupal::service('request_stack')->getCurrentRequest();
+  $page_param = $request->query->get('page');
+
+  // Ensure it's a number and sanitize it.
+  $variables['page_param'] = (is_numeric($page_param)) ? Html::escape($page_param) : NULL;
+  $variables['is_first_page'] = $variables['page_param'] === '0' || $variables['page_param'] === NULL;
 }
 
 /**
@@ -186,7 +197,7 @@ function digital_gov_preprocess_node_guides(&$variables): void {
   $variables['show_next_previous'] = FALSE;
   $variables['show_in_page_nav'] = FALSE;
   $variables['is_guide_overview'] = FALSE;
-  $variables['show_summary_box'] = $guide->get('field_summary_box')[0]->get('value')->getCastedValue();
+  $variables['show_summary_box'] = $guide->get('field_summary_box')[0]?->get('value')->getCastedValue();
 
   if ($nav_node = $guide->get('field_guide_nav_ref')->first()?->get('entity')->getTarget()->getValue()) {
     $links = digital_gov_get_guidenav_links($nav_node, $variables['url']);
@@ -450,8 +461,10 @@ function digital_gov_theme_suggestions_container_alter(array &$suggestions, arra
   }
   // A list of view names in which to exclude the container markup.
   $exclude_views = [
-    'resource_topics_list',
+    'communities_for_topic',
     'guide_cards',
+    'resource_topics_list',
+    'resources_for_topic',
   ];
 
   if (in_array($variables['element']['#name'], $exclude_views)) {

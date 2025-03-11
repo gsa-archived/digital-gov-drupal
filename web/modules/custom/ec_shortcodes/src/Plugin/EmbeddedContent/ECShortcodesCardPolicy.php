@@ -105,8 +105,8 @@ class ECShortcodesCardPolicy extends EmbeddedContentPluginBase implements Embedd
       '#type' => 'text_format',
       '#title' => $this->t('Body'),
       '#default_value' => $this->configuration['text']['value'] ?? '',
-      '#format' => 'multiline_inline_html',
-      '#allowed_formats' => ['multiline_inline_html'],
+      '#format' => 'html_embedded_content',
+      '#allowed_formats' => ['html_embedded_content'],
     ];
 
     return $form;

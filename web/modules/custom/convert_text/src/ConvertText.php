@@ -43,10 +43,27 @@ class ConvertText {
 
       case 'html':
       case 'html_no_breaks':
+        $source_text = static::prepareMarkdown($source_text);
+
         $converter = new CommonMarkConverter();
         $html = $converter->convert($source_text)->getContent();
         $html = LitEmoji::encodeUnicode($html);
-        $html = self::addLinkItMarkup($html);
+
+        // Rewrite links to prod domain to current one for internal links.
+        // Remove preview directories in link paths.
+        // Remove preview directories in path to uswds images.
+        $html = str_replace([
+          ' href="https://digital.gov/',
+          ' href="/preview/gsa/digitalgov.gov/nl-json-endpoints/',
+          ' src="/preview/gsa/digitalgov.gov/nl-json-endpoints/img/',
+          'xlink:href="/preview/gsa/digitalgov.gov/nl-json-endpoints/uswds/img/',
+        ], [
+          ' href="/',
+          ' href="/',
+          ' src="themes/custom/digital_gov/static/digitalgov/img/',
+          'xlink:href="/themes/custom/digital_gov/static/uswds/img/',
+        ], $html);
+
         if ($field_type === 'html_no_breaks') {
           $html = str_replace(['<p>', '</p>', '<br>', '<br />', '<br/>'], '', $html);
         }
@@ -58,7 +75,45 @@ class ConvertText {
   }
 
   /**
-   * Update local link tags with linkit data attributes.
+   * Runs conversions that must happen after all content is migrated.
+   */
+  protected static function afterMigrate(string $source_text, string $field_type): string {
+    switch ($field_type) {
+      case 'plain_text':
+        // Doesn't do anything yet, stubbed here in case we need it later.
+        return $source_text;
+
+      case 'html':
+      case 'html_no_breaks':
+        return self::addLinkItMarkup($source_text);
+
+      default:
+        throw new \Exception("Invalid \$field_type of $field_type given");
+    }
+  }
+
+  /**
+   * Cleans up the markdown to prevent conversion bugs.
+   */
+  protected static function prepareMarkdown(string $source_text): string {
+    // Targeted fixes to insure incoming HTML isn't mistaken for indented code.
+    $source_text = preg_replace('/\/svg>(\R|\s)+([A-Za-z0-9]+)/', '/svg>$2', $source_text);
+    // Remove any line breaks, whitespace before a closing heading.
+    $source_text = preg_replace('/(\R+|\s+)(<\/h[0-9]+>)/i', '$2', $source_text);
+    // Remove line breaks at the start of href.
+    $source_text = preg_replace('/href="(\R|\s)+/', 'href="', $source_text);
+
+    // When the source text has raw HTML, leading spaces are mistaken for
+    // code blocks.
+    $lines = array_map(function (string $line): string {
+      return preg_replace('/^(\s+)</', "<", $line);
+    }, explode("\n", $source_text));
+
+    return implode("\n", $lines);
+  }
+
+  /**
+   * Update local link tags with LinkIt data attributes.
    */
   protected static function addLinkItMarkup(string $source_text): string {
 
@@ -207,6 +262,13 @@ class ConvertText {
   }
 
   /**
+   * Runs post-migration cleanup for plain text fields.
+   */
+  public static function plainTextAfterMigrate(string $source_text): string {
+    return self::afterMigrate($source_text, 'plain_text');
+  }
+
+  /**
    * Gets text ready to be stored in html text fields.
    *
    * @param string $source_text
@@ -220,6 +282,13 @@ class ConvertText {
   }
 
   /**
+   * Runs post-migration cleanup for HTML fields.
+   */
+  public static function htmlTextAfterMigrate(string $source_text): string {
+    return self::afterMigrate($source_text, 'html');
+  }
+
+  /**
    * Gets text ready to be stored in html text fields without breaks.
    *
    * @var string $source_text
@@ -230,6 +299,13 @@ class ConvertText {
    */
   public static function htmlNoBreaksText(string $source_text): string {
     return self::convert($source_text, 'html_no_breaks');
+  }
+
+  /**
+   * Runs post-migration cleanup for HTML-no-breaks fields.
+   */
+  public static function htmlNoBreaksAfterMigrate(string $source_text): string {
+    return self::afterMigrate($source_text, 'html_no_breaks');
   }
 
 }

@@ -6,9 +6,18 @@ Migrations use this [PR](https://github.com/GSA/digitalgov.gov/pull/8254) as a [
 
 `./drush.sh migrate:import --all`
 
+
 ## Rollback all
 
 `./drush.sh migrate:rollback --all`
+
+## Migrate content migrations
+
+`./drush.sh migrate:import --tag "digitalgov"`
+
+## Rollback content migrations
+
+`./drush.sh migrate:rollback --tag "digitalgov"`
 
 ## Migrate a single
 

@@ -1,1 +1,16 @@
+.github/**
+.run/**
+.vscode/**
+docs/**
+lando-config/**
+node_modules
+robo.*
+robo*.yml
+RoboFile.php
+RoboEnv
 terraform/**
+web/themes/custom/digital_gov/*.js
+web/themes/custom/digital_gov/*.json
+web/themes/custom/digital_gov/css/**
+web/themes/custom/digital_gov/gulp**
+web/themes/custom/digital_gov/js/**

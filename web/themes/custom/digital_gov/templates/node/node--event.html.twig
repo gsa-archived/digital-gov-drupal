@@ -75,8 +75,8 @@
       {# @TODO kicker and deck fields can contain HTML tags but use the plain text filter... #}
       {{ include('@digital_gov/partials/page-header.html.twig', {
         title: node.title.value,
-        kicker: node.field_kicker.value,
-        deck: node.field_deck.value,
+        kicker: content.field_kicker|field_value,
+        deck: content.field_deck|field_value,
       }, with_context: false) }}
 
       <p class="datetime">
@@ -165,8 +165,6 @@
 
         {# Display Primary Communities #}
         {{ include('@digital_gov/partials/primary-communities.html.twig') }}
-
-        {# partial "core/primary-communities.html" . #}
 
         {# Topics #}
         {{ content.field_topics }}
