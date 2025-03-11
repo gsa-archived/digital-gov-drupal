@@ -63,7 +63,7 @@ class RoboFile extends Tasks
 
         $this->_exec('./drush.sh state:set xmlsitemap_base_url http://127.0.0.1:8080');
         $this->_exec('./drush.sh xmlsitemap:regenerate');
-        $this->_exec('./drush.sh tome:static --path-count=1 --retry-count=3 -y');
+        $this->_exec('./drush.sh tome:static --path-count=1 --retry-count=3 -y --uri=http://127.0.0.1:8080');
         $this->_exec('./drush.sh state:set xmlsitemap_base_url http://digitalgov.lndo.site');
         $this->_exec('./drush.sh xmlsitemap:regenerate');
         if ($start_server) {
