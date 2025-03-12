@@ -69,9 +69,13 @@ fi
 
 # Extremely strange work around for robotstxt module's configuration not being
 # imported on site install.
+# Temp show all enabled modules.
+drush pm-list --type=module --status=enabled --no-core
 if drush pm-list --type=module --status=enabled --no-core | grep 'robotstxt'; then
   echo "Uninstalling and re-installing robotstxt so that config imports ..."
   drush pm-uninstall -y robotstxt
+  drush en -y robotstxt
+else
   drush en -y robotstxt
 fi
 
