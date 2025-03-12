@@ -1,7 +1,5 @@
 @use "uswds-core" as *;
 
-$dg-image-path: "../digitalgov/img";
-
 .usa-identifier img[alt] {
   @include u-text("white");
 }
@@ -54,8 +52,8 @@ $dg-image-path: "../digitalgov/img";
 // Seen on: `2011/06/21/making-mobile-gov-project`
 .dg-alert--out-of-date {
   .usa-alert__body::before {
-    background-image: url("#{$dg-image-path}/svg-icons/material-icon-inventory_2.svg"); // Fallback for mask-image
-    mask-image: url("#{$dg-image-path}/svg-icons/material-icon-inventory_2.svg");
+    background-image: url("../digitalgov/img/svg-icons/material-icon-inventory_2.svg"); // Fallback for mask-image
+    mask-image: url("../digitalgov/img/svg-icons/material-icon-inventory_2.svg");
   }
 }
 
