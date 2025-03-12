@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mv manifest.yml manifest.tmp
-set -x
+
 # Convert to uppercase
 CF_SPACE_UPPER=${CF_SPACE^^}
 
@@ -10,7 +10,7 @@ export DRUSH_OPTIONS_URI="${!DRUSH_OPTIONS_URI_VAR_NAME}"
 
 STATIC_URI_VAR_NAME="${CF_SPACE_UPPER}_STATIC_URL"
 export STATIC_URI="${!STATIC_URI_VAR_NAME}"
-set +x
+
 envsubst < manifest.tmp > manifest.yml
 cat manifest.tmp
 cat manifest.yml
