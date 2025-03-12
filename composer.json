@@ -176,9 +176,6 @@
         }
     },
     "scripts": {
-        "post-drupal-scaffold-cmd": [
-            "test -w ./composer.sh && echo 'Allowing orchestration files to be executed...' & chmod -f +x ./orch/*.sh ./composer.sh ./php.sh ./robo.sh ./drush.sh"
-        ],
         "post-install-cmd": [
             "test -e web/robots.txt && rm web/robots.txt || echo The default robots.txt file has been deleted."
         ],
