@@ -113,10 +113,7 @@
                 "web-root": "web/"
             },
             "gitignore": false,
-            "allowed-packages": [],
-            "file-mapping": {
-                "[web-root]/robots.txt": false
-            }
+            "allowed-packages": []
         },
         "installer-paths": {
             "web/core": [
@@ -176,6 +173,9 @@
         }
     },
     "scripts": {
+        "post-drupal-scaffold-cmd": [
+            "echo 'Allowing orchestration files to be executed...' & chmod -f +x ./orch/*.sh ./composer.sh ./php.sh ./robo.sh ./drush.sh"
+        ],
         "post-install-cmd": [
             "test -e web/robots.txt && rm web/robots.txt || echo The default robots.txt file has been deleted."
         ],
