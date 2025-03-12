@@ -11,7 +11,7 @@ config:
     # Can be seen at /usr/local/etc/php/conf.d/zzz-lando-my-custom.ini.
     php: lando-config/php.ini
     #server: config/server.conf
-    #vhosts: config/default.conf
+    vhosts: lando-config/nginx-server.conf
 
 services:
   appserver:
