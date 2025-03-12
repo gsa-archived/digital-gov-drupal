@@ -71,6 +71,8 @@ jobs:
       - name: Deploy App
         env:
           PROJECT: "${{ secrets.PROJECT }}"
+          DEV_CMS_URL: "${{ vars.DEV_CMS_URL }}"
+          DEV_STATIC_URL: "${{ vars.DEV_STATIC_URL }}"
         run: |
           app_guid=$(cf app --guid ${PROJECT}-drupal-${CF_SPACE}) || true
           cf curl -X POST /v3/apps/${app_guid}/actions/clear_buildpack_cache || true
