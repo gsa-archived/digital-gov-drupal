@@ -70,6 +70,8 @@ There are 3 types.
 
 See `Drupal Engineering Meeting - 2025/03/11 12:30 EDT` for a walkthrough. Located on digital.gov gDrive at `Engineering/CMS Migration/Drupal Documentation`.
 
+See https://www.drupal.org/project/embedded_content
+
 
 ## What about HCD guides?
 
