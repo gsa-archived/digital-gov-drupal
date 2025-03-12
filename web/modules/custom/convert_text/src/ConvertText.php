@@ -77,7 +77,7 @@ class ConvertText {
   /**
    * Runs conversions that must happen after all content is migrated.
    */
-  protected static function afterMigrate(string $source_text, string $field_type): string {
+  protected static function afterMigrate(string $source_text, string $field_type, string $baseURL = ''): string {
     switch ($field_type) {
       case 'plain_text':
         // Doesn't do anything yet, stubbed here in case we need it later.
@@ -85,7 +85,7 @@ class ConvertText {
 
       case 'html':
       case 'html_no_breaks':
-        return self::addLinkItMarkup($source_text);
+        return self::addLinkItMarkup($source_text, $baseURL);
 
       default:
         throw new \Exception("Invalid \$field_type of $field_type given");
@@ -96,10 +96,9 @@ class ConvertText {
    * Cleans up the markdown to prevent conversion bugs.
    */
   protected static function prepareMarkdown(string $source_text): string {
-    // Process shortcodes
+    // Process shortcodes.
     $shortcodes = \Drupal::service('convert_text.shortcode_to_equiv');
     $source_text = $shortcodes->convert(md5($source_text), $source_text);
-
 
     // Targeted fixes to insure incoming HTML isn't mistaken for indented code.
     $source_text = preg_replace('/\/svg>(\R|\s)+([A-Za-z0-9]+)/', '/svg>$2', $source_text);
@@ -120,7 +119,7 @@ class ConvertText {
   /**
    * Update local link tags with LinkIt data attributes.
    */
-  protected static function addLinkItMarkup(string $source_text): string {
+  protected static function addLinkItMarkup(string $source_text, string $baseURL = ''): string {
 
     // Consider these domains local.
     $base_domains = [\Drupal::request()->getHost(), 'digital.gov', 'www.digital.gov'];
@@ -136,6 +135,17 @@ class ConvertText {
       $anchor = '';
       if (preg_match('/\#(.*)$/', $href, $matches)) {
         $anchor = $matches[0];
+      }
+
+      // Prepend base URL to relative links.
+      // Starts with a letter or number but no protocol.
+      if ($baseURL
+        && !str_starts_with($href, '/')
+        && preg_match('/^(?![A-Za-z]+?:\/\/)([[:alnum:]]+)/', $href)
+      ) {
+        $href = $baseURL
+          . (!str_ends_with($baseURL, '/') ? '/' : '')
+          . $href;
       }
 
       // Add a trailing slash for links with just the domain w/o trailing slash.
@@ -289,8 +299,8 @@ class ConvertText {
   /**
    * Runs post-migration cleanup for HTML fields.
    */
-  public static function htmlTextAfterMigrate(string $source_text): string {
-    return self::afterMigrate($source_text, 'html');
+  public static function htmlTextAfterMigrate(string $source_text, string $baseURL = ''): string {
+    return self::afterMigrate($source_text, 'html', $baseURL);
   }
 
   /**
@@ -309,7 +319,7 @@ class ConvertText {
   /**
    * Runs post-migration cleanup for HTML-no-breaks fields.
    */
-  public static function htmlNoBreaksAfterMigrate(string $source_text): string {
+  public static function htmlNoBreaksAfterMigrate(string $source_text, string $baseURL = ''): string {
     return self::afterMigrate($source_text, 'html_no_breaks');
   }
 

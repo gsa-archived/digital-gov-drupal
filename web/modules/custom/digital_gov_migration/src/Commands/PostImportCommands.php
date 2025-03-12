@@ -75,13 +75,12 @@ final class PostImportCommands extends DrushCommands {
     $node = array_pop($nodes);
 
     $this->output()->writeln('<info>Starting HTML field update for node: '
-      . $node->getTitle() . ' (' . $node->getType(). ').</info>');
+      . $node->getTitle() . ' (' . $node->getType() . ').</info>');
 
     $bundles = $this->getContentTypesAndFields([$node->getType()]);
 
     $this->updateNode($node, $bundles[$node->getType()]);
   }
-
 
   /**
    * Update all nodes of a single type.
@@ -105,8 +104,10 @@ final class PostImportCommands extends DrushCommands {
     $progressBar->finish();
   }
 
-  private function updateNode(NodeInterface $node, array $fields): void
-  {
+  /**
+   * Handle updating all the fields for a node.
+   */
+  private function updateNode(NodeInterface $node, array $fields): void {
     $changed = FALSE;
     foreach ($fields as $fieldName => $fieldConfig) {
       foreach ($node->get($fieldName) as &$item) {
@@ -119,7 +120,7 @@ final class PostImportCommands extends DrushCommands {
           switch ($item->get('format')->getValue()) {
             case 'single_inline_html':
               // Fixes LinkIt.
-              $updated = ConvertText::htmlNoBreaksAfterMigrate($original);
+              $updated = ConvertText::htmlNoBreaksAfterMigrate($original, $node->toUrl()->toString());
               $updated = $this->shorcodeToEquiv->convert($alias, $updated);
               $item->set('value', $updated);
               $changed = $changed || ($updated !== $original);
@@ -131,7 +132,7 @@ final class PostImportCommands extends DrushCommands {
             case 'multiline_inline_html':
             case 'html':
               // Fixes Linkit.
-              $updated = ConvertText::htmlTextAfterMigrate($original);
+              $updated = ConvertText::htmlTextAfterMigrate($original, $node->toUrl()->toString());
               $item->set('value', $updated);
               $changed = $changed || ($updated !== $original);
               break;
@@ -154,6 +155,7 @@ final class PostImportCommands extends DrushCommands {
       $node->save();
     }
   }
+
   /**
    * Determine what node types and fields to update.
    */
@@ -264,12 +266,10 @@ final class PostImportCommands extends DrushCommands {
           // Need the actual format used by this field.
           $original = $item->get('value')->getValue();
           try {
-            $alias = 'paragraph::' . $para->id() . '::' . $fieldName;
             switch ($item->get('format')->getValue()) {
               case 'single_inline_html':
                 // Fixes LinkIt.
                 $updated = ConvertText::htmlNoBreaksAfterMigrate($original);
-                //$updated = $this->shorcodeToEquiv->convert($alias, $updated);
                 $item->set('value', $updated);
                 $changed = $changed || ($updated !== $original);
                 break;
@@ -279,7 +279,8 @@ final class PostImportCommands extends DrushCommands {
               case 'multiline_inline_html':
               case 'html':
                 // Fixes Linkit.
-                $item->set('value', ConvertText::htmlTextAfterMigrate($original));
+                $updated = ConvertText::htmlNoBreaksAfterMigrate($original);
+                $item->set('value', $updated);
                 $changed = $changed || ($updated !== $original);
                 break;
             }

@@ -46,9 +46,6 @@ class JsonTopicResources extends Json {
       $paragraphs = [];
 
       foreach ($items as $item) {
-
-
-
         foreach ($item['field_featured_resources'] as $resource) {
           $paragraph = ['parent_uid' => $item['uid']];
 
