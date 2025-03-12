@@ -5,6 +5,7 @@ namespace Drupal\digital_gov_migration\Commands;
 use Drupal\convert_text\ShortcodeToEquiv;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\node\NodeInterface;
 use Drupal\paragraphs\Entity\ParagraphsType;
 use Drush\Commands\DrushCommands;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -61,6 +62,28 @@ final class PostImportCommands extends DrushCommands {
   }
 
   /**
+   * Update HTML with references to internal content.
+   *
+   * @command digitalgov:update-node
+   * @argument nid Node ID
+   */
+  public function updateSingleNode(int $nid): void {
+    $nodes = $this->entityTypeManager
+      ->getStorage('node')
+      ->loadByProperties(['nid' => $nid]);
+
+    $node = array_pop($nodes);
+
+    $this->output()->writeln('<info>Starting HTML field update for node: '
+      . $node->getTitle() . ' (' . $node->getType(). ').</info>');
+
+    $bundles = $this->getContentTypesAndFields([$node->getType()]);
+
+    $this->updateNode($node, $bundles[$node->getType()]);
+  }
+
+
+  /**
    * Update all nodes of a single type.
    */
   private function updateBundle(string $bundle, array $fields): void {
@@ -74,51 +97,7 @@ final class PostImportCommands extends DrushCommands {
     $progressBar->start();
 
     foreach ($nodes as $node) {
-      $changed = FALSE;
-      foreach ($fields as $fieldName => $fieldConfig) {
-        foreach ($node->get($fieldName) as &$item) {
-          // Need the actual format used by this field.
-          $original = $item->get('value')->getValue();
-          try {
-            // Logged by shortcode converter.
-            $alias = 'node::' . $node->id() . '::' . $fieldName;
-            // Need the actual format used by this field.
-            switch ($item->get('format')->getValue()) {
-              case 'single_inline_html':
-                // Fixes LinkIt.
-                $updated = ConvertText::htmlNoBreaksAfterMigrate($original);
-                $updated = $this->shorcodeToEquiv->convert($alias, $updated);
-                $item->set('value', $updated);
-                $changed = $changed || ($updated !== $original);
-
-                break;
-
-              case 'html_embedded_content':
-              case 'multiline_html_limited':
-              case 'multiline_inline_html':
-              case 'html':
-                // Fixes Linkit.
-                $updated = ConvertText::htmlTextAfterMigrate($original);
-                $updated = $this->shorcodeToEquiv->convert($alias, $updated);
-                $item->set('value', $updated);
-                $changed = $changed || ($updated !== $original);
-                break;
-            }
-          }
-          catch (\Exception $exception) {
-            $this->output()->writeln('');
-            $this->output()->writeln('<error>Failed to update node ' . $node->id() . '</error>');
-            trigger_error($exception->getMessage(), E_USER_WARNING);
-            $changed = FALSE;
-          }
-        }
-      }
-
-      if ($changed) {
-        // Don't change modified dates.
-        $node->setSyncing(TRUE);
-        $node->save();
-      }
+      $this->updateNode($node, $fields);
 
       $progressBar->advance();
     }
@@ -126,6 +105,55 @@ final class PostImportCommands extends DrushCommands {
     $progressBar->finish();
   }
 
+  private function updateNode(NodeInterface $node, array $fields): void
+  {
+    $changed = FALSE;
+    foreach ($fields as $fieldName => $fieldConfig) {
+      foreach ($node->get($fieldName) as &$item) {
+        // Need the actual format used by this field.
+        $original = $item->get('value')->getValue();
+        try {
+          // Logged by shortcode converter.
+          $alias = 'node::' . $node->id() . '::' . $fieldName;
+          // Need the actual format used by this field.
+          switch ($item->get('format')->getValue()) {
+            case 'single_inline_html':
+              // Fixes LinkIt.
+              $updated = ConvertText::htmlNoBreaksAfterMigrate($original);
+              $updated = $this->shorcodeToEquiv->convert($alias, $updated);
+              $item->set('value', $updated);
+              $changed = $changed || ($updated !== $original);
+
+              break;
+
+            case 'html_embedded_content':
+            case 'multiline_html_limited':
+            case 'multiline_inline_html':
+            case 'html':
+              // Fixes Linkit.
+              $updated = ConvertText::htmlTextAfterMigrate($original);
+              $item->set('value', $updated);
+              $changed = $changed || ($updated !== $original);
+              break;
+          }
+        }
+        catch (\Exception $exception) {
+          $this->output()->writeln('');
+          $this->output()->writeln('<error>Failed to update node '
+            . $node->id() . ', ' . $node->toUrl()->toString()
+            . '</error>');
+          trigger_error($exception->getMessage(), E_USER_WARNING);
+          $changed = FALSE;
+        }
+      }
+    }
+
+    if ($changed) {
+      // Don't change modified dates.
+      $node->setSyncing(TRUE);
+      $node->save();
+    }
+  }
   /**
    * Determine what node types and fields to update.
    */
@@ -147,7 +175,7 @@ final class PostImportCommands extends DrushCommands {
     }
 
     if (empty($types)) {
-      throw new \InvalidArgumentException('No content types found.');
+      throw new \InvalidArgumentException('No fields/content types found to process.');
     }
     return $types;
   }
@@ -241,7 +269,7 @@ final class PostImportCommands extends DrushCommands {
               case 'single_inline_html':
                 // Fixes LinkIt.
                 $updated = ConvertText::htmlNoBreaksAfterMigrate($original);
-                $updated = $this->shorcodeToEquiv->convert($alias, $updated);
+                //$updated = $this->shorcodeToEquiv->convert($alias, $updated);
                 $item->set('value', $updated);
                 $changed = $changed || ($updated !== $original);
                 break;
@@ -251,8 +279,6 @@ final class PostImportCommands extends DrushCommands {
               case 'multiline_inline_html':
               case 'html':
                 // Fixes Linkit.
-                $updated = ConvertText::htmlTextAfterMigrate($original);
-                $updated = $this->shorcodeToEquiv->convert($alias, $updated);
                 $item->set('value', ConvertText::htmlTextAfterMigrate($original));
                 $changed = $changed || ($updated !== $original);
                 break;

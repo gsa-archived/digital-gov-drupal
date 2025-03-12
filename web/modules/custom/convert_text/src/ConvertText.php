@@ -96,6 +96,11 @@ class ConvertText {
    * Cleans up the markdown to prevent conversion bugs.
    */
   protected static function prepareMarkdown(string $source_text): string {
+    // Process shortcodes
+    $shortcodes = \Drupal::service('convert_text.shortcode_to_equiv');
+    $source_text = $shortcodes->convert(md5($source_text), $source_text);
+
+
     // Targeted fixes to insure incoming HTML isn't mistaken for indented code.
     $source_text = preg_replace('/\/svg>(\R|\s)+([A-Za-z0-9]+)/', '/svg>$2', $source_text);
     // Remove any line breaks, whitespace before a closing heading.

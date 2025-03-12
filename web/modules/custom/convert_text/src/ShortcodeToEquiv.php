@@ -374,7 +374,7 @@ class ShortcodeToEquiv {
 
       case 'button':
         if (empty($attributes['href'])) {
-          return $this->error($shortcode, 'Href is required.');
+          return $this->error($shortcode, 'Href is required.' . $attributes['text'] ?? '');
         }
         return sprintf(
           '<a href="%s" class="usa-button usa-button--outline">%s</a>',
@@ -476,8 +476,8 @@ class ShortcodeToEquiv {
         }
         $dark = !empty($attributes['bg']) && $attributes['bg'] === 'dark';
         $config = [
-          'cite' => $this->formattedFieldValue($attributes['cite'], 'single_inline_html'),
-          'text' => $this->formattedFieldValue($attributes['text'], 'single_inline_html'),
+          'cite' => $this->formattedFieldValue($attributes['cite'] ?? '', 'single_inline_html'),
+          'text' => $this->formattedFieldValue($attributes['text'] ?? '', 'single_inline_html'),
           'dark' => $dark ? 1 : 0,
         ];
         return $this->embeddedContent($config, 'ec_shortcodes_card_quote');
@@ -574,7 +574,7 @@ class ShortcodeToEquiv {
   protected function error(string $shortcode_id, string $message): string {
     // The alias of the item will tell us where to look for the message in the
     // return.
-    $this->logger->error(
+    $this->logger->warning(
       sprintf('ShortCodeToEquiv error with type: "%s". An alias of "%s". Message: "%s"',
         $shortcode_id,
         $this->aliasOfItem,
