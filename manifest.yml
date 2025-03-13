@@ -8,11 +8,11 @@ default_config: &defaults
   env:
     COMPOSER_DEV: ${COMPOSER_DEV}
     environment: ${CF_SPACE}
-    HASH_SALT: ${HASH_SALT}
     LD_LIBRARY_PATH: /home/vcap/app/php/lib/
-    NEWRELIC_KEY: ${NEWRELIC_KEY}
     PHP_INI_SCAN_DIR: /home/vcap/app/php/etc/:/home/vcap/app/php/etc/php.ini.d/
     waf_external_endpoint: ${PROJECT}-${WAF_NAME}-${CF_SPACE}.app.cloud.gov
+    STATIC_URI: ${STATIC_URI}
+    DRUSH_OPTIONS_URI: ${DRUSH_OPTIONS_URI}
   timeout: 180
   routes:
     - route: ${PROJECT}-drupal-${CF_SPACE}.apps.internal
