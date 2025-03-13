@@ -7,6 +7,7 @@ namespace Drupal\convert_text;
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\media\Entity\Media;
 use Drupal\migrate\MigrateLookupInterface;
 use Drupal\path_alias\AliasManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -89,6 +90,18 @@ class ShortcodeToEquiv {
 
     // Start by removing space before and after.
     $source_text = trim($source_text);
+    // Running source text through markdown converter encodes the brackets in the
+    // shortcode, we need to undo that (and hopefully just that).
+    $source_text = str_replace(['{{&lt;', '&gt;}}'], ['{{<', '>}}'], $source_text);
+    // Decode quotes inside any shorttags
+    $source_text = preg_replace_callback(
+      '/\{\{<(.*)>\}\}/',
+      function ($in){
+        return str_replace('&quot;', '"', $in[0]);
+      },
+      $source_text
+    );
+
 
     // A structured array of the types of shortcodes that are allowed.
     // These two arrays didn't need to be separate, as the 'body' attribute
@@ -370,7 +383,7 @@ class ShortcodeToEquiv {
         // [$attributes['file']]);
         // $uuid = '';
         // $this->media($uuid);
-        return 'Place holder till migrations are created';
+        return $shortcode;
 
       case 'button':
         if (empty($attributes['href'])) {
@@ -406,7 +419,10 @@ class ShortcodeToEquiv {
           $config = [
             'content_reference' => $nid,
             // @todo Kicker is being added in https://cm-jira.usa.gov/browse/DIGITAL-384.
-            'kicker' => ConvertText::htmlNoBreaksText($attributes['kicker'] ?? ''),
+            'kicker' => [
+              'value' => trim(ConvertText::htmlNoBreaksText($attributes['kicker'] ?? '')),
+              'format' => 'single_inline_html'
+            ],
           ];
           return $this->embeddedContent($config, 'ec_shortcodes_featured_resource');
         }
@@ -423,15 +439,26 @@ class ShortcodeToEquiv {
       case 'img-right':
         // @todo img flexible does not have an equivalent yet.
         // @todo Do a migration lookup by image UID.
-        // $uuid = $this->migrateLookup->lookup('file_migration_id',
-        // [$attributes['src']]);
-        // $attributes = [];
-        // if ($shortcode === 'img-right') {
-        // $attributes['data-align'] = 'right';
-        // }
-        // $uuid = '';
-        // return $this->media($uuid, $attributes);
-        return 'Place holder till migrations are created';
+        // As long as this runs after json_images_to_media has been imported, we should
+        // be able to create the equivalent markup.
+        $uuid = $this->migrateLookup
+          ->lookup('json_images_to_media', [$attributes['src']]);
+        if ($uuid) {
+          $mid = $uuid[0]['mid'];
+          $media = Media::load($mid);
+          $orig_attributes = $attributes;
+          $attributes = [];
+
+          if ($shortcode === 'img-right' || ($orig_attributes['align'] ?? '') === 'right') {
+            $attributes['data-align'] = 'right';
+          }
+          // Is there a Drupal equivalent for incoming inline=true?
+          if (($orig_attributes['align'] ?? '') === 'center') {
+            $attributes['data-align'] = 'center';
+          }
+          return $this->media($media->uuid(), $attributes);
+        }
+        return '<!-- Could not update shortcode: img -->' . $shortcode;
 
       // Link is used in combination with markdown url syntax, so it is
       // important that shortcodes are replaced before markdown to HTMl is

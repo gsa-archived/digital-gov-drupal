@@ -85,6 +85,7 @@ class ConvertText {
 
       case 'html':
       case 'html_no_breaks':
+        $source_text = self::fixShortCodes($source_text);
         return self::addLinkItMarkup($source_text, $baseURL);
 
       default:
@@ -96,10 +97,6 @@ class ConvertText {
    * Cleans up the markdown to prevent conversion bugs.
    */
   protected static function prepareMarkdown(string $source_text): string {
-    // Process shortcodes.
-    $shortcodes = \Drupal::service('convert_text.shortcode_to_equiv');
-    $source_text = $shortcodes->convert(md5($source_text), $source_text);
-
     // Targeted fixes to insure incoming HTML isn't mistaken for indented code.
     $source_text = preg_replace('/\/svg>(\R|\s)+([A-Za-z0-9]+)/', '/svg>$2', $source_text);
     // Remove any line breaks, whitespace before a closing heading.
@@ -120,7 +117,6 @@ class ConvertText {
    * Update local link tags with LinkIt data attributes.
    */
   protected static function addLinkItMarkup(string $source_text, string $baseURL = ''): string {
-
     // Consider these domains local.
     $base_domains = [\Drupal::request()->getHost(), 'digital.gov', 'www.digital.gov'];
 
@@ -263,6 +259,14 @@ class ConvertText {
     return Html::serialize($dom);
   }
 
+  public static function fixShortCodes(string $source_text): string {
+    // A bit of a hack here, the markdown conversion encodes the shortcode
+    // brackets but the short code converter expect them unencoded.
+//    $html = str_replace('{{&lt;', '{{<', $html);
+//    $html = str_replace('&gt;}}', '>}}', $html);
+    $shortcodes = \Drupal::service('convert_text.shortcode_to_equiv');
+    return $shortcodes->convert(md5($source_text), $source_text);
+  }
   /**
    * Gets text ready to be stored in plain text fields.
    *
