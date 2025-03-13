@@ -59,7 +59,7 @@ if [ -n "${MODSECURITY_UPDATE}" ]; then
   modsecurity_version=$(echo "${MODSECURITY_UPDATE}" | cut -d '_' -f2 | cut -d '-' -f1)
   echo "Updating libmodsecurity..."
   #current_path=$(pwd)
-  
+
   dpkg-deb -R "${app_path}/packages/${MODSECURITY_UPDATE}" ${home}/deps/0/apt/
   ln -s "${home}/deps/0/apt/usr/lib/x86_64-linux-gnu/libmodsecurity.so.${modsecurity_version}" "libmodsecurity.so.${modsecurity_version}"
 fi
@@ -87,6 +87,6 @@ PATH=${PATH}; envsubst < ${app_path}/nginx/snippets/ip-restrict-static.conf.tmpl
 mv ${app_path}/nginx/conf.d/default.conf ${app_path}/nginx/conf.d/default.conf.tmpl
 
 ## Replace the default listen port to the applications port.
-PATH=${PATH}; envsubst '$VCAP_APP_PORT' < ${app_path}/nginx/conf.d/default.conf.tmpl > ${app_path}/nginx/conf.d/default.conf
+PATH=${PATH}; envsubst '$VCAP_APP_PORT $DRUSH_OPTIONS_URI' < ${app_path}/nginx/conf.d/default.conf.tmpl > ${app_path}/nginx/conf.d/default.conf
 
 echo "Intialization complete!"
