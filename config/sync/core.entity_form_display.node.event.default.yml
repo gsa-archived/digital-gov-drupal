@@ -91,7 +91,7 @@ content:
       maxlength:
         maxlength_js: 255
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
-        maxlength_js_enforce: true
+        maxlength_js_enforce: false
   field_end_date:
     type: datetime_default
     weight: 12
@@ -176,7 +176,7 @@ content:
       maxlength:
         maxlength_js: 255
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
-        maxlength_js_enforce: true
+        maxlength_js_enforce: false
   field_topics:
     type: autocomplete_deluxe
     weight: 19
