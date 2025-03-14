@@ -7,6 +7,7 @@ namespace Drupal\convert_text;
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Url;
 use Drupal\migrate\MigrateLookupInterface;
 use Drupal\path_alias\AliasManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -391,10 +392,7 @@ class ShortcodeToEquiv {
             return $this->media($media->uuid());
           }
         }
-        return '<!-- Could not update shortcode: img -->' . json_encode([
-          'shortcode' => $shortcode,
-          'attributes' => $attributes,
-        ]);
+        return $this->error($shortcode, 'Could not find file for: .' . $src_uid);
 
       case 'button':
         if (empty($attributes['href'])) {
@@ -468,10 +466,7 @@ class ShortcodeToEquiv {
           }
           return $this->media($media->uuid(), $attributes);
         }
-        return '<!-- Could not update shortcode: img -->' . json_encode([
-          'shortcode' => $shortcode,
-          'attributes' => $attributes,
-        ]);
+        return $this->error($shortcode, 'Could not find image for: .' . $attributes['src']);
 
       // Link is used in combination with markdown url syntax, so it is
       // important that shortcodes are replaced before markdown to HTMl is
@@ -487,17 +482,11 @@ class ShortcodeToEquiv {
         // lookup to find it.
         // @codingStandardsIgnoreStart
         if (str_ends_with($url, '.md') || ($shortcode === 'ref' && !str_starts_with($url, '/') && !str_starts_with($url, 'http'))) {
-          // Must look through every node migration.
-          // @codingStandardsIgnoreStart
-          /*foreach (['resource_migration_id', 'topics_migration_id', 'etc...'] as $migration_id) {
-            $nids = $this->migrateLookup->lookup($migration_id, [$url]);
-            if (!empty($nids)) {
-              return Url::fromRoute('entity.node.canonical', ['node' => $nids[0]])->toString();
-            }
+          $alias = preg_replace('/.md$/', '', $url);
+          if ($url = Url::fromUserInput($alias)) {
+            return  $url->toString();
           }
-          return $this->error($shortcode, 'The markdown reference to ' . $url . ' could not find a corresponding node.');*/
-          // @codingStandardsIgnoreEnd
-          return 'Place holder till migrations are created: ' . $url;
+          return $alias;
         }
         // @codingStandardsIgnoreEnd
         // It's just a plain URL, return it.

@@ -113,6 +113,31 @@ class ConvertText {
     // Remove line breaks at the start of href.
     $source_text = preg_replace('/href="(\R|\s)+/', 'href="', $source_text);
 
+    // Need to turn the link and ref shortcodes into regular markdown links.
+    if (str_contains($source_text, '{{< ref') || str_contains($source_text, '{{< link')) {
+      $source_text = preg_replace_callback(
+        '/{{<\s+(ref|link)\s+\"?([^">]+).*}}/i',
+        function ($match): string {
+          $href = $match[2];
+          if (str_starts_with($href, 'resources/')) {
+            // It should be an absolute link.
+            $href = '/' . $href;
+          }
+
+          if (str_starts_with($href, '/') && str_ends_with($href, '/_index.md')) {
+            return str_replace('/_index.md', '/', $href);
+          }
+
+          if (!preg_match('/^https?\:\/\//', $href) && str_ends_with($href, '.md')) {
+            return preg_replace('/\.md$/', '', $href);
+          }
+
+          // Either a full URL or something we can't readily fix.
+          return $href;
+        }, $source_text
+      );
+    }
+
     // When the source text has raw HTML, leading spaces are mistaken for
     // code blocks.
     $lines = array_map(function (string $line): string {
