@@ -90,10 +90,10 @@ class ShortcodeToEquiv {
 
     // Start by removing space before and after.
     $source_text = trim($source_text);
-    // Running source text through markdown converter encodes the brackets in the
-    // shortcode, we need to undo that (and hopefully just that).
+    // Running source text through markdown converter encodes the brackets in
+    // the shortcode, we need to undo that (and hopefully just that).
     $source_text = str_replace(['{{&lt;', '&gt;}}'], ['{{<', '>}}'], $source_text);
-    // Decode quotes inside any shorttags
+    // Decode quotes inside any short code tags.
     $source_text = preg_replace_callback(
       '/\{\{<(.*)>\}\}/',
       function ($in){
@@ -101,7 +101,6 @@ class ShortcodeToEquiv {
       },
       $source_text
     );
-
 
     // A structured array of the types of shortcodes that are allowed.
     // These two arrays didn't need to be separate, as the 'body' attribute
@@ -421,7 +420,7 @@ class ShortcodeToEquiv {
             // @todo Kicker is being added in https://cm-jira.usa.gov/browse/DIGITAL-384.
             'kicker' => [
               'value' => trim(ConvertText::htmlNoBreaksText($attributes['kicker'] ?? '')),
-              'format' => 'single_inline_html'
+              'format' => 'single_inline_html',
             ],
           ];
           return $this->embeddedContent($config, 'ec_shortcodes_featured_resource');
@@ -439,8 +438,8 @@ class ShortcodeToEquiv {
       case 'img-right':
         // @todo img flexible does not have an equivalent yet.
         // @todo Do a migration lookup by image UID.
-        // As long as this runs after json_images_to_media has been imported, we should
-        // be able to create the equivalent markup.
+        // As long as this runs after json_images_to_media has been imported,
+        // we should be able to create the equivalent markup.
         $uuid = $this->migrateLookup
           ->lookup('json_images_to_media', [$attributes['src']]);
         if ($uuid) {
