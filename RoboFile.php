@@ -63,9 +63,15 @@ class RoboFile extends Tasks
 
         $cms_url = $this->taskExec('./drush.sh state:get xmlsitemap_base_url')->printOutput(false)->run()->getOutputData() ?: getenv('DRUSH_OPTIONS_URI') ?: 'http://digitalgov.lndo.site';
         $static_url = getenv('STATIC_URI') ?: 'http://127.0.0.1:8080';
+        $theme_name = "digital_gov";
+        $theme_path = "themes/custom/{$theme_name}";
         $this->_exec('./drush.sh state:set xmlsitemap_base_url ' . $static_url);
         $this->_exec('./drush.sh xmlsitemap:regenerate');
         $this->_exec('./drush.sh tome:static --path-count=1 --retry-count=3 -y --uri=' . $static_url);
+        if (is_dir("web/$theme_path/static")) {
+            $io->info('Copy static assets to static site -> $theme_path/static');
+            $this->_copyDir("web/$theme_path/static", "html/$theme_path/static");
+        }
         $this->_exec('./drush.sh state:set xmlsitemap_base_url ' . $cms_url);
         $this->_exec('./drush.sh xmlsitemap:regenerate');
         if ($start_server) {
