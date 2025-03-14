@@ -86,7 +86,16 @@ class ConvertText {
       case 'html':
       case 'html_no_breaks':
         $source_text = self::fixShortCodes($source_text);
-        return self::addLinkItMarkup($source_text, $baseURL);
+        $source_text = self::addLinkItMarkup($source_text, $baseURL);
+        // Doesn't like when new lines are in the source text. Autop filter?
+        $source_text = preg_replace('/\R/', "", $source_text);
+        // Or p-tags around embedded content.
+        $source_text = str_replace(
+          ['<p><embedded-content', '</embedded-content></p>'],
+          ['<embedded-content', '</embedded-content>'],
+          $source_text
+        );
+        return $source_text;
 
       default:
         throw new \Exception("Invalid \$field_type of $field_type given");
@@ -259,14 +268,14 @@ class ConvertText {
     return Html::serialize($dom);
   }
 
+  /**
+   * Helper for calling the short code fixer service.
+   */
   public static function fixShortCodes(string $source_text): string {
-    // A bit of a hack here, the markdown conversion encodes the shortcode
-    // brackets but the short code converter expect them unencoded.
-//    $html = str_replace('{{&lt;', '{{<', $html);
-//    $html = str_replace('&gt;}}', '>}}', $html);
-    $shortcodes = \Drupal::service('convert_text.shortcode_to_equiv');
-    return $shortcodes->convert(md5($source_text), $source_text);
+    return \Drupal::service('convert_text.shortcode_to_equiv')
+      ->convert(md5($source_text), $source_text);
   }
+
   /**
    * Gets text ready to be stored in plain text fields.
    *

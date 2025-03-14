@@ -131,7 +131,7 @@ final class PostImportCommands extends DrushCommands {
             case 'multiline_html_limited':
             case 'multiline_inline_html':
             case 'html':
-              // Fixes Linkit.
+              // Adds drupal attributes and converts short codes.
               $updated = ConvertText::htmlTextAfterMigrate($original, $node->toUrl()->toString());
               $item->set('value', $updated);
               $changed = $changed || ($updated !== $original);

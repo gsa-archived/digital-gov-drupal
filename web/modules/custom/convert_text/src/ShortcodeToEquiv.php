@@ -7,7 +7,6 @@ namespace Drupal\convert_text;
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\media\Entity\Media;
 use Drupal\migrate\MigrateLookupInterface;
 use Drupal\path_alias\AliasManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -96,7 +95,7 @@ class ShortcodeToEquiv {
     // Decode quotes inside any short code tags.
     $source_text = preg_replace_callback(
       '/\{\{<(.*)>\}\}/',
-      function ($in){
+      function ($in) {
         return str_replace('&quot;', '"', $in[0]);
       },
       $source_text
@@ -189,7 +188,10 @@ class ShortcodeToEquiv {
           $body = '';
           if ($get_body) {
             $body = trim($matches[2][$key] ?? '');
-            if (!empty($body) && $options['body'] === TRUE || !empty($options['children'])) {
+            if (
+              (!empty($body) && $options['body'] === TRUE)
+              || !empty($options['children'])
+            ) {
               $body = $this->convert($alias_of_item, $body, $options['children'] ?? $shortcodes);
             }
           }
@@ -377,12 +379,22 @@ class ShortcodeToEquiv {
         return $this->media($video->uuid());
 
       case 'asset-static':
-        // @todo Do a migration lookup by file UID.
-        // $uuid = $this->migrateLookup->lookup('file_migration_id',
-        // [$attributes['file']]);
-        // $uuid = '';
-        // $this->media($uuid);
-        return $shortcode;
+        // The src for the migration is the filename without the extension.
+        $src_uid = preg_replace('/\.(.*)$/', '', $attributes['file']);
+        $uuid = $this->migrateLookup
+          ->lookup('json_files_to_media', [$src_uid]);
+        if ($uuid) {
+          $media = $this->entityTypeManager
+            ->getStorage('media')
+            ->load($uuid[0]['mid']);
+          if ($media) {
+            return $this->media($media->uuid());
+          }
+        }
+        return '<!-- Could not update shortcode: img -->' . json_encode([
+          'shortcode' => $shortcode,
+          'attributes' => $attributes,
+        ]);
 
       case 'button':
         if (empty($attributes['href'])) {
@@ -436,15 +448,14 @@ class ShortcodeToEquiv {
       case 'img':
       case 'img-flexible':
       case 'img-right':
-        // @todo img flexible does not have an equivalent yet.
-        // @todo Do a migration lookup by image UID.
         // As long as this runs after json_images_to_media has been imported,
         // we should be able to create the equivalent markup.
         $uuid = $this->migrateLookup
           ->lookup('json_images_to_media', [$attributes['src']]);
         if ($uuid) {
-          $mid = $uuid[0]['mid'];
-          $media = Media::load($mid);
+          $media = $this->entityTypeManager
+            ->getStorage('media')
+            ->load($uuid[0]['mid']);
           $orig_attributes = $attributes;
           $attributes = [];
 
@@ -457,7 +468,10 @@ class ShortcodeToEquiv {
           }
           return $this->media($media->uuid(), $attributes);
         }
-        return '<!-- Could not update shortcode: img -->' . $shortcode;
+        return '<!-- Could not update shortcode: img -->' . json_encode([
+          'shortcode' => $shortcode,
+          'attributes' => $attributes,
+        ]);
 
       // Link is used in combination with markdown url syntax, so it is
       // important that shortcodes are replaced before markdown to HTMl is
