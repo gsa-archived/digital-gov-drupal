@@ -28,6 +28,9 @@ use Drupal\paragraphs\Entity\Paragraph;
  */
 function digital_gov_preprocess_html(array &$variables): void {
   $is_front = \Drupal::service('path.matcher')->isFrontPage();
+  $variables['theme_path'] = \Drupal::theme()->getActiveTheme()->getPath();
+  $variables['theme_path_absolute'] = Url::fromUri('base://' . $variables['theme_path'], ['absolute' => TRUE])->toString();
+
   // @todo Authors landing page? authors + term.
   if ($is_front) {
     $variables['attributes']['class'][] = 'home';
