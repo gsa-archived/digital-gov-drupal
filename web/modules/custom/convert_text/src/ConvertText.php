@@ -138,6 +138,20 @@ class ConvertText {
       );
     }
 
+    if (str_contains($source_text, '](https://s3.amazonaws.com/digitalgov/static/')) {
+      // Turn direct links to S3 files to asset shortcodes we can link to media
+      // links during the post-migration cleanup.
+      $source_text = preg_replace_callback(
+        '/\[([^]]+)\]\(https?\:\/\/s3\.amazonaws\.com\/digitalgov\/static\/([^)]+)\)/',
+        function ($match): string {
+          return sprintf('{{< asset-static file="%s" label="%s" >}}',
+            $match[2], $match[1]
+          );
+        },
+        $source_text
+      );
+    }
+
     // When the source text has raw HTML, leading spaces are mistaken for
     // code blocks.
     $lines = array_map(function (string $line): string {

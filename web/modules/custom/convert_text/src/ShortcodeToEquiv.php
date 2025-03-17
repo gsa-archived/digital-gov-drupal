@@ -389,6 +389,10 @@ class ShortcodeToEquiv {
             ->getStorage('media')
             ->load($uuid[0]['mid']);
           if ($media) {
+            if ($attributes['label'] ?? false) {
+              $media->setName($attributes['label']);
+              $media->save();
+            }
             return $this->media($media->uuid());
           }
         }
