@@ -2,9 +2,11 @@
 
 namespace Drupal\digital_gov_migration\Commands;
 
+use Drupal\Component\Serialization\Json;
 use Drupal\convert_text\ShortcodeToEquiv;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Http\ClientFactory;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\Entity\ParagraphsType;
 use Drush\Commands\DrushCommands;
@@ -34,6 +36,7 @@ final class PostImportCommands extends DrushCommands {
     private EntityTypeManagerInterface $entityTypeManager,
     private EntityFieldManagerInterface $fieldManager,
     private ShortcodeToEquiv $shorcodeToEquiv,
+    private ClientFactory $httpClientFactory,
   ) {
     parent::__construct();
   }
@@ -304,6 +307,80 @@ final class PostImportCommands extends DrushCommands {
     }
 
     $progressBar->finish();
+  }
+
+  /**
+   * Builds a json feed of files in markdown that are direct links to s3 bucket.
+   *
+   * @command digitalgov:s3feed
+   */
+  public function buildS3DirectLinksFeed(): void {
+    $client = $this->httpClientFactory->fromOptions([
+      'base_uri' => 'https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/',
+    ]);
+
+    $feed_tpl = 'preview/gsa/digitalgov.gov/nl-json-endpoints/%s/index.json';
+
+    // Based on greping through the Hugo source for direct links to S3 static.
+    $sources = array_map(
+      fn($type) => sprintf($feed_tpl, $type),
+      ['news', 'resources', 'events', 'guides']
+    );
+
+    $discovered = [];
+    foreach ($sources as $source) {
+      $response = $client->get($source);
+      $json = Json::decode($response->getBody());
+
+      foreach ($json['items'] as $item) {
+        // No body: /resources/guide-paperwork-reduction-act/
+        // Avoid regexes if we can.
+        if (
+          !isset($item['field_body'])
+          || !str_contains($item['field_body'], '](https://s3.amazonaws.com/digitalgov/static/')
+        ) {
+          continue;
+        }
+
+        $s3Links = $this->getS3Links($item['field_body']);
+        foreach ($s3Links as $link) {
+
+          $filename = preg_replace('/\..+$/', '', $link['file']);
+          preg_match('/\.(.+)$/', $link['file'], $ext);
+          $file = [
+            'date' => date('Y-m-d H:i:s O'),
+            'source' => 'https://s3.amazonaws.com/digitalgov/static/' . $link['file'],
+            'uid' => $filename,
+            'type' => $ext[1],
+          ];
+          $discovered[] = $file;
+        }
+      }
+    }
+
+    // Send the json to stdout to save for import.
+    echo Json::encode($discovered);
+  }
+
+  /**
+   * Extract links to s3 amazonaws bucket.
+   */
+  private function getS3Links(string $text): array {
+    preg_match_all(
+      '/\[([^]]+)\]\(https?\:\/\/s3\.amazonaws\.com\/digitalgov\/static\/([^)]+)\)/',
+      $text,
+      $matches
+    );
+
+    $links = [];
+    foreach ($matches[0] as $idx => $match) {
+      $links[] = [
+        'label' => $matches[1][$idx],
+        'file' => $matches[2][$idx],
+      ];
+    }
+
+    return $links;
   }
 
 }

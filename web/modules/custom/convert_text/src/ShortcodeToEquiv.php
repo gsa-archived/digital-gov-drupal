@@ -392,7 +392,7 @@ class ShortcodeToEquiv {
             return $this->media($media->uuid());
           }
         }
-        return $this->error($shortcode, 'Could not find file for: .' . $src_uid);
+        return $this->error($shortcode, 'Could not find file for: ' . $src_uid);
 
       case 'button':
         if (empty($attributes['href'])) {
@@ -446,6 +446,7 @@ class ShortcodeToEquiv {
       case 'img':
       case 'img-flexible':
       case 'img-right':
+
         // As long as this runs after json_images_to_media has been imported,
         // we should be able to create the equivalent markup.
         $uuid = $this->migrateLookup
