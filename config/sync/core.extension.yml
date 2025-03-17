@@ -90,7 +90,6 @@ module:
   rh_node: 0
   rh_taxonomy: 0
   rh_user: 0
-  robotstxt: 0
   role_delegation: 0
   role_watchdog: 0
   scheduler: 0
