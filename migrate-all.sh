@@ -14,4 +14,4 @@
 ./drush.sh digitalgov:update-nodes
 ./drush.sh digitalgov:update-paragraphs
 
-rm ./web/sites/default/files/s3files.json
+#rm ./web/sites/default/files/s3files.json
