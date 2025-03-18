@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56a10d7f49c0e6131222c565ac264373",
+    "content-hash": "d2d9f0aedd65d9c713eeb5f8bb717e92",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7746,16 +7746,16 @@
         },
         {
             "name": "mattsqd/robovalidate",
-            "version": "1.5.0-alpha",
+            "version": "1.6.0-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mattsqd/robovalidate.git",
-                "reference": "76117b511e151a87334404f37ea2e0f184ca75b9"
+                "reference": "8fef3f64aa29fc252326704f8dd077805cc74883"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mattsqd/robovalidate/zipball/76117b511e151a87334404f37ea2e0f184ca75b9",
-                "reference": "76117b511e151a87334404f37ea2e0f184ca75b9",
+                "url": "https://api.github.com/repos/mattsqd/robovalidate/zipball/8fef3f64aa29fc252326704f8dd077805cc74883",
+                "reference": "8fef3f64aa29fc252326704f8dd077805cc74883",
                 "shasum": ""
             },
             "require": {
@@ -7788,9 +7788,9 @@
             "description": "A group of Robo commands that run various validation tasks on local environments or pipelines",
             "support": {
                 "issues": "https://github.com/mattsqd/robovalidate/issues",
-                "source": "https://github.com/mattsqd/robovalidate/tree/1.5.0-alpha"
+                "source": "https://github.com/mattsqd/robovalidate/tree/1.6.0-alpha"
             },
-            "time": "2025-02-10T19:04:34+00:00"
+            "time": "2025-03-17T19:27:58+00:00"
         },
         {
             "name": "mck89/peast",
