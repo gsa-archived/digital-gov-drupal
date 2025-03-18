@@ -92,7 +92,7 @@ class ConvertText {
 
       case 'html':
       case 'html_no_breaks':
-        $source_text = self::fixShortCodes($source_text);
+        $source_text = self::fixShortCodes($source_text, $baseURL);
         $source_text = self::addLinkItMarkup($source_text, $baseURL);
         // Doesn't like when new lines are in the source text. Autop filter?
         $source_text = preg_replace('/\R/', "", $source_text);
@@ -316,10 +316,18 @@ class ConvertText {
 
   /**
    * Helper for calling the short code fixer service.
+   *
+   * @param string $source_text
+   *   The original source value.
+   * @param string $alias_of_item
+   *   The alias of the item being processed.
    */
-  public static function fixShortCodes(string $source_text): string {
+  public static function fixShortCodes(string $source_text, string $alias_of_item = ''): string {
+    if (empty($alias_of_item)) {
+      $alias_of_item = md5($source_text);
+    }
     return \Drupal::service('convert_text.shortcode_to_equiv')
-      ->convert(md5($source_text), $source_text);
+      ->convert($alias_of_item, $source_text);
   }
 
   /**
@@ -338,8 +346,8 @@ class ConvertText {
   /**
    * Runs post-migration cleanup for plain text fields.
    */
-  public static function plainTextAfterMigrate(string $source_text): string {
-    return self::afterMigrate($source_text, 'plain_text');
+  public static function plainTextAfterMigrate(string $source_text, string $baseURL = ''): string {
+    return self::afterMigrate($source_text, 'plain_text', $baseURL);
   }
 
   /**
@@ -379,7 +387,7 @@ class ConvertText {
    * Runs post-migration cleanup for HTML-no-breaks fields.
    */
   public static function htmlNoBreaksAfterMigrate(string $source_text, string $baseURL = ''): string {
-    return self::afterMigrate($source_text, 'html_no_breaks');
+    return self::afterMigrate($source_text, 'html_no_breaks', $baseURL);
   }
 
 }
