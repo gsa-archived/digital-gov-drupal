@@ -383,13 +383,13 @@ class ShortcodeToEquiv {
         // The src for the migration is the filename without the extension.
         $src_uid = preg_replace('/\.(.*)$/', '', $attributes['file']);
         $uuid = $this->migrateLookup
-          ->lookup('json_files_to_media', [$src_uid]);
+          ->lookup(['json_files_to_media', 'json_s3_files_to_media'], [$src_uid]);
         if ($uuid) {
           $media = $this->entityTypeManager
             ->getStorage('media')
             ->load($uuid[0]['mid']);
           if ($media) {
-            if ($attributes['label'] ?? false) {
+            if ($attributes['label'] ?? FALSE) {
               $media->setName($attributes['label']);
               $media->save();
             }

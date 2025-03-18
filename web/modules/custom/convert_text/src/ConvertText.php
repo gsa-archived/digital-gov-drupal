@@ -8,7 +8,10 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
-use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\Table\TableExtension;
+use League\CommonMark\MarkdownConverter;
 use LitEmoji\LitEmoji;
 
 /**
@@ -44,8 +47,12 @@ class ConvertText {
       case 'html':
       case 'html_no_breaks':
         $source_text = static::prepareMarkdown($source_text);
+        // Configure markdown converter to support commonmark and table support.
+        $environment = new Environment();
+        $environment->addExtension(new CommonMarkCoreExtension());
+        $environment->addExtension(new TableExtension());
 
-        $converter = new CommonMarkConverter();
+        $converter = new MarkdownConverter($environment);
         $html = $converter->convert($source_text)->getContent();
         $html = LitEmoji::encodeUnicode($html);
 
