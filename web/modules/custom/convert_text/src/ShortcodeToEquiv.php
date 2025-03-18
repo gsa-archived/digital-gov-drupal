@@ -227,7 +227,9 @@ class ShortcodeToEquiv {
 
     foreach ($matches as $match) {
       if (!empty($match[1])) {
-        $attributes[$match[1]] = $match[2];
+        // Attributes can be empty. Also, if an attribute is not quoted,
+        // the match is in capture group 4.
+        $attributes[$match[1]] = $match[2] ?: $match[4] ?? '';
       }
       else {
         // Unnamed attribute only.

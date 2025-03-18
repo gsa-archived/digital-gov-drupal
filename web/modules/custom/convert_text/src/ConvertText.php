@@ -120,29 +120,6 @@ class ConvertText {
     // Remove line breaks at the start of href.
     $source_text = preg_replace('/href="(\R|\s)+/', 'href="', $source_text);
 
-    // Require quotes around src attributes. This pattern tests if ANY img
-    // shortcode is missing quotes around src attribute
-    if (preg_match('/{{<\s+(img|img-flexible|img-right)\s+src=[^"]/', $source_text)) {
-      // This patter
-      $source_text = preg_replace_callback(
-        '/{{<\s*(img|img-flexible|img-right)\s+src=(\S+)([^>]+)>}}/i',
-        function ($matches) : string {
-          $shortcode = $matches[1];
-          $src = $matches[2];
-          $rest = $matches[3];
-
-          if (!str_starts_with($src, '"')) {
-            $src = '"' . $src . '"';
-          }
-
-          return sprintf('{{< %s src=%s%s >}}',
-            $shortcode, $src, trim($rest)
-          );
-        },
-        $source_text
-      );
-    }
-
     // Need to turn the link and ref shortcodes into regular markdown links.
     if (str_contains($source_text, '{{< ref') || str_contains($source_text, '{{< link')) {
       $source_text = preg_replace_callback(
