@@ -54,6 +54,34 @@ class ConvertText {
 
         $converter = new MarkdownConverter($environment);
         $html = $converter->convert($source_text)->getContent();
+
+      // Targeted fixes to allow HTML in title attributes for some shortcode
+      // opening tags. If the attribute contains a ">", the regular expressions for
+      // finding shortcode won't work.
+      $html = preg_replace_callback(
+        '/\{\{&lt;\s*(card\-prompt)\s*(.*)&gt;\}\}/iU',
+        function($matches) {
+          if (empty($matches[2])) {
+            // No attributes, nothing to do.
+            return $matches[0];
+          }
+          $attrs = $matches[2];
+          // Fix intro attributes
+          $attrs = preg_replace_callback(
+            '/intro=&quot;(.+)&quot;\s+/iU',
+            function ($values) {
+              // Encoding angle brackets as UTF-8 entities used ultimately by the
+              // embedded content module to save the config for it.
+              return 'intro=&quot;'
+                . str_replace(['<', '>'], ['\u003C', '\u003E'], $values[1])
+                . '&quot; ';
+            },
+            $attrs
+          );
+          return '{{&lt; ' . $matches[1] . ' ' . $attrs . ' &gt;}}';
+        },
+        $html
+      );
         $html = LitEmoji::encodeUnicode($html);
 
         // Rewrite links to prod domain to current one for internal links.

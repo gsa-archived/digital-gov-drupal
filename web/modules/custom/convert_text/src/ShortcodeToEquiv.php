@@ -283,8 +283,12 @@ class ShortcodeToEquiv {
         if (empty($attributes['intro']) || empty($attributes['button-text']) || empty($attributes['button-url']) || empty($body)) {
           return $this->error($shortcode, 'intro, button-text, button-url, and some body text is required.');
         }
+
+        // Undo encoding of HTML tags in attributes to allow the shortcode regex to work.
+        $intro = str_replace(['\u003C', '\u003E'], ['<', '>'], $attributes['intro']);
+
         $config = [
-          'intro' => $this->formattedFieldValue($attributes['intro']),
+          'intro' => $this->formattedFieldValue($intro),
           'text' => $attributes['button-text'],
           'url' => $attributes['button-url'],
         ];
