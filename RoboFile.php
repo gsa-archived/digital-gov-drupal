@@ -72,6 +72,10 @@ class RoboFile extends Tasks
             $io->info('Copy static assets to static site -> $theme_path/static');
             $this->_copyDir("web/$theme_path/static", "html/$theme_path/static");
         }
+        if (is_file("web/robots.txt")) {
+            $io->info('Copy Robots.txt to static site');
+            $this->_copy("web/robots.txt", "html/robots.txt");
+        }
         $this->_exec('./drush.sh state:set xmlsitemap_base_url ' . $cms_url);
         $this->_exec('./drush.sh xmlsitemap:regenerate');
         if ($start_server) {
