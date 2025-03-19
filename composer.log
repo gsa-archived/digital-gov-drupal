@@ -85,3 +85,4 @@ adf1e162003468d7feadf689a8a80fe1|afemath|feature/DIGITAL-447-replace-inline-enti
 3527f642148b384d457a4be0095d8f3d|afemath|feature/DIGITAL-473-robots-txt|Tue Mar 11 09:19:19 EDT 2025|./composer.sh update --lock
 c08a776105e00c8be6508332d25ddb74|Matt Poole|feature/DIGITAL-530-update-deps|Thu Mar 13 09:31:40 EDT 2025|./composer.sh update
 bfd189922e27b07bd4ea0a012d982743|Matt Poole|feature/DIGITAL-550-update-default-content|Mon Mar 17 15:31:01 EDT 2025|./composer.sh update mattsqd/robovalidate
+c39221e88c29f56dbc7956d8bd0db127|afemath|feature/DIGITAL-538-robots-split|Tue Mar 18 13:43:24 EDT 2025|./composer.sh remove drupal/robotstxt

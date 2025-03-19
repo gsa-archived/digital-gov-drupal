@@ -94,6 +94,24 @@ cp -rfp "${app_path}/web/themes/custom/${theme_name}/static" "${html_path}/theme
 echo "Adding digital.gov custom theme assets...completed!"
 echo ""
 
+echo "*******************************************************************"
+echo "Copying robots.txt to static site based on env: '${environment}'..."
+echo "*******************************************************************"
+# Set the robots.txt file content based on the environment
+case "$environment" in
+  "prod")    robots_content="${app_path}/robots--live.txt" ;;
+  "staging") robots_content="${app_path}/robots--test-searchgov.txt" ;; # Temp for Testing on Search.gov
+  *)         robots_content="${app_path}/web/robots.txt" ;;
+esac
+
+# Check if the source file exists and copy file
+if [[ ! -f "$robots_content" ]]; then
+  echo "Warning: Source robots.txt '$robots_content' for '${environment}' not found. Skipping copy."
+else
+  cp "$robots_content" "${html_path}/robots.txt"
+  echo "robots.txt set up for '${environment}' environment!"
+fi
+
 echo "**************************************************"
 echo "Deleting 'node' redirect files..."
 echo "**************************************************"
