@@ -259,9 +259,13 @@ class ShortcodeToEquiv {
     static $building_array = [];
     switch ($shortcode) {
       case 'accordion':
+        // Undo encoding of HTML tags in attributes to allow the shortcode
+        // regex to work.
+        $title = $this->decodeTagsInAttributes($attributes['title'] ?? '');
+
         $config = [
           'kicker' => ConvertText::htmlNoBreaksText($attributes['kicker'] ?? ''),
-          'title' => ConvertText::htmlNoBreaksText($attributes['title'] ?? ''),
+          'title' => ConvertText::htmlNoBreaksText($title),
           'icon' => $attributes['icon'] ?? '',
         ];
         $config['text'] = $this->formattedFieldValue($body);
@@ -271,9 +275,12 @@ class ShortcodeToEquiv {
         return sprintf('<div class="box">%s</div>', ConvertText::htmlText($body));
 
       case 'card-policy':
+        // Undo encoding of HTML tags in attributes.
+        $title = $this->decodeTagsInAttributes($attributes['title'] ?? '');
+
         $config = [
           'kicker' => ConvertText::htmlNoBreaksText($attributes['kicker'] ?? ''),
-          'title' => ConvertText::htmlNoBreaksText($attributes['title'] ?? ''),
+          'title' => ConvertText::htmlNoBreaksText($title),
           'url' => $attributes['src'] ?? '',
         ];
         $config['text'] = $this->formattedFieldValue($body);
@@ -284,8 +291,8 @@ class ShortcodeToEquiv {
           return $this->error($shortcode, 'intro, button-text, button-url, and some body text is required.');
         }
 
-        // Undo encoding of HTML tags in attributes to allow the shortcode regex to work.
-        $intro = str_replace(['\u003C', '\u003E'], ['<', '>'], $attributes['intro']);
+        // Undo encoding of HTML tags in attributes.
+        $intro = $this->decodeTagsInAttributes($attributes['intro']);
 
         $config = [
           'intro' => $this->formattedFieldValue($intro),
@@ -555,6 +562,13 @@ class ShortcodeToEquiv {
   protected function embeddedContent(array $config, string $plugin_id): string {
     $config = Html::escape(Json::encode(array_filter($config)));
     return sprintf('<embedded-content data-plugin-config="%s" data-plugin-id="%s" data-button-id="default">&nbsp;</embedded-content>', $config, $plugin_id);
+  }
+
+  /**
+   * Decode UTF-8 encoded < > in a string.
+   */
+  protected function decodeTagsInAttributes(string $in): string {
+    return str_replace(['\u003C', '\u003E'], ['<', '>'], $in);
   }
 
   /**

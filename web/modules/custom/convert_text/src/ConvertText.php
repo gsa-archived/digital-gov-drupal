@@ -55,33 +55,20 @@ class ConvertText {
         $converter = new MarkdownConverter($environment);
         $html = $converter->convert($source_text)->getContent();
 
-      // Targeted fixes to allow HTML in title attributes for some shortcode
-      // opening tags. If the attribute contains a ">", the regular expressions for
-      // finding shortcode won't work.
-      $html = preg_replace_callback(
-        '/\{\{&lt;\s*(card\-prompt)\s*(.*)&gt;\}\}/iU',
-        function($matches) {
-          if (empty($matches[2])) {
-            // No attributes, nothing to do.
-            return $matches[0];
+        // Targeted fixes to allow HTML in title attributes for some shortcode
+        // opening tags. If the attribute contains a ">", the regexes
+        // for finding shortcode won't work.
+        $allowHtmlTags = [
+          'card-prompt' => ['intro'],
+          'card-policy' => ['title'],
+          'accordion' => ['title'],
+        ];
+        foreach ($allowHtmlTags as $code => $attributes) {
+          foreach ($attributes as $attribute) {
+            $html = static::encodeShortcodeAttr($html, $code, $attribute);
           }
-          $attrs = $matches[2];
-          // Fix intro attributes
-          $attrs = preg_replace_callback(
-            '/intro=&quot;(.+)&quot;\s+/iU',
-            function ($values) {
-              // Encoding angle brackets as UTF-8 entities used ultimately by the
-              // embedded content module to save the config for it.
-              return 'intro=&quot;'
-                . str_replace(['<', '>'], ['\u003C', '\u003E'], $values[1])
-                . '&quot; ';
-            },
-            $attrs
-          );
-          return '{{&lt; ' . $matches[1] . ' ' . $attrs . ' &gt;}}';
-        },
-        $html
-      );
+        }
+
         $html = LitEmoji::encodeUnicode($html);
 
         // Rewrite links to prod domain to current one for internal links.
@@ -107,6 +94,41 @@ class ConvertText {
       default:
         throw new \Exception("Invalid \$field_type of $field_type given");
     }
+  }
+
+  /**
+   * Encode < and > characters in a short code attribute.
+   *
+   * If they're present in an attribute, the regex for finding short codes
+   * does not work.
+   */
+  private static function encodeShortcodeAttr(string $source, string $code, string $attr): string {
+    $source = preg_replace_callback(
+      '/\{\{&lt;\s*(' . preg_quote($code, '/') . ')\s*(.*)&gt;\}\}/iU',
+      function ($matches) use ($attr): string {
+        if (empty($matches[2])) {
+          // No attributes, nothing to do.
+          return $matches[0];
+        }
+        $attrs = $matches[2];
+        // Fix requested attribute.
+        $attrs = preg_replace_callback(
+          '/' . preg_quote($attr, '/') . '=&quot;(.+)&quot;\s+/iU',
+          function ($values) use ($attr): string {
+            // Encoding angle brackets as UTF-8 entities used ultimately by the
+            // embedded content module to save the config for it.
+            return $attr . '=&quot;'
+              . str_replace(['<', '>'], ['\u003C', '\u003E'], $values[1])
+              . '&quot; ';
+          },
+          $attrs
+        );
+        return '{{&lt; ' . $matches[1] . ' ' . $attrs . ' &gt;}}';
+      },
+      $source
+    );
+
+    return $source;
   }
 
   /**
