@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation for status messages.
+ * Theme override for status messages.
  *
  * Displays status, error, and warning messages, grouped by type.
  *
@@ -17,31 +17,37 @@
  * - status_headings: List of all status types.
  * - attributes: HTML attributes for the element, including:
  *   - class: HTML classes.
- *
- * @ingroup themeable
  */
 #}
-<div data-drupal-messages>
-{% for type, messages in message_list %}
-  <div role="contentinfo" aria-label="{{ status_headings[type] }}"{{ attributes|without('role', 'aria-label') }}>
-    {% if type == 'error' %}
-      <div role="alert">
-    {% endif %}
-    {% if status_headings[type] %}
-      <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
-    {% endif %}
-    {% if messages|length > 1 %}
-      <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      {{ messages|first }}
-    {% endif %}
-    {% if type == 'error' %}
-      </div>
-    {% endif %}
-  </div>
-{% endfor %}
+<div data-drupal-messages class="status-messages" role="region" aria-label="System messages">
+  {% for type, messages in message_list %}
+    {% set alert_type = (type == 'status') ? 'info' : type %}
+
+    {# Actual message in a VAR #}
+    {% set message_output %}
+      {% if status_headings[type] %}
+        <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
+      {% endif %}
+      {% if messages|length > 1 %}
+        <ul class="messages__list margin-0">
+          {% for message in messages %}
+            <li class="messages__item">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        {{ messages|first }}
+      {% endif %}
+    {% endset %}
+
+    {# Output the message with wrappers #}
+    <div class="status-messages--type-group">
+      {% if type == 'error' %}<div role="alert">{% endif %}
+      {{ include('@uswds_templates/usa-alert.html.twig', {
+        alert_type: alert_type,
+        text: message_output,
+      }) }}
+      {% if type == 'error' %}</div>{% endif %}
+    </div>
+
+  {% endfor %}
 </div>
