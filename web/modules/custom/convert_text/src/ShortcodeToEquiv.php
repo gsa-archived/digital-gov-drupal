@@ -265,7 +265,10 @@ class ShortcodeToEquiv {
 
         $config = [
           'kicker' => ConvertText::htmlNoBreaksText($attributes['kicker'] ?? ''),
-          'title' => ConvertText::htmlNoBreaksText($title),
+          'accordion_title' => $this->formattedFieldValue(
+            $this->decodeTagsInAttributes($title),
+            'single_inline_html'
+          ),
           'icon' => $attributes['icon'] ?? '',
         ];
         $config['text'] = $this->formattedFieldValue($body);
@@ -280,7 +283,10 @@ class ShortcodeToEquiv {
 
         $config = [
           'kicker' => ConvertText::htmlNoBreaksText($attributes['kicker'] ?? ''),
-          'title' => ConvertText::htmlNoBreaksText($title),
+          'card_title' => $this->formattedFieldValue(
+            $this->decodeTagsInAttributes($title),
+            'single_inline_html'
+          ),
           'url' => $attributes['src'] ?? '',
         ];
         $config['text'] = $this->formattedFieldValue($body);
