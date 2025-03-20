@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # Runs all the migration steps in the expected order
 
 # 1. Remove content created by default content that will be imported by the
