@@ -286,7 +286,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'W42yJcUmDYFMIFoycxGW3M29qcmmu2hVtL6KxPC23Fm4gnIgG3200h-RLMLXiNMgvf5Lal-Qvg';
+$settings['hash_salt'] = '';
 
 /**
  * Deployment identifier.
@@ -924,15 +924,3 @@ if ( !empty(getenv('VCAP_APPLICATION')) ) {
 } else {
   include $app_root . '/' . $site_path . '/settings.drupal_env.php';
 }
-$databases['default']['default'] = array (
-  'database' => 'drupal10',
-  'username' => 'drupal10',
-  'password' => 'drupal10',
-  'prefix' => '',
-  'host' => 'database',
-  'port' => '3306',
-  'isolation_level' => 'READ COMMITTED',
-  'driver' => 'mysql',
-  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
-  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
-);
