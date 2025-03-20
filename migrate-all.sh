@@ -2,6 +2,9 @@
 
 set -xe
 
+# Ensure in the app directory.
+cd "$(dirname "$0")"
+
 DRUSH_BIN="./drush.sh"
 [ -n "$VCAP_APPLICATION" ] && DRUSH_BIN="drush"
 
@@ -15,11 +18,22 @@ ${DRUSH_BIN} rcbm
 #    not with the asset short code
 ${DRUSH_BIN} digitalgov:s3feed > web/sites/default/files/s3files.json
 
+cat web/sites/default/files/s3files.json
+if [ -n "$VCAP_APPLICATION" ]; then
+  drush s3fs-rc
+  drush s3fs-cl -y --scheme=public --condition=newer
+fi
+
 # 3. Run all the migrations.
 ${DRUSH_BIN} cr
 # Throws notices that kill the script.
-$(${DRUSH_BIN} migrate:rollback --tag="digitalgov") || :
+${DRUSH_BIN} migrate:rollback --tag="digitalgov"
 ${DRUSH_BIN} migrate:import --tag="digitalgov"
+
+if [ -n "$VCAP_APPLICATION" ]; then
+  drush s3fs-rc
+  drush s3fs-cl -y --scheme=public --condition=newer
+fi
 
 # 4. Clean up migrated content (shortcodes, media links, emoji).
 ${DRUSH_BIN} digitalgov:update-nodes
