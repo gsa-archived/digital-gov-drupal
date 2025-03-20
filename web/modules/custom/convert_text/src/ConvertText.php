@@ -8,7 +8,11 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
-use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\Autolink\AutolinkExtension;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\Table\TableExtension;
+use League\CommonMark\MarkdownConverter;
 use LitEmoji\LitEmoji;
 
 /**
@@ -44,9 +48,29 @@ class ConvertText {
       case 'html':
       case 'html_no_breaks':
         $source_text = static::prepareMarkdown($source_text);
+        // Configure markdown converter to support commonmark and table support.
+        $environment = new Environment();
+        $environment->addExtension(new CommonMarkCoreExtension());
+        $environment->addExtension(new TableExtension());
+        $environment->addExtension(new AutolinkExtension());
 
-        $converter = new CommonMarkConverter();
+        $converter = new MarkdownConverter($environment);
         $html = $converter->convert($source_text)->getContent();
+
+        // Targeted fixes to allow HTML in title attributes for some shortcode
+        // opening tags. If the attribute contains a ">", the regexes
+        // for finding shortcode won't work.
+        $allowHtmlTags = [
+          'card-prompt' => ['intro'],
+          'card-policy' => ['title'],
+          'accordion' => ['title'],
+        ];
+        foreach ($allowHtmlTags as $code => $attributes) {
+          foreach ($attributes as $attribute) {
+            $html = static::encodeShortcodeAttr($html, $code, $attribute);
+          }
+        }
+
         $html = LitEmoji::encodeUnicode($html);
 
         // Rewrite links to prod domain to current one for internal links.
@@ -75,9 +99,44 @@ class ConvertText {
   }
 
   /**
+   * Encode < and > characters in a short code attribute.
+   *
+   * If they're present in an attribute, the regex for finding short codes
+   * does not work.
+   */
+  private static function encodeShortcodeAttr(string $source, string $code, string $attr): string {
+    $source = preg_replace_callback(
+      '/\{\{&lt;\s*(' . preg_quote($code, '/') . ')\s*(.*)&gt;\}\}/iU',
+      function ($matches) use ($attr): string {
+        if (empty($matches[2])) {
+          // No attributes, nothing to do.
+          return $matches[0];
+        }
+        $attrs = $matches[2];
+        // Fix requested attribute.
+        $attrs = preg_replace_callback(
+          '/' . preg_quote($attr, '/') . '=&quot;(.+)&quot;\s+/iU',
+          function ($values) use ($attr): string {
+            // Encoding angle brackets as UTF-8 entities used ultimately by the
+            // embedded content module to save the config for it.
+            return $attr . '=&quot;'
+              . str_replace(['<', '>'], ['\u003C', '\u003E'], $values[1])
+              . '&quot; ';
+          },
+          $attrs
+        );
+        return '{{&lt; ' . $matches[1] . ' ' . $attrs . ' &gt;}}';
+      },
+      $source
+    );
+
+    return $source;
+  }
+
+  /**
    * Runs conversions that must happen after all content is migrated.
    */
-  protected static function afterMigrate(string $source_text, string $field_type): string {
+  protected static function afterMigrate(string $source_text, string $field_type, string $baseURL = ''): string {
     switch ($field_type) {
       case 'plain_text':
         // Doesn't do anything yet, stubbed here in case we need it later.
@@ -85,7 +144,17 @@ class ConvertText {
 
       case 'html':
       case 'html_no_breaks':
-        return self::addLinkItMarkup($source_text);
+        $source_text = self::fixShortCodes($source_text, $baseURL);
+        $source_text = self::addLinkItMarkup($source_text, $baseURL);
+        // Doesn't like when new lines are in the source text. Autop filter?
+        $source_text = preg_replace('/\R/', "", $source_text);
+        // Or p-tags around embedded content.
+        $source_text = str_replace(
+          ['<p><embedded-content', '</embedded-content></p>'],
+          ['<embedded-content', '</embedded-content>'],
+          $source_text
+        );
+        return $source_text;
 
       default:
         throw new \Exception("Invalid \$field_type of $field_type given");
@@ -103,6 +172,45 @@ class ConvertText {
     // Remove line breaks at the start of href.
     $source_text = preg_replace('/href="(\R|\s)+/', 'href="', $source_text);
 
+    // Need to turn the link and ref shortcodes into regular markdown links.
+    if (str_contains($source_text, '{{< ref') || str_contains($source_text, '{{< link')) {
+      $source_text = preg_replace_callback(
+        '/{{<\s+(ref|link)\s+\"?([^">]+).*}}/i',
+        function ($match): string {
+          $href = $match[2];
+          if (str_starts_with($href, 'resources/')) {
+            // It should be an absolute link.
+            $href = '/' . $href;
+          }
+
+          if (str_starts_with($href, '/') && str_ends_with($href, '/_index.md')) {
+            return str_replace('/_index.md', '/', $href);
+          }
+
+          if (!preg_match('/^https?\:\/\//', $href) && str_ends_with($href, '.md')) {
+            return preg_replace('/\.md$/', '', $href);
+          }
+
+          // Either a full URL or something we can't readily fix.
+          return $href;
+        }, $source_text
+      );
+    }
+
+    if (str_contains($source_text, '](https://s3.amazonaws.com/digitalgov/static/')) {
+      // Turn direct links to S3 files to asset shortcodes we can link to media
+      // links during the post-migration cleanup.
+      $source_text = preg_replace_callback(
+        '/\[([^]]+)\]\(https?\:\/\/s3\.amazonaws\.com\/digitalgov\/static\/([^)]+)\)/',
+        function ($match): string {
+          return sprintf('{{< asset-static file="%s" label="%s" >}}',
+            $match[2], $match[1]
+          );
+        },
+        $source_text
+      );
+    }
+
     // When the source text has raw HTML, leading spaces are mistaken for
     // code blocks.
     $lines = array_map(function (string $line): string {
@@ -115,8 +223,7 @@ class ConvertText {
   /**
    * Update local link tags with LinkIt data attributes.
    */
-  protected static function addLinkItMarkup(string $source_text): string {
-
+  protected static function addLinkItMarkup(string $source_text, string $baseURL = ''): string {
     // Consider these domains local.
     $base_domains = [\Drupal::request()->getHost(), 'digital.gov', 'www.digital.gov'];
 
@@ -131,6 +238,17 @@ class ConvertText {
       $anchor = '';
       if (preg_match('/\#(.*)$/', $href, $matches)) {
         $anchor = $matches[0];
+      }
+
+      // Prepend base URL to relative links.
+      // Starts with a letter or number but no protocol.
+      if ($baseURL
+        && !str_starts_with($href, '/')
+        && preg_match('/^(?![A-Za-z]+?:\/\/)([[:alnum:]]+)/', $href)
+      ) {
+        $href = $baseURL
+          . (!str_ends_with($baseURL, '/') ? '/' : '')
+          . $href;
       }
 
       // Add a trailing slash for links with just the domain w/o trailing slash.
@@ -249,6 +367,22 @@ class ConvertText {
   }
 
   /**
+   * Helper for calling the short code fixer service.
+   *
+   * @param string $source_text
+   *   The original source value.
+   * @param string $alias_of_item
+   *   The alias of the item being processed.
+   */
+  public static function fixShortCodes(string $source_text, string $alias_of_item = ''): string {
+    if (empty($alias_of_item)) {
+      $alias_of_item = md5($source_text);
+    }
+    return \Drupal::service('convert_text.shortcode_to_equiv')
+      ->convert($alias_of_item, $source_text);
+  }
+
+  /**
    * Gets text ready to be stored in plain text fields.
    *
    * @param string $source_text
@@ -264,8 +398,8 @@ class ConvertText {
   /**
    * Runs post-migration cleanup for plain text fields.
    */
-  public static function plainTextAfterMigrate(string $source_text): string {
-    return self::afterMigrate($source_text, 'plain_text');
+  public static function plainTextAfterMigrate(string $source_text, string $baseURL = ''): string {
+    return self::afterMigrate($source_text, 'plain_text', $baseURL);
   }
 
   /**
@@ -284,8 +418,8 @@ class ConvertText {
   /**
    * Runs post-migration cleanup for HTML fields.
    */
-  public static function htmlTextAfterMigrate(string $source_text): string {
-    return self::afterMigrate($source_text, 'html');
+  public static function htmlTextAfterMigrate(string $source_text, string $baseURL = ''): string {
+    return self::afterMigrate($source_text, 'html', $baseURL);
   }
 
   /**
@@ -304,8 +438,8 @@ class ConvertText {
   /**
    * Runs post-migration cleanup for HTML-no-breaks fields.
    */
-  public static function htmlNoBreaksAfterMigrate(string $source_text): string {
-    return self::afterMigrate($source_text, 'html_no_breaks');
+  public static function htmlNoBreaksAfterMigrate(string $source_text, string $baseURL = ''): string {
+    return self::afterMigrate($source_text, 'html_no_breaks', $baseURL);
   }
 
 }

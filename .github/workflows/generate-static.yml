@@ -34,4 +34,4 @@ jobs:
         env:
           PROJECT: "${{ secrets.PROJECT }}"
           CF_SPACE: "${{ inputs.CF_SPACE }}"
-        run: source ./scripts/pipeline/upkeep_pipeline_wrapper.sh
+        run: source ./scripts/pipeline/pipeline_wrapper.sh upkeep

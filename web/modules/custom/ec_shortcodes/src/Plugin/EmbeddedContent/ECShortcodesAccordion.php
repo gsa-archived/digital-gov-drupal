@@ -26,7 +26,7 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
   public function defaultConfiguration() {
     return [
       'kicker' => NULL,
-      'title' => NULL,
+      'accordion_title' => NULL,
       'icon' => NULL,
       'text' => NULL,
     ];
@@ -39,7 +39,7 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
     return [
       '#theme' => 'ec_shortcodes_accordion',
       '#kicker' => $this->configuration['kicker'],
-      '#title' => $this->configuration['title'],
+      '#accordion_title' => $this->configuration['accordion_title'],
       '#icon' => $this->configuration['icon'],
       '#text' => $this->configuration['text'],
     ];
@@ -55,11 +55,14 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
       '#default_value' => $this->configuration['kicker'],
       '#required' => TRUE,
     ];
-    $form['title'] = [
-      '#type' => 'textfield',
+    $form['accordion_title'] = [
+      '#type' => 'text_format',
       '#title' => $this->t('Title'),
-      '#default_value' => $this->configuration['title'],
+      '#default_value' => $this->configuration['accordion_title'],
+      '#format' => 'single_inline_html',
+      '#allowed_formats' => ['single_inline_html'],
       '#required' => TRUE,
+      '#rows' => 1,
     ];
     $form['icon'] = [
       '#type' => 'textfield',

@@ -13,6 +13,11 @@
         {% if kicker %}
           <strong class="kicker">{{ kicker }}</strong>
         {% endif %}
+        {% set title = {
+          '#type': 'processed_text',
+          '#text': card_title.value,
+          '#format': card_title.format,
+        } %}
         {{ title }}
         {% if pdf %}
           <em>{{ pdf }}</em>
@@ -30,7 +35,8 @@
       } %}
       {{ text }}
 
-      <a class="src" href="{{ url }}" title="View {{ title }}">
+      <a class="src" href="{{ url }}"
+         title="View {{ card_title.value|striptags }}">
         View the full legislation
         <svg class="usa-icon dg-icon dg-icon--standard margin-bottom-05" aria-hidden="true" focusable="false">
           <use href="/{{ active_theme_path() }}/static/uswds/img/sprite.svg#arrow_forward"></use>

@@ -21,7 +21,8 @@ source:
   fields:
     - name: src_unique_id
       label: 'Unique ID'
-      selector: uid
+      # UID field in feed uses slug which is reused.
+      selector: url
     - name: title
       label: 'Title'
       selector: field_title
@@ -167,7 +168,7 @@ destination:
 
 migration_dependencies:
   required:
-    - json_authors
     - json_topics
     - json_images_to_media
-  optional: { }
+  optional:
+    - json_authors
