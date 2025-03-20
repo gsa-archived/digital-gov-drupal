@@ -1,0 +1,119 @@
+id: json_guide_navs
+label: 'Create Guide Nav nodes'
+migration_tags:
+  - 'digitalgov'
+source:
+  plugin: embedded_data
+  data_rows:
+    -
+      uid: "accessibility-for-teams"
+      title: "Accessibility for Teams navigation"
+      show_next_prev: true
+      show_in_page_nav: false
+      overview_image: 'accessibility-for-teams-guide'
+    -
+      uid: "dap"
+      title: "DAP navigation"
+      show_next_prev: true
+      show_in_page_nav: false
+      overview_image: "guide-dap.png"
+    -
+      uid: "hcd-design-concepts"
+      title: "HCD Design Concepts navigation"
+      show_next_prev: true
+      show_in_page_nav: true
+      landing_url: "/guides/hcd"
+      landing_text: "HCD Guide Series"
+      overview_image: "hcd-design-concepts.png"
+    -
+      uid: "hcd-design-operations"
+      title: "HCD Design Operations navigation"
+      show_next_prev: true
+      show_in_page_nav: true
+      landing_url: "/guides/hcd"
+      landing_text: "HCD Guide Series"
+      overview_image: "hcd-design-operations"
+    -
+      uid: "hcd-discovery-concepts"
+      title: "HCD Discovery Concepts navigation"
+      show_next_prev: true
+      show_in_page_nav: true
+      landing_url: "/guides/hcd"
+      landing_text: "HCD Guide Series"
+      overview_image: "hcd-discovery-concepts"
+    -
+      uid: "hcd-discovery-operations"
+      title: "HCD Discover Operations navigation"
+      show_next_prev: true
+      show_in_page_nav: true
+      landing_url: "/guides/hcd"
+      landing_text: "HCD Guide Series"
+      overview_image: "hcd-discovery-operations"
+    -
+      uid: "hcd-introduction"
+      title: "HCD Introductions navigation"
+      show_next_prev: true
+      show_in_page_nav: false
+      landing_url: "/guides/hcd"
+      landing_text: "HCD Guide Series"
+      overview_image: "hcd-intro"
+    -
+      uid: "mobile-principles"
+      title: "Mobile Principles navigation"
+      show_next_prev: true
+      show_in_page_nav: false
+      overview_image: "guide-mobile-principles"
+    -
+      uid: "public-participation"
+      title: "Public Participation navigation"
+      show_next_prev: true
+      show_in_page_nav: false
+      overview_image: "guide-public-participation"
+    -
+      uid: "rpa"
+      title: "RPA navigation"
+      show_next_prev: true
+      show_in_page_nav: false
+      overview_image: "guide-rpa"
+    -
+      uid: "site-scanning"
+      title: "Site Scanning navigation"
+      show_next_prev: true
+      show_in_page_nav: false
+      overview_image: "guide-site-scanning.png"
+    -
+      uid: "web-analytics-playbook"
+      title: "Web Analytics Playbook navigation"
+      show_next_prev: true
+      show_in_page_nav: false
+      overview_image: "guide-web-analytics-playbook"
+  ids:
+    uid:
+      type: string
+  constants:
+    FORMAT_HTML: 'html'
+    FORMAT_EMBEDDED: 'html_embedded_content'
+    FORMAT_MULTI: 'multiline_inline_html'
+    FORMAT_SINGLE: 'single_inline_html'
+    FORMAT_PLAIN: 'plain_text'
+destination:
+  plugin: entity:node
+  default_bundle: guide_navigation
+process:
+  title: title
+  field_kicker_link/uri: landing_url
+  field_kicker_link/title: landing_title
+  field_overview_image:
+    plugin: migration_lookup
+    source: overview_image
+    source_ids: src_unique_id
+    migration: json_images_to_media
+  field_show_in_page_nav: show_in_page_nav
+  field_show_next_previous: show_next_prev
+  status:
+    plugin: default_value
+    default_value: true
+migration_dependencies:
+  optional:
+    - json_images_to_media
+    - json_guides

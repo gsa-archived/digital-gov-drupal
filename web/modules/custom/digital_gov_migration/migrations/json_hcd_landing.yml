@@ -12,6 +12,13 @@ source:
       primary_image: "hcd-guide-landing-resized"
       glossary: "hcd_glossary"
       guide_weight: 2
+      guides:
+        # Matches the src_unique_id field from json_guides
+        - /guides/hcd/introduction/
+        - /guides/hcd/discovery-concepts/
+        - /guides/hcd/discovery-operations/
+        - /guides/hcd/design-concepts/
+        - /guides/hcd/design-operations/
       body: |
         <h1 id="welcome">
         Welcome!
@@ -51,6 +58,11 @@ process:
     source: primary_image
     source_ids: src_unique_id
     migration: json_images_to_media
+  field_guides:
+    plugin: migration_lookup
+    source: guides
+    source_ids: src_unique_id
+    migration: json_guides
   # Setting the moderation state to published will automatically set status=1.
   moderation_state:
     plugin: default_value
@@ -70,3 +82,4 @@ destination:
 migration_dependencies:
   optional:
     - json_images_to_media
+    - json_guides
