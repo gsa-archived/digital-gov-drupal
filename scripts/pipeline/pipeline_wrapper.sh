@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z "${1}"]; then
+if [ -z "${1}" ]; then
   echo "The name of the script to run must be the first argument"
   exit 1
 fi
