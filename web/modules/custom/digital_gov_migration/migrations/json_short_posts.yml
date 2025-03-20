@@ -21,7 +21,8 @@ source:
   fields:
     - name: src_unique_id
       label: 'Unique ID'
-      selector: uid
+      # UID field in feed uses slug which is reused.
+      selector: url
     - name: title
       label: 'Title'
       selector: field_title

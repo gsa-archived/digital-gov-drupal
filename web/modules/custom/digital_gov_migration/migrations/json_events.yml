@@ -19,9 +19,10 @@ source:
   # an xpath for retrieving that value. It's important to note that this xpath
   # is relative to the elements retrieved by item_selector.
   fields:
+    # The event feed uses slug for UID but slugs are reused on some events
     - name: src_unique_id
       label: 'Unique ID'
-      selector: uid
+      selector: url
     - name: title
       label: 'Title'
       selector: field_title
