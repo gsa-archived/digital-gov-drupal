@@ -36,13 +36,6 @@ export bucket
 bucket_endpoint=$(echo "${VCAP_SERVICES}" | jq -r '.s3[] | select(.name | strings | test("static")).credentials.endpoint')
 export bucket_endpoint
 
-ssg_endpoint="https://digital-gov-static-${environment}.app.cloud.gov"
-export ssg_endpoint
-# [ "${environment}" = "prod" ] && ssg_endpoint="https://digital.gov"
-
-ssg_sitemap_endpoint="${ssg_endpoint}"
-export ssg_sitemap_endpoint
-
 # Temporarily print out commands as they run for debugging.
 set -x
 
@@ -57,16 +50,19 @@ echo ""
 echo "**************************************************"
 echo "Running 'drush cron' in '${environment}'..."
 echo "**************************************************"
-drush --uri="${ssg_endpoint}" cron
+drush cron
 echo "'drush cron' task...completed!"
 echo ""
 
 echo "**************************************************"
 echo "Running 'drush tome:static' in '${environment}'..."
 echo "**************************************************"
-drush tome:static --uri="${ssg_endpoint}" --path-count=1 --retry-count=3 -y
-drush tome:static-export-path '/sitemap.xml' --uri="${ssg_sitemap_endpoint}" --retry-count=3 -y
+drush state:set xmlsitemap_base_url "${STATIC_URI}"
+drush xmlsitemap:regenerate
+drush tome:static --uri="${STATIC_URI}" --path-count=1 --retry-count=3 -y
 drush cr
+drush state:set xmlsitemap_base_url "${DRUSH_OPTIONS_URI}"
+drush xmlsitemap:regenerate
 echo "'drush tome:static' task...completed!"
 echo ""
 
@@ -79,7 +75,7 @@ find "${html_path}" -type f -exec grep -l 'http[s]*://[^/]\+/s3/files' {} \; -ex
 echo "**************************************************"
 echo "-- Replace absolute urls with relative urls in generated files"
 echo "**************************************************"
-find "${html_path}/sites/default/files" -type f -exec grep -l "${ssg_endpoint}/" {} \; -exec sed -i "s#${ssg_endpoint}/#/#g" {} +
+find "${html_path}/sites/default/files" -type f -exec grep -l "${STATIC_URI}/" {} \; -exec sed -i "s#${STATIC_URI}/#/#g" {} +
 echo "Performing find and replace tasks...completed!"
 echo ""
 echo "**************************************************"
@@ -91,13 +87,6 @@ echo "Missing Core assets files...completed!"
 echo ""
 
 echo "**************************************************"
-echo "Update URI for sitemap..."
-echo "**************************************************"
-sed -i "s#http[s]*://default#${ssg_endpoint}#g" "${html_path}/sitemap.xml"
-echo "Sitemap update complete..."
-echo ""
-
-echo "**************************************************"
 echo "Adding digital.gov custom theme assets..."
 echo "**************************************************"
 mkdir -p "${html_path}/themes/custom/${theme_name}"
@@ -105,12 +94,23 @@ cp -rfp "${app_path}/web/themes/custom/${theme_name}/static" "${html_path}/theme
 echo "Adding digital.gov custom theme assets...completed!"
 echo ""
 
-echo "**************************************************"
-echo "Copying robots.txt to static site path..."
-echo "**************************************************"
-cp "${app_path}/web/robots.txt"  "${html_path}/robots.txt"
-echo "robots.txt copy...completed!"
-echo ""
+echo "*******************************************************************"
+echo "Copying robots.txt to static site based on env: '${environment}'..."
+echo "*******************************************************************"
+# Set the robots.txt file content based on the environment
+case "$environment" in
+  "prod")    robots_content="${app_path}/robots--live.txt" ;;
+  "staging") robots_content="${app_path}/robots--test-searchgov.txt" ;; # Temp for Testing on Search.gov
+  *)         robots_content="${app_path}/web/robots.txt" ;;
+esac
+
+# Check if the source file exists and copy file
+if [[ ! -f "$robots_content" ]]; then
+  echo "Warning: Source robots.txt '$robots_content' for '${environment}' not found. Skipping copy."
+else
+  cp "$robots_content" "${html_path}/robots.txt"
+  echo "robots.txt set up for '${environment}' environment!"
+fi
 
 echo "**************************************************"
 echo "Deleting 'node' redirect files..."
