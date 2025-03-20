@@ -38,8 +38,10 @@ matchers:
     uuid: 154ead9d-a311-4f05-9370-d85a080bae44
     settings:
       metadata: ''
-      bundles: {  }
+      bundles:
+        document: document
+        image: image
       group_by_bundle: false
-      substitution_type: canonical
+      substitution_type: media
       limit: 100
     weight: 0
