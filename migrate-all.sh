@@ -17,7 +17,8 @@ ${DRUSH_BIN} digitalgov:s3feed > web/sites/default/files/s3files.json
 
 # 3. Run all the migrations.
 ${DRUSH_BIN} cr
-${DRUSH_BIN} migrate:rollback --tag="digitalgov"
+# Throws notices that kill the script.
+$(${DRUSH_BIN} migrate:rollback --tag="digitalgov") || :
 ${DRUSH_BIN} migrate:import --tag="digitalgov"
 
 # 4. Clean up migrated content (shortcodes, media links, emoji).
