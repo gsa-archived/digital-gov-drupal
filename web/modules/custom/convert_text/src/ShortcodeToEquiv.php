@@ -502,6 +502,7 @@ class ShortcodeToEquiv {
           return $this->error($shortcode, 'No URL can be found.');
         }
         // @todo Use migration lookup to find URL of content.
+        // https://cm-jira.usa.gov/browse/DIGITAL-555
         // This is a reference to a piece of content in Hugo, use migration
         // lookup to find it.
         // @codingStandardsIgnoreStart
