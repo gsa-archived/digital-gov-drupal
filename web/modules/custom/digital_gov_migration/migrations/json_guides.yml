@@ -13,7 +13,8 @@ source:
   fields:
     - name: src_unique_id
       label: 'Unique ID'
-      selector: uid
+      # The guides feed uses title for UID but titles reused on some pages.
+      selector: url
     - name: title
       label: 'Title'
       selector: field_title

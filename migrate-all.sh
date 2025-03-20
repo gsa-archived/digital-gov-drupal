@@ -4,7 +4,7 @@
 
 # 1. Remove content created by default content that will be imported by the
 # scripts.
-./drush.sh rcbm
+#./drush.sh rcbm
 
 # 2. Build the feed for s3files that are directly linked in markdown,
 #    not with the asset short code
