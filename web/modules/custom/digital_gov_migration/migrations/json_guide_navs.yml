@@ -241,3 +241,4 @@ migration_dependencies:
     - json_guide_navs__navigation
     - json_images_to_media
     - json_guides
+    - json_hcd_landing
