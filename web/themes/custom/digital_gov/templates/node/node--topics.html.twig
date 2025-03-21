@@ -104,7 +104,6 @@
       </div>
     {% endif %}
   {% endif %}
-
   {# Collection — Featured Resources and Communities #}
   {% if content.field_featured_resources|field_value or content.field_featured_communities|field_value %}
     {% if is_first_page %}
@@ -178,17 +177,15 @@
   {% if node.field_legislation.0 %}
     {# Display remaining resources, events and news for topic collection #}
     {% if is_first_page %}
-      <section class="grid-container-desktop usa-section">
-        [placeholder remaining resources]
-        {# Only show these sections when on page 1, otherwise hide to show only More News and Events #}
-        {# $resource_settings := ( dict "header_title" (printf "Resources on %s" .Title) "header_size" 2 "variant" "media" "list_header" 3) #}
-        {# NOT-MIGRATED #}
-        {# partial "partials/core/collection/collection.html" (dict "collection_data" $resources "settings" $resource_settings ) #}
-
-        {# $services_settings := ( dict "header_title" "Tools and Services" "header_size" 2 "variant" "media" "list_header" 3) #}
-        {# NOT-MIGRATED #}
-        {# partial "partials/core/collection/collection.html" (dict "collection_data" $services "settings" $services_settings) #}
-      </section>
+      {# Shows all resources tagged to this topic, may repeat resources shown under featured resource. #}
+      {% if drupal_view_result('resources_for_topic', 'default', node.nid.value) is not empty %}
+        <section class="grid-container-desktop usa-section">
+          <div class="dg-collection">
+            <h2 class="dg-collection__header">Resources on {{ node.label }}</h2>
+            {{ drupal_view('resources_for_topic', 'default', node.nid.value) }}
+          </div>
+        </section>
+      {% endif %}
     {% endif %}
   {% endif %}
   {# More News and Events on #}
