@@ -113,7 +113,13 @@ process:
   body/format: constants/FORMAT_HTML
   field_guide_nav_title: field_guide_nav_title
   field_guide_weight: field_guide_weight
-  field_glossary: field_glossary_name
+  field_glossary:
+    - plugin: skip_on_condition
+      condition: empty
+      source: landing_url
+      method: process
+    - plugin: default_value
+      default_value: field_glossary_name
   field_topics:
     plugin: migration_lookup
     source: field_topics
