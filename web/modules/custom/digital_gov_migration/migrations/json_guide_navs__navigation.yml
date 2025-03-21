@@ -266,5 +266,5 @@ destination:
   default_bundle: guide_pages
 
 migration_dependencies:
-  optional:
+  required:
     - json_guides

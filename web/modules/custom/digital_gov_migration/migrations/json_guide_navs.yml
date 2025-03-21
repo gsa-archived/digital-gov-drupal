@@ -237,7 +237,7 @@ process:
     plugin: default_value
     default_value: true
 migration_dependencies:
-  optional:
+  required:
     - json_guide_navs__navigation
     - json_images_to_media
     - json_guides
