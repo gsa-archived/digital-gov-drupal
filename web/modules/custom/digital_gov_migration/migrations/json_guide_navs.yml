@@ -198,7 +198,7 @@ process:
   field_kicker_link/uri:
     - plugin: skip_on_condition
       condition: empty
-      source: navigation
+      source: landing_url
       method: process
     - plugin: link_uri
       validate_route: false
