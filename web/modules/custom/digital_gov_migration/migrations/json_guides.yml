@@ -136,12 +136,12 @@ process:
   moderation_state:
     plugin: default_value
     default_value: published
-  path/alias:
-    plugin: callback
-    callable: str_replace
-    # The federalist build puts a relative path that is too much.
-    source: [ constants/ALIAS_SEARCH, constants/ALIAS_REPLACE, alias ]
-    unpack_source: true
+  path/alias: alias
+#    plugin: callback
+#    callable: str_replace
+#    # The federalist build puts a relative path that is too much.
+#    source: [ constants/ALIAS_SEARCH, constants/ALIAS_REPLACE, alias ]
+#    unpack_source: true
   # Must disable auto-creating path auto in order to set alias explicitly.
   path/pathauto:
     plugin: default_value

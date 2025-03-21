@@ -7,7 +7,7 @@ source:
   data_rows:
     -
       title: "Human-Centered Design Guide Series"
-      alias: "/guides/hcd"
+      alias: "/guides/hcd/"
       summary: "A series of guides to help you understand and practice human-centered design."
       primary_image: "hcd-guide-landing-resized"
       glossary: "hcd_glossary"
