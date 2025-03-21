@@ -24,7 +24,7 @@ source:
       title: "DAP navigation"
       show_next_prev: true
       show_in_page_nav: false
-      overview_image: "guide-dap.png"
+      overview_image: "guide-dap"
       navigation:
         - pg_uid: "dap:/guides/dap/_index"
         - pg_uid: "dap:/guides/dap/get-started-with-dap"
@@ -39,7 +39,7 @@ source:
       show_in_page_nav: true
       landing_url: "/guides/hcd"
       landing_title: "HCD Guide Series"
-      overview_image: "hcd-design-concepts.png"
+      overview_image: "hcd-design-concepts"
       navigation:
         - pg_uid: "hcd-design-concepts:/guides/hcd/design-concepts/_index"
         - pg_uid: "hcd-design-concepts:/guides/hcd/design-concepts/design-phase-principles"
@@ -157,7 +157,7 @@ source:
       title: "Site Scanning navigation"
       show_next_prev: true
       show_in_page_nav: false
-      overview_image: "guide-site-scanning.png"
+      overview_image: "guide-site-scanning"
       navigation:
         - pg_uid: "site-scanning:/guides/site-scanning/_index"
         - pg_uid: "site-scanning:/guides/site-scanning/data"
