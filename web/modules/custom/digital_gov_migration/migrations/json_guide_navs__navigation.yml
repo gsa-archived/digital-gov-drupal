@@ -1,7 +1,7 @@
 id: json_guide_navs__navigation
 label: 'Create Guide Nav navigation paragraphs'
 migration_tags:
-  - 'digitalgov'
+  - 'digitalgov-guidenav'
 source:
   plugin: embedded_data
   data_rows:

@@ -1,7 +1,7 @@
 id: json_guide_navs
 label: 'Create Guide Nav nodes'
 migration_tags:
-  - 'digitalgov'
+  - 'digitalgov-guidenav'
 source:
   plugin: embedded_data
   data_rows:
