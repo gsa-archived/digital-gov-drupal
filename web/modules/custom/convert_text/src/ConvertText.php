@@ -54,6 +54,9 @@ class ConvertText {
         $environment->addExtension(new TableExtension());
         $environment->addExtension(new AutolinkExtension());
 
+        // Leaving this commented out because enabling this extension
+        // breaks all the regexes used during migration.
+        // $environment->addExtension(new SmartPunctExtension());
         $converter = new MarkdownConverter($environment);
         $html = $converter->convert($source_text)->getContent();
 
