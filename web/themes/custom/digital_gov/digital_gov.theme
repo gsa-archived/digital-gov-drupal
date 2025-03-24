@@ -232,7 +232,7 @@ function digital_gov_preprocess_node_guides(&$variables): void {
  * Preprocess function for guide landing nodes.
  */
 function digital_gov_preprocess_node_guide_landing(&$variables): void {
-  if ($hero_image = $variables['node']->get('field_primary_image')->first()->get('entity')->getTarget()->getValue()) {
+  if ($hero_image = $variables['node']->get('field_primary_image')->first()?->get('entity')->getTarget()->getValue()) {
     $media = $hero_image->get('field_media_image')->first();
     $variables['hero_image'] = $media;
 
