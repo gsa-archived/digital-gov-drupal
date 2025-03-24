@@ -178,9 +178,9 @@ class ConvertText {
     // Need to turn the link and ref shortcodes into regular markdown links.
     if (str_contains($source_text, '{{< ref') || str_contains($source_text, '{{< link')) {
       $source_text = preg_replace_callback(
-        '/{{<\s+(ref|link)\s+\"?([^">]+).*}}/i',
+        '/{{<\s+(ref|link)\s+\"?([^">]+.*) >}}/iU',
         function ($match): string {
-          $href = $match[2];
+          $href = rtrim($match[2], '"');
           if (str_starts_with($href, 'resources/')) {
             // It should be an absolute link.
             $href = '/' . $href;

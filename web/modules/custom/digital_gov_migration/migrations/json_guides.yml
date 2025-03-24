@@ -57,6 +57,9 @@ source:
     - name: field_guide_nav_title
       label: 'Guide Nav Title'
       selector: field_guide_nav_title
+    - name: field_summary_box
+      label: "Show summary box"
+      selector: field_summary_box
     - name: field_topics
       label: 'Topics'
       selector: field_topics
@@ -125,6 +128,10 @@ process:
     source: field_topics
     source_ids: src_unique_id
     migration: json_topics
+  field_summary_box:
+    plugin: callback
+    callable: digital_gov_migration_convert_to_boolean
+    source: field_summary_box
   field_primary_image:
     plugin: migration_lookup
     source: field_primary_image
