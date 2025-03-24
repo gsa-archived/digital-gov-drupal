@@ -131,7 +131,7 @@ source:
       uid: "public-participation"
       title: "Public Participation navigation"
       show_next_prev: true
-      show_in_page_nav: false
+      show_in_page_nav: true
       overview_image: "guide-public-participation"
       navigation:
         - pg_uid: "public-participation:/guides/public-participation/_index"

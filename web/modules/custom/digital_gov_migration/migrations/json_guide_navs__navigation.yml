@@ -149,28 +149,28 @@ source:
       link_url: "/guides/mobile-principles/"
     -
       uid: "mobile-principles:/guides/mobile-principles/principles-javascript"
-      link_url: "/guides/mobile-principles/principles-javascript/"
+      link_url: "/guides/mobile-principles/javascript/"
     -
       uid: "mobile-principles:/guides/mobile-principles/principles-viewport"
-      link_url: "/guides/mobile-principles/principles-viewport/"
+      link_url: "/guides/mobile-principles/viewport/"
     -
       uid: "mobile-principles:/guides/mobile-principles/principles-tap-targets"
-      link_url: "/guides/mobile-principles/principles-tap-targets/"
+      link_url: "/guides/mobile-principles/tap-targets/"
     -
       uid: "mobile-principles:/guides/mobile-principles/principles-plugins"
-      link_url: "/guides/mobile-principles/principles-plugins/"
+      link_url: "/guides/mobile-principles/plugins/"
     -
       uid: "mobile-principles:/guides/mobile-principles/principles-cache"
-      link_url: "/guides/mobile-principles/principles-cache/"
+      link_url: "/guides/mobile-principles/cache/"
     -
       uid: "mobile-principles:/guides/mobile-principles/principles-optimize-minify-compression"
-      link_url: "/guides/mobile-principles/principles-optimize-minify-compression/"
+      link_url: "/guides/mobile-principles/optimize-minify-compression/"
     -
       uid: "mobile-principles:/guides/mobile-principles/principles-configuration"
-      link_url: "/guides/mobile-principles/principles-configuration/"
+      link_url: "/guides/mobile-principles/configuration/"
     -
       uid: "mobile-principles:/guides/mobile-principles/principles-accessibility"
-      link_url: "/guides/mobile-principles/principles-accessibility/"
+      link_url: "/guides/mobile-principles/accessibility/"
     -
       uid: "public-participation:/guides/public-participation/_index"
       link_url: "/guides/public-participation/"
