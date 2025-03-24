@@ -54,6 +54,9 @@ class ConvertText {
         $environment->addExtension(new TableExtension());
         $environment->addExtension(new AutolinkExtension());
 
+        // Leaving this commented out because enabling this extension
+        // breaks all the regexes used during migration.
+        // $environment->addExtension(new SmartPunctExtension());
         $converter = new MarkdownConverter($environment);
         $html = $converter->convert($source_text)->getContent();
 
@@ -175,9 +178,9 @@ class ConvertText {
     // Need to turn the link and ref shortcodes into regular markdown links.
     if (str_contains($source_text, '{{< ref') || str_contains($source_text, '{{< link')) {
       $source_text = preg_replace_callback(
-        '/{{<\s+(ref|link)\s+\"?([^">]+).*}}/i',
+        '/{{<\s+(ref|link)\s+\"?([^">]+.*) >}}/iU',
         function ($match): string {
-          $href = $match[2];
+          $href = rtrim($match[2], '"');
           if (str_starts_with($href, 'resources/')) {
             // It should be an absolute link.
             $href = '/' . $href;
