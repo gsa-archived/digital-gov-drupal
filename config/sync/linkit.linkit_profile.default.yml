@@ -40,7 +40,6 @@ matchers:
       metadata: ''
       bundles:
         document: document
-        image: image
       group_by_bundle: false
       substitution_type: media
       limit: 100
