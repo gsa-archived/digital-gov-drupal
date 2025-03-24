@@ -41,7 +41,6 @@ final class DefaultContentConfigCommands extends DrushCommands {
       'file',
       'media',
       'node',
-      'user',
     ];
     $count = 0;
     foreach ($entity_types as $entity_type) {

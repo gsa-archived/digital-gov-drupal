@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -z "${1}" ]; then
+  echo "The name of the script to run must be the first argument"
+  exit 1
+fi
+
 if [ -z "${CF_SPACE}" ] || [ -z "${PROJECT}" ]; then
   if [ -z "${CF_SPACE}" ]; then
     echo "CF_SPACE must be set for " $(basename "$0")
@@ -12,11 +17,11 @@ if [ -z "${CF_SPACE}" ] || [ -z "${PROJECT}" ]; then
 fi
 
 
-echo "${CF_SPACE} is building the static site now..."
+echo "${CF_SPACE} is running ${1} now..."
 APP="${PROJECT}-drupal-${CF_SPACE}"
-TASK_NAME="${APP}-upkeep"
+TASK_NAME="${APP}-${1}"
 
-cf run-task "${APP}" --command "/home/vcap/app/scripts/upkeep" --wait -m 1G -k 4G --name "${TASK_NAME}" &
+cf run-task "${APP}" --command "/home/vcap/app/scripts/${1}" --wait -m 1G -k 4G --name "${TASK_NAME}" &
 RUN_TASK_PID=$!
 
 cf logs "${APP}" | grep "${TASK_NAME}" &
