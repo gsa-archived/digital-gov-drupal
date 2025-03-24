@@ -286,7 +286,7 @@ function digital_gov_get_guidenav_links(Node $node, string $current): array {
 
       if ($para->field_guide_link->target_id) {
         $guidePage = $para->get('field_guide_link')->referencedEntities()[0];
-        if (!$guidePage->isPublished()) {
+        if (!$guidePage || !$guidePage->isPublished()) {
           continue;
         }
 
