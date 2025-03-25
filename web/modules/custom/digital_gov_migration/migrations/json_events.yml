@@ -112,7 +112,10 @@ process:
     source: title
     method: row
     message: 'Missing field_title which sets title field'
-  title: title
+  title:
+    - plugin: callback
+      callable: digital_gov_migration_html_entity_decode
+      source: title
   field_authors:
     plugin: migration_lookup
     source: field_authors
@@ -120,7 +123,10 @@ process:
     migration: json_authors
   field_captions: field_captions
 
-  field_deck/value: field_deck
+  field_deck/value:
+    - plugin: callback
+      callable: digital_gov_migration_html_entity_decode
+      source: field_deck
   field_deck/format: constants/FORMAT_SINGLE
 
   field_end_date:
@@ -134,8 +140,14 @@ process:
     source: field_featured_image
     source_ids: src_unique_id
     migration: json_images_to_media
-  field_host: field_host
-  field_kicker: field_kicker
+  field_host:
+    - plugin: callback
+      callable: digital_gov_migration_html_entity_decode
+      source: field_host
+  field_kicker:
+    - plugin: callback
+      callable: digital_gov_migration_html_entity_decode
+      source: field_kicker
   field_page_weight: field_page_weight
   field_primary_image:
     plugin: migration_lookup
@@ -144,7 +156,10 @@ process:
     migration: json_images_to_media
   field_registration_url: field_registration_url
   field_slug: field_slug
-  field_summary/value: field_summary
+  field_summary/value:
+    - plugin: callback
+      callable: digital_gov_migration_html_entity_decode
+      source: field_summary
   field_summary/format: constants/FORMAT_SINGLE
   field_topics:
     plugin: migration_lookup
