@@ -5,7 +5,7 @@ migration_tags:
 source:
   plugin: url
   data_fetcher_plugin: http
-  data_parser_plugin: json
+  data_parser_plugin: json_authors
   urls:
     - https://federalist-466b7d92-5da1-4208-974f-d61fd4348571.sites.pages.cloud.gov/preview/gsa/digitalgov.gov/nl-json-endpoints/authors/v1/json/
     # First value from wsl.exe hostname -I

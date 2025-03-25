@@ -138,6 +138,7 @@ process:
     source: field_source
     source_ids: src_unique_id
     migration: json_sources
+    no_stub: true
   field_page_weight: field_page_weight
   field_slug: field_slug
   # Setting the moderation state to published will automatically set status=1.

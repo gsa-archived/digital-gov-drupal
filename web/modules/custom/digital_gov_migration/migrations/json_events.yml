@@ -118,6 +118,7 @@ process:
     source: field_authors
     source_ids: src_unique_id
     migration: json_authors
+    no_stub: true
   field_captions: field_captions
 
   field_deck/value: field_deck
@@ -151,6 +152,7 @@ process:
     source: field_topics
     source_ids: src_unique_id
     migration: json_topics
+    no_stub: true
   #field_venue/field_venue_name: venue_name
   # See digital_gov_migration_entity_presave().
   # Instead of doing a separate migration, these are inline so had to do it
