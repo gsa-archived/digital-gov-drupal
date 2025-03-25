@@ -59,6 +59,11 @@ a.btn-home {
       @include u-border-bottom("2px", "black", "solid");
     }
   }
+
+  &:focus {
+    outline: .25rem solid #0395F0;
+    outline-offset: .25rem;
+  }
 }
 
 a.btn-sm {
