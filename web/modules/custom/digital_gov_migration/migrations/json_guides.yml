@@ -137,6 +137,7 @@ process:
     source: field_topics
     source_ids: src_unique_id
     migration: json_topics
+    no_stub: true
   field_summary_box:
     plugin: callback
     callable: digital_gov_migration_convert_to_boolean

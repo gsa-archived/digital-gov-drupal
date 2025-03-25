@@ -116,6 +116,7 @@ process:
     source: field_topics
     source_ids: src_unique_id
     migration: json_topics
+    no_stub: true
   field_primary_image:
     plugin: migration_lookup
     source: field_primary_image
