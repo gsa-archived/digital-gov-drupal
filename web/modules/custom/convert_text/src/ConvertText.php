@@ -8,12 +8,15 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
+use GuzzleHttp\Exception\GuzzleException;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Autolink\AutolinkExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\Table\TableExtension;
 use League\CommonMark\MarkdownConverter;
 use LitEmoji\LitEmoji;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Provides methods to convert migrated text for fields.
@@ -290,14 +293,25 @@ class ConvertText {
           $client = \Drupal::httpClient();
 
           $host = \Drupal::request()->getSchemeAndHttpHost();
-          $response = $client->get($host . $sysPath, [
-            // Don't throw exceptions on error codes.
-            'http_errors' => FALSE,
-            'allow_redirects' => [
-              'max' => 10,
-              'track_redirects' => TRUE,
-            ],
-          ]);
+          usleep(300000);
+          try {
+            $response = $client->get($host . $sysPath, [
+              // Don't throw exceptions on error codes.
+              'http_errors' => FALSE,
+              'allow_redirects' => [
+                'max' => 10,
+                'track_redirects' => TRUE,
+                'on_redirect' => function (RequestInterface $request, ResponseInterface $response, $uri) {
+                  echo "\n Redirecting: " . $request->getUri() . ' to ' . $uri . "\n";
+                  usleep(300000);
+                },
+              ],
+            ]);
+          }
+          catch (GuzzleException) {
+            trigger_error("Could not follow request " . $host, E_USER_WARNING);
+            continue;
+          }
 
           if ($response->getStatusCode() > 400) {
             continue;

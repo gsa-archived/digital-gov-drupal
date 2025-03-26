@@ -57,7 +57,7 @@ if (!empty($cf_application_data['space_name']) &&
 
     case "staging":
       $config['config_split.config_split.stage']['status'] = TRUE;
-      $server_http_host = 'digital-gov-drupal-stage.app.cloud.gov';
+      $server_http_host = 'digital-gov-drupal-staging.app.cloud.gov';
       break;
 
     case "test":
@@ -167,7 +167,7 @@ $settings['trusted_host_patterns'][] = $applicaiton_fqdn_regex;
 
 //   case "stage":
 //     $config['config_split.config_split.non_production']['status'] = TRUE;
-//     $config['samlauth.authentication']['sp_entity_id'] = 'digital-gov-drupal-stage.app.cloud.gov';
+//     $config['samlauth.authentication']['sp_entity_id'] = 'digital-gov-drupal-staging.app.cloud.gov';
 //     $config['samlauth.authentication']['idp_single_sign_on_service'] = 'https://auth-preprod.gsa.gov';
 //     break;
 
