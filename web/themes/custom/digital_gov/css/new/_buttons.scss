@@ -20,6 +20,9 @@ a.btn {
       @include u-border-bottom("2px", "white", "solid");
     }
   }
+  &:focus {
+    outline-offset: units(0.5);
+  }
   @include u-padding-y("105");
   @include u-padding-x(2);
   @include u-display("inline-block");
@@ -62,7 +65,7 @@ a.btn-home {
 
   &:focus {
     outline: .25rem solid #0395F0;
-    outline-offset: .25rem;
+    outline-offset: units(0.5);
   }
 }
 
@@ -125,6 +128,10 @@ a.btn-sm {
     &:hover {
       @include u-bg("primary-vivid");
       @include u-text("white");
+    }
+
+    &:focus {
+      outline-offset: units(0.5);
     }
 
     img {
