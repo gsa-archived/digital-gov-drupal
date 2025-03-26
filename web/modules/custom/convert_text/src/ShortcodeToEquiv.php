@@ -408,11 +408,24 @@ class ShortcodeToEquiv {
             ->getStorage('media')
             ->load($uuid[0]['mid']);
           if ($media) {
-            if ($attributes['label'] ?? FALSE) {
-              $media->setName($attributes['label']);
-              $media->save();
+            if (isset($attributes['button']) && strtolower($attributes['button']) === 'true') {
+              return sprintf(
+                '<a class="usa-button%s" href="%s" '
+                . 'data-entity-type="media" data-entity-uuid="%s" data-entity-substitution="media"'
+                . '>%s</a>',
+                ($attributes['button-variant'] ?? FALSE) ? ' usa-button--outline' : '',
+                "/media/" . $media->id(),
+                $media->uuid(),
+                $attributes['label'] ?? $attributes['href']
+              );
             }
-            return $this->media($media->uuid());
+            else {
+              if ($attributes['label'] ?? FALSE) {
+                $media->setName($attributes['label']);
+                $media->save();
+              }
+              return $this->media($media->uuid());
+            }
           }
         }
         return $this->error($shortcode, 'Could not find file for: ' . $src_uid);

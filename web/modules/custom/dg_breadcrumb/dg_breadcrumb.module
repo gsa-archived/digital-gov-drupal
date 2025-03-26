@@ -5,6 +5,7 @@
  * Primary module hooks for Digital.gov Breadcrumb module.
  */
 
+use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -62,4 +63,15 @@ function dg_breadcrumb_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMat
       break;
 
   }
+}
+
+/**
+ * Implements hook_block_build_alter().
+ */
+function dg_breadcrumb_block_build_system_breadcrumb_block_alter(array &$build, BlockPluginInterface $block) {
+  // Ensure drupal knows this block should be cached per path
+  // and when the menu changes.
+  $build['#cache']['contexts'][] = 'url.path';
+  $build['#cache']['contexts'][] = 'url.query_args';
+  $build['#cache']['tags'][] = 'config:system.menu.main';
 }

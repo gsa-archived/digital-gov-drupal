@@ -80,10 +80,16 @@ process:
     source: title
     method: row
     message: 'Missing field_title which sets title field'
-  title: title
+  title:
+    - plugin: callback
+      callable: digital_gov_migration_html_entity_decode
+      source: title
   field_deck/value: field_deck
   field_deck/format: constants/FORMAT_SINGLE
-  field_summary/value: field_summary
+  field_summary/value:
+    - plugin: callback
+      callable: digital_gov_migration_html_entity_decode
+      source: field_summary
   field_summary/format: constants/FORMAT_SINGLE
   body/value:
     - plugin: dg_convert_text
@@ -100,7 +106,8 @@ process:
     source: field_topics
     source_ids: src_unique_id
     migration: json_topics
-#  field_primary_image:
+    no_stub: true
+  #  field_primary_image:
 #    plugin: migration_lookup
 #    source: field_primary_image
 #    source_ids: src_unique_id
