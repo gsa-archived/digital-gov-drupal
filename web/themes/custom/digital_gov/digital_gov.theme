@@ -204,11 +204,17 @@ function digital_gov_preprocess_node_guides(&$variables): void {
   $variables['is_guide_overview'] = FALSE;
   $variables['show_summary_box'] = $guide->get('field_summary_box')[0]?->get('value')->getCastedValue();
 
-  if ($nav_node = $guide->get('field_guide_nav_ref')->first()?->get('entity')->getTarget()?->getValue()) {
-    $links = digital_gov_get_guidenav_links($nav_node, $variables['url']);
+  if ($guideRef = $guide->get('field_guide_nav_ref')) {
+    if ($guideRef->count() === 0) {
+      trigger_error("No guide nav ref set for this page.", E_USER_WARNING);
+      return;
+    }
+
+    $navNode = $guideRef->referencedEntities()[0];
+    $links = digital_gov_get_guidenav_links($navNode, $variables['url'], $guide);
     $variables = array_merge($variables, $links);
 
-    if ($overview_image = $nav_node->get('field_overview_image')->first()?->get('entity')->getTarget()->getValue()) {
+    if ($overview_image = $navNode->get('field_overview_image')->first()?->get('entity')->getTarget()->getValue()) {
       $media = $overview_image->get('field_media_image')->first();
       $variables['guide_overview_image'] = $media;
 
@@ -220,8 +226,8 @@ function digital_gov_preprocess_node_guides(&$variables): void {
         $variables['guide_overview_caption'] = $caption->view();
       }
     }
-    $variables['show_next_previous'] = $nav_node->field_show_next_previous?->value === "1";
-    $variables['show_in_page_nav'] = $nav_node->field_show_in_page_nav?->value === "1";
+    $variables['show_next_previous'] = $navNode->field_show_next_previous?->value === "1";
+    $variables['show_in_page_nav'] = $navNode->field_show_in_page_nav?->value === "1";
     if ($links['guide_nav']) {
       $variables['is_guide_overview'] = ($variables['url'] === $links['guide_nav'][0]['link']?->getUrl()->toString());
     }
@@ -249,7 +255,14 @@ function digital_gov_preprocess_node_guide_landing(&$variables): void {
 /**
  * Builds an array we can add to $variables with guide navigation info.
  */
-function digital_gov_get_guidenav_links(Node $node, string $current): array {
+function digital_gov_get_guidenav_links(Node $guideNav, string $current, Node $currentPage): array {
+  $cacheTags = array_merge([__FUNCTION__], $currentPage->getCacheTags(), $guideNav->getCacheTags());
+  $cid = implode('/', $cacheTags);
+  if ($cache = \Drupal::cache()->get($cid)) {
+    $links = $cache->data;
+    return $links;
+  }
+
   // Anonymous helper for getting node links.
   $makeLink = function (Node $page, ?string $override = NULL): Link {
     $label = $page->label();
@@ -271,16 +284,16 @@ function digital_gov_get_guidenav_links(Node $node, string $current): array {
   // - 'subnav': an array of Link objects of links if the sidenav is shown.
   $links['guide_nav'] = [];
 
-  if ($kicker_link = $node->get('field_kicker_link')?->first()) {
+  if ($kicker_link = $guideNav->get('field_kicker_link')?->first()) {
     $links['guide_kicker_title'] = $kicker_link->getValue()['title'];
     $links['guide_kicker_url'] = Url::fromUri($kicker_link->getValue()['uri']);
   }
 
-  if ($node->field_guide_navigation) {
+  if ($guideNav->field_guide_navigation) {
     // Track the count separately in case the first item is not published.
     $count = 0;
     // Generate the two-levels of nav links for this guide.
-    foreach ($node->field_guide_navigation as $ref) {
+    foreach ($guideNav->field_guide_navigation as $ref) {
       // This field points at a paragraph entity.
       $para = Paragraph::load($ref->target_id);
 
@@ -301,7 +314,7 @@ function digital_gov_get_guidenav_links(Node $node, string $current): array {
 
         if ($para->field_guide_subnav) {
           $subNavNodes = $para->get('field_guide_subnav')->referencedEntities();
-          $subNavNodes = array_filter($subNavNodes, fn(Node $node) => $node->isPublished());
+          $subNavNodes = array_filter($subNavNodes, fn(Node $node) => $guideNav->isPublished());
           if ($subNavNodes) {
             $item['subnav'] = array_map($makeLink, $subNavNodes);
             // If the current page is in the subnav, mark the parent as current.
@@ -348,6 +361,9 @@ function digital_gov_get_guidenav_links(Node $node, string $current): array {
     }
   }
 
+  // Invalidate this data if either the page or the guide nav changes.
+  $cacheTags = array_merge($currentPage->getCacheTags(), $guideNav->getCacheTags());
+  \Drupal::cache()->set($cid, $links, tags: $cacheTags);
   return $links;
 }
 
