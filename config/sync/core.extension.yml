@@ -26,6 +26,7 @@ module:
   dg_autologout: 0
   dg_breadcrumb: 0
   dg_fields: 0
+  dg_guide_nav: 0
   dg_sitewide_alert: 0
   dg_token: 0
   digital_gov_migration: 0
