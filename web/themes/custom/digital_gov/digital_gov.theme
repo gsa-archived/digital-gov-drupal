@@ -414,7 +414,6 @@ function digital_gov_preprocess_node__landing_page__job_board(&$variables, $hook
  */
 function digital_gov_preprocess_pager__past_events__block(&$variables) {
   // Appends fragment to pager links on past events to maintain scroll position.
-  
   if (!empty($variables['items'])) {
     $anchor = '#events-past';
     // Iterate through all items in the pager.
