@@ -18,6 +18,7 @@ dependencies:
     - content_moderation
     - link
     - maxlength
+    - path
     - text
 id: node.short_post.default
 targetEntityType: node
@@ -109,6 +110,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  path:
+    type: path
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   promote:
     type: boolean_checkbox
     weight: 10
@@ -155,7 +162,6 @@ content:
     third_party_settings: {  }
 hidden:
   field_slug: true
-  path: true
   publish_on: true
   publish_state: true
   unpublish_on: true
