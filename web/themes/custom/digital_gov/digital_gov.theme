@@ -414,12 +414,12 @@ function digital_gov_preprocess_node__landing_page__job_board(&$variables, $hook
  */
 function digital_gov_preprocess_pager__past_events__block(&$variables) {
   // Appends fragment to pager links on past events to maintain scroll position.
-  $anchor = '#events-past';
-
+  
   if (!empty($variables['items'])) {
+    $anchor = '#events-past';
     // Iterate through all items in the pager.
     foreach ($variables['items'] as $key => &$item) {
-      // Handle numbered pages separately from navigation items.
+      // Handle numbered pages.
       if ($key === 'pages') {
         foreach ($item as &$page) {
           if (isset($page['href'])) {
@@ -428,8 +428,10 @@ function digital_gov_preprocess_pager__past_events__block(&$variables) {
         }
       }
       // Handle navigation items (first, previous, next, last).
-      elseif (isset($item['href'])) {
-        $item['href'] .= $anchor;
+      elseif (in_array($key, ['first', 'previous', 'next', 'last'])) {
+        if (isset($item['href'])) {
+          $item['href'] .= $anchor;
+        }
       }
     }
   }
