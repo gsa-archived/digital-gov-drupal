@@ -412,15 +412,11 @@ function digital_gov_preprocess_node__landing_page__job_board(&$variables, $hook
 /**
  * Implements hook_preprocess_pager().
  */
-function digital_gov_preprocess_pager(&$variables) {
-  // Appends fragment to pager links on /events to maintain scroll position.
-  $current_path = \Drupal::service('path.current')->getPath();
-  $alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
-
+function digital_gov_preprocess_pager__past_events__block(&$variables) {
+  // Appends fragment to pager links on past events to maintain scroll position.
   $anchor = '#events-past';
 
-  // Ensure we are only affecting the pager on the /events page.
-  if ($alias === '/events' && !empty($variables['items'])) {
+  if (!empty($variables['items'])) {
     // Iterate through all items in the pager.
     foreach ($variables['items'] as $key => &$item) {
       // Handle numbered pages separately from navigation items.
