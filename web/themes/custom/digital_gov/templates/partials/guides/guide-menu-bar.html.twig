@@ -4,6 +4,7 @@ Generates a horizontal menu for desktop and a vertical menu for mobile on all gu
 Displays an optional glossary sidemenu on the right side if glossary is selected for this node.
 
   Requires a variable "guide_nav". See digital_gov_get_guidenav_links() in theme preprocess node function.
+  Requires a "node" variable that is the current guide page being viewed.
 #}
 
 {% if guide_nav %}
@@ -20,7 +21,7 @@ Displays an optional glossary sidemenu on the right side if glossary is selected
             />
           </picture>
         </a>
-        {% if glossary %}
+        {% if node.field_glossary.value %}
           <button title="Show glossary" class="dg-glossary__toggle">
             <svg
               class="dg-glossary__toggle-icon"
@@ -51,7 +52,7 @@ Displays an optional glossary sidemenu on the right side if glossary is selected
         <a
           class="guide-mobile-menu__image-dg-icon"
           href="{{ path('<front>') }}"
-          title="{{ site_name }} Home""
+          title="{{ site_name }} Home"
         >
           <picture class="guide-mobile-menu__image">
             <source

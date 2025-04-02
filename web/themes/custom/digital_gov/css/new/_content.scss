@@ -58,13 +58,18 @@
     @include u-padding-y(2);
     @include u-padding-bottom("205");
     @include u-padding-right(4);
-    @include u-bg("base-lightest");
+    @include u-bg("white");
     @include u-border("1px", "solid", "base-lighter");
     @include u-color("indigo-warm-80");
     @include u-radius("md");
     @include u-font("mono", "2xs");
     white-space: pre-wrap;
     word-wrap: break-word; /* Internet Explorer 5.5+ */
+  }
+
+  pre > code {
+    @include u-border(0);
+    @include u-padding-left(0);
   }
 
   // Quotes
