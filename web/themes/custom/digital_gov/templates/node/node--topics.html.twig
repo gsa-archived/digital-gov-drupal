@@ -96,7 +96,7 @@
             {% if content.field_legislation|render %}
               {{ include('@digital_gov/partials/card-legislation.html.twig', {
                 title: node.field_legislation.0.title,
-                url: node.field_legislation.0.uri,
+                url: node.field_legislation.0.url,
               }, with_context: false) }}
             {% endif %}
           </div>

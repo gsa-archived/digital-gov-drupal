@@ -42,7 +42,7 @@ process:
   field_summary/value:
     - plugin: callback
       callable: digital_gov_migration_html_entity_decode
-      source: field_summary
+      source: link_summary
   field_summary/format: constants/FORMAT_SINGLE
 
 destination:
