@@ -1,8 +1,8 @@
+{% set count_prefix = card_title.value|striptags|slice(0, 10)|clean_class %}
+{% set count = count_prefix ~ '-' ~ ((count ?? 0) + random()) %}
 <div class="usa-accordion accordion card-policy">
-{% set count = (count ?? 0) + 1 %}
-
   <h3 class="usa-accordion__heading">
-    <button class="usa-accordion__button" title="View {{ title }}" aria-expanded="false" aria-controls="accordion-{{ count }}">
+    <button class="usa-accordion__button" title="View {{ card_title.value|striptags }}" aria-expanded="false" aria-controls="card-policy-{{ count }}">
 
       <span class="scroll">
         <svg class="usa-icon dg-icon dg-icon--large margin-bottom-05" aria-hidden="true" focusable="false">
@@ -27,7 +27,7 @@
   </h3>
 
   {% if text %}
-    <div id="accordion-{{ count }}" class="card-policy-body usa-accordion__content usa-prose">
+    <div id="card-policy-{{ count }}" class="card-policy-body usa-accordion__content usa-prose">
       {% set text = {
         '#type': 'processed_text',
         '#text': text.value,
