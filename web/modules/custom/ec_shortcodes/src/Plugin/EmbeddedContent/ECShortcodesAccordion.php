@@ -58,7 +58,7 @@ class ECShortcodesAccordion extends EmbeddedContentPluginBase implements Embedde
     $form['accordion_title'] = [
       '#type' => 'text_format',
       '#title' => $this->t('Title'),
-      '#default_value' => $this->configuration['accordion_title'],
+      '#default_value' => $this->configuration['accordion_title']['value'] ?? '',
       '#format' => 'single_inline_html',
       '#allowed_formats' => ['single_inline_html'],
       '#required' => TRUE,
