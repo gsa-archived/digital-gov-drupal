@@ -87,15 +87,22 @@ function dg_guide_nav_get_links(Node $guideNav, string $current, Node $currentPa
               return $subItem->getUrl()->toString() === $current;
             });
             if ($current_in_subnav) {
-              // We haven't added our item to the guidenav, add 1 to the index.
+              // We haven't added our item to the guidenav, add 1 to the last
+              // index to account for this.
               $links['guide_current_index'] = $links['guide_nav'] ? array_key_last($links['guide_nav']) + 1 : 0;
+
+              // We needed to add one more to the index because twig's loops
+              // start at 1 not 0.
+              $links['guide_menubar_current'] = $links['guide_current_index'] + 1;
             }
           }
         }
         $links['guide_nav'][] = $item;
         if ($item['link']->getUrl()->toString() === $current) {
-          // Mark which top-level page is open.
+          // Set which subnav to display.
           $links['guide_current_index'] = array_key_last($links['guide_nav']);
+          // Mark which top-level page is open. Twig's loops start at 1.
+          $links['guide_menubar_current'] = array_key_last($links['guide_nav']) + 1;
         }
       }
     }
