@@ -156,7 +156,7 @@ function _dg_token_meta_image(?NodeInterface $node): string {
     $file_uri = $media->get('field_media_image')->entity->getFileUri();
     /** @var \Drupal\Core\File\FileUrlGeneratorInterface $file_url_generator */
     $file_url_generator = \Drupal::service('file_url_generator');
-    $url = $file_url_generator->generate($file_uri);
+    $url = $file_url_generator->generateAbsoluteString($file_uri);
   }
   else {
     // If no primary or featured image, and this is a topic, get the the topics
@@ -180,7 +180,7 @@ function _dg_token_meta_image(?NodeInterface $node): string {
       ->getPath() . '/static/digitalgov/img/meta/digitalgov-2022-card-v3.png');
   }
   // @todo Use the 1200 width style always instead of the original file.
-  return $url->toString();
+  return is_string($url) ? $url : $url->toString();
 }
 
 /**
