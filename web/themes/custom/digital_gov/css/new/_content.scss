@@ -84,6 +84,11 @@
   table tbody {
     vertical-align: baseline;
   }
+
+  // Remove max-width from a paragraph if the only child it has is a .usa-button. (DIGITAL-578)
+  p:has(> .usa-button:only-child) {
+    max-width: none;
+  }
 }
 
 .usa-prose > *:first-child {
