@@ -24,6 +24,7 @@ dependencies:
     - node
     - override_node_options
     - paragraphs_type_permissions
+    - path
 id: editor
 label: Editor
 weight: 4
@@ -34,6 +35,7 @@ permissions:
   - 'access media overview'
   - 'bypass paragraphs type content access'
   - 'create media'
+  - 'create url aliases'
   - 'edit any authors content'
   - 'edit any basic_page content'
   - 'edit any community content'

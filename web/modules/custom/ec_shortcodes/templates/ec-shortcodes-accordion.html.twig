@@ -1,3 +1,5 @@
+{% set count_prefix = accordion_title.value|striptags|slice(0, 10)|clean_class %}
+{% set count = count_prefix ~ '-' ~ ((count ?? 0) + random()) %}
 <div class="usa-accordion accordion">
   <h3 class="usa-accordion__heading">
     <button class="usa-accordion__button" title="View {{ accordion_title.value|striptags }}" aria-expanded="false" aria-controls="accordion-{{ count }}">
