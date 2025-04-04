@@ -145,6 +145,10 @@ function digital_gov_preprocess_node(array &$variables): void {
       digital_gov_preprocess_node_guide_landing($variables);
       break;
 
+    case 'short_post':
+      digital_gov_preprocess_node_short_post($variables);
+      break;
+
     case 'authors':
       if ($variables['view_mode'] !== 'image') {
         break;
@@ -247,6 +251,39 @@ function digital_gov_preprocess_node_guide_landing(&$variables): void {
       $variables['hero_caption'] = $caption->view();
     }
   }
+}
+
+/**
+ * Preprocess function for short post nodes.
+ */
+function digital_gov_preprocess_node_short_post(&$variables): void {
+  $short_post = $variables['node'];
+  $is_external = TRUE;
+  // Some external URLs are to ourselves.
+  if ($external_url = $short_post->get('field_external_url')->getValue()) {
+    $url = $external_url[0]['uri'];
+    $is_external = digital_gov_is_external_url($url);
+  }
+  $variables['is_external_short_post'] = $is_external;
+}
+
+/**
+ * Tests if a URL is to an external domain.
+ */
+function digital_gov_is_external_url(string $url): bool {
+  $host = parse_url($url, PHP_URL_HOST);
+  if (
+    // Readable domains.
+    ($host === 'digital.gov' || $host === 'cms.digital.gov')
+    // Cloud.dov environments.
+    || (str_starts_with($host, 'digital-gov') && str_ends_with($host, '.cloud.gov'))
+    // Local Dev.
+    || ($host === 'https://digitalgov.lndo.site')
+  ) {
+    return FALSE;
+  }
+
+  return TRUE;
 }
 
 /**
