@@ -27,6 +27,7 @@ dependencies:
     - node
     - override_node_options
     - paragraphs_type_permissions
+    - path
     - scheduler
     - sitewide_alert
 id: content_admin
@@ -60,6 +61,7 @@ permissions:
   - 'create short_post content'
   - 'create source content'
   - 'create topics content'
+  - 'create url aliases'
   - 'delete any guide_navigation content'
   - 'delete any media'
   - 'delete sitewide alert entities'

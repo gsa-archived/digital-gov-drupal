@@ -24,6 +24,7 @@ dependencies:
     - node
     - override_node_options
     - paragraphs_type_permissions
+    - path
     - scheduler
 id: publisher
 label: Publisher
@@ -35,6 +36,7 @@ permissions:
   - 'access media overview'
   - 'bypass paragraphs type content access'
   - 'create media'
+  - 'create url aliases'
   - 'delete any media'
   - 'edit any authors content'
   - 'edit any basic_page content'

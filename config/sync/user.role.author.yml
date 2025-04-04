@@ -24,6 +24,7 @@ dependencies:
     - node
     - override_node_options
     - paragraphs_type_permissions
+    - path
 id: author
 label: Author
 weight: 3
@@ -46,6 +47,7 @@ permissions:
   - 'create short_post content'
   - 'create source content'
   - 'create topics content'
+  - 'create url aliases'
   - 'edit own authors content'
   - 'edit own basic_page content'
   - 'edit own community content'
