@@ -84,7 +84,7 @@ find "${html_path}" -type f -exec grep -l 'http[s]*://[^/]\+/s3/files' {} \; -ex
 echo "**************************************************"
 echo "-- Replace absolute urls with relative urls in generated files"
 echo "**************************************************"
-find "${html_path}/sites/default/files" -type f -exec grep -v 'meta property="op:image"' -v 'meta name="twitter:image"' -exec grep -l "${STATIC_URI}/" {} \; -exec sed -i "s#${STATIC_URI}/#/#g" {} +
+find "${html_path}/sites/default/files" -type f -exec grep -v 'meta property="og:image"' -v 'meta name="twitter:image"' -exec grep -l "${STATIC_URI}/" {} \; -exec sed -i "s#${STATIC_URI}/#/#g" {} +
 echo "Performing find and replace tasks...completed!"
 echo ""
 echo "**************************************************"
