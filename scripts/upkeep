@@ -12,11 +12,17 @@ source "${home}/.bashrc"
 
 mkdir -p "${html_path}"
 
+cloud_gov_fqdn="app.cloud.gov"
+export cloud_gov_fqdn
+
 PYTHONWARNINGS="ignore:Unverified HTTPS request"
 export PYTHONWARNINGS
 
 application_uri=$(echo "${VCAP_APPLICATION}" | jq -r '.application_uris[]')
 export application_uri
+
+hostname=$(echo "$application_uri" | cut -d'.' -f 1)
+export hostname
 
 AWS_ACCESS_KEY_ID=$(echo "${VCAP_SERVICES}" | jq -r '.s3[] | select(.name | strings | test("static")).credentials.access_key_id')
 export AWS_ACCESS_KEY_ID
@@ -73,12 +79,12 @@ echo "-- Replace s3-based file urls with relative urls"
 echo "**************************************************"
 
 ## Fix for DIGITAL-651
-find "${html_path}" -type f -exec grep -l 'http[s]*://[^/]\+/s3/files' -v 'meta property="op:image"' -v 'meta name="twitter:image"' {} \; -exec sed -i 's#http[s]*://[^/]\+/s3/files#/s3/files#g' {} +
 find "${html_path}" -type f -exec grep -l 'http[s]*://[^/]\+/s3/files' {} \; -exec sed -i "s#${DRUSH_OPTIONS_URI}/s3/files#${STATIC_URI}/s3/files#g" {} +
+find "${html_path}" -type f -exec grep -l 'http[s]*://[^/]\+/s3/files' {} \; -exec sed -i "s#https://${hostname}.${cloud_gov_fqdn}/s3/files#${STATIC_URI}/s3/files#g" {} +
 echo "**************************************************"
 echo "-- Replace absolute urls with relative urls in generated files"
 echo "**************************************************"
-find "${html_path}/sites/default/files" -type f -exec grep -l "${STATIC_URI}/" -v 'meta property="op:image"' -v 'meta name="twitter:image"' {} \; -exec sed -i "s#${STATIC_URI}/#/#g" {} +
+find "${html_path}/sites/default/files" -type f -exec grep -v 'meta property="op:image"' -v 'meta name="twitter:image"' -exec grep -l "${STATIC_URI}/" {} \; -exec sed -i "s#${STATIC_URI}/#/#g" {} +
 echo "Performing find and replace tasks...completed!"
 echo ""
 echo "**************************************************"
