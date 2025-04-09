@@ -21,6 +21,11 @@ class TomeEventSubscriber implements EventSubscriberInterface {
       if ($this->isLocalWithTrailingSlash($path)) {
         unset($paths[$path]);
       }
+
+      // Ignore relative or malformed links
+      if (!str_ends_with($path, '/')) {
+        unset($paths[$path]);
+      }
     }
 
     $event->replacePaths($paths);
