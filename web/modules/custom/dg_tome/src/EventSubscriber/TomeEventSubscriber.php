@@ -23,7 +23,7 @@ class TomeEventSubscriber implements EventSubscriberInterface {
       }
 
       // Ignore relative or malformed links.
-      if (!str_ends_with($path, '/')) {
+      if (str_starts_with($path, '/') && !str_ends_with($path, '/')) {
         unset($paths[$path]);
       }
     }
@@ -37,7 +37,8 @@ class TomeEventSubscriber implements EventSubscriberInterface {
   public function excludeInvalidPaths(PathPlaceholderEvent $event): void {
     $path = $event->getPath();
     if ($this->isLocalWithTrailingSlash($path)) {
-      $event->setInvalid();
+      $path = rtrim($path, '/');
+      $event->setPath($path);
     }
   }
 
