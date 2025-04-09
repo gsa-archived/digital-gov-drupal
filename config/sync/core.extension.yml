@@ -29,6 +29,7 @@ module:
   dg_guide_nav: 0
   dg_sitewide_alert: 0
   dg_token: 0
+  dg_tome: 0
   digital_gov_migration: 0
   disable_user_1_edit: 0
   dynamic_page_cache: 0
