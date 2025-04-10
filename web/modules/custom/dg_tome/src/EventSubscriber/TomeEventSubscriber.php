@@ -17,6 +17,7 @@ class TomeEventSubscriber implements EventSubscriberInterface {
    */
   public function excludePaths(CollectPathsEvent $event): void {
     $paths = $event->getPaths(TRUE);
+
     foreach ($paths as $path => $metadata) {
       if ($this->isLocalWithTrailingSlash($path)) {
         unset($paths[$path]);
@@ -36,6 +37,16 @@ class TomeEventSubscriber implements EventSubscriberInterface {
    */
   public function excludeInvalidPaths(PathPlaceholderEvent $event): void {
     $path = $event->getPath();
+    if (str_starts_with($path, '_redirect:')
+      || str_starts_with($path, '_entity:')
+    ) {
+      return;
+    }
+
+    if ($path === 'about:blank') {
+      $event->isInvalid();
+    }
+
     if ($this->isLocalWithTrailingSlash($path)) {
       $path = rtrim($path, '/');
       $event->setPath($path);
