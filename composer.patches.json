@@ -27,7 +27,8 @@
     },
     "drupal/tome": {
       "/project/tome/issues/3511001: Stdout from drush commands stops additional HTML assets from being created": "https://www.drupal.org/files/issues/2025-03-04/tome-3511001-stdout-from-drush-commands-stops-additional-htmlassets-from-being-created-3.patch",
-      "Deduplicate invoked paths": "patches/tome-oom-deduplicate-paths.patch"
+      "Deduplicate invoked paths": "patches/tome-oom-deduplicate-paths.patch",
+      "/project/tome/issues/3518577: Views pager links replaced with wrong static links": "https://git.drupalcode.org/project/tome/-/merge_requests/35.patch"
     },
     "drupal/sitewide_alert": {
       "DIGITAL-478: Update Alerts display in Tome Static Build": "patches/sitewide_alert_cache_tome.patch"
