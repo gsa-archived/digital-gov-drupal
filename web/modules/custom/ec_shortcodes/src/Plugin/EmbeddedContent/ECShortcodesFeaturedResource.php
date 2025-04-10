@@ -103,8 +103,8 @@ final class ECShortcodesFeaturedResource extends EmbeddedContentPluginBase imple
       '#required' => TRUE,
       '#selection_settings' => [
         'target_bundles' => [
-          'authors', 'basic_page', 'community', 'event', 'guide',
-          'news', 'resources', 'services', 'topics',
+          'authors', 'basic_page', 'community', 'event', 'guide_landing',
+          'guides', 'landing_page', 'news', 'resources', 'topics',
         ],
       ],
     ];
