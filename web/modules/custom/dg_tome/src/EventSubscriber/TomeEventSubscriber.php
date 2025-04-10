@@ -44,12 +44,16 @@ class TomeEventSubscriber implements EventSubscriberInterface {
     }
 
     if ($path === 'about:blank') {
-      $event->isInvalid();
+      $event->setInvalid();
     }
 
     if ($this->isLocalWithTrailingSlash($path)) {
       $path = rtrim($path, '/');
       $event->setPath($path);
+    }
+
+    if (!str_starts_with($path, '/')) {
+      $event->setInvalid();
     }
   }
 
